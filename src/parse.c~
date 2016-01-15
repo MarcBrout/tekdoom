@@ -1,0 +1,54 @@
+/*
+** parse.c for doom
+** 
+** Made by marc brout
+** Login   <brout_m@epitech.net>
+** 
+** Started on  Fri Jan 15 02:14:11 2016 marc brout
+** Last update Fri Jan 15 11:22:18 2016 marc brout
+*/
+
+#include "main.h"
+
+char		set_paths(t_parse *parse)
+{
+  parse->folder[0] = "files/maps";
+  parse->folder[1] = NULL;
+}
+
+char		open_file(t_parse *parse, char **path)
+{
+  if ((parse.ini = bunny_load_ini(path)) == NULL)
+    return (1);
+  if ((parse.scope = bunny_ini_first(parse.ini)) == NULL)
+    return (1);
+  return (0);
+}
+
+char		parse()
+{
+  t_parse	parse;
+  int		i;
+  
+  i = -1;
+  set_paths(parse);
+  while (parse.folder[++i]))
+    {
+      
+      if (open_file(&parse, parse.folder[i]))
+	write(2, "file corrupted\n", 16);
+      
+    }
+parse.scope = bunny_ini_next(parse.ini, parse.scope);
+if (parse.scope == NULL)
+  printf("parse.scope null\n");
+str = bunny_ini_scope_name(parse.ini, parse.scope);
+return (0);
+}
+
+int		main(int ac, char **av)
+{
+  if (ac > 1)
+    parse(av);
+  return (0);
+}

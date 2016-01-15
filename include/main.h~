@@ -1,0 +1,19 @@
+/*
+** main.h for doom
+** 
+** Made by marc brout
+** Login   <brout_m@epitech.net>
+** 
+** Started on  Wed Jan 13 17:27:20 2016 marc brout
+** Last update Fri Jan 15 10:11:34 2016 marc brout
+*/
+
+#ifndef MAIN_H_
+# define MAIN_H_
+
+# include <stdio.h>
+# include <math.h>
+# include "lapin.h"
+# include "parse.h"
+
+#endif /* !MAIN_H_ */
