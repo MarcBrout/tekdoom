@@ -5,20 +5,24 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Fri Jan 15 03:06:42 2016 marc brout
+## Last update Sun Jan 17 21:42:49 2016 marc brout
 ##
 
 SRCP	= ./src/
 
-SRC     = $(SRCP)parse.c \
+SRC     = $(SRCP)parse_file.c \
+	$(SRCP)tools.c \
+	$(SRCP)parse_maps.c \
 
 OBJS    = $(SRC:.c=.o)
 
 NAME    = tekdoom
 
-CC      = gcc
+CC      = gcc -g
 
-CFLAGS  = -W -Wall -Werror -ansi -pedantic -I/home/${USER}/.froot/include -I./include
+CFLAGS  = -W -Wall -Werror -ansi -pedantic
+
+CFLAGS	+= -I/home/${USER}/.froot/include -I./include
 
 LDFLAGS = -L/home/${USER}/.froot/lib \
 	-llapin \
@@ -29,6 +33,7 @@ LDFLAGS = -L/home/${USER}/.froot/lib \
 	-lstdc++ -ldl \
 	-lm \
 	-L./lib/ \
+	-lmy \
 
 RM      = rm -f
 
