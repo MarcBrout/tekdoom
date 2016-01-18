@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 20 18:46:14 2015 Mathieu Sauvau
-** Last update Sat Jan 16 16:09:02 2016 Mathieu Sauvau
+** Last update Mon Jan 18 18:48:29 2016 Mathieu Sauvau
 */
 
 #include <math.h>
@@ -18,7 +18,7 @@ t_bunny_response	esc(t_bunny_event_state state, t_bunny_keysym keysym,
 
   (void)state;
   data = my_data;
-  if (keysym == BKS_ESCAPE)
+  if (keysym == BKS_ESCAPE || data->exit)
     return (EXIT_ON_SUCCESS);
   if (keysym == BKS_UP && state == GO_DOWN)
     data->selected_index == 0 ?
@@ -35,7 +35,7 @@ t_bunny_response	esc(t_bunny_event_state state, t_bunny_keysym keysym,
 	    //profl name for save -> play
 	  if (data->selected_index == 1)
 	    {
-	      data->menu_length = 5;
+	      data->menu_length = 7;
 	      data->selected_index = 0;
 	      data->menu_index = 1;
 	    }
@@ -45,16 +45,20 @@ t_bunny_response	esc(t_bunny_event_state state, t_bunny_keysym keysym,
 	      data->menu_index = 2;
 	    }
 	 else if (data->selected_index == 3)
-	    exit(0);
+	   data->exit = true;
 	}
       //option_menu
-      if (data->menu_index == 1)
+      else if (data->menu_index == 1)
 	{
 	  if (data->selected_index == 0)
 	    data->config->fullscreen = !data->config->fullscreen;
 	  else if (data->selected_index == 1)
 	    (CONFIG->res_i == 3) ? (CONFIG->res_i = 0) : (CONFIG->res_i++);
-	  else if (data->selected_index == 4)
+	  //	  else if (data->selected_index == 3)
+	    //touche
+	  else if (data->selected_index == 5)
+	    save_opt(data);
+	  else if (data->selected_index == 6)
 	    {
 	      data->menu_length = 4;
 	      data->menu_index = 0;
@@ -65,20 +69,46 @@ t_bunny_response	esc(t_bunny_event_state state, t_bunny_keysym keysym,
   if (keysym == BKS_LEFT && state == GO_DOWN)
     {
       if (data->menu_index == 1 && data->selected_index == 1)
-	  (CONFIG->res_i == 0) ? (CONFIG->res_i = 3) : (CONFIG->res_i--);
+	(CONFIG->res_i == 0) ? (CONFIG->res_i = 3) : (CONFIG->res_i--);
       if (data->menu_index == 1 && data->selected_index == 2
 	  && data->config->volume > 0)
 	data->config->volume--;
+      if (data->menu_index == 1 && data->selected_index == 3
+	  && data->config->fov > 50)
+	data->config->fov--;
     }
   if (keysym == BKS_RIGHT && state == GO_DOWN)
     {
       if (data->menu_index == 1 && data->selected_index == 1)
-	    (CONFIG->res_i == 3) ? (CONFIG->res_i = 0) : (CONFIG->res_i++);
+	(CONFIG->res_i == 3) ? (CONFIG->res_i = 0) : (CONFIG->res_i++);
       if (data->menu_index == 1 && data->selected_index == 2
 	  && data->config->volume < 100)
 	data->config->volume++;
+      if (data->menu_index == 1 && data->selected_index == 3
+	  && data->config->fov < 100)
+	data->config->fov++;
     }
   return (GO_ON);
+}
+
+void			save_opt(t_data *data)
+{
+  char			convert_int[12];
+
+  if (CONFIG->ini)
+    {
+      snprintf(convert_int, 2, "%d", (int)CONFIG->fullscreen);
+      bunny_ini_set_field(CONFIG->ini, "config", "fullscreen", 0, convert_int);
+      snprintf(convert_int, 4, "%d", CONFIG->volume);
+      bunny_ini_set_field(CONFIG->ini, "config", "volume", 0, convert_int);
+      snprintf(convert_int, 5, "%d", RES[CONFIG->res_i].width);
+      bunny_ini_set_field(CONFIG->ini, "config", "width", 0, convert_int);
+      snprintf(convert_int, 5, "%d", RES[CONFIG->res_i].height);
+      bunny_ini_set_field(CONFIG->ini, "config", "height", 0, convert_int);
+      snprintf(convert_int, 4, "%d", CONFIG->fov);
+      bunny_ini_set_field(CONFIG->ini, "config", "fov", 0, convert_int);
+      bunny_save_ini(CONFIG->ini, "config.ini");
+    }
 }
 
 t_bunny_position	calc_pos_txt(t_data *data, t_mrect ref, int offset_len)
@@ -108,27 +138,37 @@ void			write_main_menu(t_data *data)
 void			write_option_menu(t_data *data)
 {
   t_bunny_position	pos_txt;
-  char			volume[3];
+  char			convert_int[3];
 
-  snprintf(volume, 4, "%d", data->config->volume);
+  snprintf(convert_int, 4, "%d", data->config->volume);
   pos_txt = calc_pos_txt(data, data->rect_opt[0], strlen("Fullscreen"));
   write_bmp(data, "Fullscreen", pos_txt);
 
   pos_txt = calc_pos_txt(data, data->rect_opt[1], strlen("Resolution"));
   write_bmp(data, "Resolution", pos_txt);
-
-  pos_txt = calc_pos_txt(data, data->rect_opt[1], strlen("Resolution"));
-  write_bmp(data, "Resolution", pos_txt);
-
   pos_txt = calc_pos_txt(data, data->rect_opt[2], strlen(RES[CONFIG->res_i].res));
   write_bmp(data, RES[CONFIG->res_i].res, pos_txt);
 
   pos_txt = calc_pos_txt(data, data->rect_opt[3], strlen("Volume"));
-  pos_txt.x -= pos_txt.x / 3;
+  pos_txt.x -= 60;
   write_bmp(data, "Volume", pos_txt);
   pos_txt = calc_pos_txt(data, data->rect_opt[3], 3);
-  pos_txt.x += pos_txt.x / 3;
-  write_bmp(data, volume, pos_txt);
+  pos_txt.x += 60;
+  write_bmp(data, convert_int, pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_opt[5], strlen("FOV"));
+  pos_txt.x -= 60;
+  write_bmp(data, "FOV", pos_txt);
+  snprintf(convert_int, 4, "%d", data->config->fov);
+  pos_txt = calc_pos_txt(data, data->rect_opt[5], 3);
+  pos_txt.x += 60;
+  write_bmp(data, convert_int, pos_txt);
+
+  pos_txt = calc_pos_txt(data, data->rect_opt[7], strlen("Input Config"));
+  write_bmp(data, "Input Config", pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_opt[8], strlen("Save"));
+  write_bmp(data, "Save", pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_opt[9], strlen("Back"));
+  write_bmp(data, "Back", pos_txt);
 }
 
 t_bunny_response	mainloop(void	*my_data)
@@ -136,7 +176,7 @@ t_bunny_response	mainloop(void	*my_data)
   t_data		*data;
 
   data = my_data;
-  my_fill(data->pix_ar, BLACK);
+  my_fill(data->pix_ar, PINK);
   if (data->menu_index == 0)
     main_menu(data);
   if (data->menu_index == 1)
@@ -192,7 +232,7 @@ void                    draw_square(t_bunny_pixelarray *pix_ar,
 	       || rect->pos.y >= rect->size.y + y - rect->contour))
 	    tekpixel(pix_ar, rect->pos, rect->color[1]);
 	  else
-	      tekpixel(pix_ar, rect->pos, rect->color[0]);
+	    tekpixel(pix_ar, rect->pos, rect->color[0]);
           rect->pos.y++;
         }
       rect->pos.x++;
@@ -299,8 +339,8 @@ t_mrect			slider(t_data *data, bool selected, int pos_slider,
 {
   t_mrect		rect;
 
-  rect.size = pos_( data->config->width / 2, 30);
-  rect.pos = pos;//centered_pos(data, rect.size, offset.x, offset.y);
+  rect.size = pos_(data->config->width / 2, 30);
+  rect.pos = pos;
   rect.selected = selected;
   rect.color[0] = BLUE;
   rect.color[1] = RED;
@@ -313,39 +353,20 @@ void			option_menu(t_data *data, int selected_index)
 {
   t_bunny_position	pos;
   t_bunny_position	size;
-  int			n;
   int			margin;
   int			offset;
 
-  n = -1;
   margin = 20;
   offset = margin;
-  /*while (++n < data->menu_length)
-    {
-      data->rect_opt[n].size.x = data->config->width / 2;
-      data->rect_opt[n].size.y = (data->config->height - offset
-			      - (margin * (data->menu_length + 1))) / data->menu_length;
-      data->rect_opt[n].pos.x = data->config->width / 2 - data->rect_opt[n].size.x / 2;
-      if (n != 0)
-	data->rect_opt[n].pos.y = data->rect_opt[n - 1].pos.y + data->rect_opt[n].size.y + margin;
-      data->rect_opt[n].color[0] = WHITE;
-      data->rect_opt[n].color[1] = RED;
-      data->rect_opt[n].contour = 3;
-      if (n == data->selected_index)
-	data->rect_opt[n].selected = true;
-      else
-	data->rect_opt[n].selected = false;
-      draw_square(data->pix_ar, &data->rect_opt[n]);
-    }
-}*/
-  size = pos_(WIDTH / 2 - 60, 50);//(data->config->height - offset
-  // - (margin * (data->menu_length + 1))) / data->menu_length);
+  size = pos_(WIDTH / 2 - 60, 50);
+  size.y = (data->config->height - offset - (margin * 10)) / 10;
   pos.x = WIDTH / 2 - size.x / 2 - 30;
   pos.y = offset;
   (selected_index == 0) ? (data->rect_opt[0] = label(data, true, size, pos)) :
     (data->rect_opt[0] = label(data, false, size, pos));
   check_box(data, data->config->fullscreen, data->rect_opt[0].pos);
   size = pos_(WIDTH / 2, 50);
+  size.y = (data->config->height - offset - (margin * 10)) / 10;
   pos.x = data->config->width / 2 - data->rect_opt[0].size.x / 2 - 30;
   pos.y = data->rect_opt[0].pos.y + data->rect_opt[0].size.y + margin;
 
@@ -355,17 +376,35 @@ void			option_menu(t_data *data, int selected_index)
   (selected_index == 1) ? (data->rect_opt[2] = label(data, true, size, pos)) :
     (data->rect_opt[2] = label(data, false, size, pos));
 
-
-  pos.x = data->config->width / 2 - data->rect_opt[1].size.x / 2;
   pos.y = data->rect_opt[2].pos.y + data->rect_opt[1].size.y + margin;
   data->rect_opt[3] = label(data, false, size, pos);
 
-  pos.x = data->config->width / 2 - data->rect_opt[1].size.x / 2;
-  pos.y = data->rect_opt[3].pos.y + data->rect_opt[1].size.y + margin;
+  pos.y = data->rect_opt[3].pos.y + data->rect_opt[1].size.y + 15;
   if (selected_index == 2)
     data->rect_opt[4] = slider(data, true, data->config->volume, pos);
   else
-  data->rect_opt[4] = slider(data, false, data->config->volume, pos);
+    data->rect_opt[4] = slider(data, false, data->config->volume, pos);
+
+  pos.y = data->rect_opt[4].pos.y + data->rect_opt[1].size.y + margin;
+  data->rect_opt[5] = label(data, false, size, pos);
+
+  pos.y = data->rect_opt[5].pos.y + data->rect_opt[1].size.y + margin;
+  if (selected_index == 3)
+    data->rect_opt[6] = slider(data, true, data->config->fov, pos);
+  else
+    data->rect_opt[6] = slider(data, false, data->config->fov, pos);
+
+  pos.y = data->rect_opt[6].pos.y + data->rect_opt[1].size.y + margin ;
+  (selected_index == 4) ? (data->rect_opt[7] = label(data, true, size, pos)) :
+    (data->rect_opt[7] = label(data, false, size, pos));
+
+  pos.y = data->rect_opt[7].pos.y + data->rect_opt[1].size.y + margin;
+  (selected_index == 5) ? (data->rect_opt[8] = label(data, true, size, pos)) :
+    (data->rect_opt[8] = label(data, false, size, pos));
+
+  pos.y = data->rect_opt[8].pos.y + data->rect_opt[1].size.y + margin;
+  (selected_index == 6) ? (data->rect_opt[9] = label(data, true, size, pos)) :
+  (data->rect_opt[9] = label(data, false, size, pos));
 }
 
 t_bunny_picture		*search_letter(t_letter *letter, char c)
@@ -397,17 +436,23 @@ void			write_bmp(t_data *data, char *txt, t_bunny_position start)
     }
 }
 
-int			find_res(t_data *data, char *res)
+int			get_res(t_data *data, int height)
 {
   int			i;
 
   i = -1;
   while (++i < 4)
     {
-      //      if (strcmp(RES[i].width, res) == 0)
-	return (i);
+      if (height == RES[i].height)
+	{
+	  WIDTH = RES[i].width;
+	  HEIGHT = RES[i].height;
+	  return (i);
+	}
     }
-  return (0);
+  WIDTH = RES[1].width;
+  HEIGHT = RES[1].height;
+  return (1);
 }
 
 void			init_res(t_data *data)
@@ -461,22 +506,21 @@ void			default_config(t_data *data)
   data->config->width = 800;
   data->config->height = 600;
   data->config->volume = 100;
+  data->config->volume = 60;
 }
 
 void			load_config(t_data *data)
 {
-  t_bunny_ini		*config;
-
-  if ((data->config = bunny_malloc(sizeof(t_config))) == NULL)
+  if ((CONFIG = bunny_malloc(sizeof(t_config))) == NULL)
     exit(1);
-  if ((config = bunny_load_ini("config.ini")) != NULL)
+  if ((CONFIG->ini = bunny_load_ini("config.ini")) != NULL)
     {
       data->config->fullscreen =
-	atoi(bunny_ini_get_field(config, "config", "fullscreen", 0));
-      //      CONFIG->res_i = find_res(data, bunny_ini_get_field(config, "config", "width", 0));
-      data->config->width = atoi(bunny_ini_get_field(config, "config", "width", 0));
-      data->config->height = atoi(bunny_ini_get_field(config, "config", "height", 0));
-      data->config->volume = atoi(bunny_ini_get_field(config, "config", "volume", 0));
+	atoi(bunny_ini_get_field(CONFIG->ini, "config", "fullscreen", 0));
+      data->config->width = atoi(bunny_ini_get_field(CONFIG->ini, "config", "width", 0));
+      data->config->height = atoi(bunny_ini_get_field(CONFIG->ini, "config", "height", 0));
+      data->config->volume = atoi(bunny_ini_get_field(CONFIG->ini, "config", "volume", 0));
+      data->config->fov = atoi(bunny_ini_get_field(CONFIG->ini, "config", "fov", 0));
     }
   else
     default_config(data);
@@ -489,8 +533,11 @@ void			load_letter(t_data *data)
   char			path[11];
   char			letter[90];
   int			l_path;
+  double		scale;
 
   i = -1;
+  scale = 0.5;
+  scale += 0.25 * CONFIG->res_i;
   strcpy(path, "text/a.bmp\0");
   strcpy(letter,
 	 "  0123456789abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ()<>.,!?;:-_'\"");
@@ -500,24 +547,42 @@ void			load_letter(t_data *data)
       path[l_path - 5] = letter[i];
       data->letter[i].name = letter[i];
       data->letter[i].letter = bunny_load_picture(path);
+      data->letter[i].letter->scale.x *= scale;
+      data->letter[i].letter->scale.y *= scale;
     }
+}
+
+int			init_data(t_data *data)
+{
+  data->menu_length = 4;
+  if((data->rect = malloc(sizeof(t_mrect) * data->menu_length)) == NULL)
+    return (1);
+  load_config(data);
+  init_res(data);
+  CONFIG->res_i = get_res(data, CONFIG->height);
+  load_letter(data);
+  data->selected_index = 0;
+  data->menu_index = 0;
+  data->exit = false;
+  if (CONFIG->fullscreen && CONFIG->height == 720)
+    {
+      data->pos.x = WIDTH / 4;
+      data->pos.y = HEIGHT / 4;
+    }
+  else
+    {
+      data->pos.x = 0;
+      data->pos.y = 0;
+    }
+  return (0);
 }
 
 int			main()
 {
   t_data		data;
 
-  data.menu_length = 4;
-  load_letter(&data);
-  if((data.rect = malloc(sizeof(t_mrect) * data.menu_length)) == NULL)
+  if (init_data(&data) == 1)
     return (1);
-  load_config(&data);
-  init_res(&data);
-  data.config->res_i = 0;
-  data.selected_index = 0;
-  data.menu_index = 0;
-  (data.config->fullscreen) ? (data.pos.x = data.config->width / 4) : (data.pos.x = 0);
-  (data.config->fullscreen) ? (data.pos.y = data.config->height / 4) : (data.pos.y = 0);
   memory_check = 1;
   data.win = bunny_start(data.config->width, data.config->height,
 			 data.config->fullscreen, "TEk-DOOM");
