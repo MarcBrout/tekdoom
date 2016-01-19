@@ -1,0 +1,64 @@
+/*
+** main.c<2> for main in /home/duhieu_b/infographie/rendu/gfx_wolf3d/src
+**
+** Made by benjamin duhieu
+** Login   <duhieu_b@epitech.net>
+**
+** Started on  Fri Jan 15 12:29:58 2016 benjamin duhieu
+** Last update Fri Jan 15 14:31:22 2016 benjamin duhieu
+*/
+
+#include "engine.h"
+
+t_bunny_response	main_loop(void *main)
+{
+  t_main		*wolf;
+
+  wolf = main;
+  fill_screen(wolf->pix);
+  calc(wolf);
+  bunny_blit(&(wolf->win->buffer), &(wolf->pix->clipable), NULL);
+  bunny_display(wolf->win);
+  /* bunny_set_key_response(main_echap); */
+  /* bunny_set_move_response(main_mouse); */
+  return (GO_ON);
+}
+
+int	init_main(int argc, char **argv, char **env, t_main *wolf)
+{
+  if (*env == NULL)
+    return (1);
+  if (argc != 2 || argv == NULL)
+    return (1);
+  /* if ((wolf->ini = bunny_load_ini(argv[1])) == NULL) */
+  /*   return (1); */
+  /* if ((wolf->music = bunny_load_music */
+  /*      ("Pan_39_s_Labyrinth_Lullaby_-_Piano_and_Violin_Vers.ogg")) == NULL) */
+  /*   return (1); */
+  /* wolf->sound = 0; */
+  /* if (ini(wolf)) */
+  /*   return (1); */
+  if (init_data(wolf))
+    return (1);
+  return (0);
+}
+
+int		main(int argc, char **argv, char **env)
+{
+  t_main	wolf;
+
+  if (init_main(argc, argv, env, &wolf))
+    return (1);
+  /* wolf.mouse = 0; */
+  wolf.pix = bunny_new_pixelarray(WIDTH, HEIGHT);
+  wolf.win = bunny_start(WIDTH, HEIGHT, false, "wolf");
+  /* bunny_set_mouse_position_window(wolf.win, WIDTH / 2, HEIGHT / 2); */
+  /* bunny_set_mouse_visibility(wolf.win, 0); */
+  bunny_set_loop_main_function(main_loop);
+  bunny_loop(wolf.win, 60, &wolf);
+  bunny_delete_clipable(&(wolf.pix->clipable));
+  bunny_stop(wolf.win);
+  /* bunny_delete_ini(wolf.ini); */
+  /* bunny_delete_sound(wolf.music); */
+  return (0);
+}

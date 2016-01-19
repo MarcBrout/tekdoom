@@ -1,0 +1,52 @@
+/*
+** engine.h for engine in /home/duhieu_b/infographie/rendu/gfx_tekdoom/duhieu_3d/include
+**
+** Made by benjamin duhieu
+** Login   <duhieu_b@epitech.net>
+**
+** Started on  Fri Jan 15 10:32:02 2016 benjamin duhieu
+** Last update Fri Jan 15 14:11:36 2016 benjamin duhieu
+*/
+
+#ifndef ENGINE_H_
+# define ENGINE_H_
+# define WIDTH 1024
+# define HEIGHT 768
+# include <math.h>
+
+typedef			struct s_ang
+{
+  double		cosi[3600];
+  double		sinu[3600];
+  double		tang[3600];
+}			t_ang;
+
+typedef struct	s_calc
+{
+  int		fov;
+  t_ang		ang;
+  int		px;
+  int		py;
+  int		xa;
+  int		ya;
+  int		xold;
+  int		yold;
+  int		ax;
+  int		ay;
+  int		mh;
+  int		mv;
+  int		pmh;
+  int		pmv;
+  int		hm;
+  int		dist;
+}		t_calc;
+
+typedef			struct s_main
+{
+  int			ang;
+  t_calc		calc;
+  t_bunny_position	pos[2];
+  t_bunny_window	*win;
+  t_bunny_pixelarray	*pix;
+  t_color		col;
+}			t_main;
