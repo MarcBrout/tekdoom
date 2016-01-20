@@ -5,15 +5,16 @@
 ## Login   <marel_m@epitech.net>
 ##
 ## Started on  Mon Nov  2 12:21:34 2015 maud marel
-## Last update Thu Jan 14 16:25:50 2016 Maud MAREL
+## Last update Sun Jan 17 12:00:31 2016 Maud MAREL
 ##
 
 NAME		=	interface
 
-SRC             =	main.c \
-			my_set_square.c \
-			tekpixel.c \
-			draw.c \
+SRC             =	src/main.c \
+			src/my_set_square.c \
+			src/tekpixel.c \
+			src/draw.c \
+			src/draw_init_life.c \
 
 OBJ             =       $(SRC:.c=.o)
 
