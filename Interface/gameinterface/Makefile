@@ -5,21 +5,23 @@
 ## Login   <marel_m@epitech.net>
 ##
 ## Started on  Mon Nov  2 12:21:34 2015 maud marel
-## Last update Sun Jan 17 12:00:31 2016 Maud MAREL
+## Last update Wed Jan 20 15:54:30 2016 Maud MAREL
 ##
 
-NAME		=	interface
+NAME		=	lifebar
 
 SRC             =	src/main.c \
 			src/my_set_square.c \
 			src/tekpixel.c \
+			src/tekpixel2.c \
 			src/draw.c \
 			src/draw_init_life.c \
+			src/draw_init_bullet.c \
+			src/draw_heart.c \
 
 OBJ             =       $(SRC:.c=.o)
 
-LIBS		=	-L/home/$(USER)/.froot/lib \
-			-L/usr/local/lib \
+LIBS		=	-L/home/$(USER)/.froot/lib/ \
 			-llapin \
                         -lsfml-audio \
                         -lsfml-graphics \
@@ -28,9 +30,9 @@ LIBS		=	-L/home/$(USER)/.froot/lib \
                         -lstdc++ -ldl \
 			-lm \
 
-CFLAGS		+=	-Iinclude/
+CFLAGS		+=	-Iinclude \
 
-CFLAGS     	+=	-W -Wall -ansi -pedantic -I/usr/local/include/
+CFLAGS     	+=	-W -Wall -ansi -pedantic
 
 CFLAGS		+=	$(LIBS)
 
