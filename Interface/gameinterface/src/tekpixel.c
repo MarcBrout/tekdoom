@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Mon Nov 16 15:25:45 2015 maud marel
-** Last update Thu Jan 14 16:25:31 2016 Maud MAREL
+** Last update Wed Jan 20 14:25:16 2016 Maud MAREL
 */
 
-#include "interface.h"
+#include "lifebar.h"
 
 void		tekpixel(t_bunny_pixelarray *pix,
 			 t_bunny_position *pos,

@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Sun Jan 17 10:45:26 2016 Maud MAREL
-** Last update Tue Jan 19 19:06:54 2016 Maud MAREL
+** Last update Wed Jan 20 15:48:04 2016 Maud MAREL
 */
 
-#include "interface.h"
+#include "lifebar.h"
 
 void                    draw_life_bar(t_data *data)
 {
@@ -16,7 +16,7 @@ void                    draw_life_bar(t_data *data)
   t_bunny_position      pos_e;
 
   pos_s.x = (WIDTH / 75) - 1;
-  pos_e.x = (data->life_bar.life * 3 * WIDTH) / 1000;
+  pos_e.x = (data->life.life * 3 * WIDTH) / 1000;
   pos_e.y = HEIGHT - (HEIGHT / 75);
   while (++pos_s.x < pos_e.x)
     {
@@ -24,11 +24,11 @@ void                    draw_life_bar(t_data *data)
       while(++pos_s.y < pos_e.y)
 	tekpixel(data->pix, &pos_s, RED);
     }
-  data->life_bar.pos_life.x = (3 * WIDTH) / 10;
-  data->life_bar.pos_life.y = HEIGHT - (HEIGHT / 75);
+  data->life.pos_life.x = (3 * WIDTH) / 10;
+  data->life.pos_life.y = HEIGHT - (HEIGHT / 75);
 }
 
-void			action_draw_square_life_bar(t_data *data,
+void			action_draw_square_life(t_data *data,
 						    t_bunny_position pos_e,
 						    t_bunny_position pos_s)
 {
@@ -56,7 +56,7 @@ void			action_draw_square_life_bar(t_data *data,
     tekpixel(data->pix, &pos_sh, BLACK);
 }
 
-void                    draw_square_life_bar(t_data *data)
+void                    draw_square_life(t_data *data)
 {
   t_bunny_position      pos_s;
   t_bunny_position      pos_e;
@@ -65,5 +65,5 @@ void                    draw_square_life_bar(t_data *data)
   pos_s.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) - 1;
   pos_e.x = ((WIDTH / 10) + (WIDTH / 5)) + 1;
   pos_e.y = HEIGHT - (HEIGHT / 75);
-  action_draw_square_life_bar(data, pos_e, pos_s);
+  action_draw_square_life(data, pos_e, pos_s);
 }
