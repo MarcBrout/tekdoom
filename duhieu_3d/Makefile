@@ -5,10 +5,18 @@
 ## Login   <duhieu_b@epitech.net>
 ##
 ## Started on  Fri Jan 15 10:08:11 2016 benjamin duhieu
-## Last update Fri Jan 15 10:31:38 2016 benjamin duhieu
+## Last update Tue Jan 19 21:46:25 2016 benjamin duhieu
 ##
 
-SRC	=	src/main.c \
+SRC	=	src/start.c \
+		src/background.c \
+		src/correct_dist.c \
+		src/init_data.c \
+		src/calc.c \
+		src/direction.c \
+		src/parse_file.c \
+		src/parse_maps.c \
+		src/tools.c
 
 OBJS	=	$(SRC:.c=.o)
 
@@ -21,6 +29,8 @@ LIB	=	-L/home/${USER}/.froot/lib/ -llapin \
 		-lsfml-system \
 		-lstdc++ -ldl \
 		-lm \
+		-L./lib/ \
+		-lmy
 
 CC	=	gcc -g $(CFLAGS)
 
@@ -29,7 +39,7 @@ RM	=	rm -f
 NAME	=	tekdoom
 
 $(NAME):	$(OBJS)
-		$(CC) -o $(NAME) $(LIB)
+		$(CC) -o $(NAME) $(OBJS) $(LIB)
 
 all:		$(NAME)
 

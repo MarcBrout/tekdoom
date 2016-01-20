@@ -1,11 +1,11 @@
 /*
 ** parse.c for doom
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Fri Jan 15 02:14:11 2016 marc brout
-** Last update Mon Jan 18 00:22:00 2016 marc brout
+** Last update Tue Jan 19 20:05:36 2016 benjamin duhieu
 */
 
 #include "main.h"
@@ -65,23 +65,16 @@ char		set_paths(t_parse *parse)
   return (0);
 }
 
-char		parse()
+char		parse(t_parse *parse)
 {
-  t_parse	parse;
   int		i;
 
   i = -1;
-  if (set_paths(&parse))
+  if (set_paths(parse))
     return (1);
-  while (parse.folder[++i] != NULL)
-    if (read_folder(&parse, parse.folder[i]))
+  while (parse->folder[++i] != NULL)
+    if (read_folder(parse, parse->folder[i]))
       return (my_perror(E_PARSE));
-  parse_maps(&parse);
-  return (0);
-}
-
-int		main()
-{
-  parse();
+  parse_maps(parse);
   return (0);
 }

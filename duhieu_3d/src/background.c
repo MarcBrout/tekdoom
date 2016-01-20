@@ -5,10 +5,10 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Jan 15 12:34:07 2016 benjamin duhieu
-** Last update Fri Jan 15 12:34:25 2016 benjamin duhieu
+** Last update Tue Jan 19 19:11:07 2016 benjamin duhieu
 */
 
-#include "engine.h"
+#include "main.h"
 
 void		fill_screen(t_bunny_pixelarray *pix)
 {
