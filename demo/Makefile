@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Tue Jan 19 21:25:14 2016 marc brout
+## Last update Wed Jan 20 18:39:33 2016 marc brout
 ##
 
 SRC     = bmploader.c
@@ -14,7 +14,7 @@ OBJS    = $(SRC:.c=.o)
 
 NAME    = bmpload
 
-CC      = gcc -g
+CC      = gcc
 
 CFLAGS  = -W -Wall -Werror -ansi -pedantic
 
