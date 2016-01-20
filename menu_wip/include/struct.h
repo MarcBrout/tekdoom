@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Sat Jan 16 15:55:32 2016 Mathieu Sauvau
+** Last update Mon Jan 18 18:06:01 2016 Mathieu Sauvau
 */
 
 #ifndef STRUCT_H_
@@ -50,7 +50,6 @@ typedef struct		s_menu_rectangle
 
 typedef struct		s_letter
 {
-  //  struct s_letter	*next;
   char			name;
   t_bunny_picture	*letter;
 }			t_letter;
@@ -62,11 +61,12 @@ typedef struct		s_data
   t_config		*config;
   t_bunny_position	pos;
   t_mrect		*rect;
-  t_mrect		rect_opt[6];
+  t_mrect		rect_opt[10];
   int			menu_length;
   int			menu_index;
   int			selected_index;
   t_letter		letter[75];
+  bool			exit;
 }			t_data;
 
 void			tekpixel(t_bunny_pixelarray *pix_ar,
@@ -91,4 +91,5 @@ void			write_bmp(t_data *data, char *, t_bunny_position);
 t_bunny_position	centered_pos(t_data *data, t_bunny_position size, int, int);
 void                    draw_slider(t_bunny_pixelarray *pix_ar,
                                     t_mrect *rect, int pos_slider);
+void			save_opt(t_data *data);
 #endif /* !STRUCT_H_ */
