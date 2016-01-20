@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Sun Jan 17 11:52:54 2016 marc brout
-** Last update Sun Jan 17 23:35:33 2016 marc brout
+** Last update Wed Jan 20 23:55:27 2016 marc brout
 */
 
 #include "main.h"
@@ -62,44 +62,6 @@ char			get_lvl_infos(t_ini *ini)
   return (0);
 }
 
-char			set_line_length(int **tab, int len, int hei)
-{
-  int			i;
-
-  i = -1;
-  while (++i < hei)
-    if ((tab[i] = malloc(sizeof(int) * (len + 1))) == NULL)
-      return (1);
-  return (0);
-} 
-
-char			parse_map(t_ini *ini, 
-				  t_lvl *lvl, int **tab, char *map)
-{
-  int			x;
-  int			y;
-  int			i;
-  char			*nb;
-  char			pres;
-
-  y = -1;
-  pres = 0;
-  while (++y < lvl->hei)
-    {
-      x = -1;
-      while (++x < lvl->wid)
-	{
-	  i = x + (lvl->hei - 1 - y) * lvl->wid;
-	  if ((nb = (char *)BISGF(ini->scope, map, i)) == NULL)
-	    return (1);
-	  if (!(tab[y][x] = my_getnbr(nb)))
-	    pres = 1;
-	}
-    }
-  if (!pres)
-    return (1);
-  return (0);
-}
 
 char			set_minimap_size(t_ini *ini)
 {
@@ -108,22 +70,22 @@ char			set_minimap_size(t_ini *ini)
   if (BISGF(ini->scope, "width", 0) == NULL ||
       BISGF(ini->scope, "height", 0) == NULL)
     return (1);
-  ini->lvls->prev->wid = my_getnbr((char *)BISGF(ini->scope, "width", 0));
-  ini->lvls->prev->hei = my_getnbr((char *)BISGF(ini->scope, "height", 0));
+  ini->lvls->prev->wid = my_getnbr((char*)BISGF(ini->scope, "width", 0));
+  ini->lvls->prev->hei = my_getnbr((char*)BISGF(ini->scope, "height", 0));
   h = ini->lvls->prev->hei;
-  if ((ini->lvls->prev->type = malloc(sizeof(int *) * (h + 1))) == NULL ||
-      (ini->lvls->prev->size = malloc(sizeof(int *) * (h + 1))) == NULL ||
-      (ini->lvls->prev->text = malloc(sizeof(int *) * (h + 1))) == NULL)
+  if ((ini->lvls->prev->type = malloc(sizeof(int*) * (h + 1))) == NULL ||
+      (ini->lvls->prev->size = malloc(sizeof(double*) * (h + 1))) == NULL ||
+      (ini->lvls->prev->text = malloc(sizeof(int*) * (h + 1))) == NULL)
     return (1);
   ini->lvls->prev->type[h] = NULL;
   ini->lvls->prev->size[h] = NULL;
   ini->lvls->prev->text[h] = NULL;
   if (set_line_length(ini->lvls->prev->type, ini->lvls->prev->wid, h) ||
-      set_line_length(ini->lvls->prev->size, ini->lvls->prev->wid, h) ||
+      set_line_lengthd(ini->lvls->prev->size, ini->lvls->prev->wid, h) ||
       set_line_length(ini->lvls->prev->text, ini->lvls->prev->wid, h))
     return (1);
   if (parse_map(ini, ini->lvls->prev, ini->lvls->prev->type, "type") ||
-      parse_map(ini, ini->lvls->prev, ini->lvls->prev->size, "size") ||
+      parse_mapd(ini, ini->lvls->prev, ini->lvls->prev->size, "size") ||
       parse_map(ini, ini->lvls->prev, ini->lvls->prev->text, "text"))
     return (1);
   return (0);
@@ -132,7 +94,7 @@ char			set_minimap_size(t_ini *ini)
 char			parse_maps(t_parse *parse)
 {
   t_ini			*tmp;
-
+  
   tmp = parse->maps->next;
   while (tmp != NULL && !access(tmp->file, F_OK))
     {

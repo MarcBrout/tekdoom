@@ -6,7 +6,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Jan 17 11:30:54 2016 benjamin duhieu
-** Last update Wed Jan 20 18:50:36 2016 benjamin duhieu
+** Last update Wed Jan 20 19:57:37 2016 marc brout
 */
 
 #include "main.h"
@@ -70,7 +70,7 @@ int	left(t_main *doom)
   doom->calc.xa = doom->calc.dim * (-1);
   doom->calc.ya = doom->calc.dim *
     doom->calc.ang.tang[(int)doom->pars.maps->next->lvls->next->pla * 10];
-  printf("bx = %d, by = %d\n", doom->calc.bx / 10000, doom->calc.by / 10000);
+
   if (doom->pars.maps->next->lvls->next->size
       [doom->calc.by / 10000][doom->calc.bx / 10000])
     return (0);

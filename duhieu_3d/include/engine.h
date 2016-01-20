@@ -5,15 +5,16 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Jan 15 10:32:02 2016 benjamin duhieu
-** Last update Wed Jan 20 18:41:39 2016 benjamin duhieu
+** Last update Wed Jan 20 19:46:46 2016 marc brout
 */
 
 #ifndef ENGINE_H_
 # define ENGINE_H_
 # define WIDTH 1024
 # define HEIGHT 768
-# define ABS(Value) ((Value < 0) ? -Value : Value)
-# define RAD(Value) ((Value * M_PI) / 180)
+# define ABS(value) (((value) < 0) ? -(value) : (value))
+# define RAD(value) (((value) * M_PI) / 180)
+# define DEG(value) (((value) * 180) / M_PI)
 # include <math.h>
 
 typedef			struct s_ang

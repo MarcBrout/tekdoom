@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:08:10 2016 marc brout
-** Last update Wed Jan 20 12:44:35 2016 benjamin duhieu
+** Last update Thu Jan 21 00:00:28 2016 marc brout
 */
 
 #ifndef PARSE_H_
@@ -27,7 +27,7 @@ typedef struct		s_lvl
   int			wid;
   int			hei;
   int			**type;
-  int			**size;
+  double		**size;
   int			**text;
   int			plx;
   int			ply;
@@ -51,6 +51,11 @@ typedef struct		s_parse
   t_ini			*maps;
 }			t_parse;
 
+char set_line_length(int **, int, int);
+char set_line_lengthd(double **, int, int);
+char parse_map(t_ini *, t_lvl *, int **, char *);
+char parse_mapd(t_ini *, t_lvl *, double **, char *);
+double get_double(char *);
 int my_perror(char *);
 char add_lvl(t_ini *);
 char parse(t_parse *);

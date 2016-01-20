@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Jan 15 12:54:30 2016 benjamin duhieu
-** Last update Wed Jan 20 18:54:53 2016 benjamin duhieu
+** Last update Wed Jan 20 19:57:13 2016 marc brout
 */
 
 #include "main.h"
@@ -21,7 +21,7 @@ void		fill_cos_sin(t_ang *ang)
     {
       ang->cosi[i] = cos(RAD(a));
       ang->sinu[i] = sin(RAD(a));
-      ang->tang[i] = ang->sinu[i] / ang->cosi[i];
+      ang->tang[i] = tan(a);
       a += 0.1;
     }
 }
