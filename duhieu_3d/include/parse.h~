@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:08:10 2016 marc brout
-** Last update Tue Jan 19 19:49:22 2016 benjamin duhieu
+** Last update Tue Jan 19 21:10:59 2016 benjamin duhieu
 */
 
 #ifndef PARSE_H_
@@ -53,6 +53,7 @@ typedef struct		s_parse
 
 int my_perror(char *);
 char add_lvl(t_ini *);
+char parse(t_parse *);
 char parse_maps(t_parse *);
 char read_folder(t_parse *, char *);
 char add_map(t_ini *, char *);

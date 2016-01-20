@@ -6,22 +6,25 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Jan 17 10:16:40 2016 benjamin duhieu
-** Last update Sun Jan 17 14:00:19 2016 benjamin duhieu
+** Last update Wed Jan 20 14:51:39 2016 benjamin duhieu
 */
 
-#include "engine.h"
+#include "main.h"
 
 /*
 ** Calc if the intersection is with the horizontal wall, case 1:
 ** If our teta is turn to the up, case 2: If our teta is turn to our back
 */
 
-int	intersection_horzontal(t_main *doom)
+int	intersection_horizontal(t_main *doom)
 {
-  if (doom->calc.teta >= 0 && doom->calc.teta < 180)
+  if (doom->pars.maps->next->lvls->next->pla >= 0 &&
+      doom->pars.maps->next->lvls->next->pla < 180)
     return (up(doom));
-  else if (doom->calc.teta >= 180 && doom->calc.teta < 360)
+  else if (doom->pars.maps->next->lvls->next->pla >= 180 &&
+	   doom->pars.maps->next->lvls->next->pla < 360)
     return (back(doom));
+  return (0);
 }
 
 /*
@@ -31,11 +34,15 @@ int	intersection_horzontal(t_main *doom)
 
 int	intersection_vertical(t_main *doom)
 {
-  if (doom->calc.teta >= 90 && doom->calc.teta < 240)
+  if (doom->pars.maps->next->lvls->next->pla >= 90 &&
+      doom->pars.maps->next->lvls->next->pla < 240)
     return (left(doom));
-  if ((doom->calc.teta >= 240 && doom->calc.teta < 360) &&
-      (doom->calc.teta >= 0 && doom->calc.teta < 90))
+  else if ((doom->pars.maps->next->lvls->next->pla >= 240 &&
+	    doom->pars.maps->next->lvls->next->pla < 360) ||
+	   (doom->pars.maps->next->lvls->next->pla >= 0 &&
+	    doom->pars.maps->next->lvls->next->pla < 90))
     return (right(doom));
+  return (0);
 }
 
 /*
@@ -44,45 +51,59 @@ int	intersection_vertical(t_main *doom)
 ** Dist incorrect
 */
 
-int	dist_to_wall(t_main *doom)
+void		dist_to_wall(t_main *doom)
 {
-  int	dist;
-  int	nhight;
-  int	mh;
-  int	mv;
+  int		dist;
+  int		mh;
+  int		mv;
+  double	nhight;
 
-  dist = doom->calc.dist = (WIDTH / 2) /
-    (doom->calc.ang.tang[(doom->calc.fov / 2) * 10]);
-  mh = ABS(doom->calc.px - doom->calc.ax) /
-    doom->calc.ang.cosi[doom->calc.teta * teta];
-  mv = ABS(doom->calc.px - doom->calc.bx) /
-    doom->calc.ang.cosi[doom->calc.teta * teta];
+  nhight = 0;
+  dist = (WIDTH / 2) / (doom->calc.ang.tang[(doom->calc.fov / 2) * 10]);
+  mh = ABS(doom->pars.maps->next->lvls->next->plx * 10000 - doom->calc.ax) /
+    doom->calc.ang.cosi[(int)doom->pars.maps->next->lvls->next->pla * 10];
+  mv = ABS(doom->pars.maps->next->lvls->next->plx * 10000 - doom->calc.bx) /
+    doom->calc.ang.cosi[(int)doom->pars.maps->next->lvls->next->pla * 10];
   if (mh >= mv)
     nhight = correct_dist_mh(doom, mh, nhight);
   else
     nhight = correct_dist_mv(doom, mv, nhight);
-  doom->calc.hight = (doom->calc.dim / nhight) * doom->calc.dist;
+  printf("nhight = %f, dist = %d\n", nhight, dist);
+  doom->calc.hight = ((doom->calc.dim / nhight) / 10000) * dist;
 }
 
 /*
 ** Disp the wall, One column at time.
 */
 
-int		disp_wall(t_main *doom)
+void		disp_wall(t_main *doom, int a)
 {
   int		i;
   unsigned	*pixels;
 
-  pixels = (unsigned *)wolf->pix->pixels;
+  pixels = (unsigned *)doom->pix->pixels;
   i = (HEIGHT / 2) - (doom->calc.hight / 2) - 1;
   while (++i < ((HEIGHT / 2) + (doom->calc.hight / 2)) && i < HEIGHT)
-    pixels[doom->calc.ax + i * WIDTH] == WHITE;
+    {
+      pixels[a + i * WIDTH] = WHITE;
+    }
 }
 
-int	calc(t_main *doom)
+void	calc(t_main *doom)
 {
-  intersection_horizontal(doom);
-  intersection_vertical(doom);
-  dist_to_wall(doom);
-  disp_wall(doom);
+  int	a;
+
+  --doom->pars.maps->next->lvls->next->pla;
+  a = -1;
+  while (++a < WIDTH)
+    {
+      doom->pars.maps->next->lvls->next->pla +=
+	((double)doom->calc.fov / (double)WIDTH);
+      check_ang(doom);
+      /* printf("ang = %f, a = %d\n", doom->pars.maps->next->lvls->next->pla, a); */
+      intersection_horizontal(doom);
+      intersection_vertical(doom);
+      dist_to_wall(doom);
+      disp_wall(doom, a);
+    }
 }

@@ -5,11 +5,14 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Thu Oct  8 11:23:34 2015 marc brout
-** Last update Sun Jan 17 10:38:42 2016 marc brout
+** Last update Sun Jan 17 10:15:42 2016 marc brout
 */
 
 #ifndef MY_H_
 # define MY_H_
+
+#include <stdarg.h>
+#include <stdlib.h>
 
 void my_putchar(char);
 char *my_strdup(char*);
