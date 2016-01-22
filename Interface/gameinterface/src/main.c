@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Dec 16 17:28:05 2015 maud marel
-** Last update Wed Jan 20 19:01:28 2016 Maud MAREL
+** Last update Thu Jan 21 17:47:32 2016 Maud MAREL
 */
 
 #include "lifebar.h"
@@ -13,6 +13,7 @@
 void			interface(t_data *data)
 {
   draw_heart(data);
+  draw_bullet(data);
   if (data->life.ok == 1)
     {
       draw_life_bar(data);
@@ -20,7 +21,7 @@ void			interface(t_data *data)
     }
   if (data->life.life != 100)
     {
-      data->life.pos_life.x--;
+      data->life.speed = 10;
       draw_move_life(data);
     }
 }
@@ -57,7 +58,7 @@ t_bunny_response	my_escape(t_bunny_event_state state,
 	  all->life.end = 1;
 	}
     }
-  if (key == BKS_A && state == GO_DOWN)
+  if (key == BKS_A && state == GO_DOWN && all->life.nb_heart > 0)
     {
       all->life.life = 100;
       all->life.ok = 1;
@@ -66,6 +67,13 @@ t_bunny_response	my_escape(t_bunny_event_state state,
     }
   if (key == BKS_ESCAPE && state == GO_DOWN)
     return (EXIT_ON_SUCCESS);
+  if (key == BKS_RETURN && state == GO_DOWN)
+    {
+      if (all->bullet.nb_bullet == 0)
+	all->bullet.nb_bullet = 5;
+      else
+	all->bullet.nb_bullet--;
+    }
   return (GO_ON);
 }
 
@@ -75,10 +83,10 @@ void	interface_init(t_data *data)
   data->life.end = 0;
   data->life.life = 100;
   data->life.nb_heart = 3;
+  data->bullet.nb_bullet = 5;
   my_set_square(data->pix);
   draw_life_bar(data);
   draw_square_life(data);
-  draw_bullet_start(data);
 }
 
 int			main(UNUSED int ac, UNUSED char **av, char **env)

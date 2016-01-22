@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 20 15:47:07 2016 Maud MAREL
-** Last update Wed Jan 20 19:02:37 2016 Maud MAREL
+** Last update Fri Jan 22 13:35:18 2016 Maud MAREL
 */
 
 #include "lifebar.h"
@@ -34,10 +34,11 @@ int			draw_heart(t_data *data)
   	  pos.x = 0;
   	  while (pos.x < data->life.heart->clipable.clip_width)
   	    {
-  	      end.x = (WIDTH / 75) + pos.x + (nb * data->life.heart->clipable.clip_width);
+  	      end.x = (WIDTH / 75) + pos.x
+		+ (nb * data->life.heart->clipable.clip_width);
   	      end.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) + pos.y
   		- data->life.heart->clipable.clip_height - 3;
-  	      /* tekpixel2(data->pix, &end, &color[i]); */
+  	      tekpixel2(data->pix, &end, &color[i]);
   	      pos.x++;
   	      i++;
   	    }
@@ -45,7 +46,7 @@ int			draw_heart(t_data *data)
   	}
       nb++;
     }
-  if (heart < 4)
+  if (data->life.nb_heart < 3)
     draw_heart_else(data, heart, nb);
   return (0);
 }
@@ -57,6 +58,7 @@ void			draw_heart_else(t_data *data, int heart, int nb)
   t_bunny_position	pos;
   t_bunny_position	end;
 
+  heart = 3 - data->life.nb_heart;
   color = (t_color*)data->pix->pixels;
   while (heart > 0)
     {
@@ -66,11 +68,12 @@ void			draw_heart_else(t_data *data, int heart, int nb)
 	  pos.x = 0;
 	  while (pos.x < data->life.heart->clipable.clip_width)
 	    {
-	      end.x = (WIDTH / 75) + pos.x + (nb * data->life.heart->clipable.clip_width);
+	      end.x = (WIDTH / 75) + pos.x
+		+ (nb * data->life.heart->clipable.clip_width);
 	      end.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) + pos.y
 		- data->life.heart->clipable.clip_height - 3;
 	      i = end.x + end.y;
-	      tekpixel(data->pix, &end, RED);
+	      tekpixel2(data->pix, &end, &color[i]);
 	      pos.x++;
 	    }
 	  pos.y++;
