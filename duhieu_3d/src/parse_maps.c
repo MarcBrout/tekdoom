@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Sun Jan 17 11:52:54 2016 marc brout
-** Last update Wed Jan 20 23:55:27 2016 marc brout
+** Last update Fri Jan 22 17:53:38 2016 marc brout
 */
 
 #include "main.h"
@@ -32,6 +32,7 @@ char		add_lvl(t_ini *ini)
   elem->type = NULL;
   elem->size = NULL;
   elem->text = NULL;
+  elem->segs = NULL;
   elem->next = ini->lvls;
   elem->prev = ini->lvls->prev;
   ini->lvls->prev->next = elem;
@@ -62,32 +63,20 @@ char			get_lvl_infos(t_ini *ini)
   return (0);
 }
 
-
-char			set_minimap_size(t_ini *ini)
+char			add_segment(t_lvl *lvl)
 {
-  int			h;
+  t_seg			*elem;
 
-  if (BISGF(ini->scope, "width", 0) == NULL ||
-      BISGF(ini->scope, "height", 0) == NULL)
+  if ((elem = malloc(sizeof(t_seg))) == NULL)
     return (1);
-  ini->lvls->prev->wid = my_getnbr((char*)BISGF(ini->scope, "width", 0));
-  ini->lvls->prev->hei = my_getnbr((char*)BISGF(ini->scope, "height", 0));
-  h = ini->lvls->prev->hei;
-  if ((ini->lvls->prev->type = malloc(sizeof(int*) * (h + 1))) == NULL ||
-      (ini->lvls->prev->size = malloc(sizeof(double*) * (h + 1))) == NULL ||
-      (ini->lvls->prev->text = malloc(sizeof(int*) * (h + 1))) == NULL)
-    return (1);
-  ini->lvls->prev->type[h] = NULL;
-  ini->lvls->prev->size[h] = NULL;
-  ini->lvls->prev->text[h] = NULL;
-  if (set_line_length(ini->lvls->prev->type, ini->lvls->prev->wid, h) ||
-      set_line_lengthd(ini->lvls->prev->size, ini->lvls->prev->wid, h) ||
-      set_line_length(ini->lvls->prev->text, ini->lvls->prev->wid, h))
-    return (1);
-  if (parse_map(ini, ini->lvls->prev, ini->lvls->prev->type, "type") ||
-      parse_mapd(ini, ini->lvls->prev, ini->lvls->prev->size, "size") ||
-      parse_map(ini, ini->lvls->prev, ini->lvls->prev->text, "text"))
-    return (1);
+  elem->next = lvl->segs;
+  lvl->segs = elem;
+  return (1);
+}
+
+char			segment_listing(t_ini *ini)
+{
+  
   return (0);
 }
 
