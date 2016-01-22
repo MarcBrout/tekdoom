@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Sun Jan 17 11:52:54 2016 marc brout
-** Last update Fri Jan 22 17:53:38 2016 marc brout
+** Last update Fri Jan 22 18:45:42 2016 marc brout
 */
 
 #include "main.h"
@@ -71,12 +71,28 @@ char			add_segment(t_lvl *lvl)
     return (1);
   elem->next = lvl->segs;
   lvl->segs = elem;
-  return (1);
+  return (0);
 }
 
-char			segment_listing(t_ini *ini)
+char			segment_listing(t_ini *ini, t_lvl *lvls)
 {
+  int			i;
   
+  i = 0;
+  while ((BISGF(ini->scope, "seg", i)) && (BISGF(ini->scope, "seg", i + 1)) &&
+	 (BISGF(ini->scope, "seg", i + 2)) && (BISGF(ini->scope, "seg", i + 3))
+	 (BISGF(ini->scope, "size", i / 4)) &&
+	 (BISGF(ini->scope, "type", i / 4)))
+    {
+      add_segment(lvls->prev);
+      lvls->segs->ax = get_double(BISGF(ini->scope, "seg", i));
+      lvls->segs->ay = get_double(BISGF(ini->scope, "seg", i + 1));
+      lvls->segs->bx = get_double(BISGF(ini->scope, "seg", i + 2));
+      lvls->segs->by = get_double(BISGF(ini->scope, "seg", i + 3));
+      lvls->segs->z = get_double(BISGF(ini->scope, "size", i / 4));
+      lvls->segs->type = my_getnbr(BISGF(ini->scope, "type", i / 4));
+      i += 4;
+    }
   return (0);
 }
 
@@ -92,7 +108,7 @@ char			parse_maps(t_parse *parse)
       while (tmp->scope != NULL)
 	{
 	  if (add_lvl(tmp) || get_lvl_infos(tmp) ||
-	      set_minimap_size(tmp))
+	      segment_listing(tmp, tmp->lvls->prev))
 	    return (1);
 	  tmp->scope = bunny_ini_next(tmp->ini, tmp->scope);
 	}

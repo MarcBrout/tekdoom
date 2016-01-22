@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:08:10 2016 marc brout
-** Last update Fri Jan 22 17:06:53 2016 marc brout
+** Last update Fri Jan 22 18:30:03 2016 marc brout
 */
 
 #ifndef PARSE_H_
@@ -14,7 +14,7 @@
 #  define UNUSED __attribute__((_unused_))
 # endif /* !UNUSED */
 # ifndef BISGF
-#  define BISGF bunny_ini_scope_get_field
+#  define BISGF (char *)bunny_ini_scope_get_field
 # endif /* !BISGF */
 # define E_FLD "Missing folder\n"
 # define E_FIL "File missing or corrupted\n"
