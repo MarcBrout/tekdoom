@@ -5,10 +5,10 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Wed Nov 18 19:39:56 2015 Mathieu Sauvau
-** Last update Wed Dec  9 10:33:30 2015 Mathieu Sauvau
+** Last update Fri Jan 22 17:09:38 2016 Mathieu Sauvau
 */
 
-#include "struct.h"
+#include "menu.h"
 
 void			tekpixel(t_bunny_pixelarray *pix_ar,
 				 t_bunny_position pos,

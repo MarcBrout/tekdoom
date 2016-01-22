@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Thu Jan 21 17:43:19 2016 Mathieu Sauvau
+** Last update Fri Jan 22 17:42:37 2016 Mathieu Sauvau
 */
 
 #ifndef STRUCT_H_
@@ -17,6 +17,7 @@
 
 # define WIDTH (data->config->width)
 # define HEIGHT (data->config->height)
+# define VOLUME (data->config->volume)
 # define INPUT (data->config->input)
 # define CONFIG (data->config)
 # define RES (data->config->res)
@@ -28,8 +29,6 @@ typedef struct		s_resolution
   int			height;
   int			width;
 }			t_res;
-
-
 
 /*
 ** key index correspond to this
@@ -106,6 +105,7 @@ t_mrect			label(t_data *data, bool selected,
 t_mrect			check_box(t_data *data, bool activated, t_bunny_position label);
 void			write_bmp(t_data *data, char *, t_bunny_position);
 t_bunny_position	centered_pos(t_data *data, t_bunny_position size, int, int);
+t_bunny_picture		*search_letter(t_letter *letter, char c);
 void                    draw_slider(t_bunny_pixelarray *pix_ar,
                                     t_mrect *rect, int pos_slider);
 void			save_opt(t_data *data);
@@ -116,5 +116,19 @@ void		        input_menu(t_data *data, t_mrect *rect,  int offset, int margin);
 t_bunny_position	pos_(int, int);
 void			save_input(t_data *data);
 void		        change_key(t_bunny_keysym keysym, t_data *data);
+int			my_strlen(char *);
+char			*my_strcpy(char *, char *);
+char			*my_strcat(char *, char *);
+char			*my_revstr(char *);
+char			*itoa(int, char *, int);
+t_bunny_response	esc(t_bunny_event_state, t_bunny_keysym, void *);
+void			menu_nav(t_data *data);
+void			input_nav(t_bunny_event_state state, t_bunny_keysym keysym,
+				  t_data *data);
+void			option_nav2(t_bunny_event_state state, t_bunny_keysym keysym,
+				    t_data *data);
+t_bunny_position	pos_(int x, int y);
+t_mrect			slider(t_data *data, bool selected, int pos_slider,
+			       t_bunny_position pos);
 
 #endif /* !STRUCT_H_ */
