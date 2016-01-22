@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Dec 16 17:10:21 2015 maud marel
-** Last update Fri Jan 22 15:11:48 2016 maud marel
+** Last update Fri Jan 22 16:27:55 2016 maud marel
 */
 
 #ifndef INTERFACE_H_
@@ -62,6 +62,7 @@ void			tekpixel2(t_bunny_pixelarray *,
 void			my_set_square(t_bunny_pixelarray *);
 void			draw_life_bar(t_data *);
 int			draw_move_life(t_data *);
+int			draw_move_life2(t_data *, t_bunny_position);
 void			draw_square_life(t_data *);
 void			action_draw_square_life(t_data *,
 						    t_bunny_position,

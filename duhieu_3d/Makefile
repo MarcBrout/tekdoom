@@ -5,13 +5,18 @@
 ## Login   <duhieu_b@epitech.net>
 ##
 ## Started on  Fri Jan 15 10:08:11 2016 benjamin duhieu
+<<<<<<< HEAD
+## Last update Thu Jan 21 22:21:26 2016 benjamin duhieu
+=======
 ## Last update Wed Jan 20 23:56:08 2016 marc brout
+>>>>>>> 4f3bf963312008283e224b5ff26ede9980862c08
 ##
 
 SRC	=	src/start.c \
 		src/background.c \
 		src/correct_dist.c \
 		src/init_data.c \
+		src/event.c \
 		src/calc.c \
 		src/direction.c \
 		src/parse_file.c \

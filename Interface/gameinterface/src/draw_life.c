@@ -5,40 +5,48 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Sun Jan 17 10:45:26 2016 Maud MAREL
-** Last update Fri Jan 22 13:34:40 2016 Maud MAREL
+** Last update Fri Jan 22 17:01:40 2016 maud marel
 */
 
-#include "lifebar.h"
+#include "interface.h"
 
 int			draw_move_life(t_data *data)
 {
-  t_bunny_position      pos_s;
+  t_bunny_position      pos;
 
   if (data->life.end == 0)
-    pos_s.x = (data->life.life * 3 * WIDTH) / 1000;
+    pos.x = (data->life.life * 3 * WIDTH) / 1000;
   else
-    pos_s.x = (WIDTH / 75) - 1;
-  while (++pos_s.x < data->life.pos_life.x)
+    pos.x = (WIDTH / 75) - 1;
+  while (++pos.x < data->life.pos_life.x)
     {
-      pos_s.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) - 1;
-      while (++pos_s.y < (HEIGHT - (HEIGHT / 75)))
-	tekpixel(data->pix, &pos_s, 0x008CFF);
+      pos.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) - 1;
+      while (++pos.y < (HEIGHT - (HEIGHT / 75)))
+	tekpixel(data->pix, &pos, 0x008CFF);
     }
+  if (draw_move_life2(data, pos) == 0)
+    return (0);
+  data->life.pos_life.x = data->life.pos_limit.x - 1;
+  return (0);
+}
+
+int	draw_move_life2(t_data *data, t_bunny_position pos)
+{
   if (data->life.pos_life.x > (data->life.pos_limit.x + 1))
     {
-      while (data->life.speed > 0)
-	{
-	  pos_s.x = data->life.pos_life.x;
-	  pos_s.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) - 1;
-	  while (++pos_s.y < data->life.pos_life.y)
-	    tekpixel(data->pix, &pos_s, WHITE);
-	  data->life.pos_life.x--;
-	  data->life.speed--;
-	}
+      while (data->life.speed > 0
+	     && data->life.pos_life.x > (WIDTH / 75) - 1 )
+  	{
+  	  pos.x = data->life.pos_life.x;
+  	  pos.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) - 1;
+  	  while (++pos.y < data->life.pos_life.y)
+  	    tekpixel(data->pix, &pos, WHITE);
+  	  data->life.pos_life.x--;
+  	  data->life.speed--;
+  	}
       return (0);
     }
-  data->life.pos_life.x = data->life.pos_limit.x + 1;
-  return (0);
+  return (1);
 }
 
 void			draw_life_bar(t_data *data)
