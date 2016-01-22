@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Sun Jan 17 11:52:54 2016 marc brout
-** Last update Fri Jan 22 20:19:19 2016 marc brout
+** Last update Fri Jan 22 23:54:14 2016 marc brout
 */
 
 #include "main.h"
@@ -97,7 +97,7 @@ char			segment_listing(t_ini *ini, t_lvl *lvls)
 char			parse_maps(t_parse *parse)
 {
   t_ini			*tmp;
-  /* t_seg			*tmp2; */
+  t_seg			*tmp2;
 
   tmp = parse->maps->next;
   while (tmp != NULL && !access(tmp->file, F_OK))
@@ -113,11 +113,11 @@ char			parse_maps(t_parse *parse)
 	}
       tmp = tmp->next;
     }
-  /* tmp2 = parse->maps->next->lvls->segs; */
-  /* while (tmp2) */
-  /*   { */
-  /*     printf("%f, %f, %f, %f\n", tmp2->ax, tmp2->ay, tmp2->bx, tmp2->by); */
-  /*     tmp2 = tmp2->next; */
-  /*   } */
+  tmp2 = parse->maps->next->lvls->segs;
+  while (tmp2)
+    {
+      printf("%f, %f, %f, %f\n", tmp2->ax, tmp2->ay, tmp2->bx, tmp2->by);
+      tmp2 = tmp2->next;
+    }
   return (0);
 }

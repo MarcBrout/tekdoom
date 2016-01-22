@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Jan 15 12:54:30 2016 benjamin duhieu
-** Last update Fri Jan 22 19:46:06 2016 benjamin duhieu
+** Last update Fri Jan 22 23:45:37 2016 marc brout
 */
 
 #include "main.h"
@@ -21,7 +21,7 @@ void		fill_cos_sin(t_ang *ang)
     {
       ang->cosi[i] = cos(RAD(a));
       ang->sinu[i] = sin(RAD(a));
-      ang->tang[i] = tan(a);
+      ang->tang[i] = tan(RAD(a));
       a += 0.1;
     }
 }
@@ -30,6 +30,6 @@ void	init_data(t_main *doom)
 {
   doom->speed = 1;
   doom->calc.fov = 60;
-  parse(&(doom->pars));
-  fill_cos_sin(&(doom->calc.ang));
+  parse(doom->pars);
+  fill_cos_sin(&doom->calc.ang);
 }

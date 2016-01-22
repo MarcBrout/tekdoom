@@ -6,36 +6,33 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Jan 17 10:16:40 2016 benjamin duhieu
-** Last update Fri Jan 22 20:23:45 2016 marc brout
+** Last update Sat Jan 23 00:12:00 2016 marc brout
 */
 
 #include "main.h"
 
 
-void		disp_wall(t_main *doom, int x)
+void		disp_wall(t_main *doom, int x, t_seg *tmp)
 {
   int		i;
-  int		k;
-  int		wall;
-  unsigned	*pixels;
+  double	k;
+  double	wall;
+  unsigned int	*pixels;
 
   k = (sqrt(pow((doom->calc.nx - PLX), 2) +
-		 pow((doom->calc.ny - PLY), 2)));
-  printf("k = %f\n", 2 * k);
-  if (2 * k)
-    wall = HEIGHT / (2 * k);
-  pixels = (unsigned *)doom->pix->pixels;
-  i = (HEIGHT / 2) - wall - ((HIGH - 1) * 64) - 1;
+	    pow((doom->calc.ny - PLY), 2)));
+  /* printf("x = %d, k = %f\n\n", x, 2 * k); */
+  wall = HEIGHT / (2 * k);
+  pixels = (unsigned int *)doom->pix->pixels;
+  i = (HEIGHT / 2) - wall - /* ((tmp->z - 1) * 64) */ - 1;
   if (i < 0)
     i = -1;
   while (++i <  ((HEIGHT / 2) + wall) && i < HEIGHT)
     pixels[x + i * WIDTH] = WHITE;
 }
 
-int		inter(t_main *doom, int x)
+int		inter(t_main *doom, int x, t_seg *tmp)
 {
-  double	cos;
-  double	sin;
   double	chk1;
   double	chk2;
 
@@ -45,45 +42,60 @@ int		inter(t_main *doom, int x)
   else
     return (0);
   doom->calc.ny = doom->calc.na * doom->calc.nx + doom->calc.nb;
-  cos = doom->calc.ang.cosi[(int)ANG * 10];
-  sin = doom->calc.ang.sinu[(int)ANG * 10];
   chk1 = doom->calc.nx - PLX;
   chk2 = doom->calc.ny - PLY;
-  /* printf("cos = %f  chk1 = %f\n sin = %f chk2 = %f\n\n", cos, chk1, sin, chk2); */
-  if (((cos > 0 && chk1 > 0) && (sin > 0 && chk2 > 0)) ||
-      ((cos < 0 && chk1 < 0) && (sin > 0 && chk2 > 0)) ||
-      ((cos > 0 && chk1 > 0) && (sin < 0 && chk2 < 0)) ||
-      ((cos < 0 && chk1 < 0) && (sin < 0 && chk2 < 0)))
-    disp_wall(doom, x);
+  /* printf("cos = %f  chk1 = %f\n sin = %f chk2 = %f\nAX = %f \nAY = %f\nBX = %f\nBY = %f\n\n", doom->calc.cos, chk1, doom->calc.sin, chk2, AX, AY, BX, BY); */
+  if (((doom->calc.cos >= 0 && chk1 > 0) && (doom->calc.sin > 0 && chk2 > 0)) ||
+      ((doom->calc.cos <= 0 && chk1 < 0) && (doom->calc.sin > 0 && chk2 > 0)) ||
+      ((doom->calc.cos >= 0 && chk1 > 0) && (doom->calc.sin < 0 && chk2 < 0)) ||
+      ((doom->calc.cos <= 0 && chk1 < 0) && (doom->calc.sin < 0 && chk2 < 0)))
+    disp_wall(doom, x, tmp);
   return (0);
 }
 
 int	calc(t_main *doom)
 {
-  t_seg	*elem;
+  double ang;
   int	x;
+  int	test;
+  t_seg *tmp2;
 
-  ANG = (int)(ANG + (doom->calc.fov / 2)) % 360;
   x = -1;
-  elem = doom->pars.maps->next->lvls->segs;
+  ang = (ANG + (doom->calc.fov / 2));
+  if (ang > 359)
+    ang -= 359;
+  if (ang < 0)
+    ang += 359;
+  /* printf("%f\n", (double)doom->calc.fov / WIDTH); */
+  printf("ang = %f\n", ANG);
   while (++x < WIDTH)
     {
-      if (doom->calc.ang.cosi[(int)ANG * 10])
-	{
-	  doom->calc.a = doom->calc.ang.tang[(int)ANG * 10];
+      /* printf("x = %d\n", x); */
+	  tmp2 = doom->pars->maps->next->lvls->segs;
+	  printf("ang * 10 = %f\n", ang * 10);
+	  doom->calc.a = doom->calc.ang.tang[(int)ang * 10];
 	  doom->calc.b = PLY - (PLX * doom->calc.a);
-	  while (elem != NULL)
+	  doom->calc.cos = doom->calc.ang.cosi[(int)ang * 10];
+	  doom->calc.sin = doom->calc.ang.sinu[(int)ang * 10];
+	  test = 0;
+	  while (tmp2)
 	    {
-	      if ((BX - AX))
+	      /* printf("test =%d\n", test); */
+	      /* printf("AX = %f \nAY = %f\nBX = %f\nBY = %f\n\n", tmp2->ax, tmp2->ay, tmp2->bx, tmp2->by); */
+	      test += 1;
+	      if ((tmp2->bx - tmp2->ax))
 		{
-		  doom->calc.na = (BY - AY) / (BX - AX);
-		  doom->calc.nb = AY - (doom->calc.na * AX);
-		  inter(doom, x);
+		  doom->calc.na = (tmp2->by - tmp2->ay) / (tmp2->bx - tmp2->ax);
+		  doom->calc.nb = tmp2->ay - (doom->calc.na * tmp2->ax);
+		  inter(doom, x, tmp2);
 		}
-	      elem = elem->next;
+	      tmp2 = tmp2->next;
 	    }
-	}
-      ANG = (int)(ANG - (doom->calc.fov / WIDTH)) % 360;
+      ang = (ang - (doom->calc.fov / WIDTH));
+      if (ang > 359)
+	ang -= 359;
+      if (ang < 0)
+	ang += 359;
     }
   return (0);
 }

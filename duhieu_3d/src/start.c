@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Jan 15 12:29:58 2016 benjamin duhieu
-** Last update Fri Jan 22 19:39:50 2016 benjamin duhieu
+** Last update Fri Jan 22 23:41:17 2016 marc brout
 */
 
 #include "main.h"
@@ -20,11 +20,11 @@ t_bunny_response		main_mouse(const t_bunny_position *relative,
   pos = bunny_get_mouse_position();
   if (!doom->mouse)
     {
-      doom->pars.maps->next->lvls->next->pla += relative->x / 10;
-      if (doom->pars.maps->next->lvls->next->pla > 359)
-	doom->pars.maps->next->lvls->next->pla -= 359;
-      if (doom->pars.maps->next->lvls->next->pla < 0)
-	doom->pars.maps->next->lvls->next->pla += 359;
+      doom->pars->maps->next->lvls->next->pla += relative->x / 10;
+      if (doom->pars->maps->next->lvls->next->pla > 359)
+	doom->pars->maps->next->lvls->next->pla -= 359;
+      if (doom->pars->maps->next->lvls->next->pla < 0)
+	doom->pars->maps->next->lvls->next->pla += 359;
     }
   else
     doom->mouse = 0;
@@ -77,6 +77,8 @@ int	init_main(int argc, char **argv, char **ae, t_main *doom)
     return (1);
   if (argc != 1 || argv == NULL)
     return (1);
+  if (!(doom->pars = malloc(sizeof(t_parse))))
+    return (1);
   init_data(doom);
   return (0);
 }
@@ -93,7 +95,7 @@ int		main(int argc, char **argv, char **ae)
   bunny_set_mouse_position_window(doom.win, WIDTH / 2, HEIGHT / 2);
   bunny_set_mouse_visibility(doom.win, 0);
   bunny_set_loop_main_function(main_loop);
-  bunny_loop(doom.win, 60, &doom);
+  bunny_loop(doom.win, 24, &doom);
   bunny_delete_clipable(&(doom.pix->clipable));
   bunny_stop(doom.win);
   return (0);

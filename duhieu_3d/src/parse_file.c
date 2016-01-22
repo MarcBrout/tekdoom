@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:14:11 2016 marc brout
-** Last update Fri Jan 22 17:08:38 2016 marc brout
+** Last update Fri Jan 22 23:31:14 2016 marc brout
 */
 
 #include "main.h"
@@ -48,6 +48,7 @@ char		add_map(t_ini *maps, char *str)
     return (1);
   elem->file = my_strdup(str);
   elem->next = NULL;
+  elem->lvls->segs = NULL;
   elem->lvls->next = elem->lvls;
   elem->lvls->prev = elem->lvls;
   ini->next = elem;
