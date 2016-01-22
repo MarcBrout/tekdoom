@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Sun Jan 17 11:52:54 2016 marc brout
-** Last update Fri Jan 22 18:45:42 2016 marc brout
+** Last update Fri Jan 22 19:58:11 2016 marc brout
 */
 
 #include "main.h"
@@ -29,8 +29,6 @@ char		add_lvl(t_ini *ini)
     return (1);
   elem->name = NULL;
   elem->desc = NULL;
-  elem->type = NULL;
-  elem->size = NULL;
   elem->text = NULL;
   elem->segs = NULL;
   elem->next = ini->lvls;
@@ -81,16 +79,16 @@ char			segment_listing(t_ini *ini, t_lvl *lvls)
   i = 0;
   while ((BISGF(ini->scope, "seg", i)) && (BISGF(ini->scope, "seg", i + 1)) &&
 	 (BISGF(ini->scope, "seg", i + 2)) && (BISGF(ini->scope, "seg", i + 3))
-	 (BISGF(ini->scope, "size", i / 4)) &&
+	 && (BISGF(ini->scope, "size", i / 4)) &&
 	 (BISGF(ini->scope, "type", i / 4)))
     {
       add_segment(lvls->prev);
-      lvls->segs->ax = get_double(BISGF(ini->scope, "seg", i));
-      lvls->segs->ay = get_double(BISGF(ini->scope, "seg", i + 1));
-      lvls->segs->bx = get_double(BISGF(ini->scope, "seg", i + 2));
-      lvls->segs->by = get_double(BISGF(ini->scope, "seg", i + 3));
-      lvls->segs->z = get_double(BISGF(ini->scope, "size", i / 4));
-      lvls->segs->type = my_getnbr(BISGF(ini->scope, "type", i / 4));
+      SEGL->ax = get_double((char*)BISGF(ini->scope, "seg", i));
+      SEGL->ay = get_double((char*)BISGF(ini->scope, "seg", i + 1));
+      SEGL->bx = get_double((char*)BISGF(ini->scope, "seg", i + 2));
+      SEGL->by = get_double((char*)BISGF(ini->scope, "seg", i + 3));
+      SEGL->z = get_double((char*)BISGF(ini->scope, "size", i / 4));
+      SEGL->type = my_getnbr((char*)BISGF(ini->scope, "type", i / 4));
       i += 4;
     }
   return (0);

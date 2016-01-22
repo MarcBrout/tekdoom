@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:08:10 2016 marc brout
-** Last update Fri Jan 22 19:46:43 2016 benjamin duhieu
+** Last update Fri Jan 22 19:57:08 2016 marc brout
 */
 
 #ifndef PARSE_H_
@@ -14,11 +14,12 @@
 #  define UNUSED __attribute__((_unused_))
 # endif /* !UNUSED */
 # ifndef BISGF
-#  define BISGF (char *)bunny_ini_scope_get_field
+#  define BISGF bunny_ini_scope_get_field
 # endif /* !BISGF */
 # define E_FLD "Missing folder\n"
 # define E_FIL "File missing or corrupted\n"
 # define E_PARSE "Parsing error\n"
+# define SEGL lvls->prev->segs
 
 typedef	enum{cac, dist} weapon_type;
 
@@ -70,8 +71,8 @@ typedef struct		s_weapon
 
 typedef struct		s_player
 {
-  t_life		*life;
-  t_bullet		*bullet;
+  /* t_life		*life; */
+  /* t_bullet		*bullet; */
   t_weapon		*weapon;
 }			t_player;
 
