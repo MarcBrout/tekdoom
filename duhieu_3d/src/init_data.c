@@ -5,11 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Jan 15 12:54:30 2016 benjamin duhieu
-<<<<<<< HEAD
-** Last update Fri Jan 22 19:40:09 2016 benjamin duhieu
-=======
-** Last update Wed Jan 20 19:57:13 2016 marc brout
->>>>>>> 4f3bf963312008283e224b5ff26ede9980862c08
+** Last update Fri Jan 22 19:46:06 2016 benjamin duhieu
 */
 
 #include "main.h"

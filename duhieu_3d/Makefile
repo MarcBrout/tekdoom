@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ##
 ## Started on  Fri Jan 15 10:08:11 2016 benjamin duhieu
-## Last update Fri Jan 22 19:40:20 2016 benjamin duhieu
+## Last update Fri Jan 22 19:47:25 2016 benjamin duhieu
 ##
 
 SRC	=	src/start.c \
@@ -15,8 +15,7 @@ SRC	=	src/start.c \
 		src/parse_file.c \
 		src/parse_maps.c \
 		src/tools.c \
-		src/get_double.c \
-		src/get_maps.c
+		src/get_double.c
 
 OBJS	=	$(SRC:.c=.o)
 
