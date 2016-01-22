@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Dec 16 17:28:05 2015 maud marel
-** Last update Thu Jan 21 17:47:32 2016 Maud MAREL
+** Last update Fri Jan 22 17:01:13 2016 maud marel
 */
 
-#include "lifebar.h"
+#include "interface.h"
 
 void			interface(t_data *data)
 {
@@ -19,9 +19,9 @@ void			interface(t_data *data)
       draw_life_bar(data);
       data->life.ok = 0;
     }
-  if (data->life.life != 100)
+  if (data->life.life != 100 && data->life.nb_heart > 0)
     {
-      data->life.speed = 10;
+      data->life.speed = 7;
       draw_move_life(data);
     }
 }
