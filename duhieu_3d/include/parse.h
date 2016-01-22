@@ -5,7 +5,11 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:08:10 2016 marc brout
+<<<<<<< HEAD
 ** Last update Fri Jan 22 15:22:17 2016 benjamin duhieu
+=======
+** Last update Thu Jan 21 00:00:28 2016 marc brout
+>>>>>>> 4f3bf963312008283e224b5ff26ede9980862c08
 */
 
 #ifndef PARSE_H_
@@ -35,6 +39,13 @@ typedef struct		s_lvl
 {
   char			*name;
   char			*desc;
+<<<<<<< HEAD
+=======
+  int			wid;
+  int			hei;
+  int			**type;
+  double		**size;
+>>>>>>> 4f3bf963312008283e224b5ff26ede9980862c08
   int			**text;
   int			plx;
   int			ply;
@@ -58,6 +69,11 @@ typedef struct		s_parse
   t_ini			*maps;
 }			t_parse;
 
+char set_line_length(int **, int, int);
+char set_line_lengthd(double **, int, int);
+char parse_map(t_ini *, t_lvl *, int **, char *);
+char parse_mapd(t_ini *, t_lvl *, double **, char *);
+double get_double(char *);
 int my_perror(char *);
 char add_lvl(t_ini *);
 char parse(t_parse *);

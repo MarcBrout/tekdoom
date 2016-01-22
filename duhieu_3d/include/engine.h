@@ -5,7 +5,11 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Jan 15 10:32:02 2016 benjamin duhieu
+<<<<<<< HEAD
 ** Last update Fri Jan 22 00:10:11 2016 benjamin duhieu
+=======
+** Last update Wed Jan 20 19:46:46 2016 marc brout
+>>>>>>> 4f3bf963312008283e224b5ff26ede9980862c08
 */
 
 #ifndef ENGINE_H_

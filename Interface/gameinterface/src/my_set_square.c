@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Thu Nov 19 13:36:53 2015 maud marel
-** Last update Thu Jan 14 16:33:03 2016 Maud MAREL
+** Last update Wed Jan 20 11:09:11 2016 Maud MAREL
 */
 
-#include "interface.h"
+#include "lifebar.h"
 
 void		my_set_square(t_bunny_pixelarray *pix)
 {
