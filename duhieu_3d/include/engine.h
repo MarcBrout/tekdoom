@@ -6,7 +6,7 @@
 **
 ** Started on  Fri Jan 15 10:32:02 2016 benjamin duhieu
 <<<<<<< HEAD
-** Last update Fri Jan 22 00:10:11 2016 benjamin duhieu
+** Last update Fri Jan 22 19:43:14 2016 benjamin duhieu
 =======
 ** Last update Wed Jan 20 19:46:46 2016 marc brout
 >>>>>>> 4f3bf963312008283e224b5ff26ede9980862c08
@@ -16,6 +16,14 @@
 # define ENGINE_H_
 # define WIDTH 1024
 # define HEIGHT 768
+# define ANG doom->pars.maps->next->lvls->next->pla
+# define PLY doom->pars.maps->next->lvls->next->ply
+# define PLX doom->pars.maps->next->lvls->next->plx
+# define AX doom->pars.maps->next->lvls->next->seg->ax
+# define AY doom->pars.maps->next->lvls->next->seg->ay
+# define BX doom->pars.maps->next->lvls->next->seg->bx
+# define BY doom->pars.maps->next->lvls->next->seg->by
+# define HIGH doom->pars.maps->next->lvls->next->seg->z
 # define ABS(value) (((value) < 0) ? -(value) : (value))
 # define RAD(value) (((value) * M_PI) / 180)
 # define DEG(value) (((value) * 180) / M_PI)
@@ -31,8 +39,13 @@ typedef			struct s_ang
 typedef struct	s_calc
 {
   t_ang		ang;
-  double	nx;
+  int		fov;
+  double	a;
+  double	b;
+  double	na;
+  double	nb;
   double	ny;
+  double	nx;
 }		t_calc;
 
 typedef			struct s_main
@@ -47,22 +60,14 @@ typedef			struct s_main
   double		speed;
 }			t_main;
 
-double	correct_dist_mh(t_main *, int, double);
-double	correct_dist_mv(t_main *, int, double);
+int	calc(t_main *);
 int	init_main(int, char **, char **, t_main *);
-int	intersection_horizontal(t_main *);
-int	intersection_vertical(t_main *);
-int	up(t_main *);
+int	inter(t_main *, int);
 t_bunny_response	main_loop(void *);
-void	back(t_main *);
-void	calc(t_main *);
 void	check_ang(t_main *);
-void	dist_to_wall(t_main *);
-void	dist_wall(t_main *);
+void	disp_wall(t_main *, int);
 void	forward(t_main *);
 void	init_data(t_main *);
-void	init_left(t_main *);
-void	init_right(t_main *);
 void	fill_cos_sin(t_ang *);
 void	fill_screen(t_bunny_pixelarray *);
 

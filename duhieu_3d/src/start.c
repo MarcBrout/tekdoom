@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Jan 15 12:29:58 2016 benjamin duhieu
-** Last update Fri Jan 22 00:09:53 2016 benjamin duhieu
+** Last update Fri Jan 22 19:39:50 2016 benjamin duhieu
 */
 
 #include "main.h"
@@ -41,16 +41,15 @@ t_bunny_response	main_echap(t_bunny_event_state state,
 				   void *data)
 {
   const bool		*key;
-  t_main		*doom;
 
   key = bunny_get_keyboard();
-  doom = data;
+  data = data;
   if (keysym == BKS_ESCAPE && state == GO_DOWN)
     return (EXIT_ON_SUCCESS);
   if (key[BKS_Z])
-    forward(doom);
-  if (key[BKS_S])
-      back(doom);
+    write(1, "l", 1);
+  /* if (key[BKS_S]) */
+  /*     back(doom); */
   /* if (key[BKS_Q]) */
   /*   move(wolf, -90, -0.075); */
   /* if (key[BKS_D]) */
