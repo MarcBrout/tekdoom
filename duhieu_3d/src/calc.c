@@ -6,7 +6,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Jan 17 10:16:40 2016 benjamin duhieu
-** Last update Fri Jan 22 19:44:01 2016 benjamin duhieu
+** Last update Fri Jan 22 20:23:45 2016 marc brout
 */
 
 #include "main.h"
@@ -19,9 +19,11 @@ void		disp_wall(t_main *doom, int x)
   int		wall;
   unsigned	*pixels;
 
-  k = (int)(sqrt(pow((doom->calc.nx - PLX), 2) +
+  k = (sqrt(pow((doom->calc.nx - PLX), 2) +
 		 pow((doom->calc.ny - PLY), 2)));
-  wall = HEIGHT / (2 * k);
+  printf("k = %f\n", 2 * k);
+  if (2 * k)
+    wall = HEIGHT / (2 * k);
   pixels = (unsigned *)doom->pix->pixels;
   i = (HEIGHT / 2) - wall - ((HIGH - 1) * 64) - 1;
   if (i < 0)
@@ -47,6 +49,7 @@ int		inter(t_main *doom, int x)
   sin = doom->calc.ang.sinu[(int)ANG * 10];
   chk1 = doom->calc.nx - PLX;
   chk2 = doom->calc.ny - PLY;
+  /* printf("cos = %f  chk1 = %f\n sin = %f chk2 = %f\n\n", cos, chk1, sin, chk2); */
   if (((cos > 0 && chk1 > 0) && (sin > 0 && chk2 > 0)) ||
       ((cos < 0 && chk1 < 0) && (sin > 0 && chk2 > 0)) ||
       ((cos > 0 && chk1 > 0) && (sin < 0 && chk2 < 0)) ||
@@ -60,10 +63,9 @@ int	calc(t_main *doom)
   t_seg	*elem;
   int	x;
 
-  if ((elem = malloc(sizeof(t_seg))) == NULL)
-    return (1);
   ANG = (int)(ANG + (doom->calc.fov / 2)) % 360;
   x = -1;
+  elem = doom->pars.maps->next->lvls->segs;
   while (++x < WIDTH)
     {
       if (doom->calc.ang.cosi[(int)ANG * 10])
@@ -72,9 +74,13 @@ int	calc(t_main *doom)
 	  doom->calc.b = PLY - (PLX * doom->calc.a);
 	  while (elem != NULL)
 	    {
-	      doom->calc.na = (BY - AY) / (BX - AX);
-	      doom->calc.nb = AY - (doom->calc.na * AX);
-	      inter(doom, x);
+	      if ((BX - AX))
+		{
+		  doom->calc.na = (BY - AY) / (BX - AX);
+		  doom->calc.nb = AY - (doom->calc.na * AX);
+		  inter(doom, x);
+		}
+	      elem = elem->next;
 	    }
 	}
       ANG = (int)(ANG - (doom->calc.fov / WIDTH)) % 360;

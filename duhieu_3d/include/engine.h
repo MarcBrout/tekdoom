@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Jan 15 10:32:02 2016 benjamin duhieu
-** Last update Fri Jan 22 19:51:01 2016 marc brout
+** Last update Fri Jan 22 20:20:09 2016 marc brout
 */
 
 #ifndef ENGINE_H_
@@ -15,11 +15,11 @@
 # define ANG doom->pars.maps->next->lvls->next->pla
 # define PLY doom->pars.maps->next->lvls->next->ply
 # define PLX doom->pars.maps->next->lvls->next->plx
-# define AX doom->pars.maps->next->lvls->next->segs->ax
-# define AY doom->pars.maps->next->lvls->next->segs->ay
-# define BX doom->pars.maps->next->lvls->next->segs->bx
-# define BY doom->pars.maps->next->lvls->next->segs->by
-# define HIGH doom->pars.maps->next->lvls->next->segs->z
+# define AX doom->pars.maps->next->lvls->segs->ax
+# define AY doom->pars.maps->next->lvls->segs->ay
+# define BX doom->pars.maps->next->lvls->segs->bx
+# define BY doom->pars.maps->next->lvls->segs->by
+# define HIGH doom->pars.maps->next->lvls->segs->z
 # define ABS(value) (((value) < 0) ? -(value) : (value))
 # define RAD(value) (((value) * M_PI) / 180)
 # define DEG(value) (((value) * 180) / M_PI)
