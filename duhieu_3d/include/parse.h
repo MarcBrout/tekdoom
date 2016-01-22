@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:08:10 2016 marc brout
-** Last update Wed Jan 20 12:44:35 2016 benjamin duhieu
+** Last update Fri Jan 22 15:22:17 2016 benjamin duhieu
 */
 
 #ifndef PARSE_H_
@@ -20,14 +20,21 @@
 # define E_FIL "File missing or corrupted\n"
 # define E_PARSE "Parsing error\n"
 
+typedef struct		s_seg
+{
+  double		ax;
+  double		ay;
+  double		bx;
+  double		by;
+  double		z;
+  int			type;
+  struct s_seg		*next;
+}			t_seg;
+
 typedef struct		s_lvl
 {
   char			*name;
   char			*desc;
-  int			wid;
-  int			hei;
-  int			**type;
-  int			**size;
   int			**text;
   int			plx;
   int			ply;
