@@ -5,7 +5,7 @@
 ## Login   <marel_m@epitech.net>
 ##
 ## Started on  Mon Nov  2 12:21:34 2015 maud marel
-## Last update Wed Jan 20 15:54:30 2016 Maud MAREL
+## Last update Fri Jan 22 13:29:02 2016 Maud MAREL
 ##
 
 NAME		=	lifebar
@@ -14,10 +14,9 @@ SRC             =	src/main.c \
 			src/my_set_square.c \
 			src/tekpixel.c \
 			src/tekpixel2.c \
-			src/draw.c \
-			src/draw_init_life.c \
-			src/draw_init_bullet.c \
+			src/draw_life.c \
 			src/draw_heart.c \
+			src/draw_bullet.c \
 
 OBJ             =       $(SRC:.c=.o)
 

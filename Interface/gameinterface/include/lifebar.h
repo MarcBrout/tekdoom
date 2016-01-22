@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Dec 16 17:10:21 2015 maud marel
-** Last update Wed Jan 20 18:52:11 2016 Maud MAREL
+** Last update Thu Jan 21 17:00:10 2016 Maud MAREL
 */
 
 #ifndef INTERFACE_H_
@@ -18,6 +18,11 @@
 #include <math.h>
 #include <unistd.h>
 
+typedef struct		s_bullet
+{
+  int			nb_bullet;
+}			t_bullet;
+
 typedef struct          s_letter
 {
   char                  name;
@@ -28,11 +33,13 @@ typedef struct		s_life
 {
   t_bunny_pixelarray	*heart;
   t_bunny_pixelarray	*bullet;
+  t_bunny_pixelarray	*behind;
   int			nb_heart;
   int			life;
   int			ok;
   int			end;
   int			res;
+  int			speed;
   t_bunny_position	pos_limit;
   t_bunny_position	pos_life;
 }			t_life;
@@ -43,6 +50,7 @@ typedef struct		s_data
   t_bunny_pixelarray	*pix;
   t_bunny_position	pos;
   t_life		life;
+  t_bullet		bullet;
 }			t_data;
 
 t_bunny_response	my_loop(void *);
@@ -66,6 +74,7 @@ void			interface(t_data *);
 void			interface_init(t_data *);
 int			draw_heart(t_data *);
 void			draw_heart_else(t_data *, int, int);
-int			draw_bullet_start(t_data *);
+int			draw_bullet(t_data *);
+void			draw_bullet_else(t_data *, int, int);
 
 #endif /* !INTERFACE_H_ */
