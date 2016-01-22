@@ -1,17 +1,17 @@
 /*
 ** parse.h for doom
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Fri Jan 15 02:08:10 2016 marc brout
-** Last update Sun Jan 17 22:38:17 2016 marc brout
+** Last update Tue Jan 19 19:49:22 2016 benjamin duhieu
 */
 
 #ifndef PARSE_H_
 # define PARSE_H_
 # ifndef UNUSED
-#  define UNUSED __attribute__((_unused__))
+#  define UNUSED __attribute__((_unused_))
 # endif /* !UNUSED */
 # ifndef BISGF
 #  define BISGF bunny_ini_scope_get_field
