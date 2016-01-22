@@ -5,11 +5,145 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 20 18:46:14 2015 Mathieu Sauvau
-** Last update Mon Jan 18 18:48:29 2016 Mathieu Sauvau
+** Last update Thu Jan 21 17:42:37 2016 Mathieu Sauvau
 */
 
 #include <math.h>
 #include "struct.h"
+
+void			menu_nav(t_data *data)
+{
+  //	  if (data->selected_index == 0)
+  //profl name for save -> play
+  if (data->selected_index == 1)
+    {
+      data->menu_length = 7;
+      data->selected_index = 0;
+      data->menu_index = 1;
+    }
+  else if (data->selected_index == 2)
+    {
+      data->selected_index = 0;
+      data->menu_index = 2;
+    }
+  else if (data->selected_index == 3)
+    data->exit = true;
+}
+
+void			input_nav(t_bunny_event_state state, t_bunny_keysym keysym,
+				 t_data *data)
+{
+  if (data->selected_index == 9)
+    {
+      data->menu_length = 7;
+      data->selected_index = 0;
+      data->menu_index = 1;
+    }
+  else
+    {
+      INPUT->change_key = true;
+      INPUT->key_to_change = data->selected_index;
+    }
+}
+
+int			check_key_inuse(t_data *data, int key)
+{
+  int			i;
+
+  i = -1;
+  while (++i < 10)
+    {
+      if (INPUT->key[i] == key)
+	return (i);
+    }
+  return (-1);
+}
+
+void			swap_key(t_data *data, int key, int in_use)
+{
+  int			swap;
+
+  swap = INPUT->key[INPUT->key_to_change];
+  INPUT->key[INPUT->key_to_change] = key;
+  INPUT->key[in_use] = swap;
+}
+
+void		        change_key(t_bunny_keysym keysym, t_data *data)
+{
+  t_bunny_position	pos_txt;
+  const  bool		*k;
+  int			i;
+  int			in_use;
+
+  if (data->selected_index != 9 && INPUT->change_key)
+    {
+      i = -1;
+      k = bunny_get_keyboard();
+      while (++i < 102)
+	{
+	  if (i != BKS_RETURN && k[i] == 1)
+	    {
+	      if ((in_use = check_key_inuse(data, i)) == -1)
+		INPUT->key[INPUT->key_to_change] = i;
+	      else
+		swap_key(data, i, in_use);
+	      save_input(data);
+	      INPUT->change_key = false;
+	      data->selected_index++;
+	    }
+	}
+    }
+}
+
+void			option_nav(t_bunny_event_state state, t_bunny_keysym keysym,
+				 t_data *data)
+{
+  if (data->selected_index == 0)
+    data->config->fullscreen = !data->config->fullscreen;
+  else if (data->selected_index == 1)
+    (CONFIG->res_i == 3) ? (CONFIG->res_i = 0) : (CONFIG->res_i++);
+  else if (data->selected_index == 4)
+    {
+      data->menu_length = 10;
+      data->menu_index = 3;
+      data->selected_index = 0;
+    }
+  else if (data->selected_index == 5)
+    save_opt(data);
+  else if (data->selected_index == 6)
+    {
+      data->menu_length = 4;
+      data->menu_index = 0;
+      data->selected_index = 0;
+    }
+}
+
+void			option_nav2(t_bunny_event_state state, t_bunny_keysym keysym,
+				 t_data *data)
+{
+  if ((keysym == BKS_LEFT || keysym == INPUT->key[2]) && state == GO_DOWN)
+    {
+      if (data->menu_index == 1 && data->selected_index == 1)
+	(CONFIG->res_i == 0) ? (CONFIG->res_i = 3) : (CONFIG->res_i--);
+      else if (data->menu_index == 1 && data->selected_index == 2
+	  && data->config->volume > 0)
+	data->config->volume--;
+      else if (data->menu_index == 1 && data->selected_index == 3
+	  && data->config->fov > 50)
+	data->config->fov--;
+    }
+  else if ((keysym == BKS_RIGHT || keysym == INPUT->key[3]) && state == GO_DOWN)
+    {
+      if (data->menu_index == 1 && data->selected_index == 1)
+	(CONFIG->res_i == 3) ? (CONFIG->res_i = 0) : (CONFIG->res_i++);
+      else if (data->menu_index == 1 && data->selected_index == 2
+	  && data->config->volume < 100)
+	data->config->volume++;
+      else if (data->menu_index == 1 && data->selected_index == 3
+	  && data->config->fov < 100)
+	data->config->fov++;
+    }
+}
 
 t_bunny_response	esc(t_bunny_event_state state, t_bunny_keysym keysym,
 			    void *my_data)
@@ -20,75 +154,57 @@ t_bunny_response	esc(t_bunny_event_state state, t_bunny_keysym keysym,
   data = my_data;
   if (keysym == BKS_ESCAPE || data->exit)
     return (EXIT_ON_SUCCESS);
-  if (keysym == BKS_UP && state == GO_DOWN)
+  if ((keysym == BKS_UP || keysym == INPUT->key[0]) && state == GO_DOWN
+      && !INPUT->change_key)
     data->selected_index == 0 ?
       data->selected_index = data->menu_length - 1 : data->selected_index--;
-  if (keysym == BKS_DOWN && state == GO_DOWN)
+  if ((keysym == BKS_DOWN || keysym == INPUT->key[1]) && state == GO_DOWN
+      && !INPUT->change_key)
     data->selected_index == data->menu_length - 1 ?
       data->selected_index = 0 : data->selected_index++;
   if (keysym == BKS_RETURN && state == GO_DOWN)
     {
       //main_menu
       if (data->menu_index == 0)
-	{
-	  //	  if (data->selected_index == 0)
-	    //profl name for save -> play
-	  if (data->selected_index == 1)
-	    {
-	      data->menu_length = 7;
-	      data->selected_index = 0;
-	      data->menu_index = 1;
-	    }
-	 else if (data->selected_index == 2)
-	    {
-	      data->selected_index = 0;
-	      data->menu_index = 2;
-	    }
-	 else if (data->selected_index == 3)
-	   data->exit = true;
-	}
+	menu_nav(data);
       //option_menu
       else if (data->menu_index == 1)
-	{
-	  if (data->selected_index == 0)
-	    data->config->fullscreen = !data->config->fullscreen;
-	  else if (data->selected_index == 1)
-	    (CONFIG->res_i == 3) ? (CONFIG->res_i = 0) : (CONFIG->res_i++);
-	  //	  else if (data->selected_index == 3)
-	    //touche
-	  else if (data->selected_index == 5)
-	    save_opt(data);
-	  else if (data->selected_index == 6)
-	    {
-	      data->menu_length = 4;
-	      data->menu_index = 0;
-	      data->selected_index = 0;
-	    }
-	}
+	option_nav(state, keysym, data);
+      else if (data->menu_index == 3)
+	input_nav(state, keysym, data);
     }
-  if (keysym == BKS_LEFT && state == GO_DOWN)
-    {
-      if (data->menu_index == 1 && data->selected_index == 1)
-	(CONFIG->res_i == 0) ? (CONFIG->res_i = 3) : (CONFIG->res_i--);
-      if (data->menu_index == 1 && data->selected_index == 2
-	  && data->config->volume > 0)
-	data->config->volume--;
-      if (data->menu_index == 1 && data->selected_index == 3
-	  && data->config->fov > 50)
-	data->config->fov--;
-    }
-  if (keysym == BKS_RIGHT && state == GO_DOWN)
-    {
-      if (data->menu_index == 1 && data->selected_index == 1)
-	(CONFIG->res_i == 3) ? (CONFIG->res_i = 0) : (CONFIG->res_i++);
-      if (data->menu_index == 1 && data->selected_index == 2
-	  && data->config->volume < 100)
-	data->config->volume++;
-      if (data->menu_index == 1 && data->selected_index == 3
-	  && data->config->fov < 100)
-	data->config->fov++;
-    }
+  option_nav2(state, keysym, data);
+  if (data->menu_index == 3)
+    change_key(keysym, data);
   return (GO_ON);
+}
+
+void			save_input(t_data *data)
+{
+  char			convert_int[12];
+
+  if (CONFIG->ini)
+    {
+      snprintf(convert_int, 4, "%d", INPUT->key[0]);
+      bunny_ini_set_field(CONFIG->ini, "input", "up", 0, convert_int);
+      snprintf(convert_int, 4, "%d", (int)INPUT->key[1]);
+      bunny_ini_set_field(CONFIG->ini, "input", "down", 0, convert_int);
+      snprintf(convert_int, 4, "%d", (int)INPUT->key[2]);
+      bunny_ini_set_field(CONFIG->ini, "input", "left", 0, convert_int);
+      snprintf(convert_int, 4, "%d", (int)INPUT->key[3]);
+      bunny_ini_set_field(CONFIG->ini, "input", "right", 0, convert_int);
+      snprintf(convert_int, 4, "%d", (int)INPUT->key[4]);
+      bunny_ini_set_field(CONFIG->ini, "input", "jump", 0, convert_int);
+      snprintf(convert_int, 4, "%d", (int)INPUT->key[5]);
+      bunny_ini_set_field(CONFIG->ini, "input", "reload", 0, convert_int);
+      snprintf(convert_int, 4, "%d", (int)INPUT->key[6]);
+      bunny_ini_set_field(CONFIG->ini, "input", "action", 0, convert_int);
+      snprintf(convert_int, 4, "%d", (int)INPUT->key[7]);
+      bunny_ini_set_field(CONFIG->ini, "input", "fire", 0, convert_int);
+      snprintf(convert_int, 4, "%d", (int)INPUT->key[8]);
+      bunny_ini_set_field(CONFIG->ini, "input", "zoom", 0, convert_int);
+      bunny_save_ini(CONFIG->ini, "config.ini");
+    }
 }
 
 void			save_opt(t_data *data)
@@ -108,6 +224,15 @@ void			save_opt(t_data *data)
       snprintf(convert_int, 4, "%d", CONFIG->fov);
       bunny_ini_set_field(CONFIG->ini, "config", "fov", 0, convert_int);
       bunny_save_ini(CONFIG->ini, "config.ini");
+      /*      bunny_delete_clipable(&data->pix_ar->clipable);
+      bunny_delete_ini(data->config->ini);
+      bunny_free(data->config);
+      bunny_stop(data->win);*/
+      //
+      //      data->exit = true;
+      //main();
+
+//      launch(data);
     }
 }
 
@@ -119,6 +244,41 @@ t_bunny_position	calc_pos_txt(t_data *data, t_mrect ref, int offset_len)
   pos.x -= ref.size.x / 2 - data->pos.x + offset_len / 2 * 20;
   pos.y += data->pos.y;
   return (pos);
+}
+
+void			write_change_key(t_data *data)
+{
+  t_bunny_position	pos_txt;
+
+  pos_txt.x = WIDTH / 2 - 110;
+  pos_txt.y = HEIGHT / 2 - 20;
+  write_bmp(data, "Press a key", pos_txt);
+}
+
+void			write_input_menu(t_data *data)
+{
+  t_bunny_position	pos_txt;
+
+  pos_txt =  calc_pos_txt(data, data->rect_input[0], strlen("Up"));
+  write_bmp(data, "Up", pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_input[1], strlen("Down"));
+  write_bmp(data, "Down", pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_input[2], strlen("Left"));
+  write_bmp(data, "Left", pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_input[3], strlen("Right"));
+  write_bmp(data, "Right", pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_input[4], strlen("Action"));
+  write_bmp(data, "Action", pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_input[5], strlen("Jump"));
+  write_bmp(data, "Jump", pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_input[6], strlen("Reload"));
+  write_bmp(data, "Reload", pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_input[7], strlen("Shoot"));
+  write_bmp(data, "Shoot", pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_input[8], strlen("Zoom"));
+  write_bmp(data, "Zoom", pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_input[9], strlen("Back"));
+  write_bmp(data, "Back", pos_txt);
 }
 
 void			write_main_menu(t_data *data)
@@ -178,14 +338,22 @@ t_bunny_response	mainloop(void	*my_data)
   data = my_data;
   my_fill(data->pix_ar, PINK);
   if (data->menu_index == 0)
-    main_menu(data);
-  if (data->menu_index == 1)
+    main_menu(data, data->rect, HEIGHT / 2, 20);
+  else if (data->menu_index == 1)
     option_menu(data, data->selected_index);
+  else if (data->menu_index == 3 && !INPUT->change_key)
+    input_menu(data, data->rect_input, 0, 20);
+  if (INPUT->change_key)
+    label(data, false, pos_(400, 200), pos_(WIDTH / 2 - 200, HEIGHT / 2 - 100));
   bunny_blit(&data->win->buffer, &data->pix_ar->clipable, &data->pos);
   if (data->menu_index == 0)
     write_main_menu(data);
-  if (data->menu_index == 1)
+  else if (data->menu_index == 1)
     write_option_menu(data);
+  else if (data->menu_index == 3 && !INPUT->change_key)
+    write_input_menu(data);
+  if (INPUT->change_key)
+    write_change_key(data);
   bunny_display(data->win);
   return (GO_ON);
 }
@@ -471,32 +639,65 @@ void			init_res(t_data *data)
   RES[3].height = 1024;
 }
 
-void			main_menu(t_data *data)
+void			input_menu_next(t_data *data, t_mrect *ref)
+{
+  t_mrect		box;
+
+  box.size = pos_(60, ref->size.y);
+  box.pos = pos_(ref->pos.x + 20, ref->pos.y);
+  box.color[0] = WHITE;
+  box.color[1] = WHITE;
+  draw_square(data->pix_ar, &box);
+}
+
+void			input_menu(t_data *data, t_mrect *rect,  int offset, int margin)
 {
   int			n;
-  int			margin;
-  int			offset;
 
   n = -1;
-  margin = 20;
-  offset = data->config->height / 2;
-  data->rect[0].pos.y = offset;
+  rect[0].pos.y = margin;
   while (++n < data->menu_length)
     {
-      data->rect[n].size.x = data->config->width / 2;
-      data->rect[n].size.y = (data->config->height - offset
+      rect[n].size.x = 200;
+      rect[n].size.y = (data->config->height - offset
 			      - (margin * (data->menu_length + 1))) / data->menu_length;
-      data->rect[n].pos.x = data->config->width / 2 - data->rect[n].size.x / 2;
+      rect[n].pos.x = data->config->width / 2 - rect[n].size.x / 2;
       if (n != 0)
-	data->rect[n].pos.y = data->rect[n - 1].pos.y + data->rect[n].size.y + margin;
-      data->rect[n].color[0] = WHITE;
-      data->rect[n].color[1] = RED;
-      data->rect[n].contour = 3;
+	rect[n].pos.y = rect[n - 1].pos.y + rect[n].size.y + margin;
+      rect[n].color[0] = WHITE;
+      rect[n].color[1] = RED;
+      rect[n].contour = 3;
       if (n == data->selected_index)
-	data->rect[n].selected = true;
+	rect[n].selected = true;
       else
-	data->rect[n].selected = false;
-      draw_square(data->pix_ar, &data->rect[n]);
+	rect[n].selected = false;
+      draw_square(data->pix_ar, &rect[n]);
+      input_menu_next(data, &rect[n]);
+    }
+}
+
+void			main_menu(t_data *data, t_mrect *rect,  int offset, int margin)
+{
+  int			n;
+
+  n = -1;
+  rect[0].pos.y = offset;
+  while (++n < data->menu_length)
+    {
+      rect[n].size.x = data->config->width / 2;
+      rect[n].size.y = (data->config->height - offset
+			      - (margin * (data->menu_length + 1))) / data->menu_length;
+      rect[n].pos.x = data->config->width / 2 - rect[n].size.x / 2;
+      if (n != 0)
+	rect[n].pos.y = rect[n - 1].pos.y + rect[n].size.y + margin;
+      rect[n].color[0] = WHITE;
+      rect[n].color[1] = RED;
+      rect[n].contour = 3;
+      if (n == data->selected_index)
+	rect[n].selected = true;
+      else
+	rect[n].selected = false;
+      draw_square(data->pix_ar, &rect[n]);
     }
 }
 
@@ -507,6 +708,29 @@ void			default_config(t_data *data)
   data->config->height = 600;
   data->config->volume = 100;
   data->config->volume = 60;
+  INPUT->key[0] = 25;
+  INPUT->key[1] = 18;
+  INPUT->key[2] = 16;
+  INPUT->key[3] = 3;
+  INPUT->key[4] = 57;
+  INPUT->key[5] = 17;
+  INPUT->key[6] = 4;
+  //  INPUT->key[7] =
+  //  INPUT->key[8] =
+}
+
+void			load_input(t_data *data)
+{
+  INPUT->key[0] = my_getnbr((char *)BGF(CONFIG->ini, "input", "up", 0));
+  INPUT->key[1] = my_getnbr((char *)BGF(CONFIG->ini, "input", "down", 0));
+  INPUT->key[2] = my_getnbr((char *)BGF(CONFIG->ini, "input", "left", 0));
+  INPUT->key[3] = my_getnbr((char *)BGF(CONFIG->ini, "input", "right", 0));
+  INPUT->key[4] = my_getnbr((char *)BGF(CONFIG->ini, "input", "jump", 0));
+  INPUT->key[5] = my_getnbr((char *)BGF(CONFIG->ini, "input", "reload", 0));
+  INPUT->key[6] = my_getnbr((char *)BGF(CONFIG->ini, "input", "action", 0));
+  //INPUT->key[7] = my_getnbr((char *)BGF(CONFIG->ini, "input", "fire", 0));
+  // INPUT->key[8] = my_getnbr((char *)BGF(CONFIG->ini, "input", "zoom", 0));
+
 }
 
 void			load_config(t_data *data)
@@ -516,11 +740,12 @@ void			load_config(t_data *data)
   if ((CONFIG->ini = bunny_load_ini("config.ini")) != NULL)
     {
       data->config->fullscreen =
-	atoi(bunny_ini_get_field(CONFIG->ini, "config", "fullscreen", 0));
-      data->config->width = atoi(bunny_ini_get_field(CONFIG->ini, "config", "width", 0));
-      data->config->height = atoi(bunny_ini_get_field(CONFIG->ini, "config", "height", 0));
-      data->config->volume = atoi(bunny_ini_get_field(CONFIG->ini, "config", "volume", 0));
-      data->config->fov = atoi(bunny_ini_get_field(CONFIG->ini, "config", "fov", 0));
+	my_getnbr((char *)BGF(CONFIG->ini, "config", "fullscreen", 0));
+      data->config->width = my_getnbr((char *)BGF(CONFIG->ini, "config", "width", 0));
+      data->config->height = my_getnbr((char *)BGF(CONFIG->ini, "config", "height", 0));
+      data->config->volume = my_getnbr((char *)BGF(CONFIG->ini, "config", "volume", 0));
+      data->config->fov = my_getnbr((char *)BGF(CONFIG->ini, "config", "fov", 0));
+      load_input(data);
     }
   else
     default_config(data);
@@ -540,7 +765,7 @@ void			load_letter(t_data *data)
   scale += 0.25 * CONFIG->res_i;
   strcpy(path, "text/a.bmp\0");
   strcpy(letter,
-	 "  0123456789abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ()<>.,!?;:-_'\"");
+	 "  0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUWVXYZ()<>.,!?;:-_'\"");
   l_path = strlen(path);
   while (++i < 75)
     {
@@ -577,19 +802,26 @@ int			init_data(t_data *data)
   return (0);
 }
 
+int			launch(t_data *data)
+{
+  if (init_data(data) == 1)
+    return (-1);
+  memory_check = 1;
+  data->win = bunny_start(WIDTH, HEIGHT,
+			 CONFIG->fullscreen, "TEk-DOOM");
+  data->pix_ar = bunny_new_pixelarray(WIDTH, HEIGHT);
+  bunny_set_loop_main_function(mainloop);
+  bunny_set_key_response(esc);
+  bunny_loop(data->win, 10, data);
+  return (0);
+}
+
 int			main()
 {
   t_data		data;
 
-  if (init_data(&data) == 1)
+  if (launch(&data) == 1)
     return (1);
-  memory_check = 1;
-  data.win = bunny_start(data.config->width, data.config->height,
-			 data.config->fullscreen, "TEk-DOOM");
-  data.pix_ar = bunny_new_pixelarray(data.config->width, data.config->height);
-  bunny_set_loop_main_function(mainloop);
-  bunny_set_key_response(esc);
-  bunny_loop(data.win, 10, &data);
   bunny_delete_clipable(&data.pix_ar->clipable);
   bunny_delete_ini(data.config->ini);
   bunny_free(data.config);
