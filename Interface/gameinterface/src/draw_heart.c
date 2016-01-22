@@ -5,45 +5,26 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 20 15:47:07 2016 Maud MAREL
-** Last update Fri Jan 22 13:35:18 2016 Maud MAREL
+** Last update Fri Jan 22 15:14:17 2016 maud marel
 */
 
-#include "lifebar.h"
+#include "interface.h"
 
 int			draw_heart(t_data *data)
 {
-  int			i;
   t_bunny_position      pos;
   t_bunny_position      end;
-  t_color               *color;
   int			nb;
   int			heart;
 
   nb = 0;
   heart = data->life.nb_heart + 1;
+  if ((data->life.heart = bunny_load_pixelarray("pictures/heart.png")) == NULL)
+    return (-1);
+  data->life.color = (t_color*)data->life.heart->pixels;
   while (--heart > 0)
     {
-      pos.x = 0;
-      pos.y = 0;
-      if ((data->life.heart = bunny_load_pixelarray("heart.png")) == NULL)
-  	return (-1);
-      color = (t_color*)data->life.heart->pixels;
-      i = 0;
-      while (pos.y < data->life.heart->clipable.clip_height)
-  	{
-  	  pos.x = 0;
-  	  while (pos.x < data->life.heart->clipable.clip_width)
-  	    {
-  	      end.x = (WIDTH / 75) + pos.x
-		+ (nb * data->life.heart->clipable.clip_width);
-  	      end.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) + pos.y
-  		- data->life.heart->clipable.clip_height - 3;
-  	      tekpixel2(data->pix, &end, &color[i]);
-  	      pos.x++;
-  	      i++;
-  	    }
-  	  pos.y++;
-  	}
+      draw_heart2(data, pos, end, nb);
       nb++;
     }
   if (data->life.nb_heart < 3)
@@ -51,10 +32,34 @@ int			draw_heart(t_data *data)
   return (0);
 }
 
+void	draw_heart2(t_data *data, t_bunny_position pos,
+		    t_bunny_position end, int nb)
+{
+  int	i;
+
+  pos.x = 0;
+  pos.y = 0;
+  i = 0;
+  while (pos.y < data->life.heart->clipable.clip_height)
+    {
+      pos.x = 0;
+      while (pos.x < data->life.heart->clipable.clip_width)
+	{
+	  end.x = (WIDTH / 75) + pos.x
+	    + (nb * data->life.heart->clipable.clip_width);
+	  end.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) + pos.y
+	    - data->life.heart->clipable.clip_height - 3;
+	  tekpixel2(data->pix, &end, &data->life.color[i]);
+	  pos.x++;
+	  i++;
+	}
+      pos.y++;
+    }
+}
+
 void			draw_heart_else(t_data *data, int heart, int nb)
 {
   t_color		*color;
-  int			i;
   t_bunny_position	pos;
   t_bunny_position	end;
 
@@ -62,21 +67,18 @@ void			draw_heart_else(t_data *data, int heart, int nb)
   color = (t_color*)data->pix->pixels;
   while (heart > 0)
     {
-      pos.y = 0;
-      while (pos.y < data->life.heart->clipable.clip_height)
+      pos.y = -1;
+      while (++pos.y < data->life.heart->clipable.clip_height)
 	{
-	  pos.x = 0;
-	  while (pos.x < data->life.heart->clipable.clip_width)
+	  pos.x = -1;
+	  while (++pos.x < data->life.heart->clipable.clip_width)
 	    {
 	      end.x = (WIDTH / 75) + pos.x
 		+ (nb * data->life.heart->clipable.clip_width);
 	      end.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) + pos.y
 		- data->life.heart->clipable.clip_height - 3;
-	      i = end.x + end.y;
-	      tekpixel2(data->pix, &end, &color[i]);
-	      pos.x++;
+	      tekpixel2(data->pix, &end, &color[end.x + end.y]);
 	    }
-	  pos.y++;
 	}
       nb++;
       heart--;

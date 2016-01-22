@@ -5,7 +5,7 @@
 ## Login   <marel_m@epitech.net>
 ##
 ## Started on  Mon Nov  2 12:21:34 2015 maud marel
-## Last update Fri Jan 22 13:29:02 2016 Maud MAREL
+## Last update Fri Jan 22 14:02:24 2016 maud marel
 ##
 
 NAME		=	lifebar
@@ -20,7 +20,7 @@ SRC             =	src/main.c \
 
 OBJ             =       $(SRC:.c=.o)
 
-LIBS		=	-L/home/$(USER)/.froot/lib/ \
+LIBS		=	-L/home/${USER}/.froot/lib/ \
 			-llapin \
                         -lsfml-audio \
                         -lsfml-graphics \
@@ -30,6 +30,7 @@ LIBS		=	-L/home/$(USER)/.froot/lib/ \
 			-lm \
 
 CFLAGS		+=	-Iinclude \
+			-I/home/${USER}/.froot/include/
 
 CFLAGS     	+=	-W -Wall -ansi -pedantic
 
