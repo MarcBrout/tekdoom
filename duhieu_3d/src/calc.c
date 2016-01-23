@@ -6,13 +6,13 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Jan 17 10:16:40 2016 benjamin duhieu
-** Last update Sat Jan 23 21:31:43 2016 benjamin duhieu
+** Last update Sat Jan 23 21:38:01 2016 benjamin duhieu
 */
 
 #include "main.h"
 
 
-void		put_in_k(t_main *doom, int x, t_seg *tmp, t_lvl *lvl)
+void		put_in_k(t_main *doom, t_seg *tmp, t_lvl *lvl)
 {
   double	k;
   int		i;
@@ -23,10 +23,10 @@ void		put_in_k(t_main *doom, int x, t_seg *tmp, t_lvl *lvl)
   while (lvl->tabseg[0][++i] != -1);
   lvl->tabseg[0][i] = k;
   lvl->tabseg[1][i] = tmp->z;
-  printf("tabseg[0][%d] = %f, tabseg[1][%d] = %d\n", i, tabseg[i], i, tmp->z);
+  printf("tabseg[0][%d] = %f, tabseg[1][%d] = %f\n", i, lvl->tabseg[0][i], i, tmp->z);
  }
 
-int		inter(t_main *doom, int x, t_seg *tmp, t_lvl *lvl)
+int		inter(t_main *doom, t_seg *tmp, t_lvl *lvl)
 {
   double	chk1;
   double	chk2;
@@ -43,11 +43,11 @@ int		inter(t_main *doom, int x, t_seg *tmp, t_lvl *lvl)
       ((doom->calc.cos <= 0 && chk1 < 0) && (doom->calc.sin > 0 && chk2 > 0)) ||
       ((doom->calc.cos >= 0 && chk1 > 0) && (doom->calc.sin < 0 && chk2 < 0)) ||
       ((doom->calc.cos <= 0 && chk1 < 0) && (doom->calc.sin < 0 && chk2 < 0)))
-    put_in_k(doom, x, tmp, lvl);
+    put_in_k(doom, tmp, lvl);
   return (0);
 }
 
-void	disp_wall(t_main *doom, int x, t_lvl *lvl)
+void	disp_wall(t_main *doom, t_lvl *lvl, int x)
 {
   int		i;
   int		j;
@@ -64,10 +64,10 @@ void	disp_wall(t_main *doom, int x, t_lvl *lvl)
 	j = -1;
       while (++j <  ((HEIGHT / 2) + wall) && j < HEIGHT)
 	{
-	  pixels[x + j * WIDTH].full = WHITE
-	    pixels[x + j * WIDTH].argb[0] -= (int)(k / 2);
-	  pixels[x + j * WIDTH].argb[1] -= (int)(k / 2);
-	  pixels[x + j * WIDTH].argb[2] -= (int)(k / 2);
+	  pixels[x + j * WIDTH].full = WHITE;
+	  pixels[x + j * WIDTH].argb[0] -= (int)(lvl->tabseg[0][i] / 2);
+	  pixels[x + j * WIDTH].argb[1] -= (int)(lvl->tabseg[0][i] / 2);
+	  pixels[x + j * WIDTH].argb[2] -= (int)(lvl->tabseg[0][i] / 2);
 	}
     }
 }
@@ -125,7 +125,7 @@ int	calc(t_main *doom, t_lvl *lvl)
 	    {
 	      doom->calc.na = (tmp2->by - tmp2->ay) / (tmp2->bx - tmp2->ax);
 	      doom->calc.nb = tmp2->ay - (doom->calc.na * tmp2->ax);
-	      inter(doom, x, tmp2, lvl);
+	      inter(doom, tmp2, lvl);
 	    }
 	  tmp2 = tmp2->next;
 	}
