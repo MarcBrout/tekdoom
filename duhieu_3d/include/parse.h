@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:08:10 2016 marc brout
-** Last update Sat Jan 23 19:41:10 2016 marc brout
+** Last update Sat Jan 23 19:54:24 2016 marc brout
 */
 
 #ifndef PARSE_H_
@@ -97,6 +97,8 @@ typedef struct		s_enemy
   t_bunny_pixelarray	*img;
 }			t_enemy;
 
+char mal_tab(t_lvl *);
+char segment_listing(t_ini *, t_lvl *);
 char set_line_length(int **, int, int);
 char set_line_lengthd(double **, int, int);
 char parse_map(t_ini *, t_lvl *, int **, char *);
