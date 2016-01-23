@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Jan 15 10:32:02 2016 benjamin duhieu
-** Last update Sat Jan 23 21:24:54 2016 benjamin duhieu
+** Last update Sat Jan 23 21:38:38 2016 benjamin duhieu
 */
 
 #ifndef ENGINE_H_
@@ -52,14 +52,14 @@ typedef			struct s_main
 
 int	calc(t_main *, t_lvl *);
 int	init_main(int, char **, char **, t_main *);
-int	inter(t_main *, int, t_seg *, t_lvl *);
+int	inter(t_main *, t_seg *, t_lvl *);
 t_bunny_response	main_loop(void *);
 void	check_ang(t_main *);
-void	disp_wall(t_main *, int, t_lvl *);
+void	disp_wall(t_main *, t_lvl *, int);
 void	forward(t_main *);
 void	init_data(t_main *);
 void	fill_cos_sin(t_ang *);
 void	fill_screen(t_bunny_pixelarray *);
-void	put_in_k(t_main *, int, t_seg *, t_lvl *);
+void	put_in_k(t_main *, t_seg *, t_lvl *);
 
 #endif /* !MY_ENGINE */
