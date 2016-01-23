@@ -6,7 +6,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Jan 17 10:16:40 2016 benjamin duhieu
-** Last update Sat Jan 23 22:33:10 2016 marc brout
+** Last update Sat Jan 23 23:06:10 2016 marc brout
 */
 
 #include "main.h"
@@ -52,7 +52,7 @@ void	disp_wall(t_main *doom, t_lvl *lvl, int x)
   t_color	*pixels;
 
   i = -1;
-  while (++i < lvl->nbseg)
+  while (++i < lvl->nbseg && lvl->tabseg[0][i] > 0)
     {
       wall = HEIGHT / (2 * lvl->tabseg[0][i]);
       pixels = (t_color *)doom->pix->pixels;
@@ -62,9 +62,18 @@ void	disp_wall(t_main *doom, t_lvl *lvl, int x)
       while (++j <  ((HEIGHT / 2) + wall) && j < HEIGHT)
 	{
 	  pixels[x + j * WIDTH].full = WHITE;
-	  pixels[x + j * WIDTH].argb[0] -= (int)(lvl->tabseg[0][i] / 2);
-	  pixels[x + j * WIDTH].argb[1] -= (int)(lvl->tabseg[0][i] / 2);
-	  pixels[x + j * WIDTH].argb[2] -= (int)(lvl->tabseg[0][i] / 2);
+	  if ((pixels[x + j * WIDTH].argb[0] - (int)(lvl->tabseg[0][i])) > 0)
+	    pixels[x + j * WIDTH].argb[0] -= (int)(lvl->tabseg[0][i]);
+	  else
+	    pixels[x + j * WIDTH].argb[0] = 0;
+	  if ((pixels[x + j * WIDTH].argb[1] - (int)(lvl->tabseg[0][i])) > 0)
+	    pixels[x + j * WIDTH].argb[1] -= (int)(lvl->tabseg[0][i]);
+	  else
+	    pixels[x + j * WIDTH].argb[1] = 0;
+	  if ((pixels[x + j * WIDTH].argb[2] - (int)(lvl->tabseg[0][i])) > 0)
+	    pixels[x + j * WIDTH].argb[2] -= (int)(lvl->tabseg[0][i]);
+	  else
+	    pixels[x + j * WIDTH].argb[2] = 0;
 	}
     }
 }
@@ -73,25 +82,45 @@ void		tri_tabk(t_main *doom, t_lvl *lvl, int x)
 {
   int		i;
   int		j;
-  int		k;
+  double	max;
   int		l;
   double	tmp;
-
+  double	size;
+  int z = -1;
+ 
   i = -1;
   tmp = 0;
-  while (++i < lvl->nbseg)
+  while (++i < lvl->nbseg && lvl->tabseg[0][i] > 0)
     {
       l = i;
-      j = i - 1;
-      k = lvl->tabseg[0][i];
+      j = i;
+      max = lvl->tabseg[0][i];
       while (++j < lvl->nbseg)
-	if (k >= lvl->tabseg[0][j] && l++)
-	  k = lvl->tabseg[0][j];
+	if (max < lvl->tabseg[0][j] && (l = j))
+	  max = lvl->tabseg[0][j];
       tmp = lvl->tabseg[0][l];
+      size = lvl->tabseg[1][l];
       lvl->tabseg[0][l] = lvl->tabseg[0][i];
+      lvl->tabseg[1][l] = lvl->tabseg[1][i];
       lvl->tabseg[0][i] = tmp;
+      lvl->tabseg[1][i] = size;
     }
+  while (++z < lvl->nbseg && lvl->tabseg[0][z] > 0)
+    printf("k = lvl->tabseg[0][%d] = %f\nvz = lvl->tabseg[1][%d] = %f\n",
+  	   z, lvl->tabseg[0][z], z, lvl->tabseg[1][z]);
   disp_wall(doom, lvl, x);
+}
+
+void	res_tab(t_lvl *lvl)
+{
+  int	i;
+
+  i = -1;
+  while (++i < lvl->nbseg)
+    {
+      lvl->tabseg[0][i] = -1;
+      lvl->tabseg[1][i] = -1;
+    }
 }
 
 int	calc(t_main *doom, t_lvl *lvl)
@@ -129,6 +158,7 @@ int	calc(t_main *doom, t_lvl *lvl)
 	  tmp2 = tmp2->next;
 	}
       tri_tabk(doom, lvl, x);
+      res_tab(lvl);
       ang = (ang - (doom->calc.fov / WIDTH));
       if (ang > 359)
 	ang -= 359;
