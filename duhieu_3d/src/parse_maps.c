@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Sun Jan 17 11:52:54 2016 marc brout
-** Last update Fri Jan 22 23:54:14 2016 marc brout
+** Last update Sat Jan 23 19:49:28 2016 marc brout
 */
 
 #include "main.h"
@@ -42,6 +42,7 @@ char			get_lvl_infos(t_ini *ini)
 {
   if (bunny_ini_scope_name(ini->ini, ini->scope) == NULL ||
       BISGF(ini->scope, "desc", 0) == NULL ||
+      BISGF(ini->scope, "nbseg", 0) == NULL ||
       BISGF(ini->scope, "start_position", 0) == NULL ||
       BISGF(ini->scope, "start_position", 1) == NULL ||
       BISGF(ini->scope, "start_position", 2) == NULL)
@@ -52,6 +53,7 @@ char			get_lvl_infos(t_ini *ini)
        my_strdup((char*)BISGF(ini->scope, "desc", 0))) 
       == NULL)
     return (1);
+  ini->lvls->prev->nbseg = my_getnbr((char *)BISGF(ini->scope, "nbseg", 0));
   ini->lvls->prev->plx = my_getnbr
     ((char *)BISGF(ini->scope, "start_position", 0));
   ini->lvls->prev->ply = my_getnbr
@@ -94,10 +96,16 @@ char			segment_listing(t_ini *ini, t_lvl *lvls)
   return (0);
 }
 
+char			mal_tab(t_lvl *lvl)
+{
+  if ((lvl->tabseg = malloc(sizeof(double) * (lvl->nbseg + 1))) == NULL)
+    return (1);
+  return (0);
+}
+
 char			parse_maps(t_parse *parse)
 {
   t_ini			*tmp;
-  t_seg			*tmp2;
 
   tmp = parse->maps->next;
   while (tmp != NULL && !access(tmp->file, F_OK))
@@ -107,17 +115,12 @@ char			parse_maps(t_parse *parse)
       while (tmp->scope != NULL)
 	{
 	  if (add_lvl(tmp) || get_lvl_infos(tmp) ||
-	      segment_listing(tmp, tmp->lvls->prev))
+	      segment_listing(tmp, tmp->lvls->prev) ||
+	      mal_tab(tmp->lvls->prev))	    
 	    return (1);
 	  tmp->scope = bunny_ini_next(tmp->ini, tmp->scope);
 	}
       tmp = tmp->next;
-    }
-  tmp2 = parse->maps->next->lvls->segs;
-  while (tmp2)
-    {
-      printf("%f, %f, %f, %f\n", tmp2->ax, tmp2->ay, tmp2->bx, tmp2->by);
-      tmp2 = tmp2->next;
     }
   return (0);
 }

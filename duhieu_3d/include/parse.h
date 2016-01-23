@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:08:10 2016 marc brout
-** Last update Sat Jan 23 18:37:23 2016 marc brout
+** Last update Sat Jan 23 19:41:10 2016 marc brout
 */
 
 #ifndef PARSE_H_
@@ -49,6 +49,8 @@ typedef struct		s_lvl
   char			*name;
   char			*desc;
   int			**text;
+  int			nbseg;
+  double		*tabseg;
   int			plx;
   int			ply;
   double		pla;
