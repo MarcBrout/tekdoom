@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Sun Jan 17 11:52:54 2016 marc brout
-** Last update Fri Jan 22 23:54:14 2016 marc brout
+** Last update Sat Jan 23 19:52:54 2016 marc brout
 */
 
 #include "main.h"
@@ -42,6 +42,7 @@ char			get_lvl_infos(t_ini *ini)
 {
   if (bunny_ini_scope_name(ini->ini, ini->scope) == NULL ||
       BISGF(ini->scope, "desc", 0) == NULL ||
+      BISGF(ini->scope, "nbseg", 0) == NULL ||
       BISGF(ini->scope, "start_position", 0) == NULL ||
       BISGF(ini->scope, "start_position", 1) == NULL ||
       BISGF(ini->scope, "start_position", 2) == NULL)
@@ -52,6 +53,7 @@ char			get_lvl_infos(t_ini *ini)
        my_strdup((char*)BISGF(ini->scope, "desc", 0))) 
       == NULL)
     return (1);
+  ini->lvls->prev->nbseg = my_getnbr((char *)BISGF(ini->scope, "nbseg", 0));
   ini->lvls->prev->plx = my_getnbr
     ((char *)BISGF(ini->scope, "start_position", 0));
   ini->lvls->prev->ply = my_getnbr
@@ -61,43 +63,9 @@ char			get_lvl_infos(t_ini *ini)
   return (0);
 }
 
-char			add_segment(t_lvl *lvl)
-{
-  t_seg			*elem;
-
-  if ((elem = malloc(sizeof(t_seg))) == NULL)
-    return (1);
-  elem->next = lvl->segs;
-  lvl->segs = elem;
-  return (0);
-}
-
-char			segment_listing(t_ini *ini, t_lvl *lvls)
-{
-  int			i;
-  
-  i = 0;
-  while ((BISGF(ini->scope, "seg", i)) && (BISGF(ini->scope, "seg", i + 1)) &&
-	 (BISGF(ini->scope, "seg", i + 2)) && (BISGF(ini->scope, "seg", i + 3))
-	 && (BISGF(ini->scope, "size", i / 4)) &&
-	 (BISGF(ini->scope, "type", i / 4)))
-    {
-      add_segment(lvls->prev);
-      SEGL->ax = get_double((char*)BISGF(ini->scope, "seg", i));
-      SEGL->ay = get_double((char*)BISGF(ini->scope, "seg", i + 1));
-      SEGL->bx = get_double((char*)BISGF(ini->scope, "seg", i + 2));
-      SEGL->by = get_double((char*)BISGF(ini->scope, "seg", i + 3));
-      SEGL->z = get_double((char*)BISGF(ini->scope, "size", i / 4));
-      SEGL->type = my_getnbr((char*)BISGF(ini->scope, "type", i / 4));
-      i += 4;
-    }
-  return (0);
-}
-
 char			parse_maps(t_parse *parse)
 {
   t_ini			*tmp;
-  t_seg			*tmp2;
 
   tmp = parse->maps->next;
   while (tmp != NULL && !access(tmp->file, F_OK))
@@ -107,17 +75,12 @@ char			parse_maps(t_parse *parse)
       while (tmp->scope != NULL)
 	{
 	  if (add_lvl(tmp) || get_lvl_infos(tmp) ||
-	      segment_listing(tmp, tmp->lvls->prev))
+	      segment_listing(tmp, tmp->lvls->prev) ||
+	      mal_tab(tmp->lvls->prev))	    
 	    return (1);
 	  tmp->scope = bunny_ini_next(tmp->ini, tmp->scope);
 	}
       tmp = tmp->next;
-    }
-  tmp2 = parse->maps->next->lvls->segs;
-  while (tmp2)
-    {
-      printf("%f, %f, %f, %f\n", tmp2->ax, tmp2->ay, tmp2->bx, tmp2->by);
-      tmp2 = tmp2->next;
     }
   return (0);
 }
