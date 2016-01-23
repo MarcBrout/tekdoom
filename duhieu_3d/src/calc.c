@@ -6,7 +6,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Jan 17 10:16:40 2016 benjamin duhieu
-** Last update Sat Jan 23 23:06:10 2016 marc brout
+** Last update Sat Jan 23 23:13:09 2016 marc brout
 */
 
 #include "main.h"
@@ -54,9 +54,9 @@ void	disp_wall(t_main *doom, t_lvl *lvl, int x)
   i = -1;
   while (++i < lvl->nbseg && lvl->tabseg[0][i] > 0)
     {
-      wall = HEIGHT / (2 * lvl->tabseg[0][i]);
+      wall = HEIGHT / (3 * lvl->tabseg[0][i]);
       pixels = (t_color *)doom->pix->pixels;
-      j = (HEIGHT / 2) - wall - ((lvl->tabseg[1][i] - 1) * 64) - 1;
+      j = (HEIGHT / 2) - wall - /* ((lvl->tabseg[1][i] - 1) * 64) - */1;
       if (j < 0)
 	j = -1;
       while (++j <  ((HEIGHT / 2) + wall) && j < HEIGHT)
