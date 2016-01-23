@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:14:11 2016 marc brout
-** Last update Fri Jan 22 23:31:14 2016 marc brout
+** Last update Sat Jan 23 18:41:19 2016 marc brout
 */
 
 #include "main.h"
@@ -66,6 +66,14 @@ char		set_paths(t_parse *parse)
   return (0);
 }
 
+char		parse_textures(t_parse *parse)
+{
+  if ((parse->textures[0] = bunny_load_pixelarray(TXT01)) == NULL)
+    return (1);
+  parse->textures[NBTXT] = NULL;
+  return (0);
+}
+
 char		parse(t_parse *parse)
 {
   int		i;
@@ -74,7 +82,7 @@ char		parse(t_parse *parse)
   if (set_paths(parse))
     return (1);
   while (parse->folder[++i] != NULL)
-    if (read_folder(parse, parse->folder[i]))
+    if (read_folder(parse, parse->folder[i]) || parse_textures(parse))
       return (my_perror(E_PARSE));
   parse_maps(parse);
   return (0);

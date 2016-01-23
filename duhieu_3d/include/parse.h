@@ -5,21 +5,31 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:08:10 2016 marc brout
-** Last update Fri Jan 22 19:57:08 2016 marc brout
+** Last update Sat Jan 23 18:37:23 2016 marc brout
 */
 
 #ifndef PARSE_H_
 # define PARSE_H_
+
 # ifndef UNUSED
-#  define UNUSED __attribute__((_unused_))
+#  define UNUSED __attribute__((__unused__))
 # endif /* !UNUSED */
+
 # ifndef BISGF
 #  define BISGF bunny_ini_scope_get_field
 # endif /* !BISGF */
+
 # define E_FLD "Missing folder\n"
 # define E_FIL "File missing or corrupted\n"
 # define E_PARSE "Parsing error\n"
 # define SEGL lvls->prev->segs
+# define NBTXT 1
+
+# ifndef TEXTURES
+#  define TEXTURES
+#  define TXT01 "files/textures/01_brick_wall.png"
+# endif /* !TEXTURES */
+
 
 typedef	enum{cac, dist} weapon_type;
 
@@ -58,6 +68,7 @@ typedef struct		s_ini
 
 typedef struct		s_parse
 {
+  t_bunny_pixelarray	*textures[NBTXT];
   char			*folder[2];
   t_ini			*maps;
 }			t_parse;
