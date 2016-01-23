@@ -6,7 +6,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Jan 17 10:16:40 2016 benjamin duhieu
-** Last update Sat Jan 23 19:57:28 2016 benjamin duhieu
+** Last update Sat Jan 23 20:15:36 2016 marc brout
 */
 
 #include "main.h"
@@ -30,10 +30,10 @@ void		disp_wall(t_main *doom, int x, UNUSED t_seg *tmp)
     i = -1;
   while (++i <  ((HEIGHT / 2) + wall) && i < HEIGHT)
     {
+      pixels[x + i * WIDTH].full = WHITE;
       pixels[x + i * WIDTH].argb[0] -= (int)(k / 2);
       pixels[x + i * WIDTH].argb[1] -= (int)(k / 2);
       pixels[x + i * WIDTH].argb[2] -= (int)(k / 2);
-      pixels[x + i * WIDTH].argb[3] -= (int)(k / 2);
     }
 }
 

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Sat Jan 23 19:51:45 2016 marc brout
-** Last update Sat Jan 23 19:52:45 2016 marc brout
+** Last update Sat Jan 23 21:02:43 2016 marc brout
 */
 
 #include "main.h"
@@ -45,7 +45,12 @@ char			segment_listing(t_ini *ini, t_lvl *lvls)
 
 char			mal_tab(t_lvl *lvl)
 {
+  int			i;
+
   if ((lvl->tabseg = malloc(sizeof(double) * (lvl->nbseg + 1))) == NULL)
     return (1);
+  i = -1;
+  while (++i < lvl->nbseg)
+    lvl->tabseg[i] = -1;
   return (0);
 }
