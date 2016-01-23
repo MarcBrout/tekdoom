@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Jan 15 12:29:58 2016 benjamin duhieu
-** Last update Fri Jan 22 23:41:17 2016 marc brout
+** Last update Sat Jan 23 20:53:04 2016 benjamin duhieu
 */
 
 #include "main.h"
@@ -63,7 +63,7 @@ t_bunny_response	main_loop(void *main)
 
   doom = main;
   fill_screen(doom->pix);
-  calc(doom);
+  calc(doom, doom->pars->maps->next->lvls->next);
   bunny_blit(&(doom->win->buffer), &(doom->pix->clipable), NULL);
   bunny_display(doom->win);
   bunny_set_key_response(main_echap);
