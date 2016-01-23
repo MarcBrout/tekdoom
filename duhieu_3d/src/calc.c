@@ -6,7 +6,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Jan 17 10:16:40 2016 benjamin duhieu
-** Last update Sat Jan 23 19:34:40 2016 benjamin duhieu
+** Last update Sat Jan 23 19:57:28 2016 benjamin duhieu
 */
 
 #include "main.h"
@@ -62,7 +62,6 @@ int	calc(t_main *doom)
 {
   double ang;
   int	x;
-  int	test;
   t_seg *tmp2;
 
   x = -1;
@@ -85,16 +84,12 @@ int	calc(t_main *doom)
 	  doom->calc.a = doom->calc.ang.tang[(int)(ang * 10)];
 	  printf("ang * 10 = %f coef = %f\n", ang * 10, doom->calc.a);
 	  /* printf("ang * 10 = %f\n", ang * 10); */
-	  doom->calc.a = doom->calc.ang.tang[(int)ang * 10];
+	  doom->calc.a = doom->calc.ang.tang[(int)(ang * 10)];
 	  doom->calc.b = PLY - (PLX * doom->calc.a);
 	  doom->calc.cos = doom->calc.ang.cosi[(int)(ang * 10)];
 	  doom->calc.sin = doom->calc.ang.sinu[(int)(ang * 10)];
-	  test = 0;
 	  while (tmp2)
 	    {
-	      /* printf("test =%d\n", test); */
-	      /* printf("AX = %f \nAY = %f\nBX = %f\nBY = %f\n\n", tmp2->ax, tmp2->ay, tmp2->bx, tmp2->by); */
-	      test += 1;
 	      if ((tmp2->bx - tmp2->ax))
 		{
 		  doom->calc.na = (tmp2->by - tmp2->ay) / (tmp2->bx - tmp2->ax);
