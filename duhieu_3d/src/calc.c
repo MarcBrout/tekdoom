@@ -6,7 +6,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Jan 17 10:16:40 2016 benjamin duhieu
-** Last update Sat Jan 23 00:12:00 2016 marc brout
+** Last update Sat Jan 23 19:27:56 2016 benjamin duhieu
 */
 
 #include "main.h"
@@ -17,18 +17,24 @@ void		disp_wall(t_main *doom, int x, t_seg *tmp)
   int		i;
   double	k;
   double	wall;
-  unsigned int	*pixels;
+  t_color	*pixels;
 
   k = (sqrt(pow((doom->calc.nx - PLX), 2) +
 	    pow((doom->calc.ny - PLY), 2)));
   /* printf("x = %d, k = %f\n\n", x, 2 * k); */
   wall = HEIGHT / (2 * k);
-  pixels = (unsigned int *)doom->pix->pixels;
-  i = (HEIGHT / 2) - wall - /* ((tmp->z - 1) * 64) */ - 1;
+  printf("x = %d\n", x);
+  pixels = (t_color *)doom->pix->pixels;
+  i = (HEIGHT / 2) - wall - ((tmp->z - 1) * 64) - 1;
   if (i < 0)
     i = -1;
   while (++i <  ((HEIGHT / 2) + wall) && i < HEIGHT)
-    pixels[x + i * WIDTH] = WHITE;
+    {
+      pixels[x + i * WIDTH].argb[0] -= (int)(k / 2);
+      pixels[x + i * WIDTH].argb[1] -= (int)(k / 2);
+      pixels[x + i * WIDTH].argb[2] -= (int)(k / 2);
+      pixels[x + i * WIDTH].argb[3] -= (int)(k / 2);
+    }
 }
 
 int		inter(t_main *doom, int x, t_seg *tmp)
@@ -44,7 +50,6 @@ int		inter(t_main *doom, int x, t_seg *tmp)
   doom->calc.ny = doom->calc.na * doom->calc.nx + doom->calc.nb;
   chk1 = doom->calc.nx - PLX;
   chk2 = doom->calc.ny - PLY;
-  /* printf("cos = %f  chk1 = %f\n sin = %f chk2 = %f\nAX = %f \nAY = %f\nBX = %f\nBY = %f\n\n", doom->calc.cos, chk1, doom->calc.sin, chk2, AX, AY, BX, BY); */
   if (((doom->calc.cos >= 0 && chk1 > 0) && (doom->calc.sin > 0 && chk2 > 0)) ||
       ((doom->calc.cos <= 0 && chk1 < 0) && (doom->calc.sin > 0 && chk2 > 0)) ||
       ((doom->calc.cos >= 0 && chk1 > 0) && (doom->calc.sin < 0 && chk2 < 0)) ||
@@ -72,11 +77,16 @@ int	calc(t_main *doom)
     {
       /* printf("x = %d\n", x); */
 	  tmp2 = doom->pars->maps->next->lvls->segs;
-	  printf("ang * 10 = %f\n", ang * 10);
-	  doom->calc.a = doom->calc.ang.tang[(int)ang * 10];
+	  if (doom->calc.ang.tang[(int)(ang * 10)] == 0)
+	    {
+	      printf("test");
+	      ang = 359.99;
+	    }
+	  doom->calc.a = doom->calc.ang.tang[(int)(ang * 10)];
+	  printf("ang * 10 = %f coef = %f\n", ang * 10, doom->calc.a);
 	  doom->calc.b = PLY - (PLX * doom->calc.a);
-	  doom->calc.cos = doom->calc.ang.cosi[(int)ang * 10];
-	  doom->calc.sin = doom->calc.ang.sinu[(int)ang * 10];
+	  doom->calc.cos = doom->calc.ang.cosi[(int)(ang * 10)];
+	  doom->calc.sin = doom->calc.ang.sinu[(int)(ang * 10)];
 	  test = 0;
 	  while (tmp2)
 	    {
