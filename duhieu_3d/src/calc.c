@@ -6,13 +6,13 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Jan 17 10:16:40 2016 benjamin duhieu
-** Last update Sat Jan 23 19:27:56 2016 benjamin duhieu
+** Last update Sat Jan 23 19:34:40 2016 benjamin duhieu
 */
 
 #include "main.h"
 
 
-void		disp_wall(t_main *doom, int x, t_seg *tmp)
+void		disp_wall(t_main *doom, int x, UNUSED t_seg *tmp)
 {
   int		i;
   double	k;
@@ -72,7 +72,7 @@ int	calc(t_main *doom)
   if (ang < 0)
     ang += 359;
   /* printf("%f\n", (double)doom->calc.fov / WIDTH); */
-  printf("ang = %f\n", ANG);
+  /* printf("ang = %f\n", ANG); */
   while (++x < WIDTH)
     {
       /* printf("x = %d\n", x); */
@@ -84,6 +84,8 @@ int	calc(t_main *doom)
 	    }
 	  doom->calc.a = doom->calc.ang.tang[(int)(ang * 10)];
 	  printf("ang * 10 = %f coef = %f\n", ang * 10, doom->calc.a);
+	  /* printf("ang * 10 = %f\n", ang * 10); */
+	  doom->calc.a = doom->calc.ang.tang[(int)ang * 10];
 	  doom->calc.b = PLY - (PLX * doom->calc.a);
 	  doom->calc.cos = doom->calc.ang.cosi[(int)(ang * 10)];
 	  doom->calc.sin = doom->calc.ang.sinu[(int)(ang * 10)];
