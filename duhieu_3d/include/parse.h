@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:08:10 2016 marc brout
-** Last update Sat Jan 23 21:15:26 2016 marc brout
+** Last update Sat Jan 23 21:58:31 2016 marc brout
 */
 
 #ifndef PARSE_H_
@@ -22,7 +22,7 @@
 # define E_FLD "Missing folder\n"
 # define E_FIL "File missing or corrupted\n"
 # define E_PARSE "Parsing error\n"
-# define SEGL lvls->prev->segs
+# define SEGL lvls->segs
 # define NBTXT 1
 
 # ifndef TEXTURES

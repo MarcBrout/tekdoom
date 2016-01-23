@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Sat Jan 23 19:51:45 2016 marc brout
-** Last update Sat Jan 23 21:19:55 2016 marc brout
+** Last update Sat Jan 23 21:57:45 2016 marc brout
 */
 
 #include "main.h"
@@ -31,7 +31,7 @@ char			segment_listing(t_ini *ini, t_lvl *lvls)
 	 && (BISGF(ini->scope, "size", i / 4)) &&
 	 (BISGF(ini->scope, "type", i / 4)))
     {
-      add_segment(lvls->prev);
+      add_segment(lvls);
       SEGL->ax = get_double((char*)BISGF(ini->scope, "seg", i));
       SEGL->ay = get_double((char*)BISGF(ini->scope, "seg", i + 1));
       SEGL->bx = get_double((char*)BISGF(ini->scope, "seg", i + 2));

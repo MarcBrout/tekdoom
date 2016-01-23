@@ -6,27 +6,24 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Sun Jan 17 10:16:40 2016 benjamin duhieu
-** Last update Sat Jan 23 21:40:16 2016 marc brout
+** Last update Sat Jan 23 22:33:10 2016 marc brout
 */
 
 #include "main.h"
 
 
-void		put_in_k(t_main *doom, t_seg *tmp, t_lvl *lvl)
+void		put_in_k(t_main *doom, t_seg *tmp, t_lvl *lvl, int *i)
 {
   double	k;
-  int		i;
 
-  i = -1;
   k = (sqrt(pow((doom->calc.nx - lvl->plx), 2) +
 	    pow((doom->calc.ny - lvl->ply), 2)));
-  while (lvl->tabseg[0][++i] != -1);
-  lvl->tabseg[0][i] = k;
-  lvl->tabseg[1][i] = tmp->z;
-  printf("tabseg[0][%d] = %f, tabseg[1][%d] = %f\n", i, lvl->tabseg[0][i], i, tmp->z);
+  lvl->tabseg[0][*i] = k;
+  lvl->tabseg[1][*i] = tmp->z;
+  *i += 1;
  }
 
-int		inter(t_main *doom, t_seg *tmp, t_lvl *lvl)
+int		inter(t_main *doom, t_seg *tmp, t_lvl *lvl, int *i)
 {
   double	chk1;
   double	chk2;
@@ -43,7 +40,7 @@ int		inter(t_main *doom, t_seg *tmp, t_lvl *lvl)
       ((doom->calc.cos <= 0 && chk1 < 0) && (doom->calc.sin > 0 && chk2 > 0)) ||
       ((doom->calc.cos >= 0 && chk1 > 0) && (doom->calc.sin < 0 && chk2 < 0)) ||
       ((doom->calc.cos <= 0 && chk1 < 0) && (doom->calc.sin < 0 && chk2 < 0)))
-    put_in_k(doom, tmp, lvl);
+    put_in_k(doom, tmp, lvl, i);
   return (0);
 }
 
@@ -55,45 +52,39 @@ void	disp_wall(t_main *doom, t_lvl *lvl, int x)
   t_color	*pixels;
 
   i = -1;
-  while (lvl->tabseg[0][++i] != -1)
+  while (++i < lvl->nbseg)
     {
       wall = HEIGHT / (2 * lvl->tabseg[0][i]);
       pixels = (t_color *)doom->pix->pixels;
-      j = (HEIGHT / 2) - wall /* - ((tmp->z - 1) * 64) */ - 1;
+      j = (HEIGHT / 2) - wall - ((lvl->tabseg[1][i] - 1) * 64) - 1;
       if (j < 0)
 	j = -1;
       while (++j <  ((HEIGHT / 2) + wall) && j < HEIGHT)
 	{
 	  pixels[x + j * WIDTH].full = WHITE;
-<<<<<<< HEAD
-	    pixels[x + j * WIDTH].argb[0] -= (int)(k / 2);
-	  pixels[x + j * WIDTH].argb[1] -= (int)(k / 2);
-	  pixels[x + j * WIDTH].argb[2] -= (int)(k / 2);
-=======
 	  pixels[x + j * WIDTH].argb[0] -= (int)(lvl->tabseg[0][i] / 2);
 	  pixels[x + j * WIDTH].argb[1] -= (int)(lvl->tabseg[0][i] / 2);
 	  pixels[x + j * WIDTH].argb[2] -= (int)(lvl->tabseg[0][i] / 2);
->>>>>>> 5c6d112a88d1896bd08a0aed827eb6a24c7749b7
 	}
     }
 }
 
-void	tri_tabk(t_main *doom, t_lvl *lvl, int x)
+void		tri_tabk(t_main *doom, t_lvl *lvl, int x)
 {
-  int	i;
-  int	j;
-  int	k;
-  int	l;
-  int	tmp;
+  int		i;
+  int		j;
+  int		k;
+  int		l;
+  double	tmp;
 
   i = -1;
-  l = 0;
   tmp = 0;
-  while (lvl->tabseg[0][++i] != -1)
+  while (++i < lvl->nbseg)
     {
-      j = -1;
+      l = i;
+      j = i - 1;
       k = lvl->tabseg[0][i];
-      while (lvl->tabseg[0][++j] != -1)
+      while (++j < lvl->nbseg)
 	if (k >= lvl->tabseg[0][j] && l++)
 	  k = lvl->tabseg[0][j];
       tmp = lvl->tabseg[0][l];
@@ -108,6 +99,7 @@ int	calc(t_main *doom, t_lvl *lvl)
   double ang;
   int	x;
   t_seg *tmp2;
+  int	i;
 
   x = -1;
   ang = (lvl->pla + (doom->calc.fov / 2));
@@ -125,13 +117,14 @@ int	calc(t_main *doom, t_lvl *lvl)
       doom->calc.b = lvl->ply - (lvl->plx * doom->calc.a);
       doom->calc.cos = doom->calc.ang.cosi[(int)(ang * 10)];
       doom->calc.sin = doom->calc.ang.sinu[(int)(ang * 10)];
+      i = 0;
       while (tmp2)
 	{
 	  if ((tmp2->bx - tmp2->ax))
 	    {
 	      doom->calc.na = (tmp2->by - tmp2->ay) / (tmp2->bx - tmp2->ax);
 	      doom->calc.nb = tmp2->ay - (doom->calc.na * tmp2->ax);
-	      inter(doom, tmp2, lvl);
+	      inter(doom, tmp2, lvl, &i);
 	    }
 	  tmp2 = tmp2->next;
 	}
