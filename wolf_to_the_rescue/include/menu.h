@@ -5,18 +5,16 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Sun Jan 24 14:06:26 2016 Mathieu Sauvau
+** Last update Mon Jan 25 14:48:30 2016 Mathieu Sauvau
 */
 
 #ifndef STRUCT_H_
 # define  STRUCT_H_
 
 # include <lapin.h>
-# include <unistd.h>
-# include <string.h>
 
-# define WIDTH (data->config->width)
-# define HEIGHT (data->config->height)
+# define WIDTH data->config->width
+# define HEIGHT data->config->height
 # define VOLUME (data->config->volume)
 # define INPUT (data->config->input)
 # define CONFIG (data->config)
@@ -143,5 +141,6 @@ void                    draw_square(t_bunny_pixelarray *pix_ar,
                                     t_mrect *rect);
 void			load_config(t_data *data);
 void			load_letter(t_data *data);
+int			start(t_data *data);
 
 #endif /* !STRUCT_H_ */

@@ -1,21 +1,21 @@
 /*
 ** fill_tablvl.c for wolf
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Fri Dec 18 11:50:49 2015 marc brout
-** Last update Fri Dec 25 02:07:34 2015 marc brout
+** Last update Mon Jan 25 14:50:49 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
 
 void		get_player(t_param *arg, t_lvl *lvl)
 {
-  lvl->tiles = my_getnbr(FLD(arg->ini, lvl->name, "tile_size", 0));
-  lvl->playerx = my_getnbr(FLD(arg->ini, lvl->name, "start_position", 0));
-  lvl->playery = my_getnbr(FLD(arg->ini, lvl->name, "start_position", 1));
-  lvl->plangle = (my_getnbr(FLD(arg->ini, lvl->name, "start_position", 2))
+  lvl->tiles = my_getnbr((char *)FLD(arg->ini, lvl->name, "tile_size", 0));
+  lvl->playerx = my_getnbr((char *)FLD(arg->ini, lvl->name, "start_position", 0));
+  lvl->playery = my_getnbr((char *)FLD(arg->ini, lvl->name, "start_position", 1));
+  lvl->plangle = (my_getnbr((char *)FLD(arg->ini, lvl->name, "start_position", 2))
 		  % 360);
   if (!lvl->playerx || !lvl->playery || lvl->playerx >= lvl->width ||
       lvl->playery >= lvl->height)
@@ -55,7 +55,7 @@ char		get_lvl_map(t_param *arg, t_lvl *lvl)
 	  ind = x + (lvl->height - 1 - y) * lvl->width;
 	  if ((nb = FLD(arg->ini, lvl->name, "data", ind)) == NULL)
 	    return (1);
-	  lvl->map[y][x] = my_getnbr(nb);
+	  lvl->map[y][x] = my_getnbr((char *)nb);
 	  if (!lvl->map[y][x])
 	    pres = 1;
 	}
@@ -83,8 +83,8 @@ char		mal_lvl_map(t_param *arg, t_lvl *lvl)
 {
   int		i;
 
-  if ((lvl->height = my_getnbr(FLD(arg->ini, lvl->name, "height", 0))) < 3
-      || (lvl->width = my_getnbr(FLD(arg->ini, lvl->name, "width", 0))) < 3)
+  if ((lvl->height = my_getnbr((char *)FLD(arg->ini, lvl->name, "height", 0))) < 3
+      || (lvl->width = my_getnbr((char *)FLD(arg->ini, lvl->name, "width", 0))) < 3)
     return (1);
   if (mal_mini_map(arg, lvl))
     return (2);

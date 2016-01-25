@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 20 18:46:14 2015 Mathieu Sauvau
-** Last update Mon Jan 25 13:55:28 2016 Mathieu Sauvau
+** Last update Mon Jan 25 14:59:20 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -52,15 +52,13 @@ int			launch(t_data *data)
   return (0);
 }
 
-int			start()
+int			start(t_data *data)
 {
-  t_data		data;
-
-  if (launch(&data) == 1)
+  if (launch(data) == 1)
     return (1);
-  bunny_delete_clipable(&data.pix_ar->clipable);
-  bunny_delete_ini(data.config->ini);
-  bunny_free(data.config);
-  bunny_stop(data.win);
+  bunny_delete_clipable(&data->pix_ar->clipable);
+  bunny_delete_ini(data->config->ini);
+  bunny_free(data->config);
+  bunny_stop(data->win);
   return (0);
 }

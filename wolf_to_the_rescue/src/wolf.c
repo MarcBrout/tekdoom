@@ -5,10 +5,11 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Mon Jan 25 13:48:34 2016 maud marel
+** Last update Mon Jan 25 14:58:10 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
+#include "menu.h"
 
 void		whats_up(char **av, int err)
 {
@@ -26,9 +27,9 @@ void		set_cossin(t_param *arg)
   int		i;
 
   i = -1;
-  while (++i < WIDTH)
+  while (++i < arg->WIDTH)
     {
-      arg->wm.ydep[i] = (arg->calc.p * (WIDTH / 2 - i)) / WIDTH;
+      arg->wm.ydep[i] = (arg->calc.p * (arg->WIDTH / 2 - i)) / arg->WIDTH;
       if (i < 360)
 	{
 	  arg->wm.costab[i] = cos((double)RAD(i));
@@ -41,6 +42,11 @@ char		launch_wolf(char **av)
 {
   t_param	arg;
 
+  if ((arg.data = malloc(sizeof(t_data))) == NULL)
+    return (3);
+  start(arg.data);
+  if ((arg.wm.ydep = malloc(sizeof(double) * arg.WIDTH)) == NULL)
+    return (1);
   arg.calc.p = 1;
   arg.calc.d = 0.5;
   arg.hight = 0;
@@ -48,7 +54,7 @@ char		launch_wolf(char **av)
   arg.jump = 0;
   arg.speedy = 0;
   arg.vit = 0;
-  arg.calc.mini = HEIGHT / 50;
+  arg.calc.mini = arg.HEIGHT / 50;
   if (get_textures(&arg) || open_ini(&arg, av) ||
       check_all_lvl(&arg) || mal_tablvl(&arg))
     return (1);

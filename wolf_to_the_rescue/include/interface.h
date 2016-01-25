@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Dec 16 17:10:21 2015 maud marel
-** Last update Mon Jan 25 13:54:04 2016 maud marel
+** Last update Mon Jan 25 14:36:12 2016 Mathieu Sauvau
 */
 
 #ifndef INTERFACE_H_
@@ -57,9 +57,6 @@ t_bunny_response	my_loop(void *);
 t_bunny_response	my_escape(t_bunny_event_state,
 				  t_bunny_keysym,
 				  void *);
-void			tekpixel(t_bunny_pixelarray *,
-				 t_bunny_position *,
-				 unsigned int);
 void			tekpixel2(t_bunny_pixelarray *,
 				 t_bunny_position *,
 				 t_color *);
