@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Mon Jan 25 15:01:37 2016 Mathieu Sauvau
+** Last update Mon Jan 25 15:04:34 2016 Mathieu Sauvau
 */
 
 #ifndef WOLF_H_
@@ -142,5 +142,30 @@ char mal_tablvl(t_param *);
 char mal_lvl_map(t_param *, t_lvl *);
 char open_ini(t_param *, char **);
 char get_textures(t_param *);
+
+void                    draw_life_bar(t_param *);
+int                     draw_move_life(t_param *);
+int                     draw_move_life2(t_param *, t_bunny_position);
+void                    draw_square_life(t_param *);
+void                    action_draw_square_life(t_param *,
+						t_bunny_position,
+						t_bunny_position);
+void                    interface(t_param *);
+void                    interface_init(t_param *);
+int                     draw_heart(t_param *);
+void                    draw_heart2(t_param *, t_bunny_position,
+                                    t_bunny_position, int);
+void                    draw_heart_else(t_param *, int, int);
+int                     draw_bullet(t_param *);
+void                    draw_bullet2(t_param *, t_bunny_position,
+				     t_bunny_position, int);
+void                    draw_bullet_else(t_param *, int, int);
+int                     draw_game_over(t_param *);
+int                     draw_last_chance(t_param *);
+int                     draw_try_again(t_param *);
+int                     load_picture(t_param *);
+void                    tekpixel2(t_bunny_pixelarray *,
+                                 t_bunny_position *,
+                                 t_color *);
 
 #endif /* !WOLF_H_ */
