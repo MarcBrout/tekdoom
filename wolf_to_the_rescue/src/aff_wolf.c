@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Mon Jan 25 14:38:27 2016 maud marel
+** Last update Mon Jan 25 15:04:21 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -29,10 +29,10 @@ t_bunny_response		my_mouse(const t_bunny_position *pos,
     }
   else
     arg->mov = 0;
-  if ((abs->x <= 200 || abs->x >= (WIDTH - 200)) ||
-      (abs->y <= 200 || abs->y >= (HEIGHT - 200)))
+  if ((abs->x <= 200 || abs->x >= (arg->WIDTH - 200)) ||
+      (abs->y <= 200 || abs->y >= (arg->HEIGHT - 200)))
     {
-      bunny_set_mouse_position_window(arg->win, WIDTH / 2, HEIGHT / 2);
+      bunny_set_mouse_position_window(arg->win, arg->WIDTH / 2, arg->HEIGHT / 2);
       arg->mov = 1;
     }
   return (GO_ON);
@@ -72,8 +72,8 @@ int		sky(t_param *arg, int i)
   t_color	*pixels;
   int		total;
 
-  total = (WIDTH * HEIGHT) / 2 +
-    (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34))) * WIDTH;
+  total = (arg->WIDTH * arg->HEIGHT) / 2 +
+    (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34))) * arg->WIDTH;
   pixels = arg->pix->pixels;
   while (++i < total && total)
     pixels[i].full = SKY;
@@ -85,7 +85,7 @@ void		bottom(t_param *arg, int i)
   t_color	*pixels;
   int		realt;
 
-  realt = WIDTH * HEIGHT;
+  realt = arg->WIDTH * arg->HEIGHT;
   pixels = arg->pix->pixels;
   while (++i < realt)
     pixels[i].full = FLOOR;
@@ -93,8 +93,8 @@ void		bottom(t_param *arg, int i)
 
 char		aff_wolf(t_param *arg)
 {
-  if ((arg->pix = bunny_new_pixelarray(WIDTH, HEIGHT)) == NULL ||
-      (arg->win = bunny_start(WIDTH, HEIGHT, 0, "DOOM")) == NULL)
+  if ((arg->pix = bunny_new_pixelarray(arg->WIDTH, arg->HEIGHT)) == NULL ||
+      (arg->win = bunny_start(arg->WIDTH, arg->HEIGHT, 0, "DOOM")) == NULL)
     return (1);
   arg->curlvl = 0;
   arg->key = &my_keys;
@@ -108,7 +108,7 @@ char		aff_wolf(t_param *arg)
   bunny_set_move_response(arg->move);
   bunny_set_key_response(arg->key);
   bunny_set_mouse_visibility(arg->win, 0);
-  bunny_set_mouse_position_window(arg->win, WIDTH / 2, HEIGHT / 2);
+  bunny_set_mouse_position_window(arg->win, arg->WIDTH / 2, arg->HEIGHT / 2);
   bunny_loop(arg->win, 24, arg);
   bunny_delete_clipable(&arg->pix->clipable);
   bunny_stop(arg->win);

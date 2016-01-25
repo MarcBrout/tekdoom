@@ -1,11 +1,11 @@
 /*
 ** check_file.c for wolf
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Fri Dec 18 11:06:07 2015 marc brout
-** Last update Fri Dec 18 16:02:51 2015 marc brout
+** Last update Mon Jan 25 14:49:30 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -43,7 +43,7 @@ char		check_all_lvl(t_param *arg)
   char		*name;
   int		i;
 
-  arg->nblvl = my_getnbr(FLD(arg->ini, NULL, "lvlnb", 0));
+  arg->nblvl = my_getnbr((char *)FLD(arg->ini, NULL, "lvlnb", 0));
   i = -1;
   while (++i < arg->nblvl &&
 	 (name = (char *)FLD(arg->ini, NULL, "lvlscope", i)) != NULL)

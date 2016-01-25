@@ -5,13 +5,11 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Mon Jan 25 15:00:39 2016 maud marel
+** Last update Mon Jan 25 15:04:34 2016 Mathieu Sauvau
 */
 
 #ifndef WOLF_H_
 # define WOLF_H_
-# define WIDTH 1024
-# define HEIGHT 768
 # define SKY 0xFF796C71
 # define PLAYER 0xFF00D7FF
 # define WALLA 0xFF8E7587
@@ -37,6 +35,7 @@
 # include <time.h>
 # include "lapin.h"
 # include "interface.h"
+# include "menu.h"
 
 typedef struct		s_lvl
 {
@@ -56,10 +55,10 @@ typedef struct		s_lvl
 
 typedef struct		s_wmath
 {
-  double		ydep[WIDTH];
+  double		*ydep;
   double		costab[360];
   double		sintab[360];
-}			t_wmath;
+  }			t_wmath;
 
 typedef struct		s_calc
 {
@@ -77,6 +76,7 @@ typedef struct		s_calc
 typedef struct		s_param
 {
   t_calc		calc;
+  t_data		*data;
   t_wmath		wm;
   int			curlvl;
   int			nblvl;
@@ -100,8 +100,8 @@ t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
 t_bunny_response main_wolf(void *);
 t_bunny_response my_mouse(const t_bunny_position *, void *);
 int my_strcmp(const char *, char *);
-int my_strlen(const char *);
-int my_getnbr(const char *);
+/*int my_strlen(const char *);*/
+/*int my_getnbr(const char *);*/
 int  sky(t_param *, int);
 int next_casex(t_param *, double);
 int next_casey(t_param *, double);

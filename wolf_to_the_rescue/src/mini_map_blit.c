@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 01:06:18 2015 marc brout
-** Last update Mon Jan 25 10:24:13 2016 marc brout
+** Last update Mon Jan 25 14:56:01 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -64,12 +64,12 @@ void			mini_map(t_param *arg, t_lvl *lvl)
       /* 	arg->calc.mini - 1; */
       while (++x < radius)
 	if (((x * x) + (y * y)) <= (radius * radius))
-	  if (((5 * arg->calc.mini + x) < WIDTH &&
+	  if (((5 * arg->calc.mini + x) < arg->WIDTH &&
 	       (5 * arg->calc.mini + x) > 0) &&
-	      ((5 * arg->calc.mini + y) < HEIGHT &&
+	      ((5 * arg->calc.mini + y) < arg->HEIGHT &&
 	       (5 * arg->calc.mini + y)) > 0)
 	    {
-	      pixmap[5 * arg->calc.mini + x + (5 * arg->calc.mini + y) * WIDTH] =
+	      pixmap[5 * arg->calc.mini + x + (5 * arg->calc.mini + y) * arg->WIDTH] =
 		minmap[ABS((int)((lvl->playerx + x) +
 				 (lvl->playery + y) * lvl->mini->clipable.clip_width))];
 	    }
@@ -84,14 +84,14 @@ void		put_border(t_param *arg, int pix, unsigned int color)
   int		ymax;
   unsigned int	*pixels;
 
-  y = HEIGHT - 9 * arg->calc.mini - pix - 1;
-  ymax = HEIGHT - arg->calc.mini + pix;
+  y = arg->HEIGHT - 9 * arg->calc.mini - pix - 1;
+  ymax = arg->HEIGHT - arg->calc.mini + pix;
   xmax = 9 * arg->calc.mini + pix;
   pixels = arg->pix->pixels;
   while (++y < ymax)
     {
       x = arg->calc.mini - pix - 1;
       while (++x < xmax)
-	pixels[x + y * WIDTH] = color;
+	pixels[x + y * arg->WIDTH] = color;
     }
 }
