@@ -5,7 +5,11 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
+<<<<<<< HEAD
+## Last update Mon Jan 25 15:05:52 2016 maud marel
+=======
 ## Last update Mon Jan 25 14:07:16 2016 Mathieu Sauvau
+>>>>>>> fb1eaa46364440cf13afc0d20cafa52e2685b93f
 ##
 
 SRCP	= ./src/
@@ -52,6 +56,7 @@ SRC     = $(SRCP)wolf.c \
 	$(SRCI)draw_trigger.c \
 	$(SRCI)interface.c \
 	$(SRCI)tekpixel2.c \
+	$(SRCI)tekpixel3.c \
 
 OBJS    = $(SRC:.c=.o)
 
@@ -59,7 +64,7 @@ NAME    = tekdoom
 
 CC      = gcc -g
 
-CFLAGS  = -W -Wall -Werror -ansi -pedantic -I/home/${USER}/.froot/include -I./include
+CFLAGS  = -W -Wall -ansi -pedantic -I/home/${USER}/.froot/include -I./include
 
 LDFLAGS = -L/home/${USER}/.froot/lib \
 	-llapin \

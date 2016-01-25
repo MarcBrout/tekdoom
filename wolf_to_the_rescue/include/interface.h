@@ -6,10 +6,14 @@
 **
 ** Started on  Wed Dec 16 17:10:21 2015 maud marel
 <<<<<<< HEAD
+** Last update Mon Jan 25 15:06:02 2016 maud marel
+=======
+<<<<<<< HEAD
 ** Last update Mon Jan 25 15:06:09 2016 Mathieu Sauvau
 =======
 ** Last update Mon Jan 25 14:31:31 2016 maud marel
 >>>>>>> a1ed80b92d93f10ad8357248b627dd1e8a450e8f
+>>>>>>> fb1eaa46364440cf13afc0d20cafa52e2685b93f
 */
 
 #ifndef INTERFACE_H_
@@ -61,7 +65,11 @@ t_bunny_response	my_loop(void *);
 t_bunny_response	my_escape(t_bunny_event_state,
 				  t_bunny_keysym,
 				  void *);
+<<<<<<< HEAD
+void			tekpixel3(t_bunny_pixelarray *,
+=======
 void			tekpixel2(t_bunny_pixelarray *,
+>>>>>>> fb1eaa46364440cf13afc0d20cafa52e2685b93f
 				 t_bunny_position *,
 				 t_color *);
 /* void			tekpixel2(t_bunny_pixelarray *, */
