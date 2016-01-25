@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Mon Jan 25 16:16:05 2016 Mathieu Sauvau
+** Last update Mon Jan 25 17:00:36 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -40,6 +40,7 @@ void		set_cossin(t_param *arg)
 
 char		launch_wolf(t_param *arg , char **av)
 {
+  pos_pix_ar(arg->data);
   arg->calc.p = 1;
   arg->calc.d = 0.5;
   arg->hight = 0;

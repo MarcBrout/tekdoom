@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Mon Jan 25 16:38:15 2016 Mathieu Sauvau
+** Last update Mon Jan 25 17:01:02 2016 Mathieu Sauvau
 */
 
 #ifndef STRUCT_H_
@@ -142,5 +142,6 @@ void                    draw_square(t_bunny_pixelarray *pix_ar,
 void			load_config(t_data *data);
 void			load_letter(t_data *data);
 int			start(t_data *data);
+void			pos_pix_ar(t_data *);
 
 #endif /* !STRUCT_H_ */
