@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Sun Jan 17 10:45:26 2016 Maud MAREL
-** Last update Mon Jan 25 15:13:37 2016 Mathieu Sauvau
+** Last update Mon Jan 25 15:16:25 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -89,7 +89,7 @@ void			action_draw_square_life(t_param *arg,
     }
   while (++pos_eh.y <= pos_e.y)
     tekpixel3(arg->pix, &pos_eh, BLACK);
-  pos_s.x = (WIDTH / 75) - 1;
+  pos_s.x = (arg->WIDTH / 75) - 1;
   while (pos_s.y <= pos_e.y)
     {
       tekpixel3(arg->pix, &pos_s, BLACK);

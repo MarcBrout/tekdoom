@@ -5,22 +5,22 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Mon Jan 25 13:05:12 2016 maud marel
-** Last update Mon Jan 25 14:49:41 2016 maud marel
+** Last update Mon Jan 25 15:18:05 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
 
 void                    interface(t_param *arg)
 {
-  if ((arg->inter.life.pos_life.x == ((WIDTH / 75) - 2)) && arg->inter.life.nb_heart == 1)
+  if ((arg->inter.life.pos_life.x == ((arg->WIDTH / 75) - 2)) && arg->inter.life.nb_heart == 1)
     draw_game_over(arg);
-  else if ((arg->inter.life.pos_life.x == ((WIDTH / 75) - 2)) && arg->inter.life.nb_heart == 2)
+  else if ((arg->inter.life.pos_life.x == ((arg->WIDTH / 75) - 2)) && arg->inter.life.nb_heart == 2)
     draw_last_chance(arg);
-  else if ((arg->inter.life.pos_life.x == ((WIDTH / 75) - 2)) && arg->inter.life.nb_heart == 3)
+  else if ((arg->inter.life.pos_life.x == ((arg->WIDTH / 75) - 2)) && arg->inter.life.nb_heart == 3)
     draw_try_again(arg);
   if (arg->inter.life.nb_heart > 0)
     {
-      if (arg->inter.life.pos_life.x == ((3 * WIDTH) / 10 - 1))
+      if (arg->inter.life.pos_life.x == ((3 * arg->WIDTH) / 10 - 1))
         {
           draw_square_life(arg);
           draw_life_bar(arg);

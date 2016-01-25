@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:48:40 2016 Mathieu Sauvau
-** Last update Sun Jan 24 18:34:49 2016 Mathieu Sauvau
+** Last update Mon Jan 25 15:47:01 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -32,7 +32,7 @@ void			default_config(t_data *data)
   data->config->width = 800;
   data->config->height = 600;
   data->config->volume = 100;
-  data->config->volume = 60;
+  data->config->fov = 60;
   INPUT->key[0] = 25;
   INPUT->key[1] = 18;
   INPUT->key[2] = 16;

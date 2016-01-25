@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Mon Jan 25 15:04:34 2016 Mathieu Sauvau
+** Last update Mon Jan 25 16:14:08 2016 Mathieu Sauvau
 */
 
 #ifndef WOLF_H_
@@ -137,7 +137,7 @@ char check_all_lvl(t_param *);
 char check_lvl(t_param *, char *);
 char get_lvl_map(t_param *, t_lvl *);
 char get_tabmap(t_param *);
-char launch_wolf(char **);
+char launch_wolf(t_param *, char **);
 char mal_tablvl(t_param *);
 char mal_lvl_map(t_param *, t_lvl *);
 char open_ini(t_param *, char **);

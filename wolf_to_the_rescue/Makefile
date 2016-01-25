@@ -5,11 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-<<<<<<< HEAD
-## Last update Mon Jan 25 15:05:52 2016 maud marel
-=======
-## Last update Mon Jan 25 14:07:16 2016 Mathieu Sauvau
->>>>>>> fb1eaa46364440cf13afc0d20cafa52e2685b93f
+## Last update Mon Jan 25 15:14:40 2016 Mathieu Sauvau
 ##
 
 SRCP	= ./src/

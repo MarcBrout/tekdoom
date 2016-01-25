@@ -5,10 +5,10 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:51:11 2016 Mathieu Sauvau
-** Last update Sun Jan 24 14:07:32 2016 Mathieu Sauvau
+** Last update Mon Jan 25 15:44:37 2016 Mathieu Sauvau
 */
 
-#include "menu.h"
+#include "wolf.h"
 
 void                    draw_square(t_bunny_pixelarray *pix_ar,
                                     t_mrect *rect)
@@ -27,9 +27,9 @@ void                    draw_square(t_bunny_pixelarray *pix_ar,
 	       || rect->pos.x >= rect->size.x + x - rect->contour ||
 	       rect->pos.y <= y + rect->contour - 1
 	       || rect->pos.y >= rect->size.y + y - rect->contour))
-	    tekpixel(pix_ar, rect->pos, rect->color[1]);
+	    tekpixel3(pix_ar, &rect->pos, rect->color[1]);
 	  else
-	    tekpixel(pix_ar, rect->pos, rect->color[0]);
+	    tekpixel3(pix_ar, &rect->pos, rect->color[0]);
           rect->pos.y++;
         }
       rect->pos.x++;
@@ -86,16 +86,16 @@ void                    draw_slider_2(t_bunny_pixelarray *pix_ar,
       || rect->pos.y >= rect->size.y + pos.y - rect->contour)
     {
       if (rect->selected)
-	tekpixel(pix_ar, rect->pos, rect->color[1]);
+	tekpixel3(pix_ar, &rect->pos, rect->color[1]);
       else
-	tekpixel(pix_ar, rect->pos, WHITE);
+	tekpixel3(pix_ar, &rect->pos, WHITE);
     }
   else
     {
       if (rect->pos.x < rapport)
-	tekpixel(pix_ar, rect->pos, rect->color[0]);
+	tekpixel3(pix_ar, &rect->pos, rect->color[0]);
       else
-	tekpixel(pix_ar, rect->pos, WHITE);
+	tekpixel3(pix_ar, &rect->pos, WHITE);
     }
 }
 
