@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Dec 16 17:10:21 2015 maud marel
-** Last update Mon Jan 25 15:22:27 2016 Mathieu Sauvau
+** Last update Mon Jan 25 16:20:00 2016 maud marel
 */
 
 #ifndef INTERFACE_H_
