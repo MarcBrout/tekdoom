@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Mon Jan 25 14:03:23 2016 Mathieu Sauvau
+## Last update Mon Jan 25 14:06:12 2016 maud marel
 ##
 
 SRCP	= ./src/
@@ -50,6 +50,8 @@ SRC     = $(SRCP)wolf.c \
 	$(SRCI)draw_heart.c \
 	$(SRCI)draw_life.c \
 	$(SRCI)draw_trigger.c \
+	$(SRCI)interface.c \
+	$(SRCI)tekpixel2.c \
 
 OBJS    = $(SRC:.c=.o)
 
