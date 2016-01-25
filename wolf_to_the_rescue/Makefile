@@ -1,14 +1,16 @@
 ##
 ## Makefile for wolf3d in /home/brout_m/rendu/projet/Infographie/gfx_wolf3d
-## 
+##
 ## Made by marc brout
 ## Login   <brout_m@epitech.net>
-## 
+##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Mon Jan 25 09:38:45 2016 marc brout
+## Last update Mon Jan 25 13:53:38 2016 Mathieu Sauvau
 ##
 
 SRCP	= ./src/
+
+MENU = ./src/menu/
 
 SRC     = $(SRCP)wolf.c \
 	$(SRCP)check_file.c \
@@ -24,7 +26,24 @@ SRC     = $(SRCP)wolf.c \
 	$(SRCP)my_strdup.c \
 	$(SRCP)my_strlen.c \
 	$(SRCP)my_strcmp.c \
-	$(SRCP)textures.c
+	$(SRCP)textures.c \
+	$(MENU)change_key.c \
+	$(MENU)start.c \
+	$(MENU)menu.c \
+	$(MENU)menu_nav.c \
+	$(MENU)my_strcat.c \
+	$(MENU)my_strcpy.c \
+	$(MENU)my_revstr.c \
+	$(MENU)tekpixel.c \
+	$(MENU)itoa.c \
+	$(MENU)menu_draw.c \
+	$(MENU)menu_utilities.c \
+	$(MENU)menu_utilities2.c \
+	$(MENU)menu_init.c \
+	$(MENU)nav.c \
+	$(MENU)save_opt.c \
+	$(MENU)load_config.c \
+	$(MENU)write_bmp.c \
 
 OBJS    = $(SRC:.c=.o)
 
