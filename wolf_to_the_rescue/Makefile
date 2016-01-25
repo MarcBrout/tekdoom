@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Mon Jan 25 02:26:23 2016 marc brout
+## Last update Mon Jan 25 03:03:35 2016 marc brout
 ##
 
 SRCP	= ./src/
@@ -24,10 +24,11 @@ SRC     = $(SRCP)wolf.c \
 	$(SRCP)my_strdup.c \
 	$(SRCP)my_strlen.c \
 	$(SRCP)my_strcmp.c \
+	$(SRCP)textures.c
 
 OBJS    = $(SRC:.c=.o)
 
-NAME    = wolf3d
+NAME    = tekdoom
 
 CC      = gcc
 

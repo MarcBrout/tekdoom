@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Mon Jan 25 06:45:20 2016 benjamin duhieu
+** Last update Mon Jan 25 09:20:05 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -49,7 +49,8 @@ char		launch_wolf(char **av)
   arg.speedy = 0;
   arg.vit = 0;
   arg.calc.mini = HEIGHT / 50;
-  if (open_ini(&arg, av) || check_all_lvl(&arg) || mal_tablvl(&arg))
+  if (get_textures(&arg) || open_ini(&arg, av) ||
+      check_all_lvl(&arg) || mal_tablvl(&arg))
     return (1);
   if (get_tabmap(&arg))
     return (2);
