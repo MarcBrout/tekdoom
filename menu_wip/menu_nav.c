@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:34:03 2016 Mathieu Sauvau
-** Last update Fri Jan 22 17:47:40 2016 Mathieu Sauvau
+** Last update Sun Jan 24 14:04:43 2016 Mathieu Sauvau
 */
 
 #include <menu.h>
@@ -29,8 +29,7 @@ void			menu_nav(t_data *data)
     data->exit = true;
 }
 
-void			input_nav(t_bunny_event_state state, t_bunny_keysym keysym,
-				 t_data *data)
+void			input_nav(t_data *data)
 {
   if (data->selected_index == 9)
     {
@@ -45,8 +44,7 @@ void			input_nav(t_bunny_event_state state, t_bunny_keysym keysym,
     }
 }
 
-void			option_nav(t_bunny_event_state state, t_bunny_keysym keysym,
-				 t_data *data)
+void			option_nav(t_data *data)
 {
   if (data->selected_index == 0)
     data->config->fullscreen = !data->config->fullscreen;

@@ -5,8 +5,10 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Mon Oct  5 11:07:42 2015 Mathieu Sauvau
-** Last update Fri Jan  8 22:26:07 2016 Mathieu Sauvau
+** Last update Sun Jan 24 13:54:32 2016 Mathieu Sauvau
 */
+
+#include "menu.h"
 
 char	*my_revstr(char *str)
 {
