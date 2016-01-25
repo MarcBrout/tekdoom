@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 19:34:41 2015 marc brout
-** Last update Mon Jan 25 06:56:42 2016 benjamin duhieu
+** Last update Mon Jan 25 10:33:07 2016 marc brout
 */
 
 #include "wolf.h"
@@ -21,14 +21,16 @@ void		simple_tap(t_param *arg)
       move(arg, 0, 0.1);
     }
   if (keyboard[BKS_S])
-    move(arg, 0, -0.05);
+    {
+      arg->speedy = 0;
+      move(arg, 0, -0.05);
+    }
   if (keyboard[BKS_Q])
     move(arg, 90, 0.05);
   if (keyboard[BKS_D])
     move(arg, 90, -0.05);
   if (keyboard[BKS_SPACE])
     arg->jump = 101;
-  arg->vit = 0;
 }
 
 t_bunny_response	my_keys(t_bunny_event_state state,

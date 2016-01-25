@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 01:06:18 2015 marc brout
-** Last update Mon Jan 25 08:48:06 2016 benjamin duhieu
+** Last update Mon Jan 25 10:24:13 2016 marc brout
 */
 
 #include "wolf.h"
@@ -68,9 +68,11 @@ void			mini_map(t_param *arg, t_lvl *lvl)
 	       (5 * arg->calc.mini + x) > 0) &&
 	      ((5 * arg->calc.mini + y) < HEIGHT &&
 	       (5 * arg->calc.mini + y)) > 0)
-	    pixmap[5 * arg->calc.mini + x + (5 * arg->calc.mini + y) * WIDTH] =
-	      minmap[(int)((arg->lvl[arg->curlvl].playerx + x) +
-			   (arg->lvl[arg->curlvl].playery + y) * lvl->mini->clipable.clip_width)];
+	    {
+	      pixmap[5 * arg->calc.mini + x + (5 * arg->calc.mini + y) * WIDTH] =
+		minmap[ABS((int)((lvl->playerx + x) +
+				 (lvl->playery + y) * lvl->mini->clipable.clip_width))];
+	    }
     }
 }
 

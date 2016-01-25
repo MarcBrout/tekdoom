@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Mon Jan 25 09:21:54 2016 benjamin duhieu
+** Last update Mon Jan 25 10:36:22 2016 marc brout
 */
 
 #include "wolf.h"
@@ -63,8 +63,8 @@ void		project_k(t_param *arg, t_lvl *lvl, int x)
 
   pixels = arg->pix->pixels;
   pixelstext = arg->textures[0]->pixels;
-  total = (HEIGHT / 2) + HEIGHT / (2 * arg->calc.k) + lvl->yangle;
-  y = (HEIGHT / 2) - HEIGHT / (2 * arg->calc.k) - 1 + lvl->yangle;
+  total = (HEIGHT / 2) + HEIGHT / (2 * arg->calc.k) + lvl->yangle - (arg->hight * 200) / arg->calc.k;
+  y = (HEIGHT / 2) - HEIGHT / (2 * arg->calc.k) - 1 + lvl->yangle - (arg->hight * 200) / arg->calc.k;
   val = arg->calc.k / (arg->textures[0]->clipable.clip_height / 4);
   j = 0;
   k = arg->textures[0]->clipable.clip_width *

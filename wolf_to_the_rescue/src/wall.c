@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 25 00:46:23 2015 marc brout
-** Last update Mon Jan 25 06:36:36 2016 benjamin duhieu
+** Last update Mon Jan 25 10:35:08 2016 marc brout
 */
 
 #include "wolf.h"
@@ -24,7 +24,7 @@ void		new_hight(t_param *arg)
   if (arg->jump)
     {
       arg->hight = arg->wm.costab[arg->jump];
-      arg->jump += 7;
+      arg->jump += 8;
     }
 }
 
