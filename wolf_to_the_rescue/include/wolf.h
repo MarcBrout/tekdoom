@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Fri Dec 25 01:50:40 2015 marc brout
+** Last update Mon Jan 25 03:09:16 2016 marc brout
 */
 
 #ifndef WOLF_H_
@@ -23,6 +23,8 @@
 # define BORDERIN 0xFF00A5FF
 # define BORDEROU 0xFF00D7FF
 # define FLD bunny_ini_get_field
+# define NBTXT 1
+# define TXT_1 "files/textures/01_brick_wall.png"
 # define ZERO(val) (((val) > 0) ? (val) - 1 : -1)
 # define ABS(val) (((val) < 0) ? -(val) : (val))
 # define GET_X(val) ABS((WIDTH / 2) - WIDTH + (val))
@@ -79,6 +81,7 @@ typedef struct		s_param
   t_lvl			*lvl;
   t_bunny_ini		*ini;
   t_bunny_pixelarray	*pix;
+  t_bunny_pixelarray	*textures[NBTXT + 1];
   t_bunny_window	*win;
   t_bunny_key		key;
   t_bunny_move		move;
@@ -128,5 +131,6 @@ char launch_wolf(char **);
 char mal_tablvl(t_param *);
 char mal_lvl_map(t_param *, t_lvl *);
 char open_ini(t_param *, char **);
+char get_textures(t_param *);
 
 #endif /* !WOLF_H_ */
