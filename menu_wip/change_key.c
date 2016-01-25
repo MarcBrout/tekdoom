@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:55:31 2016 Mathieu Sauvau
-** Last update Fri Jan 22 16:55:56 2016 Mathieu Sauvau
+** Last update Sun Jan 24 14:19:09 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -32,9 +32,8 @@ void			swap_key(t_data *data, int key, int in_use)
   INPUT->key[in_use] = swap;
 }
 
-void		        change_key(t_bunny_keysym keysym, t_data *data)
+void		        change_key(t_data *data)
 {
-  t_bunny_position	pos_txt;
   const  bool		*k;
   int			i;
   int			in_use;

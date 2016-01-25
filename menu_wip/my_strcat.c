@@ -1,12 +1,14 @@
 /*
 ** my_strcat.c for strcat in /home/sauvau_m/rendu/Piscine_C_J07/lib/my
-** 
+**
 ** Made by Mathieu Sauvau
 ** Login   <sauvau_m@epitech.net>
-** 
+**
 ** Started on  Tue Oct  6 10:41:35 2015 Mathieu Sauvau
-** Last update Tue Oct  6 11:15:53 2015 Mathieu Sauvau
+** Last update Sun Jan 24 13:54:04 2016 Mathieu Sauvau
 */
+
+#include "menu.h"
 
 char	*my_strcat(char *dest, char *src)
 {

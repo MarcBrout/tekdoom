@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Jan 15 02:08:10 2016 marc brout
-** Last update Sat Jan 23 21:58:31 2016 marc brout
+** Last update Sun Jan 24 11:42:54 2016 Mathieu Sauvau
 */
 
 #ifndef PARSE_H_
@@ -95,6 +95,8 @@ typedef struct		s_enemy
   int			attack;
   int			speed;
   t_bunny_pixelarray	*img;
+  t_bunny_position	pos;
+  t_bunny_position	view;
 }			t_enemy;
 
 char mal_tab(t_lvl *);
