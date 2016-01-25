@@ -5,10 +5,12 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Mon Jan 25 13:53:38 2016 Mathieu Sauvau
+## Last update Mon Jan 25 14:03:23 2016 Mathieu Sauvau
 ##
 
 SRCP	= ./src/
+
+SRCI	= ./src/interface/
 
 MENU = ./src/menu/
 
@@ -44,6 +46,10 @@ SRC     = $(SRCP)wolf.c \
 	$(MENU)save_opt.c \
 	$(MENU)load_config.c \
 	$(MENU)write_bmp.c \
+	$(SRCI)draw_bullet.c \
+	$(SRCI)draw_heart.c \
+	$(SRCI)draw_life.c \
+	$(SRCI)draw_trigger.c \
 
 OBJS    = $(SRC:.c=.o)
 

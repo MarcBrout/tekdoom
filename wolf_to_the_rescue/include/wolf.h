@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Mon Jan 25 09:23:59 2016 benjamin duhieu
+** Last update Mon Jan 25 13:47:11 2016 maud marel
 */
 
 #ifndef WOLF_H_
@@ -36,6 +36,7 @@
 # include <stdio.h>
 # include <time.h>
 # include "lapin.h"
+# include "interface.h"
 
 typedef struct		s_lvl
 {
@@ -87,6 +88,7 @@ typedef struct		s_param
   t_bunny_window	*win;
   t_bunny_key		key;
   t_bunny_move		move;
+  t_interface		inter;
   char			mov;
   char			vit;
   int			speedy;
