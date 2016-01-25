@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:43:24 2016 Mathieu Sauvau
-** Last update Sun Jan 24 13:57:25 2016 Mathieu Sauvau
+** Last update Mon Jan 25 17:32:01 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -22,12 +22,12 @@ void			write_input_menu(t_data *data)
   write_bmp(data, "Left", pos_txt);
   pos_txt = calc_pos_txt(data, data->rect_input[3], my_strlen("Right"));
   write_bmp(data, "Right", pos_txt);
-  pos_txt = calc_pos_txt(data, data->rect_input[4], my_strlen("Action"));
-  write_bmp(data, "Action", pos_txt);
-  pos_txt = calc_pos_txt(data, data->rect_input[5], my_strlen("Jump"));
+  pos_txt = calc_pos_txt(data, data->rect_input[4], my_strlen("Jump"));
   write_bmp(data, "Jump", pos_txt);
-  pos_txt = calc_pos_txt(data, data->rect_input[6], my_strlen("Reload"));
+  pos_txt = calc_pos_txt(data, data->rect_input[5], my_strlen("Reload"));
   write_bmp(data, "Reload", pos_txt);
+  pos_txt = calc_pos_txt(data, data->rect_input[6], my_strlen("Action"));
+  write_bmp(data, "Action", pos_txt);
   pos_txt = calc_pos_txt(data, data->rect_input[7], my_strlen("Shoot"));
   write_bmp(data, "Shoot", pos_txt);
   pos_txt = calc_pos_txt(data, data->rect_input[8], my_strlen("Zoom"));

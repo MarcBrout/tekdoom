@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Mon Jan 25 16:14:08 2016 Mathieu Sauvau
+** Last update Mon Jan 25 17:20:34 2016 Mathieu Sauvau
 */
 
 #ifndef WOLF_H_
@@ -128,7 +128,7 @@ void project_k(t_param *, t_lvl *, int);
 void put_border(t_param *, int, unsigned int);
 void set_bump(t_param *, t_lvl *);
 void set_cossin(t_param *);
-void simple_tap(t_param *);
+void simple_tap(t_bunny_keysym, t_param *);
 char *my_strdup(char *);
 char mal_mini_map(t_param *, t_lvl *);
 char aff_wolf(t_param *);
