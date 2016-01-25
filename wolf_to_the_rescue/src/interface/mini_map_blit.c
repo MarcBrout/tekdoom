@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 01:06:18 2015 marc brout
-** Last update Mon Jan 25 14:56:01 2016 Mathieu Sauvau
+** Last update Mon Jan 25 21:00:59 2016 maud marel
 */
 
 #include "wolf.h"
@@ -42,26 +42,26 @@ void			mini_map(t_param *arg, t_lvl *lvl)
   int			x;
   int			y;
   int			radius;
-  /* int		xmini; */
-  /* int		xmax; */
-  /* int		ymini; */
-  /* int		ymax; */
+  int		xmini;
+  int		xmax;
+  int		ymini;
+  int		ymax;
   unsigned int	*pixmap;
   unsigned int	*minmap;
 
   radius = 4 * arg->calc.mini;
   y = -radius - 1;
-  /* ymini = lvl->minipos / lvl->mini->clipable.clip_width - 4 * */
-  /*   arg->calc.mini - 1; */
-  /* ymax = lvl->minipos / lvl->mini->clipable.clip_width + 4 * arg->calc.mini; */
-  /* xmax = lvl->minipos % lvl->mini->clipable.clip_width + 4 * arg->calc.mini; */
+  ymini = lvl->minipos / lvl->mini->clipable.clip_width - 4 *
+    arg->calc.mini - 1;
+  ymax = lvl->minipos / lvl->mini->clipable.clip_width + 4 * arg->calc.mini;
+  xmax = lvl->minipos % lvl->mini->clipable.clip_width + 4 * arg->calc.mini;
   pixmap = arg->pix->pixels;
   minmap = lvl->mini->pixels;
   while (++y < radius)
     {
       x = -radius - 1;
-      /* xmini = lvl->minipos % lvl->mini->clipable.clip_width - 4 * */
-      /* 	arg->calc.mini - 1; */
+      xmini = lvl->minipos % lvl->mini->clipable.clip_width - 4 *
+      	arg->calc.mini - 1;
       while (++x < radius)
 	if (((x * x) + (y * y)) <= (radius * radius))
 	  if (((5 * arg->calc.mini + x) < arg->WIDTH &&

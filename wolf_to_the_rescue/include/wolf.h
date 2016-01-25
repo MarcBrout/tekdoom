@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Mon Jan 25 17:20:34 2016 Mathieu Sauvau
+** Last update Mon Jan 25 18:51:28 2016 maud marel
 */
 
 #ifndef WOLF_H_
