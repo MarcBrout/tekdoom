@@ -1,11 +1,11 @@
 ##
 ## Makefile for wolf3d in /home/brout_m/rendu/projet/Infographie/gfx_wolf3d
-## 
+##
 ## Made by marc brout
 ## Login   <brout_m@epitech.net>
-## 
+##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Mon Jan 25 03:03:35 2016 marc brout
+## Last update Mon Jan 25 09:29:14 2016 benjamin duhieu
 ##
 
 SRCP	= ./src/
@@ -30,7 +30,7 @@ OBJS    = $(SRC:.c=.o)
 
 NAME    = tekdoom
 
-CC      = gcc
+CC      = gcc -g
 
 CFLAGS  = -W -Wall -Werror -ansi -pedantic -I/home/${USER}/.froot/include -I./include
 
