@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Mon Jan 25 14:48:30 2016 Mathieu Sauvau
+** Last update Mon Jan 25 16:38:15 2016 Mathieu Sauvau
 */
 
 #ifndef STRUCT_H_
@@ -15,11 +15,11 @@
 
 # define WIDTH data->config->width
 # define HEIGHT data->config->height
-# define VOLUME (data->config->volume)
-# define INPUT (data->config->input)
-# define CONFIG (data->config)
-# define RES (data->config->res)
-# define BGF (bunny_ini_get_field)
+# define VOLUME data->config->volume
+# define INPUT data->config->input
+# define CONFIG data->config
+# define RES data->config->res
+# define BGF bunny_ini_get_field
 
 typedef struct		s_resolution
 {
@@ -120,7 +120,7 @@ char			*my_strcat(char *, char *);
 char			*my_revstr(char *);
 char			*itoa(int, char *, int);
 t_bunny_response	esc(t_bunny_event_state, t_bunny_keysym, void *);
-void			menu_nav(t_data *data);
+int			menu_nav(t_data *data);
 void			input_nav( t_data *data);
 t_bunny_position	pos_(int x, int y);
 t_mrect			slider(t_data *data, bool selected, int pos_slider,

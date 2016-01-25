@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Mon Jan 25 15:04:21 2016 Mathieu Sauvau
+** Last update Mon Jan 25 16:33:15 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -45,6 +45,8 @@ t_bunny_response	main_wolf(void *data)
 
   arg = data;
   i = -1;
+  if (arg->data->exit)
+    return (EXIT_ON_SUCCESS);
   if (arg->speedy)
     {
       move(arg, 0, 0.02);
@@ -62,7 +64,7 @@ t_bunny_response	main_wolf(void *data)
   put_border(arg, 2, BORDEROU);
   mini_map(arg, &arg->lvl[arg->curlvl]);
   interface(arg);
-  bunny_blit(&arg->win->buffer, &arg->pix->clipable, NULL);
+  bunny_blit(&arg->win->buffer, &arg->pix->clipable, &arg->data->pos);
   bunny_display(arg->win);
   return (GO_ON);
 }
@@ -94,7 +96,8 @@ void		bottom(t_param *arg, int i)
 char		aff_wolf(t_param *arg)
 {
   if ((arg->pix = bunny_new_pixelarray(arg->WIDTH, arg->HEIGHT)) == NULL ||
-      (arg->win = bunny_start(arg->WIDTH, arg->HEIGHT, 0, "DOOM")) == NULL)
+      (arg->win = bunny_start(arg->WIDTH, arg->HEIGHT,
+			      arg->CONFIG->fullscreen, "DOOM")) == NULL)
     return (1);
   arg->curlvl = 0;
   arg->key = &my_keys;

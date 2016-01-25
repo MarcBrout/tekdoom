@@ -5,15 +5,15 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:34:03 2016 Mathieu Sauvau
-** Last update Mon Jan 25 13:54:37 2016 Mathieu Sauvau
+** Last update Mon Jan 25 16:37:57 2016 Mathieu Sauvau
 */
 
 #include <menu.h>
 
-void			menu_nav(t_data *data)
+int			menu_nav(t_data *data)
 {
-  /*	  if (data->selected_index == 0)
-	  profl name for save -> play*/
+  if (data->selected_index == 0)
+    return (1);
   if (data->selected_index == 1)
     {
       data->menu_length = 7;
@@ -27,6 +27,7 @@ void			menu_nav(t_data *data)
     }
   else if (data->selected_index == 3)
     data->exit = true;
+  return (0);
 }
 
 void			input_nav(t_data *data)
