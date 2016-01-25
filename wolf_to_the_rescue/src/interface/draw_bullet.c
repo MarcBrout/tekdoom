@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 20 15:08:42 2016 Maud MAREL
-** Last update Mon Jan 25 14:33:13 2016 maud marel
+** Last update Mon Jan 25 15:08:15 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -46,9 +46,9 @@ void	draw_bullet2(t_param *arg, t_bunny_position pos,
       pos.x = 0;
       while (pos.x < arg->inter.bullet.bullet->clipable.clip_width)
 	{
-	  end.x = pos.x + (WIDTH / 10)
-	    + (WIDTH / 5) - (nb * arg->inter.bullet.bullet->clipable.clip_width);
-	  end.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) + pos.y
+	  end.x = pos.x + (arg->WIDTH / 10)
+	    + (arg->WIDTH / 5) - (nb * arg->inter.bullet.bullet->clipable.clip_width);
+	  end.y = (arg->HEIGHT - ((arg->HEIGHT / 65) + (arg->HEIGHT / 65))) + pos.y
 	    - arg->inter.bullet.bullet->clipable.clip_height - 3;
 	  tekpixel2(arg->pix, &end, &arg->inter.bullet.color[i]);
 	  pos.x++;
@@ -74,9 +74,9 @@ void			draw_bullet_else(t_param *arg, int bullet, int nb)
 	  pos.x = -1;
 	  while (++pos.x < arg->inter.bullet.bullet->clipable.clip_width)
 	    {
-	      end.x = pos.x + (WIDTH / 10)
-		+ (WIDTH / 5) - (nb * arg->inter.bullet.bullet->clipable.clip_width);
-	      end.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) + pos.y
+	      end.x = pos.x + (arg->WIDTH / 10)
+		+ (arg->WIDTH / 5) - (nb * arg->inter.bullet.bullet->clipable.clip_width);
+	      end.y = (arg->HEIGHT - ((arg->HEIGHT / 65) + (arg->HEIGHT / 65))) + pos.y
 		- arg->inter.bullet.bullet->clipable.clip_height - 3;
 	      tekpixel2(arg->pix, &end, &color[end.x + end.y]);
 	    }

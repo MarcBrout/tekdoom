@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 20 15:47:07 2016 Maud MAREL
-** Last update Mon Jan 25 14:33:29 2016 maud marel
+** Last update Mon Jan 25 15:09:04 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -45,9 +45,9 @@ void	draw_heart2(t_param *arg, t_bunny_position pos,
       pos.x = 0;
       while (pos.x < arg->inter.life.heart->clipable.clip_width)
 	{
-	  end.x = (WIDTH / 75) + pos.x
+	  end.x = (arg->WIDTH / 75) + pos.x
 	    + (nb * arg->inter.life.heart->clipable.clip_width);
-	  end.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) + pos.y
+	  end.y = (arg->HEIGHT - ((arg->HEIGHT / 65) + (arg->HEIGHT / 65))) + pos.y
 	    - arg->inter.life.heart->clipable.clip_height - 3;
 	  tekpixel2(arg->pix, &end, &arg->inter.life.color[i]);
 	  pos.x++;
@@ -73,9 +73,9 @@ void			draw_heart_else(t_param *arg, int heart, int nb)
 	  pos.x = -1;
 	  while (++pos.x < arg->inter.life.heart->clipable.clip_width)
 	    {
-	      end.x = (WIDTH / 75) + pos.x
+	      end.x = (arg->WIDTH / 75) + pos.x
 		+ (nb * arg->inter.life.heart->clipable.clip_width);
-	      end.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) + pos.y
+	      end.y = (arg->HEIGHT - ((arg->HEIGHT / 65) + (arg->HEIGHT / 65))) + pos.y
 		- arg->inter.life.heart->clipable.clip_height - 3;
 	      tekpixel2(arg->pix, &end, &color[end.x + end.y]);
 	    }
