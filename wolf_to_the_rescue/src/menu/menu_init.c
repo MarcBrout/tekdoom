@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:48:40 2016 Mathieu Sauvau
-** Last update Mon Jan 25 15:47:01 2016 Mathieu Sauvau
+** Last update Mon Jan 25 16:57:59 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -44,6 +44,20 @@ void			default_config(t_data *data)
   INPUT->key[8] = 12;
 }
 
+void			pos_pix_ar(t_data *data)
+{
+  if (CONFIG->fullscreen && CONFIG->height == 720)
+    {
+      data->pos.x = WIDTH / 4;
+      data->pos.y = HEIGHT / 4;
+    }
+  else
+    {
+      data->pos.x = 0;
+      data->pos.y = 0;
+    }
+}
+
 int			init_data(t_data *data)
 {
   data->menu_length = 4;
@@ -57,16 +71,7 @@ int			init_data(t_data *data)
   data->menu_index = 0;
   data->exit = false;
   INPUT->change_key = false;
-  if (CONFIG->fullscreen && CONFIG->height == 720)
-    {
-      data->pos.x = WIDTH / 4;
-      data->pos.y = HEIGHT / 4;
-    }
-  else
-    {
-      data->pos.x = 0;
-      data->pos.y = 0;
-    }
+  pos_pix_ar(data);
   return (0);
 }
 
