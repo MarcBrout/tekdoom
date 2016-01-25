@@ -1,11 +1,11 @@
 /*
 ** wolf.c for wolf
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Fri Dec 25 01:47:21 2015 marc brout
+** Last update Mon Jan 25 06:45:20 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -43,6 +43,11 @@ char		launch_wolf(char **av)
 
   arg.calc.p = 1;
   arg.calc.d = 0.5;
+  arg.hight = 0;
+  arg.chrono = -1;
+  arg.jump = 0;
+  arg.speedy = 0;
+  arg.vit = 0;
   arg.calc.mini = HEIGHT / 50;
   if (open_ini(&arg, av) || check_all_lvl(&arg) || mal_tablvl(&arg))
     return (1);

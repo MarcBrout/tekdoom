@@ -1,11 +1,11 @@
 /*
 ** wolf3d.h for wolf
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Fri Dec 25 01:50:40 2015 marc brout
+** Last update Mon Jan 25 06:45:06 2016 benjamin duhieu
 */
 
 #ifndef WOLF_H_
@@ -32,6 +32,7 @@
 # include <math.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <time.h>
 # include "lapin.h"
 
 typedef struct		s_lvl
@@ -76,6 +77,7 @@ typedef struct		s_param
   t_wmath		wm;
   int			curlvl;
   int			nblvl;
+  double		hight;
   t_lvl			*lvl;
   t_bunny_ini		*ini;
   t_bunny_pixelarray	*pix;
@@ -83,6 +85,10 @@ typedef struct		s_param
   t_bunny_key		key;
   t_bunny_move		move;
   char			mov;
+  char			vit;
+  int			speedy;
+  int			jump;
+  int			chrono;
 }			t_param;
 
 t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
@@ -91,9 +97,11 @@ t_bunny_response my_mouse(const t_bunny_position *, void *);
 int my_strcmp(const char *, char *);
 int my_strlen(const char *);
 int my_getnbr(const char *);
+int  sky(t_param *, int);
 int next_casex(t_param *, double);
 int next_casey(t_param *, double);
 void whats_up(char **, int);
+void bottom(t_param *, int);
 void wall_north_east(t_param *, int, int, int);
 void wall_south_east(t_param *, int, int, int);
 void wall_north_west(t_param *, int, int, int);
@@ -104,18 +112,18 @@ void set_minimaps(t_param *);
 void tek_circle(t_lvl *, int);
 void add_player_to_mini(t_param *, t_lvl *);
 void basic_to_sec(t_param *, int);
-void bottom(t_param *);
 void calc_walls(t_param *);
+void celerity(t_param *);
 void get_len(t_param *);
 void get_player(t_param *, t_lvl *);
 void mini_map(t_param *, t_lvl *);
 void move(t_param *, double, double);
+void new_hight(t_param *);
 void project_k(t_param *, t_lvl *, int);
 void put_border(t_param *, int, unsigned int);
 void set_bump(t_param *, t_lvl *);
 void set_cossin(t_param *);
 void simple_tap(t_param *);
-void sky(t_param *);
 char *my_strdup(char *);
 char mal_mini_map(t_param *, t_lvl *);
 char aff_wolf(t_param *);

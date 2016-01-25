@@ -1,11 +1,11 @@
 /*
 ** aff_wolf.c for wolf
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Fri Jan 22 00:16:13 2016 marc brout
+** Last update Mon Jan 25 06:56:53 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -20,8 +20,8 @@ t_bunny_response		my_mouse(const t_bunny_position *pos,
   abs = bunny_get_mouse_position();
   if (!arg->mov)
     {
-      arg->lvl[arg->curlvl].yangle -= pos->y / 3;
-      arg->lvl[arg->curlvl].plangle -= pos->x / 3;
+      arg->lvl[arg->curlvl].yangle += pos->y / 3;
+      arg->lvl[arg->curlvl].plangle += pos->x / 3;
       if (arg->lvl[arg->curlvl].plangle <= 0)
 	arg->lvl[arg->curlvl].plangle += 359;
       if (arg->lvl[arg->curlvl].plangle >= 359)
@@ -41,11 +41,19 @@ t_bunny_response		my_mouse(const t_bunny_position *pos,
 t_bunny_response	main_wolf(void *data)
 {
   t_param		*arg;
+  int			i;
 
   arg = data;
+  i = -1;
+  if (arg->speedy)
+    {
+      move(arg, 0, 0.02);
+      arg->speedy--;
+    }
+  new_hight(arg);
   simple_tap(arg);
-  sky(arg);
-  bottom(arg);
+  i = sky(arg, i);
+  bottom(arg, i);
   calc_walls(arg);
   set_bump(arg, &arg->lvl[arg->curlvl]);
   add_player_to_mini(arg, &arg->lvl[arg->curlvl]);
@@ -58,39 +66,34 @@ t_bunny_response	main_wolf(void *data)
   return (GO_ON);
 }
 
-void		sky(t_param *arg)
+int		sky(t_param *arg, int i)
 {
-  int		i;
   t_color	*pixels;
   int		total;
 
-  total = (WIDTH * HEIGHT) / 2 + (int)arg->lvl[arg->curlvl].yangle * WIDTH;
+  total = (WIDTH * HEIGHT) / 2 +
+    (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34))) * WIDTH;
   pixels = arg->pix->pixels;
-  i = -1;
   while (++i < total && total)
     pixels[i].full = SKY;
+  return (i);
 }
 
-void		bottom(t_param *arg)
+void		bottom(t_param *arg, int i)
 {
-  int		i;
   t_color	*pixels;
-  int		total;
   int		realt;
 
   realt = WIDTH * HEIGHT;
-  total = (WIDTH * (HEIGHT + ABS(arg->lvl[arg->curlvl].yangle)));
   pixels = arg->pix->pixels;
-  i = ZERO((WIDTH * HEIGHT) / 2 + (int)arg->lvl[arg->curlvl].yangle *
-	   WIDTH);
-  while (++i >= 0 && i < realt && i < total)
+  while (++i < realt)
     pixels[i].full = FLOOR;
 }
 
 char		aff_wolf(t_param *arg)
 {
   if ((arg->pix = bunny_new_pixelarray(WIDTH, HEIGHT)) == NULL ||
-      (arg->win = bunny_start(WIDTH, HEIGHT, 0, "WOLFY")) == NULL)
+      (arg->win = bunny_start(WIDTH, HEIGHT, 0, "DOOM")) == NULL)
     return (1);
   arg->curlvl = 0;
   arg->key = &my_keys;

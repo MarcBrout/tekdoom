@@ -1,11 +1,11 @@
 /*
 ** calc.c for wolf
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Fri Dec 25 00:57:53 2015 marc brout
+** Last update Mon Jan 25 06:39:58 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -57,8 +57,8 @@ void		project_k(t_param *arg, t_lvl *lvl, int x)
   int		total;
 
   pixels = arg->pix->pixels;
-  total = (HEIGHT / 2) + HEIGHT / (2 * arg->calc.k) + lvl->yangle;
-  y = (HEIGHT / 2) - HEIGHT / (2 * arg->calc.k) - 1 + lvl->yangle;
+  total = (HEIGHT / 2) + HEIGHT / (2 * arg->calc.k) + lvl->yangle - (arg->hight * 100) / arg->calc.k;
+  y = (HEIGHT / 2) - HEIGHT / (2 * arg->calc.k) - 1 + lvl->yangle - (arg->hight * 100) / arg->calc.k;
   y = (y >= 0) ? y : -1;
   if (lvl->map[(int)arg->calc.yf][(int)arg->calc.xf] == 3)
     while (++y < total && y < HEIGHT)

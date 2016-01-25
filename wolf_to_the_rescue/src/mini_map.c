@@ -1,11 +1,11 @@
 /*
 ** mini_map.c for wolf
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Mon Dec 21 16:32:47 2015 marc brout
-** Last update Thu Dec 24 14:36:11 2015 marc brout
+** Last update Mon Jan 25 04:03:58 2016 benjamin duhieu
 */
 
 #include "wolf.h"

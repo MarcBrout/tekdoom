@@ -1,11 +1,11 @@
 /*
 ** mini_map_blit.c for wolf
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Tue Dec 22 01:06:18 2015 marc brout
-** Last update Thu Dec 24 23:11:49 2015 marc brout
+** Last update Mon Jan 25 08:48:06 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -37,32 +37,40 @@ void		set_bump(t_param * arg, t_lvl *lvl)
     }
 }
 
-void		mini_map(t_param *arg, t_lvl *lvl)
+void			mini_map(t_param *arg, t_lvl *lvl)
 {
-  int		x;
-  int		y;
-  int		xmini;
-  int		xmax;
-  int		ymini;
-  int		ymax;
+  int			x;
+  int			y;
+  int			radius;
+  /* int		xmini; */
+  /* int		xmax; */
+  /* int		ymini; */
+  /* int		ymax; */
   unsigned int	*pixmap;
   unsigned int	*minmap;
 
-  y = HEIGHT - 9 * arg->calc.mini - 1;
-  ymini = lvl->minipos / lvl->mini->clipable.clip_width - 4 *
-    arg->calc.mini - 1;
-  ymax = lvl->minipos / lvl->mini->clipable.clip_width + 4 * arg->calc.mini;
-  xmax = lvl->minipos % lvl->mini->clipable.clip_width + 4 * arg->calc.mini;
+  radius = 4 * arg->calc.mini;
+  y = -radius - 1;
+  /* ymini = lvl->minipos / lvl->mini->clipable.clip_width - 4 * */
+  /*   arg->calc.mini - 1; */
+  /* ymax = lvl->minipos / lvl->mini->clipable.clip_width + 4 * arg->calc.mini; */
+  /* xmax = lvl->minipos % lvl->mini->clipable.clip_width + 4 * arg->calc.mini; */
   pixmap = arg->pix->pixels;
   minmap = lvl->mini->pixels;
-  while (++ymini < ymax && ++y > 0)
+  while (++y < radius)
     {
-      x = arg->calc.mini - 1;
-      xmini = lvl->minipos % lvl->mini->clipable.clip_width - 4 *
-	arg->calc.mini - 1;
-      while (++xmini < xmax && ++x > 0)
-	pixmap[x + y * WIDTH] =
-	  minmap[xmini + ymini * lvl->mini->clipable.clip_width];
+      x = -radius - 1;
+      /* xmini = lvl->minipos % lvl->mini->clipable.clip_width - 4 * */
+      /* 	arg->calc.mini - 1; */
+      while (++x < radius)
+	if (((x * x) + (y * y)) <= (radius * radius))
+	  if (((5 * arg->calc.mini + x) < WIDTH &&
+	       (5 * arg->calc.mini + x) > 0) &&
+	      ((5 * arg->calc.mini + y) < HEIGHT &&
+	       (5 * arg->calc.mini + y)) > 0)
+	    pixmap[5 * arg->calc.mini + x + (5 * arg->calc.mini + y) * WIDTH] =
+	      minmap[(int)((arg->lvl[arg->curlvl].playerx + x) +
+			   (arg->lvl[arg->curlvl].playery + y) * lvl->mini->clipable.clip_width)];
     }
 }
 
