@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Sat Jan 23 18:35:13 2016 maud marel
-** Last update Mon Jan 25 14:35:21 2016 maud marel
+** Last update Mon Jan 25 15:17:18 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -25,8 +25,8 @@ int			draw_game_over(t_param *arg)
       pos.x = 0;
       while (pos.x < arg->inter.trigger.game_over->clipable.clip_width)
 	{
-	  end.x = (WIDTH - arg->inter.trigger.game_over->clipable.clip_width) / 2 + pos.x;
-	  end.y = (HEIGHT - arg->inter.trigger.game_over->clipable.clip_height) / 2 + pos.y;
+	  end.x = (arg->WIDTH - arg->inter.trigger.game_over->clipable.clip_width) / 2 + pos.x;
+	  end.y = (arg->HEIGHT - arg->inter.trigger.game_over->clipable.clip_height) / 2 + pos.y;
 	  tekpixel2(arg->pix, &end, &color[i]);
 	  pos.x++;
 	  i++;
@@ -51,8 +51,8 @@ int			draw_last_chance(t_param *arg)
       pos.x = 0;
       while (pos.x < arg->inter.trigger.lastchance->clipable.clip_width)
 	{
-	  end.x = (WIDTH - arg->inter.trigger.lastchance->clipable.clip_width) / 2 + pos.x;
-	  end.y = (HEIGHT - arg->inter.trigger.lastchance->clipable.clip_height) / 2 + pos.y;
+	  end.x = (arg->WIDTH - arg->inter.trigger.lastchance->clipable.clip_width) / 2 + pos.x;
+	  end.y = (arg->HEIGHT - arg->inter.trigger.lastchance->clipable.clip_height) / 2 + pos.y;
 	  tekpixel2(arg->inter.pix, &end, &color[i]);
 	  pos.x++;
 	  i++;
@@ -77,8 +77,8 @@ int			draw_try_again(t_param *arg)
       pos.x = 0;
       while (pos.x < arg->inter.trigger.try_again->clipable.clip_width)
 	{
-	  end.x = (WIDTH - arg->inter.trigger.try_again->clipable.clip_width) / 2 + pos.x;
-	  end.y = (HEIGHT - arg->inter.trigger.try_again->clipable.clip_height) / 2 + pos.y;
+	  end.x = (arg->WIDTH - arg->inter.trigger.try_again->clipable.clip_width) / 2 + pos.x;
+	  end.y = (arg->HEIGHT - arg->inter.trigger.try_again->clipable.clip_height) / 2 + pos.y;
 	  tekpixel2(arg->pix, &end, &color[i]);
 	  pos.x++;
 	  i++;

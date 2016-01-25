@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:49:58 2016 Mathieu Sauvau
-** Last update Sun Jan 24 14:07:15 2016 Mathieu Sauvau
+** Last update Mon Jan 25 15:29:38 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -53,7 +53,7 @@ void			load_letter(t_data *data)
   scale = 0.5;
   scale += 0.25 * CONFIG->res_i;
   my_strcpy(path, "text/a.bmp");
-  my_strcpy(letter, "  0123456789abcdefghijklmnopqrstuvwxyz");
+  my_strcpy(letter, " 0123456789abcdefghijklmnopqrstuvwxyz");
   my_strcat(letter, "ABCDEFGHIJKLMNOPQRSTUWVXYZ()<>.,!?;:-_'\"");
   l_path = my_strlen(path);
   while (++i < 75)

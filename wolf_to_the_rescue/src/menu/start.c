@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 20 18:46:14 2015 Mathieu Sauvau
-** Last update Mon Jan 25 14:59:20 2016 Mathieu Sauvau
+** Last update Mon Jan 25 15:43:10 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -33,7 +33,7 @@ t_bunny_response	mainloop(void	*my_data)
   else if (data->menu_index == 3 && !INPUT->change_key)
     write_input_menu(data);
   if (INPUT->change_key)
-    write_change_key(data);
+  write_change_key(data);
   bunny_display(data->win);
   return (GO_ON);
 }
@@ -43,9 +43,11 @@ int			launch(t_data *data)
   if (init_data(data) == 1)
     return (-1);
   memory_check = 1;
-  data->win = bunny_start(WIDTH, HEIGHT,
-			  CONFIG->fullscreen, "TEk-DOOM");
-  data->pix_ar = bunny_new_pixelarray(WIDTH, HEIGHT);
+  if ((data->win = bunny_start(WIDTH, HEIGHT,
+			      CONFIG->fullscreen, "TEk-DOOM")) == NULL
+      || (data->pix_ar = bunny_new_pixelarray(WIDTH, HEIGHT)) == NULL)
+    return (-1);
+  bunny_blit(&data->win->buffer, &data->pix_ar->clipable, &data->pos);
   bunny_set_loop_main_function(mainloop);
   bunny_set_key_response(&esc);
   bunny_loop(data->win, 10, data);

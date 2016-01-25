@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Dec 16 17:10:21 2015 maud marel
-** Last update Mon Jan 25 15:09:58 2016 maud marel
+** Last update Mon Jan 25 16:20:00 2016 maud marel
 */
 
 #ifndef INTERFACE_H_
@@ -53,14 +53,8 @@ typedef struct		s_interface
   t_trigger		trigger;
 }			t_interface;
 
-t_bunny_response	my_loop(void *);
-t_bunny_response	my_escape(t_bunny_event_state,
-				  t_bunny_keysym,
-				  void *);
 void			tekpixel3(t_bunny_pixelarray *,
 				 t_bunny_position *,
-				 t_color *);
-void			my_set_square(t_bunny_pixelarray *,
-				      unsigned int);
+				 unsigned int);
 
 #endif /* !INTERFACE_H_ */
