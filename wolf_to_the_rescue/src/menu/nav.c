@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:37:15 2016 Mathieu Sauvau
-** Last update Tue Jan 26 14:52:40 2016 Mathieu Sauvau
+** Last update Tue Jan 26 17:19:22 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -14,11 +14,11 @@ void			up_and_down(t_bunny_event_state state, t_bunny_keysym keysym,
 			    t_data *data)
 {
   if ((keysym == BKS_UP || keysym == INPUT->key[0]) && state == GO_DOWN
-      && !INPUT->change_key)
+      && !INPUT->change_key && data->menu_index != 2)
     data->selected_index == 0 ?
       data->selected_index = data->menu_length - 1 : data->selected_index--;
   if ((keysym == BKS_DOWN || keysym == INPUT->key[1]) && state == GO_DOWN
-      && !INPUT->change_key)
+      && !INPUT->change_key && data->menu_index != 2)
     data->selected_index == data->menu_length - 1 ?
       data->selected_index = 0 : data->selected_index++;
 }
