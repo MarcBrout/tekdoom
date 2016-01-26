@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Tue Jan 26 15:43:28 2016 benjamin duhieu
+** Last update Tue Jan 26 17:43:14 2016 benjamin duhieu
 >>>>>>> 6bb0b2f23731a6f355e3a6c5f61649337d5a4159
 */
 
@@ -42,16 +42,16 @@ t_bunny_response		my_mouse(const t_bunny_position *pos,
 t_bunny_response	main_wolf(void *data)
 {
   t_param		*arg;
-  /* int			i; */
+  int			i;
 
   arg = data;
-  /* i = -1; */
+  i = -1;
   if (arg->data->exit)
     return (EXIT_ON_SUCCESS);
   inertie(arg);
   new_hight(arg);
-  /* i = sky(arg, i); */
-  /* bottom(arg, i); */
+  i = sky(arg, i);
+  bottom(arg, i);
   calc_walls(arg, arg->data);
   set_bump(arg, &arg->lvl[arg->curlvl]);
   add_player_to_mini(arg, &arg->lvl[arg->curlvl]);
@@ -67,14 +67,35 @@ t_bunny_response	main_wolf(void *data)
 
 int		sky(t_param *arg, int i)
 {
-  t_color	*pixels;
+  unsigned int	*pixels;
+  unsigned int	*sky;
+  int		x;
+  int		y;
+  int		k;
+  int		l;
   int		total;
 
   total = (arg->WIDTH * arg->HEIGHT) / 2 +
     (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34))) * arg->WIDTH;
-  pixels = arg->textures[2]->pixels;
-  while (++i < total && total)
-    pixels[i].full = SKY;
+  sky = (unsigned int *)arg->textures[2]->pixels;
+  pixels = (unsigned int *)arg->pix->pixels;
+  y = 0;
+  x = 0;
+  while (x + (y * arg->WIDTH) < total && total)
+    {
+      k = (int)(((double)x / arg->WIDTH) * arg->textures[2]->CWID) %
+	arg->textures[2]->CWID;
+      l = (int)(((double)y / (arg->HEIGHT / 2)) * arg->textures[2]->CHEI) %
+	arg->textures[2]->CHEI;
+      x++;
+      i++;
+      pixels[x + y * arg->WIDTH] = sky[k + l * arg->textures[2]->CWID];
+      if (x == arg->WIDTH)
+	{
+	  x = 0;
+	  y++;
+	}
+    }
   return (i);
 }
 
@@ -93,7 +114,7 @@ void		bottom(t_param *arg, UNUSED int i)
     {
       x = -1;
       while (++x < arg->WIDTH)
-	pixels[x + y * arg->WIDTH] = BLACK;
+	pixels[x + y * arg->WIDTH] = FLOOR;
     }
 }
 
