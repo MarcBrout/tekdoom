@@ -5,10 +5,10 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:37:15 2016 Mathieu Sauvau
-** Last update Tue Jan 26 22:11:13 2016 Mathieu Sauvau
+** Last update Tue Jan 26 22:16:59 2016 Mathieu Sauvau
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void			up_and_down(t_bunny_event_state state, t_bunny_keysym keysym,
 			    t_data *data)

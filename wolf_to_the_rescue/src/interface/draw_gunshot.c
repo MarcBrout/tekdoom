@@ -5,12 +5,12 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 14:29:22 2016 maud marel
-** Last update Tue Jan 26 17:30:50 2016 maud marel
+** Last update Tue Jan 26 22:10:59 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
-void			draw_gunshot(t_param *arg)
+void	draw_gunshot(t_param *arg)
 {
   if (arg->inter.gun.check == 3)
     draw_gunshot2(arg);
@@ -41,8 +41,11 @@ void			draw_gunshot1(t_param *arg)
       pos.x = 0;
       while (pos.x < arg->inter.gun.gun_shoot1->clipable.clip_width)
 	{
-	  end.x = (arg->WIDTH - arg->inter.gun.gun_shoot1->clipable.clip_width) / 2 + pos.x;
-	  end.y = (arg->HEIGHT - arg->inter.gun.gun_shoot1->clipable.clip_height) + pos.y;
+	  end.x = (arg->WIDTH
+		   - arg->inter.gun.gun_shoot1->clipable.clip_width)
+	    / 2 + pos.x;
+	  end.y = (arg->HEIGHT
+		   - arg->inter.gun.gun_shoot1->clipable.clip_height) + pos.y;
 	  if (check_color3(arg, i) == 0)
 	    tekpixel2(arg->pix, &end, &arg->inter.gun.color[i]);
 	  pos.x++;
@@ -66,8 +69,11 @@ void			draw_gunshot2(t_param *arg)
       pos.x = 0;
       while (pos.x < arg->inter.gun.gun_shoot2->clipable.clip_width)
 	{
-	  end.x = (arg->WIDTH - arg->inter.gun.gun_shoot2->clipable.clip_width) / 2 + pos.x;
-	  end.y = (arg->HEIGHT - arg->inter.gun.gun_shoot2->clipable.clip_height) + pos.y;
+	  end.x = (arg->WIDTH
+		   - arg->inter.gun.gun_shoot2->clipable.clip_width)
+	    / 2 + pos.x;
+	  end.y = (arg->HEIGHT
+		   - arg->inter.gun.gun_shoot2->clipable.clip_height) + pos.y;
 	  if (check_color3(arg, i) == 0)
 	    tekpixel2(arg->pix, &end, &arg->inter.gun.color[i]);
 	  pos.x++;
@@ -91,8 +97,11 @@ void			draw_gunshot3(t_param *arg)
       pos.x = 0;
       while (pos.x < arg->inter.gun.gun_shoot3->clipable.clip_width)
 	{
-	  end.x = (arg->WIDTH - arg->inter.gun.gun_shoot3->clipable.clip_width) / 2 + pos.x;
-	  end.y = (arg->HEIGHT - arg->inter.gun.gun_shoot3->clipable.clip_height) + pos.y;
+	  end.x = (arg->WIDTH
+		   - arg->inter.gun.gun_shoot3->clipable.clip_width)
+	    / 2 + pos.x;
+	  end.y = (arg->HEIGHT
+		   - arg->inter.gun.gun_shoot3->clipable.clip_height) + pos.y;
 	  if (check_color3(arg, i) == 0)
 	    tekpixel2(arg->pix, &end, &arg->inter.gun.color[i]);
 	  pos.x++;
@@ -102,7 +111,7 @@ void			draw_gunshot3(t_param *arg)
     }
 }
 
-int     check_color3(t_param *arg, int i)
+int	check_color3(t_param *arg, int i)
 {
   int   r;
   int   b;

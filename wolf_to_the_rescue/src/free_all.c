@@ -1,14 +1,14 @@
 /*
-** free_all.c for wolf
-** 
+** free_all.c for tekdoom
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Tue Dec 22 19:56:24 2015 marc brout
-** Last update Fri Dec 25 02:03:08 2015 marc brout
+** Last update Tue Jan 26 22:08:36 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void		free_all(t_param *arg)
 {

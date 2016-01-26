@@ -1,14 +1,14 @@
 /*
-** check_file.c for wolf
+** check_file.c for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 11:06:07 2015 marc brout
-** Last update Tue Jan 26 09:55:15 2016 marc brout
+** Last update Tue Jan 26 22:08:10 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 char		open_ini(t_param *arg, char **av)
 {

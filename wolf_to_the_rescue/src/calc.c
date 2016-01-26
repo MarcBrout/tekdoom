@@ -1,14 +1,14 @@
 /*
-** calc.c for wolf
+** calc.c for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Tue Jan 26 15:48:48 2016 benjamin duhieu
+** Last update Tue Jan 26 22:13:59 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void		basic_to_sec(t_param *arg, int x)
 {
@@ -56,21 +56,13 @@ void		project_k(t_param *arg, t_lvl *lvl, int x, t_data *data)
   int		j;
   int		k;
   double	l;
-  double	p;
-  double	o;
-  double	coef;
-  double	dist;
   unsigned int	*pixelstext;
-  unsigned int	*floor;
-  unsigned int	*ceil;
   unsigned int	*pixels;
   int		total;
   int		size;
 
   pixels = arg->pix->pixels;
   pixelstext = arg->textures[0]->pixels;
-  floor = arg->textures[1]->pixels;
-  ceil = arg->textures[2]->pixels;
   size = (HEIGHT / (2 * arg->calc.k));
   total = (HEIGHT / 2) + size + lvl->yangle - (arg->hight * 200) / arg->calc.k;
   y = (HEIGHT / 2) - size - 1 + lvl->yangle - (arg->hight * 200) / arg->calc.k;
@@ -96,18 +88,6 @@ void		project_k(t_param *arg, t_lvl *lvl, int x, t_data *data)
 	pixels[(int)(x + y * WIDTH)] =
 	  pixelstext[k + j * arg->textures[0]->CWID];
       }
-  while (y++ < HEIGHT - 1)
-    {
-      dist = HEIGHT / ((2 * y) - HEIGHT);
-      coef = dist / arg->calc.k;
-      p = coef * x + (1 - coef) * arg->lvl[arg->curlvl].playerx;
-      o = coef * y + (1 - coef) * arg->lvl[arg->curlvl].playery;
-      pixels[(int)(x + y * WIDTH)] =
-	floor[(int)(p + o * arg->textures[2]->CWID)];
-      pixels[(int)(x + (HEIGHT - y) * WIDTH)] =
-	ceil[(int)(p + o * arg->textures[1]->CWID)];
-    }
-
 }
 
 void		calc_walls(t_param *arg, t_data *data)
