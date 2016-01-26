@@ -5,12 +5,12 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 20 15:08:42 2016 Maud MAREL
-** Last update Mon Jan 25 15:08:15 2016 Mathieu Sauvau
+** Last update Tue Jan 26 14:55:06 2016 maud marel
 */
 
 #include "wolf.h"
 
-int			draw_bullet(t_param *arg)
+void			draw_bullet(t_param *arg)
 {
   t_bunny_position      pos;
   t_bunny_position      end;
@@ -19,18 +19,12 @@ int			draw_bullet(t_param *arg)
 
   nb = 5;
   bullet = arg->inter.bullet.nb_bullet + 1;
-  if ((arg->inter.bullet.bullet
-       = bunny_load_pixelarray("pictures/bullet.png")) == NULL)
-    return (-1);
   arg->inter.bullet.color = (t_color*)arg->inter.bullet.bullet->pixels;
   while (--bullet > 0)
     {
       draw_bullet2(arg, pos, end, nb);
       nb--;
     }
-  if (arg->inter.bullet.nb_bullet < 5)
-    draw_bullet_else(arg, bullet, nb);
-  return (0);
 }
 
 void	draw_bullet2(t_param *arg, t_bunny_position pos,
@@ -50,7 +44,8 @@ void	draw_bullet2(t_param *arg, t_bunny_position pos,
 	    + (arg->WIDTH / 5) - (nb * arg->inter.bullet.bullet->clipable.clip_width);
 	  end.y = (arg->HEIGHT - ((arg->HEIGHT / 65) + (arg->HEIGHT / 65))) + pos.y
 	    - arg->inter.bullet.bullet->clipable.clip_height - 3;
-	  tekpixel2(arg->pix, &end, &arg->inter.bullet.color[i]);
+	  if (check_color2(arg, i) == 0)
+	    tekpixel2(arg->pix, &end, &arg->inter.bullet.color[i]);
 	  pos.x++;
 	  i++;
 	}
@@ -58,30 +53,16 @@ void	draw_bullet2(t_param *arg, t_bunny_position pos,
     }
 }
 
-void			draw_bullet_else(t_param *arg, int bullet, int nb)
+int     check_color2(t_param *arg, int i)
 {
-  t_color		*color;
-  t_bunny_position	pos;
-  t_bunny_position	end;
+  int   r;
+  int   b;
+  int   g;
 
-  bullet = 5 - arg->inter.bullet.nb_bullet;
-  color = (t_color*)arg->inter.pix->pixels;
-  while (bullet > 0)
-    {
-      pos.y = -1;
-      while (++pos.y < arg->inter.bullet.bullet->clipable.clip_height)
-	{
-	  pos.x = -1;
-	  while (++pos.x < arg->inter.bullet.bullet->clipable.clip_width)
-	    {
-	      end.x = pos.x + (arg->WIDTH / 10)
-		+ (arg->WIDTH / 5) - (nb * arg->inter.bullet.bullet->clipable.clip_width);
-	      end.y = (arg->HEIGHT - ((arg->HEIGHT / 65) + (arg->HEIGHT / 65))) + pos.y
-		- arg->inter.bullet.bullet->clipable.clip_height - 3;
-	      tekpixel2(arg->pix, &end, &color[end.x + end.y]);
-	    }
-	}
-      nb--;
-      bullet--;
-    }
+  r = arg->inter.bullet.color[i].full & 0xFF;
+  g = (arg->inter.bullet.color[i].full >> 8) & 0xFF;
+  b = (arg->inter.bullet.color[i].full >> 16) & 0xFF;
+  if ((r == 0 && b == 0 && g == 255) || (r == 0 && b == 255 && g == 0))
+    return (1);
+  return (0);
 }

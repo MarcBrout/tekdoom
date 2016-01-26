@@ -5,10 +5,10 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:37:15 2016 Mathieu Sauvau
-** Last update Mon Jan 25 16:39:32 2016 Mathieu Sauvau
+** Last update Tue Jan 26 14:52:40 2016 Mathieu Sauvau
 */
 
-#include "menu.h"
+#include "wolf.h"
 
 void			up_and_down(t_bunny_event_state state, t_bunny_keysym keysym,
 			    t_data *data)
@@ -21,6 +21,19 @@ void			up_and_down(t_bunny_event_state state, t_bunny_keysym keysym,
       && !INPUT->change_key)
     data->selected_index == data->menu_length - 1 ?
       data->selected_index = 0 : data->selected_index++;
+}
+
+void			nav(t_data *data)
+{
+   if (data->menu_index == 1)
+    option_nav(data);
+  else if (data->menu_index == 2)
+    {
+      if (data->selected_index == 0)
+	data->menu_index = 0;
+    }
+  else if (data->menu_index == 3)
+    input_nav(data);
 }
 
 t_bunny_response	esc(t_bunny_event_state state, t_bunny_keysym keysym,
@@ -42,10 +55,8 @@ t_bunny_response	esc(t_bunny_event_state state, t_bunny_keysym keysym,
 	  if (menu_nav(data) == 1)
 	    return (EXIT_ON_SUCCESS);
 	}
-      else if (data->menu_index == 1)
-	option_nav(data);
-      else if (data->menu_index == 3)
-	input_nav(data);
+      else
+	nav(data);
     }
   option_nav2(state, keysym, data);
   if (data->menu_index == 3)

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Tue Jan 26 17:20:22 2016 marc brout
+** Last update Tue Jan 26 17:37:32 2016 marc brout
 */
 
 #include "wolf.h"
@@ -70,6 +70,7 @@ int		launch_start(char **av)
   if ((arg.data = malloc(sizeof(t_data))) == NULL)
     return (3);
   start(arg.data);
+  arg.menu = false;
   if ((arg.wm.ydep = malloc(sizeof(double) * arg.WIDTH)) == NULL)
     return (1);
   if ((err = launch_wolf(&arg, av)))
