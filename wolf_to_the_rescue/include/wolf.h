@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Mon Jan 25 21:02:43 2016 benjamin duhieu
+** Last update Tue Jan 26 09:28:57 2016 benjamin duhieu
 */
 
 #ifndef WOLF_H_
@@ -29,7 +29,9 @@
 # define GET_X(val) ABS((WIDTH / 2) - WIDTH + (val))
 # define DEGRE(val) (((val) / M_PI) * 180)
 # define RAD(val) (((val) * M_PI) / 180)
-
+# define DEC(val) ((val) - (int)(val))
+# define CWID clipable.clip_width
+# define CHEI clipable.clip_height
 # include <math.h>
 # include <unistd.h>
 # include <stdio.h>

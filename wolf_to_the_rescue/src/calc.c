@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Mon Jan 25 14:57:21 2016 Mathieu Sauvau
+** Last update Tue Jan 26 09:22:04 2016 marc brout
 */
 
 #include "wolf.h"
@@ -55,33 +55,26 @@ void		project_k(t_param *arg, t_lvl *lvl, int x)
   int		y;
   int		j;
   int		k;
-  double	change;
-  double	val;
-  t_color	*pixelstext;
-  t_color	*pixels;
+  double	l;
+  unsigned int	*pixelstext;
+  unsigned int	*pixels;
   int		total;
+  int		size;
 
   pixels = arg->pix->pixels;
   pixelstext = arg->textures[0]->pixels;
-  total = (arg->HEIGHT / 2) + arg->HEIGHT / (2 * arg->calc.k) + lvl->yangle - (arg->hight * 200) / arg->calc.k;
-  y = (arg->HEIGHT / 2) - arg->HEIGHT / (2 * arg->calc.k) - 1 + lvl->yangle - (arg->hight * 200) / arg->calc.k;
-  val = arg->calc.k / (arg->textures[0]->clipable.clip_height / 4);
-  j = 0;
-  k = arg->textures[0]->clipable.clip_width *
-    ((arg->calc.xf - (int)arg->calc.xf) + (arg->calc.yf - (int)arg->calc.yf));
-  change = 0;
-  while (++y < total && y < arg->HEIGHT)
-    {
-      if (y >= 0 && k >= 0)
-	pixels[x + y * arg->WIDTH].full =
-	  pixelstext[k + j * arg->textures[0]->clipable.clip_width].full;
-      if ((change += val) > 1)
-      	{
-      	  j += change;
-	  j = j % arg->textures[0]->clipable.clip_height;
-      	  change -= (int)change;
-      	}
-    }
+  size = (HEIGHT / (2 * arg->calc.k));
+  total = (HEIGHT / 2) + size + lvl->yangle - (arg->hight * 200) / arg->calc.k;
+  y = (HEIGHT / 2) - size - 1 + lvl->yangle - (arg->hight * 200) / arg->calc.k;
+  k = (int)(arg->textures[0]->CWID * (DEC(arg->calc.xf) + DEC(arg->calc.yf)))
+    % arg->textures[0]->CWID;
+  l = 0;
+  while (++y < total && y < HEIGHT && ++l)
+    if (y >= 0 && k >= 0)
+      {
+	j = (int)((l / size) * arg->textures[0]->CHEI) % arg->textures[0]->CHEI;
+	pixels[x + y * WIDTH] = pixelstext[k + j * arg->textures[0]->CWID];
+      }
 }
 
 void		calc_walls(t_param *arg)

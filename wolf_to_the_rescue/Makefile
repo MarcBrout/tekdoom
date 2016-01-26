@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Mon Jan 25 20:26:40 2016 benjamin duhieu
+## Last update Tue Jan 26 09:29:35 2016 benjamin duhieu
 ##
 
 SRCP	= ./src/
@@ -21,8 +21,6 @@ SRC     = $(SRCP)wolf.c \
 	$(SRCP)free_all.c \
 	$(SRCP)wall.c \
 	$(SRCP)keyboard.c \
-	$(SRCP)mini_map.c \
-	$(SRCP)mini_map_blit.c \
 	$(SRCP)calc.c \
 	$(SRCP)my_getnbr.c \
 	$(SRCP)my_strdup.c \
@@ -46,6 +44,8 @@ SRC     = $(SRCP)wolf.c \
 	$(MENU)save_opt.c \
 	$(MENU)load_config.c \
 	$(MENU)write_bmp.c \
+	$(SRCI)mini_map.c \
+	$(SRCI)mini_map_blit.c \
 	$(SRCI)draw_bullet.c \
 	$(SRCI)draw_heart.c \
 	$(SRCI)draw_life.c \
