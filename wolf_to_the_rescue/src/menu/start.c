@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 20 18:46:14 2015 Mathieu Sauvau
-** Last update Tue Jan 26 17:06:40 2016 Mathieu Sauvau
+** Last update Tue Jan 26 17:26:39 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -33,8 +33,7 @@ t_bunny_response	mainloop(void	*my_data)
   /*  my_fill(data->pix_ar, PINK);*/
   /*  bunny_blit(&data->win->buffer, data->bg, &data->pos);*/
   disp_sound(data);
-  my_fill(data->pix_ar, PINK);
-  if (data->menu_index == 0)
+    if (data->menu_index == 0)
     main_menu(data, data->rect, HEIGHT / 2, 20);
   else if (data->menu_index == 1)
     option_menu(data, data->selected_index);
