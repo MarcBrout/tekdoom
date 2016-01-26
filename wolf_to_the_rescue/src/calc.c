@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Tue Jan 26 15:43:16 2016 benjamin duhieu
+** Last update Tue Jan 26 15:48:48 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -69,9 +69,9 @@ void		project_k(t_param *arg, t_lvl *lvl, int x, t_data *data)
 
   pixels = arg->pix->pixels;
   pixelstext = arg->textures[0]->pixels;
+  floor = arg->textures[1]->pixels;
   ceil = arg->textures[2]->pixels;
   size = (HEIGHT / (2 * arg->calc.k));
-  start = -1;
   total = (HEIGHT / 2) + size + lvl->yangle - (arg->hight * 200) / arg->calc.k;
   y = (HEIGHT / 2) - size - 1 + lvl->yangle - (arg->hight * 200) / arg->calc.k;
   k = (int)(arg->textures[0]->CWID * (DEC(arg->calc.xf) + DEC(arg->calc.yf)))
@@ -98,14 +98,14 @@ void		project_k(t_param *arg, t_lvl *lvl, int x, t_data *data)
       }
   while (y++ < HEIGHT - 1)
     {
-      dist = HEIGHT / ((2 * y) - h);
+      dist = HEIGHT / ((2 * y) - HEIGHT);
       coef = dist / arg->calc.k;
       p = coef * x + (1 - coef) * arg->lvl[arg->curlvl].playerx;
       o = coef * y + (1 - coef) * arg->lvl[arg->curlvl].playery;
       pixels[(int)(x + y * WIDTH)] =
-	pixelstext[p + o * arg->textures[2]->CWID];
-      pixels[(int)(x + (h - y) * WIDTH)] =
-	pixelstext[p + o * arg->textures[1]->CWID];
+	floor[(int)(p + o * arg->textures[2]->CWID)];
+      pixels[(int)(x + (HEIGHT - y) * WIDTH)] =
+	ceil[(int)(p + o * arg->textures[1]->CWID)];
     }
 
 }
