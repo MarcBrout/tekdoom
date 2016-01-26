@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Dec 16 17:10:21 2015 maud marel
-** Last update Mon Jan 25 16:20:00 2016 maud marel
+** Last update Tue Jan 26 15:47:22 2016 maud marel
 */
 
 #ifndef INTERFACE_H_
@@ -15,6 +15,20 @@
 #include <lapin.h>
 #include <math.h>
 #include <unistd.h>
+
+typedef struct		s_gun
+{
+  t_color		*color;
+  t_bunny_pixelarray	*gun_shoot1;
+  t_bunny_pixelarray	*gun_shoot2;
+  t_bunny_pixelarray	*gun_shoot3;
+  t_bunny_pixelarray	*reload1;
+  t_bunny_pixelarray	*reload2;
+  t_bunny_pixelarray	*reload3;
+  int			shoot;
+  int			check;
+  int			check_r;
+}			t_gun;
 
 typedef struct		s_bullet
 {
@@ -51,6 +65,7 @@ typedef struct		s_interface
   t_life		life;
   t_bullet		bullet;
   t_trigger		trigger;
+  t_gun			gun;
 }			t_interface;
 
 void			tekpixel3(t_bunny_pixelarray *,
