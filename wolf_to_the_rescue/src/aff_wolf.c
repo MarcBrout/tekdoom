@@ -5,8 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Tue Jan 26 15:43:28 2016 benjamin duhieu
->>>>>>> 6bb0b2f23731a6f355e3a6c5f61649337d5a4159
+** Last update Tue Jan 26 17:22:24 2016 marc brout
 */
 
 #include "wolf.h"
@@ -109,8 +108,9 @@ char		aff_wolf(t_param *arg)
   arg->mov = 1;
   set_minimaps(arg);
   interface_init(arg);
-  if (load_picture(arg) == -1)
+  if (load_picture(arg) < 0)
     return (-1);
+  printf("lol\n");
   bunny_set_loop_main_function(main_wolf);
   bunny_set_move_response(arg->move);
   bunny_set_key_response(arg->key);
