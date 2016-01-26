@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Mon Nov 16 15:25:45 2015 maud marel
-** Last update Mon Jan 25 13:55:10 2016 maud marel
+** Last update Tue Jan 26 15:51:49 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"

@@ -4,8 +4,8 @@
 ** Made by Mathieu Sauvau
 ** Login   <sauvau_m@epitech.net>
 **
-** Started on  Mon Oct  5 10:09:58 2015 Mathieu Sauvau
-** Last update Fri Jan 22 15:44:56 2016 Mathieu Sauvau
+x** Started on  Mon Oct  5 10:09:58 2015 Mathieu Sauvau
+** Last update Tue Jan 26 17:24:53 2016 Mathieu Sauvau
 */
 
 char	*my_strcpy(char *dest, char *src)

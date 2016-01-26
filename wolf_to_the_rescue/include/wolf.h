@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Tue Jan 26 17:06:31 2016 benjamin duhieu
+** Last update Tue Jan 26 17:46:54 2016 benjamin duhieu
 */
 
 #ifndef WOLF_H_
@@ -109,14 +109,13 @@ typedef struct		s_param
   int			speedy;
   int			jump;
   int			chrono;
+  bool			menu;
 }			t_param;
 
 t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
 t_bunny_response main_wolf(void *);
 t_bunny_response my_mouse(const t_bunny_position *, void *);
 int my_strcmp(const char *, char *);
-/*int my_strlen(const char *);*/
-/*int my_getnbr(const char *);*/
 int  sky(t_param *, int);
 int next_casex(t_param *, double);
 int next_casey(t_param *, double);
@@ -143,7 +142,7 @@ void project_k(t_param *, t_lvl *, int, t_data *);
 void put_border(t_param *, int, unsigned int);
 void set_bump(t_param *, t_lvl *);
 void set_cossin(t_param *);
-void simple_tap(t_bunny_keysym, t_param *);
+void simple_tap(t_param *);
 char *my_strdup(char *);
 char mal_mini_map(t_param *, t_lvl *);
 char aff_wolf(t_param *);
@@ -167,14 +166,12 @@ void                    action_draw_square_life(t_param *,
 						t_bunny_position);
 void                    interface(t_param *);
 void                    interface_init(t_param *);
-int                     draw_heart(t_param *);
+void                    draw_heart(t_param *);
 void                    draw_heart2(t_param *, t_bunny_position,
                                     t_bunny_position, int);
-void                    draw_heart_else(t_param *, int, int);
-int                     draw_bullet(t_param *);
+void                    draw_bullet(t_param *);
 void                    draw_bullet2(t_param *, t_bunny_position,
 				     t_bunny_position, int);
-void                    draw_bullet_else(t_param *, int, int);
 int                     draw_game_over(t_param *);
 int                     draw_last_chance(t_param *);
 int                     draw_try_again(t_param *);
@@ -183,5 +180,16 @@ void			inertie(t_param *);
 void                    tekpixel2(t_bunny_pixelarray *,
                                  t_bunny_position *,
                                  t_color *);
+int			check_color(t_param *, int);
+int			check_color2(t_param *, int);
+int			check_color3(t_param *, int);
+void			draw_gunshot(t_param *);
+void			draw_gunshot1(t_param *);
+void			draw_gunshot2(t_param *);
+void			draw_gunshot3(t_param *);
+void			draw_reload(t_param *);
+void			draw_reload1(t_param *);
+void			draw_reload2(t_param *);
+void			draw_reload3(t_param *);
 
 #endif /* !WOLF_H_ */

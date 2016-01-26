@@ -5,29 +5,31 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 19:34:41 2015 marc brout
-** Last update Mon Jan 25 17:29:00 2016 Mathieu Sauvau
+** Last update Tue Jan 26 17:34:13 2016 maud marel
 */
 
 #include "wolf.h"
 
-void		simple_tap(t_bunny_keysym keysym,
-			   t_param *arg)
+void		simple_tap(t_param *arg)
 {
-  if (keysym == arg->INPUT->key[0])
+  const bool	*k;
+
+  k = bunny_get_keyboard();
+  if (k[arg->INPUT->key[0]])
     {
       arg->speedy += 2;
       move(arg, 0, 0.1);
     }
-  if (keysym == arg->INPUT->key[1])
+  if (k[arg->INPUT->key[1]])
     {
       arg->speedy = 0;
       move(arg, 0, -0.05);
     }
-  if (keysym == arg->INPUT->key[2])
+  if (k[arg->INPUT->key[2]])
     move(arg, 90, 0.05);
-  if (keysym == arg->INPUT->key[3])
+  if (k[arg->INPUT->key[3]])
     move(arg, 90, -0.05);
-  if (keysym == arg->INPUT->key[4])
+  if (k[arg->INPUT->key[4]])
     arg->jump = 101;
 }
 
@@ -47,6 +49,37 @@ t_bunny_response	my_keys(t_bunny_event_state state,
       if (keysym == BKS_M)
 	arg->curlvl = (arg->curlvl - 1 >= 0) ? arg->curlvl - 1 :
 	  arg->nblvl - 1;
+      if (keysym == BKS_B && state == GO_DOWN)
+	{
+	  if (arg->inter.life.life > 25)
+	    {
+	      arg->inter.life.life -= 25;
+	      arg->inter.life.pos_limit.x = (arg->inter.life.life * 3 * arg->WIDTH) / 1000;
+	    }
+	  else
+	    {
+	      arg->inter.life.pos_limit.x = (arg->WIDTH / 75) - 1;
+	      arg->inter.life.end = 1;
+	      arg->inter.life.life = 0;
+	    }
+	}
+      if (keysym == BKS_N && state == GO_DOWN && arg->inter.life.nb_heart > 1)
+	{
+	  arg->inter.life.life = 100;
+	  arg->inter.life.nb_heart--;
+	  arg->inter.life.end = 0;
+	  arg->inter.life.pos_life.x = (3 * arg->WIDTH) / 10 - 1;
+	}
+      if (keysym == BKS_T && state == GO_DOWN && arg->inter.bullet.nb_bullet > 0)
+	{
+	  arg->inter.bullet.nb_bullet--;
+	  arg->inter.gun.shoot = 1;
+	  arg->inter.gun.check = 3;
+	}
+      if (keysym == BKS_R && state == GO_DOWN)
+	{
+	  arg->inter.gun.check_r = 12;
+	}
       simple_tap(keysym, arg);
     }
   return (GO_ON);

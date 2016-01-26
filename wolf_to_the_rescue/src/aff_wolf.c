@@ -5,8 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Tue Jan 26 17:43:14 2016 benjamin duhieu
->>>>>>> 6bb0b2f23731a6f355e3a6c5f61649337d5a4159
+** Last update Tue Jan 26 17:46:22 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -33,10 +32,25 @@ t_bunny_response		my_mouse(const t_bunny_position *pos,
   if ((abs->x <= 200 || abs->x >= (arg->WIDTH - 200)) ||
       (abs->y <= 200 || abs->y >= (arg->HEIGHT - 200)))
     {
-      bunny_set_mouse_position_window(arg->win, arg->WIDTH / 2, arg->HEIGHT / 2);
+      bunny_set_mouse_position_window(arg->win, arg->WIDTH / 2,
+				      arg->HEIGHT / 2);
       arg->mov = 1;
     }
   return (GO_ON);
+}
+
+void			main_wolf2(t_param *arg)
+{
+  inertie(arg);
+  new_hight(arg);
+  calc_walls(arg, arg->data);
+  set_bump(arg, &arg->lvl[arg->curlvl]);
+  add_player_to_mini(arg, &arg->lvl[arg->curlvl]);
+  put_border(arg, 6, BORDER);
+  put_border(arg, 4, BORDERIN);
+  put_border(arg, 2, BORDEROU);
+  mini_map(arg, &arg->lvl[arg->curlvl], arg->data);
+  interface(arg);
 }
 
 t_bunny_response	main_wolf(void *data)
@@ -48,7 +62,12 @@ t_bunny_response	main_wolf(void *data)
   i = -1;
   if (arg->data->exit)
     return (EXIT_ON_SUCCESS);
-  inertie(arg);
+  if (arg->speedy)
+    {
+      move(arg, 0, 0.02);
+      arg->speedy--;
+    }
+  simple_tap(arg);
   new_hight(arg);
   i = sky(arg, i);
   bottom(arg, i);
@@ -60,7 +79,11 @@ t_bunny_response	main_wolf(void *data)
   put_border(arg, 2, BORDEROU);
   mini_map(arg, &arg->lvl[arg->curlvl], arg->data);
   interface(arg);
+  main_wolf2(arg);
   bunny_blit(&arg->win->buffer, &arg->pix->clipable, &arg->data->pos);
+  if (arg->menu)
+    bunny_blit(&arg->win->buffer, &arg->data->pix_ar->clipable,
+	       &arg->data->pos);
   bunny_display(arg->win);
   return (GO_ON);
 }
@@ -75,6 +98,7 @@ int		sky(t_param *arg, int i)
   int		l;
   int		total;
 
+<<<<<<< HEAD
   total = (arg->WIDTH * arg->HEIGHT) / 2 +
     (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34))) * arg->WIDTH;
   sky = (unsigned int *)arg->textures[2]->pixels;
@@ -96,6 +120,13 @@ int		sky(t_param *arg, int i)
 	  y++;
 	}
     }
+=======
+  total = (arg->WIDTH * arg->HEIGHT) / 2
+    + (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34))) * arg->WIDTH;
+  pixels = arg->pix->pixels;
+  while (++i < total && total)
+    pixels[i].full = SKY;
+>>>>>>> 726d3bff9916ec0f33872d405d4c14fe64fe3ed9
   return (i);
 }
 

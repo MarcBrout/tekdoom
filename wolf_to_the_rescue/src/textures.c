@@ -5,11 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Mon Jan 25 02:40:20 2016 marc brout
-<<<<<<< HEAD
-** Last update Tue Jan 26 15:45:00 2016 benjamin duhieu
-=======
-** Last update Tue Jan 26 11:48:26 2016 marc brout
->>>>>>> 6bb0b2f23731a6f355e3a6c5f61649337d5a4159
+** Last update Tue Jan 26 17:06:15 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -26,5 +22,4 @@ char	get_textures(t_param *tpar)
 
 /* void	project_textures(t_param *tpar, t_lvl *lvl) */
 /* { */
-
 /* } */

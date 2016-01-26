@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Tue Jan 26 14:45:50 2016 marc brout
-** Last update Tue Jan 26 15:41:18 2016 marc brout
+** Last update Tue Jan 26 15:49:02 2016 marc brout
 */
 
 char			add_obj(t_lvl *lvl, int type, int i)
@@ -22,9 +22,24 @@ char			add_obj(t_lvl *lvl, int type, int i)
   return (0);
 }
 
-char			parse_objects(t_param * arg, t_lvl *lvl)
+char			parse_objects(t_bunny_scope *scope,
+				      t_param * arg, t_lvl *lvl)
 {
-  
+  int			x;
+  int			y;
+  int			i;
+  const char		*nb;
+
+  y = -1;
+  while (++y < lvl->height)
+    {
+      x = -1;
+      while (++x < lvl->width)
+	{
+	  i = x + (lvl->height - 1 - y) * lvl->width;
+	  if ((nb = 
+	}
+    }
 }
 
 char			search_objects(t_param *arg)
@@ -41,8 +56,9 @@ char			search_objects(t_param *arg)
       i += 1;
       if (!(BIS(scope, "type", 0)))
 	continue;
-      parse_objects(arg, 
-	arg->lvl[i]->obj = NULL;
+      parse_objects(arg, arg->lvl[i]);
+      arg->lvl[i]->obj = NULL;
       scope = bunny_ini_next(arg->ini, scope);
     }
+  return (0);
 }
