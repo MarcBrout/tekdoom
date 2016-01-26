@@ -5,10 +5,11 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Mon Jan 25 09:20:05 2016 benjamin duhieu
+** Last update Mon Jan 25 17:00:36 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
+#include "menu.h"
 
 void		whats_up(char **av, int err)
 {
@@ -26,9 +27,9 @@ void		set_cossin(t_param *arg)
   int		i;
 
   i = -1;
-  while (++i < WIDTH)
+  while (++i < arg->WIDTH)
     {
-      arg->wm.ydep[i] = (arg->calc.p * (WIDTH / 2 - i)) / WIDTH;
+      arg->wm.ydep[i] = (arg->calc.p * (arg->WIDTH / 2 - i)) / arg->WIDTH;
       if (i < 360)
 	{
 	  arg->wm.costab[i] = cos((double)RAD(i));
@@ -37,41 +38,53 @@ void		set_cossin(t_param *arg)
     }
 }
 
-char		launch_wolf(char **av)
+char		launch_wolf(t_param *arg , char **av)
+{
+  pos_pix_ar(arg->data);
+  arg->calc.p = 1;
+  arg->calc.d = 0.5;
+  arg->hight = 0;
+  arg->chrono = -1;
+  arg->jump = 0;
+  arg->speedy = 0;
+  arg->vit = 0;
+  arg->calc.mini = arg->HEIGHT / 50;
+  if (get_textures(arg) || open_ini(arg, av) ||
+      check_all_lvl(arg) || mal_tablvl(arg))
+    return (1);
+  if (get_tabmap(arg))
+    return (2);
+  set_cossin(arg);
+  if (aff_wolf(arg))
+    return (2);
+  bunny_delete_ini(arg->ini);
+  free_all(arg);
+  return (0);
+}
+
+int		launch_start(char **av)
 {
   t_param	arg;
+  int		err;
 
-  arg.calc.p = 1;
-  arg.calc.d = 0.5;
-  arg.hight = 0;
-  arg.chrono = -1;
-  arg.jump = 0;
-  arg.speedy = 0;
-  arg.vit = 0;
-  arg.calc.mini = HEIGHT / 50;
-  if (get_textures(&arg) || open_ini(&arg, av) ||
-      check_all_lvl(&arg) || mal_tablvl(&arg))
+  if ((arg.data = malloc(sizeof(t_data))) == NULL)
+    return (3);
+  start(arg.data);
+  if ((arg.wm.ydep = malloc(sizeof(double) * arg.WIDTH)) == NULL)
     return (1);
-  if (get_tabmap(&arg))
-    return (2);
-  set_cossin(&arg);
-  if (aff_wolf(&arg))
-    return (2);
-  bunny_delete_ini(arg.ini);
-  free_all(&arg);
+  if ((err = launch_wolf(&arg, av)))
+    {
+      whats_up(av, err);
+      return (1);
+    }
   return (0);
 }
 
 int		main(int ac, char **av, char **env)
 {
-  int		err;
-
   if (check_args(ac, env))
     return (1);
-  if ((err = launch_wolf(av)))
-    {
-      whats_up(av, err);
-      return (1);
-    }
+  if (launch_start(av) != 0)
+    return (1);
   return (0);
 }

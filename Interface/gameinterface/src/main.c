@@ -5,24 +5,48 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Dec 16 17:28:05 2015 maud marel
-** Last update Fri Jan 22 17:01:13 2016 maud marel
+** Last update Sun Jan 24 23:07:05 2016 maud marel
 */
 
 #include "interface.h"
 
 void			interface(t_data *data)
 {
-  draw_heart(data);
-  draw_bullet(data);
-  if (data->life.ok == 1)
+  if ((data->life.pos_life.x == ((WIDTH / 75) - 2)) && data->life.nb_heart == 1)
     {
-      draw_life_bar(data);
-      data->life.ok = 0;
+      my_set_square(data->pix, BLACK);
+	draw_game_over(data);
     }
-  if (data->life.life != 100 && data->life.nb_heart > 0)
+  else if ((data->life.pos_life.x == ((WIDTH / 75) - 2)) && data->life.nb_heart == 2)
     {
-      data->life.speed = 7;
-      draw_move_life(data);
+      my_set_square(data->pix, BLACK);
+	draw_last_chance(data);
+    }
+  else if ((data->life.pos_life.x == ((WIDTH / 75) - 2)) && data->life.nb_heart == 3)
+    {
+      my_set_square(data->pix, BLACK);
+      draw_try_again(data);
+    }
+  if (data->life.nb_heart > 0)
+    {
+      if (data->life.pos_life.x == ((3 * WIDTH) / 10 - 1))
+	{
+	  my_set_square(data->pix, WHITE);
+	  draw_square_life(data);
+	  draw_life_bar(data);
+	  draw_heart(data);
+	  draw_bullet(data);
+	}
+      if (data->life.ok == 1)
+	{
+	  draw_life_bar(data);
+	  data->life.ok = 0;
+	}
+      if (data->life.life != 100)
+	{
+	  data->life.speed = 3;
+	  draw_move_life(data);
+	}
     }
 }
 
@@ -84,9 +108,23 @@ void	interface_init(t_data *data)
   data->life.life = 100;
   data->life.nb_heart = 3;
   data->bullet.nb_bullet = 5;
-  my_set_square(data->pix);
-  draw_life_bar(data);
+  my_set_square(data->pix, WHITE);
   draw_square_life(data);
+  draw_life_bar(data);
+}
+
+int	load_picture(t_data *data)
+{
+  if ((data->trigger.game_over
+       = bunny_load_pixelarray("pictures/gameover.png")) == NULL)
+    return (-1);
+  if ((data->trigger.lastchance
+       = bunny_load_pixelarray("pictures/lastchance.bmp")) == NULL)
+    return (-1);
+  if ((data->trigger.try_again
+       = bunny_load_pixelarray("pictures/try_again.jpg")) == NULL)
+    return (-1);
+  return (0);
 }
 
 int			main(UNUSED int ac, UNUSED char **av, char **env)
@@ -102,6 +140,8 @@ int			main(UNUSED int ac, UNUSED char **av, char **env)
   if ((data.win = bunny_start(WIDTH, HEIGHT, false, "interface")) == NULL)
     return (-1);
   interface_init(&data);
+  if (load_picture(&data) == -1)
+    return (-1);
   escape = &my_escape;
   loop = &my_loop;
   bunny_set_key_response(escape);

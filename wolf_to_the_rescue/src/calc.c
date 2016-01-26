@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Tue Jan 26 02:17:32 2016 marc brout
+** Last update Tue Jan 26 09:22:04 2016 marc brout
 */
 
 #include "wolf.h"
@@ -82,7 +82,7 @@ void		calc_walls(t_param *arg)
   int		x;
 
   x = -1;
-  while (++x < WIDTH)
+  while (++x < arg->WIDTH)
     {
       basic_to_sec(arg, x);
       get_len(arg);

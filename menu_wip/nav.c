@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:37:15 2016 Mathieu Sauvau
-** Last update Fri Jan 22 17:21:47 2016 Mathieu Sauvau
+** Last update Sun Jan 24 14:05:07 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -37,12 +37,12 @@ t_bunny_response	esc(t_bunny_event_state state, t_bunny_keysym keysym,
       if (data->menu_index == 0)
 	menu_nav(data);
       else if (data->menu_index == 1)
-	option_nav(state, keysym, data);
+	option_nav(data);
       else if (data->menu_index == 3)
-	input_nav(state, keysym, data);
+	input_nav(data);
     }
   option_nav2(state, keysym, data);
   if (data->menu_index == 3)
-    change_key(keysym, data);
+    change_key(data);
   return (GO_ON);
 }

@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Sun Jan 17 10:45:26 2016 Maud MAREL
-** Last update Fri Jan 22 17:01:40 2016 maud marel
+** Last update Sun Jan 24 22:15:23 2016 maud marel
 */
 
 #include "interface.h"
@@ -32,10 +32,10 @@ int			draw_move_life(t_data *data)
 
 int	draw_move_life2(t_data *data, t_bunny_position pos)
 {
-  if (data->life.pos_life.x > (data->life.pos_limit.x + 1))
+  if (data->life.pos_life.x > data->life.pos_limit.x)
     {
       while (data->life.speed > 0
-	     && data->life.pos_life.x > (WIDTH / 75) - 1 )
+	     && data->life.pos_life.x > ((WIDTH / 75) - 1))
   	{
   	  pos.x = data->life.pos_life.x;
   	  pos.y = (HEIGHT - ((HEIGHT / 65) + (HEIGHT / 65))) - 1;

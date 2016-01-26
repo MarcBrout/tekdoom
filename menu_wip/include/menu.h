@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Fri Jan 22 17:42:37 2016 Mathieu Sauvau
+** Last update Sun Jan 24 14:06:26 2016 Mathieu Sauvau
 */
 
 #ifndef STRUCT_H_
@@ -115,7 +115,7 @@ int			my_getnbr(char *);
 void		        input_menu(t_data *data, t_mrect *rect,  int offset, int margin);
 t_bunny_position	pos_(int, int);
 void			save_input(t_data *data);
-void		        change_key(t_bunny_keysym keysym, t_data *data);
+void		        change_key(t_data *data);
 int			my_strlen(char *);
 char			*my_strcpy(char *, char *);
 char			*my_strcat(char *, char *);
@@ -123,12 +123,25 @@ char			*my_revstr(char *);
 char			*itoa(int, char *, int);
 t_bunny_response	esc(t_bunny_event_state, t_bunny_keysym, void *);
 void			menu_nav(t_data *data);
-void			input_nav(t_bunny_event_state state, t_bunny_keysym keysym,
-				  t_data *data);
-void			option_nav2(t_bunny_event_state state, t_bunny_keysym keysym,
-				    t_data *data);
+void			input_nav( t_data *data);
 t_bunny_position	pos_(int x, int y);
 t_mrect			slider(t_data *data, bool selected, int pos_slider,
 			       t_bunny_position pos);
+void			write_input_menu(t_data *data);
+void			write_main_menu(t_data *data);
+void			write_option_menu_2(t_data *data);
+void			write_option_menu(t_data *data);
+void			write_change_key(t_data *data);
+void			init_res(t_data *data);
+void			default_config(t_data *data);
+int			init_data(t_data *data);
+int			get_res(t_data *data, int height);
+void			option_nav(t_data *data);
+void			option_nav2(t_bunny_event_state state, t_bunny_keysym keysym,
+				    t_data *data);
+void                    draw_square(t_bunny_pixelarray *pix_ar,
+                                    t_mrect *rect);
+void			load_config(t_data *data);
+void			load_letter(t_data *data);
 
 #endif /* !STRUCT_H_ */
