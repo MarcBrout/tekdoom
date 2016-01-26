@@ -5,7 +5,11 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
+<<<<<<< HEAD
 ** Last update Tue Jan 26 17:38:28 2016 marc brout
+=======
+** Last update Tue Jan 26 17:46:54 2016 benjamin duhieu
+>>>>>>> 0dc7fb166465d61183647255ee6c72b7d5db0450
 */
 
 #ifndef WOLF_H_
@@ -26,9 +30,13 @@
 # define NBTXT 3
 # define TXT_1 "files/textures/01_brick_wall.png"
 # define TXT_2 "files/textures/02_floor.png"
+<<<<<<< HEAD
 # define TXT_3 "files/textures/mediterranean-home-decor.png"
 # define NBOBJ 1
 # define OBJ_1 "files/textures/01_potion.png"
+=======
+# define TXT_3 "files/textures/my_sky.png"
+>>>>>>> 0dc7fb166465d61183647255ee6c72b7d5db0450
 # define ZERO(val) (((val) > 0) ? (val) - 1 : -1)
 # define ABS(val) (((val) < 0) ? -(val) : (val))
 # define GET_X(val) ABS((WIDTH / 2) - WIDTH + (val))
@@ -119,8 +127,6 @@ t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
 t_bunny_response main_wolf(void *);
 t_bunny_response my_mouse(const t_bunny_position *, void *);
 int my_strcmp(const char *, char *);
-/*int my_strlen(const char *);*/
-/*int my_getnbr(const char *);*/
 int  sky(t_param *, int);
 int next_casex(t_param *, double);
 int next_casey(t_param *, double);
