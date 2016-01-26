@@ -5,20 +5,20 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 15:30:56 2016 maud marel
-** Last update Tue Jan 26 15:58:41 2016 maud marel
+** Last update Tue Jan 26 21:27:29 2016 maud marel
 */
 
 #include "wolf.h"
 
 void	draw_reload(t_param *arg)
 {
-  if (arg->inter.gun.check_r > 9 &&arg->inter.gun.check_r <= 12)
+  if (arg->inter.gun.check_r > 9 && arg->inter.gun.check_r <= 12)
     draw_reload1(arg);
-  if (arg->inter.gun.check_r > 6 &&arg->inter.gun.check_r <= 9)
+  if (arg->inter.gun.check_r > 6 && arg->inter.gun.check_r <= 9)
     draw_reload2(arg);
-  if (arg->inter.gun.check_r > 3 &&arg->inter.gun.check_r <= 6)
+  if (arg->inter.gun.check_r > 3 && arg->inter.gun.check_r <= 6)
     draw_reload3(arg);
-  if (arg->inter.gun.check_r > 0 &&arg->inter.gun.check_r <= 3)
+  if (arg->inter.gun.check_r > 0 && arg->inter.gun.check_r <= 3)
     {
       arg->inter.bullet.nb_bullet = 5;
       draw_gunshot1(arg);
@@ -27,7 +27,7 @@ void	draw_reload(t_param *arg)
     arg->inter.gun.check_r--;
 }
 
-void                    draw_reload1(t_param *arg)
+void			draw_reload1(t_param *arg)
 {
   t_bunny_position      end;
   t_bunny_position      pos;
@@ -41,8 +41,10 @@ void                    draw_reload1(t_param *arg)
       pos.x = 0;
       while (pos.x < arg->inter.gun.reload1->clipable.clip_width)
         {
-          end.x = (arg->WIDTH - arg->inter.gun.reload1->clipable.clip_width) / 2 + pos.x;
-          end.y = (arg->HEIGHT - arg->inter.gun.reload1->clipable.clip_height) + pos.y;
+          end.x = (arg->WIDTH
+		   - arg->inter.gun.reload1->clipable.clip_width) / 2 + pos.x;
+          end.y = (arg->HEIGHT
+		   - arg->inter.gun.reload1->clipable.clip_height) + pos.y;
           if (check_color3(arg, i) == 0)
             tekpixel2(arg->pix, &end, &arg->inter.gun.color[i]);
           pos.x++;
@@ -52,7 +54,7 @@ void                    draw_reload1(t_param *arg)
     }
 }
 
-void                    draw_reload2(t_param *arg)
+void			draw_reload2(t_param *arg)
 {
   t_bunny_position      end;
   t_bunny_position      pos;
@@ -66,8 +68,10 @@ void                    draw_reload2(t_param *arg)
       pos.x = 0;
       while (pos.x < arg->inter.gun.reload2->clipable.clip_width)
         {
-          end.x = (arg->WIDTH - arg->inter.gun.reload2->clipable.clip_width) / 2 + pos.x;
-          end.y = (arg->HEIGHT - arg->inter.gun.reload2->clipable.clip_height) + pos.y;
+          end.x = (arg->WIDTH
+		   - arg->inter.gun.reload2->clipable.clip_width) / 2 + pos.x;
+          end.y = (arg->HEIGHT
+		   - arg->inter.gun.reload2->clipable.clip_height) + pos.y;
           if (check_color3(arg, i) == 0)
             tekpixel2(arg->pix, &end, &arg->inter.gun.color[i]);
           pos.x++;
@@ -77,7 +81,7 @@ void                    draw_reload2(t_param *arg)
     }
 }
 
-void                    draw_reload3(t_param *arg)
+void			draw_reload3(t_param *arg)
 {
   t_bunny_position      end;
   t_bunny_position      pos;
@@ -91,8 +95,10 @@ void                    draw_reload3(t_param *arg)
       pos.x = 0;
       while (pos.x < arg->inter.gun.reload3->clipable.clip_width)
         {
-          end.x = (arg->WIDTH - arg->inter.gun.reload3->clipable.clip_width) / 2 + pos.x;
-          end.y = (arg->HEIGHT - arg->inter.gun.reload3->clipable.clip_height) + pos.y;
+          end.x = (arg->WIDTH
+		   - arg->inter.gun.reload3->clipable.clip_width) / 2 + pos.x;
+          end.y = (arg->HEIGHT
+		   - arg->inter.gun.reload3->clipable.clip_height) + pos.y;
           if (check_color3(arg, i) == 0)
             tekpixel2(arg->pix, &end, &arg->inter.gun.color[i]);
           pos.x++;

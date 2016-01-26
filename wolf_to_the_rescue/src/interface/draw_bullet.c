@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 20 15:08:42 2016 Maud MAREL
-** Last update Tue Jan 26 14:55:06 2016 maud marel
+** Last update Tue Jan 26 21:23:35 2016 maud marel
 */
 
 #include "wolf.h"
@@ -41,8 +41,10 @@ void	draw_bullet2(t_param *arg, t_bunny_position pos,
       while (pos.x < arg->inter.bullet.bullet->clipable.clip_width)
 	{
 	  end.x = pos.x + (arg->WIDTH / 10)
-	    + (arg->WIDTH / 5) - (nb * arg->inter.bullet.bullet->clipable.clip_width);
-	  end.y = (arg->HEIGHT - ((arg->HEIGHT / 65) + (arg->HEIGHT / 65))) + pos.y
+	    + (arg->WIDTH / 5)
+	    - (nb * arg->inter.bullet.bullet->clipable.clip_width);
+	  end.y = (arg->HEIGHT
+		   - ((arg->HEIGHT / 65) + (arg->HEIGHT / 65))) + pos.y
 	    - arg->inter.bullet.bullet->clipable.clip_height - 3;
 	  if (check_color2(arg, i) == 0)
 	    tekpixel2(arg->pix, &end, &arg->inter.bullet.color[i]);
@@ -53,7 +55,7 @@ void	draw_bullet2(t_param *arg, t_bunny_position pos,
     }
 }
 
-int     check_color2(t_param *arg, int i)
+int	check_color2(t_param *arg, int i)
 {
   int   r;
   int   b;

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Tue Jan 26 17:34:29 2016 maud marel
+** Last update Tue Jan 26 18:48:09 2016 maud marel
 */
 
 #include "wolf.h"
@@ -133,6 +133,8 @@ char		aff_wolf(t_param *arg)
   bunny_set_mouse_position_window(arg->win, arg->WIDTH / 2, arg->HEIGHT / 2);
   bunny_loop(arg->win, 24, arg);
   bunny_delete_clipable(&arg->pix->clipable);
+  bunny_sound_stop(arg->inter.gun.music);
+  bunny_delete_sound(arg->inter.gun.music);
   bunny_stop(arg->win);
   return (0);
 }

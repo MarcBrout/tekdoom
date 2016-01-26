@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Tue Jan 26 17:34:46 2016 maud marel
+** Last update Tue Jan 26 21:55:56 2016 maud marel
 */
 
 #ifndef WOLF_H_
@@ -167,6 +167,7 @@ void                    action_draw_square_life(t_param *,
 						t_bunny_position,
 						t_bunny_position);
 void                    interface(t_param *);
+void			interface_gun(t_param *);
 void                    interface_init(t_param *);
 void                    draw_heart(t_param *);
 void                    draw_heart2(t_param *, t_bunny_position,
@@ -174,10 +175,11 @@ void                    draw_heart2(t_param *, t_bunny_position,
 void                    draw_bullet(t_param *);
 void                    draw_bullet2(t_param *, t_bunny_position,
 				     t_bunny_position, int);
-int                     draw_game_over(t_param *);
-int                     draw_last_chance(t_param *);
-int                     draw_try_again(t_param *);
+void                    draw_game_over(t_param *);
+void                    draw_last_chance(t_param *);
+void                    draw_try_again(t_param *);
 int                     load_picture(t_param *);
+int                     load_picture2(t_param *);
 void			inertie(t_param *);
 void                    tekpixel2(t_bunny_pixelarray *,
                                  t_bunny_position *,
@@ -193,5 +195,16 @@ void			draw_reload(t_param *);
 void			draw_reload1(t_param *);
 void			draw_reload2(t_param *);
 void			draw_reload3(t_param *);
+void			draw_punch(t_param *);
+void			draw_punch1(t_param *);
+void			draw_punch2(t_param *);
+void			draw_punch3(t_param *);
+void			keyboard_interface(t_param *);
+void			keyboard_interface2(t_bunny_event_state,
+					    t_bunny_keysym,
+					    t_param *);
+void			keyboard_interface3(t_bunny_event_state,
+					    t_bunny_keysym,
+					    t_param *);
 
 #endif /* !WOLF_H_ */
