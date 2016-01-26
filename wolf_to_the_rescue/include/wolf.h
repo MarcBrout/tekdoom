@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Tue Jan 26 09:35:00 2016 benjamin duhieu
+** Last update Tue Jan 26 14:13:20 2016 Mathieu Sauvau
 */
 
 #ifndef WOLF_H_
@@ -98,6 +98,7 @@ typedef struct		s_param
   int			speedy;
   int			jump;
   int			chrono;
+  bool			menu;
 }			t_param;
 
 t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
@@ -132,7 +133,7 @@ void project_k(t_param *, t_lvl *, int, t_data *);
 void put_border(t_param *, int, unsigned int);
 void set_bump(t_param *, t_lvl *);
 void set_cossin(t_param *);
-void simple_tap(t_bunny_keysym, t_param *);
+void simple_tap(t_param *);
 char *my_strdup(char *);
 char mal_mini_map(t_param *, t_lvl *);
 char aff_wolf(t_param *);

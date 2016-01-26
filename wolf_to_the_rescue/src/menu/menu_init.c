@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:48:40 2016 Mathieu Sauvau
-** Last update Mon Jan 25 16:57:59 2016 Mathieu Sauvau
+** Last update Tue Jan 26 17:04:59 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -31,7 +31,7 @@ void			default_config(t_data *data)
   data->config->fullscreen = false;
   data->config->width = 800;
   data->config->height = 600;
-  data->config->volume = 100;
+  data->config->volume = 50;
   data->config->fov = 60;
   INPUT->key[0] = 25;
   INPUT->key[1] = 18;
@@ -62,6 +62,8 @@ int			init_data(t_data *data)
 {
   data->menu_length = 4;
   if ((data->rect = malloc(sizeof(t_mrect) * data->menu_length)) == NULL)
+    return (1);
+  if ((data->bg = bunny_load_pixelarray("accueil.png")) == NULL)
     return (1);
   load_config(data);
   init_res(data);

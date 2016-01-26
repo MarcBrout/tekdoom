@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Tue Jan 26 09:29:35 2016 benjamin duhieu
+## Last update Tue Jan 26 12:05:15 2016 Mathieu Sauvau
 ##
 
 SRCP	= ./src/
@@ -44,6 +44,7 @@ SRC     = $(SRCP)wolf.c \
 	$(MENU)save_opt.c \
 	$(MENU)load_config.c \
 	$(MENU)write_bmp.c \
+	$(MENU)menu_credits.c \
 	$(SRCI)mini_map.c \
 	$(SRCI)mini_map_blit.c \
 	$(SRCI)draw_bullet.c \

@@ -1,11 +1,11 @@
 /*
 ** textures.c for tekdoom
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Mon Jan 25 02:40:20 2016 marc brout
-** Last update Mon Jan 25 03:50:30 2016 marc brout
+** Last update Tue Jan 26 14:47:23 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -20,5 +20,4 @@ char	get_textures(t_param *tpar)
 
 /* void	project_textures(t_param *tpar, t_lvl *lvl) */
 /* { */
-  
 /* } */
