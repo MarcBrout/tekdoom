@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Tue Jan 26 22:06:30 2016 maud marel
+** Last update Tue Jan 26 23:56:42 2016 maud marel
 */
 
 #ifndef TEKDOOM_H_
@@ -178,6 +178,7 @@ void                    draw_last_chance(t_param *);
 void                    draw_try_again(t_param *);
 int                     load_picture(t_param *);
 int                     load_picture2(t_param *);
+int                     load_picture3(t_param *);
 void			inertie(t_param *);
 void                    tekpixel2(t_bunny_pixelarray *,
                                  t_bunny_position *,
@@ -185,6 +186,7 @@ void                    tekpixel2(t_bunny_pixelarray *,
 int			check_color(t_param *, int);
 int			check_color2(t_param *, int);
 int			check_color3(t_param *, int);
+int			check_color4(t_param *, int);
 void			draw_gunshot(t_param *);
 void			draw_gunshot1(t_param *);
 void			draw_gunshot2(t_param *);
@@ -204,5 +206,6 @@ void			keyboard_interface2(t_bunny_event_state,
 void			keyboard_interface3(t_bunny_event_state,
 					    t_bunny_keysym,
 					    t_param *);
+void			draw_scope(t_param *);
 
 #endif /* !TEKDOOM_H_ */

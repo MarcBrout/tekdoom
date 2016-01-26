@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 21:38:59 2016 maud marel
-** Last update Tue Jan 26 22:11:59 2016 maud marel
+** Last update Tue Jan 26 23:33:49 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -58,13 +58,6 @@ void	keyboard_interface2(t_bunny_event_state state,
 void	keyboard_interface3(t_bunny_event_state state,
 			    t_bunny_keysym keysym, t_param *arg)
 {
-  if (keysym == BKS_N && state == GO_DOWN && arg->inter.life.nb_heart > 1)
-    {
-      arg->inter.life.life = 100;
-      arg->inter.life.nb_heart--;
-      arg->inter.life.end = 0;
-      arg->inter.life.pos_life.x = (3 * arg->WIDTH) / 10 - 1;
-    }
   if (keysym == BKS_F && state == GO_DOWN)
     {
       if (arg->inter.gun.shoot == 0)
