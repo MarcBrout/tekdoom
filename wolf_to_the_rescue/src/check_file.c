@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 11:06:07 2015 marc brout
-** Last update Mon Jan 25 14:49:30 2016 Mathieu Sauvau
+** Last update Tue Jan 26 09:55:15 2016 marc brout
 */
 
 #include "wolf.h"
@@ -58,7 +58,7 @@ char		check_args(int ac, char **env)
 {
   if (ac < 2)
     {
-      write(2, "Usage : ./wolf3d [map.ini]\n", 28);
+      write(2, "Usage : ./tekdoom [map.ini]\n", 28);
       return (1);
     }
   if (env[0] == NULL)

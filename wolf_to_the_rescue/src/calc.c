@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Tue Jan 26 15:42:11 2016 benjamin duhieu
+** Last update Tue Jan 26 15:43:16 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -90,7 +90,7 @@ void		project_k(t_param *arg, t_lvl *lvl, int x, t_data *data)
   /*     pixels[(int)(x + start * WIDTH)] = ceil[o + p * arg->textures[2]->CWID]; */
   /*   } */
   while (++y < total && y < HEIGHT && ++l)
-    if (y >= 0 && k >= 0)
+    if (y >= 0)
       {
 	j = (int)((l / size) * arg->textures[0]->CHEI) % arg->textures[0]->CHEI;
 	pixels[(int)(x + y * WIDTH)] =

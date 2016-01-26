@@ -5,7 +5,8 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Tue Jan 26 13:16:09 2016 benjamin duhieu
+** Last update Tue Jan 26 15:43:28 2016 benjamin duhieu
+>>>>>>> 6bb0b2f23731a6f355e3a6c5f61649337d5a4159
 */
 
 #include "wolf.h"
@@ -77,15 +78,23 @@ int		sky(t_param *arg, int i)
   return (i);
 }
 
-void		bottom(t_param *arg, int i)
+void		bottom(t_param *arg, UNUSED int i)
 {
-  t_color	*pixels;
-  int		realt;
+  int		y;
+  int		x;
+  int		end;
+  unsigned int	*pixels;
 
-  realt = arg->WIDTH * arg->HEIGHT;
+  y = arg->HEIGHT;
+  end = arg->HEIGHT / 2 +
+    (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * 34));
   pixels = arg->pix->pixels;
-  while (++i < realt)
-    pixels[i].full = FLOOR;
+  while (--y > end)
+    {
+      x = -1;
+      while (++x < arg->WIDTH)
+	pixels[x + y * arg->WIDTH] = BLACK;
+    }
 }
 
 char		aff_wolf(t_param *arg)

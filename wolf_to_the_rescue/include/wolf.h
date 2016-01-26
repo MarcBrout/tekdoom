@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Tue Jan 26 13:31:12 2016 benjamin duhieu
+** Last update Tue Jan 26 15:44:29 2016 benjamin duhieu
 */
 
 #ifndef WOLF_H_
@@ -23,7 +23,9 @@
 # define BORDEROU 0xFF00D7FF
 # define FLD bunny_ini_get_field
 # define NBTXT 3
+# define BIS bunny_ini_scope_get_field
 # define TXT_1 "files/textures/01_brick_wall.png"
+# define TXT_2 "files/textures/02_floor.png"
 # define TXT_3 "files/textures/mediterranean-home-decor.png"
 # define ZERO(val) (((val) > 0) ? (val) - 1 : -1)
 # define ABS(val) (((val) < 0) ? -(val) : (val))
@@ -41,6 +43,13 @@
 # include "interface.h"
 # include "menu.h"
 
+typedef struct		s_obj
+{
+  int			type;
+  double		x;
+  double		y;
+  struct s_obj		*next;
+}			t_obj;
 
 typedef struct		s_lvl
 {
@@ -51,6 +60,7 @@ typedef struct		s_lvl
   int			height;
   int			**map;
   t_bunny_pixelarray	*mini;
+  t_obj			*obj;
   int			minipos;
   double		playerx;
   double		playery;
