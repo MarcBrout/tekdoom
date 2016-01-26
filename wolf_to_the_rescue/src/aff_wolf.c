@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Tue Jan 26 12:09:19 2016 maud marel
+** Last update Tue Jan 26 17:34:29 2016 maud marel
 */
 
 #include "wolf.h"
@@ -32,29 +32,17 @@ t_bunny_response		my_mouse(const t_bunny_position *pos,
   if ((abs->x <= 200 || abs->x >= (arg->WIDTH - 200)) ||
       (abs->y <= 200 || abs->y >= (arg->HEIGHT - 200)))
     {
-      bunny_set_mouse_position_window(arg->win, arg->WIDTH / 2, arg->HEIGHT / 2);
+      bunny_set_mouse_position_window(arg->win, arg->WIDTH / 2,
+				      arg->HEIGHT / 2);
       arg->mov = 1;
     }
   return (GO_ON);
 }
 
-t_bunny_response	main_wolf(void *data)
+void			main_wolf2(t_param *arg)
 {
-  t_param		*arg;
-  int			i;
-
-  arg = data;
-  i = -1;
-  if (arg->data->exit)
-    return (EXIT_ON_SUCCESS);
-  if (arg->speedy)
-    {
-      move(arg, 0, 0.02);
-      arg->speedy--;
-    }
+  inertie(arg);
   new_hight(arg);
-  i = sky(arg, i);
-  bottom(arg, i);
   calc_walls(arg, arg->data);
   set_bump(arg, &arg->lvl[arg->curlvl]);
   add_player_to_mini(arg, &arg->lvl[arg->curlvl]);
@@ -63,7 +51,31 @@ t_bunny_response	main_wolf(void *data)
   put_border(arg, 2, BORDEROU);
   mini_map(arg, &arg->lvl[arg->curlvl], arg->data);
   interface(arg);
+}
+
+t_bunny_response	main_wolf(void *data)
+{
+  t_param		*arg;
+  /* int			i; */
+
+  arg = data;
+  /* i = -1; */
+  if (arg->data->exit)
+    return (EXIT_ON_SUCCESS);
+  if (arg->speedy)
+    {
+      move(arg, 0, 0.02);
+      arg->speedy--;
+    }
+  simple_tap(arg);
+  new_hight(arg);
+  main_wolf2(arg);
+  /* i = sky(arg, i); */
+  /* bottom(arg, i); */
   bunny_blit(&arg->win->buffer, &arg->pix->clipable, &arg->data->pos);
+  if (arg->menu)
+    bunny_blit(&arg->win->buffer, &arg->data->pix_ar->clipable,
+	       &arg->data->pos);
   bunny_display(arg->win);
   return (GO_ON);
 }
@@ -73,23 +85,31 @@ int		sky(t_param *arg, int i)
   t_color	*pixels;
   int		total;
 
-  total = (arg->WIDTH * arg->HEIGHT) / 2 +
-    (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34))) * arg->WIDTH;
+  total = (arg->WIDTH * arg->HEIGHT) / 2
+    + (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34))) * arg->WIDTH;
   pixels = arg->pix->pixels;
   while (++i < total && total)
     pixels[i].full = SKY;
   return (i);
 }
 
-void		bottom(t_param *arg, int i)
+void		bottom(t_param *arg, UNUSED int i)
 {
-  t_color	*pixels;
-  int		realt;
+  int		y;
+  int		x;
+  int		end;
+  unsigned int	*pixels;
 
-  realt = arg->WIDTH * arg->HEIGHT;
+  y = arg->HEIGHT;
+  end = arg->HEIGHT / 2 +
+    (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * 34));
   pixels = arg->pix->pixels;
-  while (++i < realt)
-    pixels[i].full = FLOOR;
+  while (--y > end)
+    {
+      x = -1;
+      while (++x < arg->WIDTH)
+	pixels[x + y * arg->WIDTH] = BLACK;
+    }
 }
 
 char		aff_wolf(t_param *arg)

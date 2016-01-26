@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:51:11 2016 Mathieu Sauvau
-** Last update Mon Jan 25 15:44:37 2016 Mathieu Sauvau
+** Last update Tue Jan 26 17:01:44 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"

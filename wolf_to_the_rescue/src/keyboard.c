@@ -5,29 +5,31 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 19:34:41 2015 marc brout
-** Last update Tue Jan 26 16:12:41 2016 maud marel
+** Last update Tue Jan 26 17:34:13 2016 maud marel
 */
 
 #include "wolf.h"
 
-void		simple_tap(t_bunny_keysym keysym,
-			   t_param *arg)
+void		simple_tap(t_param *arg)
 {
-  if (keysym == arg->INPUT->key[0])
+  const bool	*k;
+
+  k = bunny_get_keyboard();
+  if (k[arg->INPUT->key[0]])
     {
       arg->speedy += 2;
       move(arg, 0, 0.1);
     }
-  if (keysym == arg->INPUT->key[1])
+  if (k[arg->INPUT->key[1]])
     {
       arg->speedy = 0;
       move(arg, 0, -0.05);
     }
-  if (keysym == arg->INPUT->key[2])
+  if (k[arg->INPUT->key[2]])
     move(arg, 90, 0.05);
-  if (keysym == arg->INPUT->key[3])
+  if (k[arg->INPUT->key[3]])
     move(arg, 90, -0.05);
-  if (keysym == arg->INPUT->key[4])
+  if (k[arg->INPUT->key[4]])
     arg->jump = 101;
 }
 

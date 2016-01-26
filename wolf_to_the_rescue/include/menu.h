@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Mon Jan 25 20:49:29 2016 benjamin duhieu
+** Last update Tue Jan 26 17:09:42 2016 Mathieu Sauvau
 */
 
 #ifndef STRUCT_H_
@@ -70,15 +70,19 @@ typedef struct		s_data
 {
   t_bunny_window	*win;
   t_bunny_pixelarray	*pix_ar;
+  t_bunny_pixelarray	*bg;
   t_config		*config;
+  t_bunny_music		*music;
   t_bunny_position	pos;
   t_mrect		*rect;
   t_mrect		rect_opt[10];
   t_mrect		rect_input[10];
+  t_mrect		rect_credit[4];
   int			menu_length;
   int			menu_index;
   int			selected_index;
   t_letter		letter[75];
+  char			sound;
   bool			exit;
 }			t_data;
 
@@ -96,6 +100,7 @@ void			tekline(t_bunny_pixelarray *pix_ar,
 				t_color *color);
 void			main_menu(t_data *data, t_mrect *, int, int);
 void                    my_fill(t_bunny_pixelarray *pix_ar, unsigned int color);
+void			disp_sound(t_data *data);
 void			option_menu(t_data *data, int selected_index);
 t_mrect			label(t_data *data, bool selected,
 			      t_bunny_position, t_bunny_position);
@@ -142,5 +147,9 @@ void			load_config(t_data *data);
 void			load_letter(t_data *data);
 int			start(t_data *data);
 void			pos_pix_ar(t_data *);
+void			write_credit_menu(t_data *data);
+void			credit_menu(t_data *data);
+t_bunny_response	mainloop(void *);
+void                    cpy_bg(t_bunny_pixelarray *pix_ar, t_bunny_pixelarray *bg);
 
 #endif /* !STRUCT_H_ */

@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Tue Jan 26 15:38:18 2016 maud marel
+## Last update Tue Jan 26 17:34:55 2016 maud marel
 ##
 
 SRCP	= ./src/
@@ -18,6 +18,7 @@ SRC     = $(SRCP)wolf.c \
 	$(SRCP)check_file.c \
 	$(SRCP)fill_tablvl.c \
 	$(SRCP)aff_wolf.c \
+	$(SRCP)inertia.c \
 	$(SRCP)free_all.c \
 	$(SRCP)wall.c \
 	$(SRCP)keyboard.c \
@@ -36,6 +37,7 @@ SRC     = $(SRCP)wolf.c \
 	$(MENU)my_revstr.c \
 	$(MENU)tekpixel.c \
 	$(MENU)itoa.c \
+	$(MENU)music.c \
 	$(MENU)menu_draw.c \
 	$(MENU)menu_utilities.c \
 	$(MENU)menu_utilities2.c \
@@ -44,6 +46,7 @@ SRC     = $(SRCP)wolf.c \
 	$(MENU)save_opt.c \
 	$(MENU)load_config.c \
 	$(MENU)write_bmp.c \
+	$(MENU)menu_credits.c \
 	$(SRCI)mini_map.c \
 	$(SRCI)mini_map_blit.c \
 	$(SRCI)draw_bullet.c \
