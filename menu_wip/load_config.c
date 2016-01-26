@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:49:58 2016 Mathieu Sauvau
-** Last update Fri Jan 22 17:42:45 2016 Mathieu Sauvau
+** Last update Sun Jan 24 14:07:15 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -19,9 +19,8 @@ void			load_input(t_data *data)
   INPUT->key[4] = my_getnbr((char *)BGF(CONFIG->ini, "input", "jump", 0));
   INPUT->key[5] = my_getnbr((char *)BGF(CONFIG->ini, "input", "reload", 0));
   INPUT->key[6] = my_getnbr((char *)BGF(CONFIG->ini, "input", "action", 0));
-  //INPUT->key[7] = my_getnbr((char *)BGF(CONFIG->ini, "input", "fire", 0));
-  // INPUT->key[8] = my_getnbr((char *)BGF(CONFIG->ini, "input", "zoom", 0));
-
+  INPUT->key[7] = my_getnbr((char *)BGF(CONFIG->ini, "input", "fire", 0));
+  INPUT->key[8] = my_getnbr((char *)BGF(CONFIG->ini, "input", "zoom", 0));
 }
 
 void			load_config(t_data *data)
@@ -45,7 +44,6 @@ void			load_config(t_data *data)
 void			load_letter(t_data *data)
 {
   int			i;
-  int			len;
   char			path[11];
   char			letter[90];
   int			l_path;

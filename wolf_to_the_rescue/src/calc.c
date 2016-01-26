@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Mon Jan 25 09:21:54 2016 benjamin duhieu
+** Last update Mon Jan 25 14:57:21 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -63,17 +63,17 @@ void		project_k(t_param *arg, t_lvl *lvl, int x)
 
   pixels = arg->pix->pixels;
   pixelstext = arg->textures[0]->pixels;
-  total = (HEIGHT / 2) + HEIGHT / (2 * arg->calc.k) + lvl->yangle;
-  y = (HEIGHT / 2) - HEIGHT / (2 * arg->calc.k) - 1 + lvl->yangle;
+  total = (arg->HEIGHT / 2) + arg->HEIGHT / (2 * arg->calc.k) + lvl->yangle - (arg->hight * 200) / arg->calc.k;
+  y = (arg->HEIGHT / 2) - arg->HEIGHT / (2 * arg->calc.k) - 1 + lvl->yangle - (arg->hight * 200) / arg->calc.k;
   val = arg->calc.k / (arg->textures[0]->clipable.clip_height / 4);
   j = 0;
   k = arg->textures[0]->clipable.clip_width *
     ((arg->calc.xf - (int)arg->calc.xf) + (arg->calc.yf - (int)arg->calc.yf));
   change = 0;
-  while (++y < total && y < HEIGHT)
+  while (++y < total && y < arg->HEIGHT)
     {
       if (y >= 0 && k >= 0)
-	pixels[x + y * WIDTH].full =
+	pixels[x + y * arg->WIDTH].full =
 	  pixelstext[k + j * arg->textures[0]->clipable.clip_width].full;
       if ((change += val) > 1)
       	{
@@ -89,7 +89,7 @@ void		calc_walls(t_param *arg)
   int		x;
 
   x = -1;
-  while (++x < WIDTH)
+  while (++x < arg->WIDTH)
     {
       basic_to_sec(arg, x);
       get_len(arg);

@@ -5,13 +5,12 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Mon Jan 25 09:23:59 2016 benjamin duhieu
+** Last update Mon Jan 25 21:02:43 2016 benjamin duhieu
 */
 
 #ifndef WOLF_H_
 # define WOLF_H_
-# define WIDTH 1024
-# define HEIGHT 768
+
 # define SKY 0xFF796C71
 # define PLAYER 0xFF00D7FF
 # define WALLA 0xFF8E7587
@@ -36,6 +35,9 @@
 # include <stdio.h>
 # include <time.h>
 # include "lapin.h"
+# include "interface.h"
+# include "menu.h"
+
 
 typedef struct		s_lvl
 {
@@ -55,10 +57,10 @@ typedef struct		s_lvl
 
 typedef struct		s_wmath
 {
-  double		ydep[WIDTH];
+  double		*ydep;
   double		costab[360];
   double		sintab[360];
-}			t_wmath;
+  }			t_wmath;
 
 typedef struct		s_calc
 {
@@ -76,6 +78,7 @@ typedef struct		s_calc
 typedef struct		s_param
 {
   t_calc		calc;
+  t_data		*data;
   t_wmath		wm;
   int			curlvl;
   int			nblvl;
@@ -87,6 +90,7 @@ typedef struct		s_param
   t_bunny_window	*win;
   t_bunny_key		key;
   t_bunny_move		move;
+  t_interface		inter;
   char			mov;
   char			vit;
   int			speedy;
@@ -98,8 +102,8 @@ t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
 t_bunny_response main_wolf(void *);
 t_bunny_response my_mouse(const t_bunny_position *, void *);
 int my_strcmp(const char *, char *);
-int my_strlen(const char *);
-int my_getnbr(const char *);
+/*int my_strlen(const char *);*/
+/*int my_getnbr(const char *);*/
 int  sky(t_param *, int);
 int next_casex(t_param *, double);
 int next_casey(t_param *, double);
@@ -119,14 +123,14 @@ void calc_walls(t_param *);
 void celerity(t_param *);
 void get_len(t_param *);
 void get_player(t_param *, t_lvl *);
-void mini_map(t_param *, t_lvl *);
+void mini_map(t_param *, t_lvl *, t_data *);
 void move(t_param *, double, double);
 void new_hight(t_param *);
 void project_k(t_param *, t_lvl *, int);
 void put_border(t_param *, int, unsigned int);
 void set_bump(t_param *, t_lvl *);
 void set_cossin(t_param *);
-void simple_tap(t_param *);
+void simple_tap(t_bunny_keysym, t_param *);
 char *my_strdup(char *);
 char mal_mini_map(t_param *, t_lvl *);
 char aff_wolf(t_param *);
@@ -135,10 +139,35 @@ char check_all_lvl(t_param *);
 char check_lvl(t_param *, char *);
 char get_lvl_map(t_param *, t_lvl *);
 char get_tabmap(t_param *);
-char launch_wolf(char **);
+char launch_wolf(t_param *, char **);
 char mal_tablvl(t_param *);
 char mal_lvl_map(t_param *, t_lvl *);
 char open_ini(t_param *, char **);
 char get_textures(t_param *);
+
+void                    draw_life_bar(t_param *);
+int                     draw_move_life(t_param *);
+int                     draw_move_life2(t_param *, t_bunny_position);
+void                    draw_square_life(t_param *);
+void                    action_draw_square_life(t_param *,
+						t_bunny_position,
+						t_bunny_position);
+void                    interface(t_param *);
+void                    interface_init(t_param *);
+int                     draw_heart(t_param *);
+void                    draw_heart2(t_param *, t_bunny_position,
+                                    t_bunny_position, int);
+void                    draw_heart_else(t_param *, int, int);
+int                     draw_bullet(t_param *);
+void                    draw_bullet2(t_param *, t_bunny_position,
+				     t_bunny_position, int);
+void                    draw_bullet_else(t_param *, int, int);
+int                     draw_game_over(t_param *);
+int                     draw_last_chance(t_param *);
+int                     draw_try_again(t_param *);
+int                     load_picture(t_param *);
+void                    tekpixel2(t_bunny_pixelarray *,
+                                 t_bunny_position *,
+                                 t_color *);
 
 #endif /* !WOLF_H_ */

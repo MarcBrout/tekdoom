@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:48:40 2016 Mathieu Sauvau
-** Last update Fri Jan 22 17:47:04 2016 Mathieu Sauvau
+** Last update Sun Jan 24 18:34:49 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -40,8 +40,8 @@ void			default_config(t_data *data)
   INPUT->key[4] = 57;
   INPUT->key[5] = 17;
   INPUT->key[6] = 4;
-  //  INPUT->key[7] =
-  //  INPUT->key[8] =
+  INPUT->key[7] = 11;
+  INPUT->key[8] = 12;
 }
 
 int			init_data(t_data *data)

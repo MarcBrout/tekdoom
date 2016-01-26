@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 25 00:46:23 2015 marc brout
-** Last update Mon Jan 25 06:36:36 2016 benjamin duhieu
+** Last update Mon Jan 25 20:51:47 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -24,7 +24,7 @@ void		new_hight(t_param *arg)
   if (arg->jump)
     {
       arg->hight = arg->wm.costab[arg->jump];
-      arg->jump += 7;
+      arg->jump += 10;
     }
 }
 
@@ -36,11 +36,11 @@ void		wall_north_east(t_param *arg, int x, int y, int total)
   if (arg->calc.vecx >= 0 && arg->calc.vecy >= 0)
     {
       if (arg->calc.x)
-  	while (++y < total && y < HEIGHT)
-  	  pixels[x + y * WIDTH] = WALLA;
+  	while (++y < total && y < arg->HEIGHT)
+  	  pixels[x + y * arg->WIDTH] = WALLA;
       else
-  	while (++y < total && y < HEIGHT)
-  	  pixels[x + y * WIDTH] = WALLB;
+  	while (++y < total && y < arg->HEIGHT)
+  	  pixels[x + y * arg->WIDTH] = WALLB;
     }
 }
 
@@ -52,11 +52,11 @@ void		wall_north_west(t_param *arg, int x, int y, int total)
   if (arg->calc.vecx < 0 && arg->calc.vecy >= 0)
     {
       if (arg->calc.x)
-  	while (++y < total && y < HEIGHT)
-  	  pixels[x + y * WIDTH] = WALLD;
+  	while (++y < total && y < arg->HEIGHT)
+  	  pixels[x + y * arg->WIDTH] = WALLD;
       else
-  	while (++y < total && y < HEIGHT)
-  	  pixels[x + y * WIDTH] = WALLB;
+  	while (++y < total && y < arg->HEIGHT)
+  	  pixels[x + y * arg->WIDTH] = WALLB;
     }
 }
 
@@ -68,11 +68,11 @@ void		wall_south_west(t_param *arg, int x, int y, int total)
   if (arg->calc.vecx < 0 && arg->calc.vecy < 0)
     {
       if (arg->calc.x)
-  	while (++y < total && y < HEIGHT)
-  	  pixels[x + y * WIDTH] = WALLD;
+  	while (++y < total && y < arg->HEIGHT)
+  	  pixels[x + y * arg->WIDTH] = WALLD;
       else
-  	while (++y < total && y < HEIGHT)
-  	  pixels[x + y * WIDTH] = WALLC;
+  	while (++y < total && y < arg->HEIGHT)
+  	  pixels[x + y * arg->WIDTH] = WALLC;
     }
 }
 
@@ -84,10 +84,10 @@ void		wall_south_east(t_param *arg, int x, int y, int total)
   if (arg->calc.vecx >= 0 && arg->calc.vecy < 0)
     {
       if (arg->calc.x)
-  	while (++y < total && y < HEIGHT)
-  	  pixels[x + y * WIDTH] = WALLA;
+  	while (++y < total && y < arg->HEIGHT)
+  	  pixels[x + y * arg->WIDTH] = WALLA;
       else
-  	while (++y < total && y < HEIGHT)
-  	  pixels[x + y * WIDTH] = WALLC;
+  	while (++y < total && y < arg->HEIGHT)
+  	  pixels[x + y * arg->WIDTH] = WALLC;
     }
 }

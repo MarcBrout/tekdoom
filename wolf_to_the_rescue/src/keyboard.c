@@ -5,30 +5,30 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 19:34:41 2015 marc brout
-** Last update Mon Jan 25 06:56:42 2016 benjamin duhieu
+** Last update Mon Jan 25 17:29:00 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
 
-void		simple_tap(t_param *arg)
+void		simple_tap(t_bunny_keysym keysym,
+			   t_param *arg)
 {
-  const bool	*keyboard;
-
-  keyboard = bunny_get_keyboard();
-  if (keyboard[BKS_Z])
+  if (keysym == arg->INPUT->key[0])
     {
       arg->speedy += 2;
       move(arg, 0, 0.1);
     }
-  if (keyboard[BKS_S])
-    move(arg, 0, -0.05);
-  if (keyboard[BKS_Q])
+  if (keysym == arg->INPUT->key[1])
+    {
+      arg->speedy = 0;
+      move(arg, 0, -0.05);
+    }
+  if (keysym == arg->INPUT->key[2])
     move(arg, 90, 0.05);
-  if (keyboard[BKS_D])
+  if (keysym == arg->INPUT->key[3])
     move(arg, 90, -0.05);
-  if (keyboard[BKS_SPACE])
+  if (keysym == arg->INPUT->key[4])
     arg->jump = 101;
-  arg->vit = 0;
 }
 
 t_bunny_response	my_keys(t_bunny_event_state state,
@@ -47,6 +47,7 @@ t_bunny_response	my_keys(t_bunny_event_state state,
       if (keysym == BKS_M)
 	arg->curlvl = (arg->curlvl - 1 >= 0) ? arg->curlvl - 1 :
 	  arg->nblvl - 1;
+      simple_tap(keysym, arg);
     }
   return (GO_ON);
 }

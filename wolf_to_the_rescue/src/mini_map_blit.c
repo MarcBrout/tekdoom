@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 01:06:18 2015 marc brout
-** Last update Mon Jan 25 20:23:13 2016 benjamin duhieu
+** Last update Mon Jan 25 21:03:08 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -37,7 +37,7 @@ void		set_bump(t_param * arg, t_lvl *lvl)
     }
 }
 
-void			mini_map(t_param *arg, t_lvl *lvl)
+void			mini_map(t_param *arg, t_lvl *lvl, t_data *data)
 {
   int		x;
   int		y;
@@ -48,7 +48,7 @@ void			mini_map(t_param *arg, t_lvl *lvl)
   unsigned int	*pixmap;
   unsigned int	*minmap;
 
-   y = HEIGHT - 9 * arg->calc.mini - 1;
+  y = arg->calc.mini - 1;
   ymini = lvl->minipos / lvl->mini->clipable.clip_width - 4 *
     arg->calc.mini - 1;
   ymax = lvl->minipos / lvl->mini->clipable.clip_width + 4 * arg->calc.mini;
@@ -74,14 +74,14 @@ void		put_border(t_param *arg, int pix, unsigned int color)
   int		ymax;
   unsigned int	*pixels;
 
-  y = HEIGHT - 9 * arg->calc.mini - pix - 1;
-  ymax = HEIGHT - arg->calc.mini + pix;
+  y = arg->calc.mini - pix - 1;
+  ymax = 9 * arg->calc.mini + pix;
   xmax = 9 * arg->calc.mini + pix;
   pixels = arg->pix->pixels;
   while (++y < ymax)
     {
       x = arg->calc.mini - pix - 1;
       while (++x < xmax)
-	pixels[x + y * WIDTH] = color;
+	pixels[x + y * arg->WIDTH] = color;
     }
 }
