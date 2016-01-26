@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 20 18:46:14 2015 Mathieu Sauvau
-** Last update Tue Jan 26 16:48:52 2016 Mathieu Sauvau
+** Last update Tue Jan 26 17:06:40 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -32,6 +32,8 @@ t_bunny_response	mainloop(void	*my_data)
   cpy_bg(data->pix_ar, data->bg);
   /*  my_fill(data->pix_ar, PINK);*/
   /*  bunny_blit(&data->win->buffer, data->bg, &data->pos);*/
+  disp_sound(data);
+  my_fill(data->pix_ar, PINK);
   if (data->menu_index == 0)
     main_menu(data, data->rect, HEIGHT / 2, 20);
   else if (data->menu_index == 1)
@@ -54,9 +56,13 @@ int			launch(t_data *data)
   if (init_data(data) == 1)
     return (-1);
   memory_check = 1;
+  data->sound = 1;
   if ((data->win = bunny_start(WIDTH, HEIGHT,
 			      CONFIG->fullscreen, "TEk-DOOM")) == NULL
       || (data->pix_ar = bunny_new_pixelarray(WIDTH, HEIGHT)) == NULL)
+    return (-1);
+  if ((data->music =
+       bunny_load_music("Doom OST - E1M1 - At Dooms Gate.ogg")) == NULL)
     return (-1);
   bunny_blit(&data->win->buffer, &data->pix_ar->clipable, &data->pos);
   bunny_set_loop_main_function(mainloop);

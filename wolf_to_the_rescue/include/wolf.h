@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Tue Jan 26 14:13:20 2016 Mathieu Sauvau
+** Last update Tue Jan 26 17:09:31 2016 Mathieu Sauvau
 */
 
 #ifndef WOLF_H_
@@ -22,8 +22,11 @@
 # define BORDERIN 0xFF00A5FF
 # define BORDEROU 0xFF00D7FF
 # define FLD bunny_ini_get_field
-# define NBTXT 1
+# define NBTXT 3
+# define BIS bunny_ini_scope_get_field
 # define TXT_1 "files/textures/01_brick_wall.png"
+# define TXT_2 "files/textures/02_floor.png"
+# define TXT_3 "files/textures/mediterranean-home-decor.png"
 # define ZERO(val) (((val) > 0) ? (val) - 1 : -1)
 # define ABS(val) (((val) < 0) ? -(val) : (val))
 # define GET_X(val) ABS((WIDTH / 2) - WIDTH + (val))
@@ -40,6 +43,13 @@
 # include "interface.h"
 # include "menu.h"
 
+typedef struct		s_obj
+{
+  int			type;
+  double		x;
+  double		y;
+  struct s_obj		*next;
+}			t_obj;
 
 typedef struct		s_lvl
 {
@@ -50,6 +60,7 @@ typedef struct		s_lvl
   int			height;
   int			**map;
   t_bunny_pixelarray	*mini;
+  t_obj			*obj;
   int			minipos;
   double		playerx;
   double		playery;
@@ -169,6 +180,7 @@ int                     draw_game_over(t_param *);
 int                     draw_last_chance(t_param *);
 int                     draw_try_again(t_param *);
 int                     load_picture(t_param *);
+void			inertie(t_param *);
 void                    tekpixel2(t_bunny_pixelarray *,
                                  t_bunny_position *,
                                  t_color *);

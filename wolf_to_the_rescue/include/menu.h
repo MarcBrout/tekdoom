@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Tue Jan 26 16:49:01 2016 Mathieu Sauvau
+** Last update Tue Jan 26 17:09:42 2016 Mathieu Sauvau
 */
 
 #ifndef STRUCT_H_
@@ -72,6 +72,7 @@ typedef struct		s_data
   t_bunny_pixelarray	*pix_ar;
   t_bunny_pixelarray	*bg;
   t_config		*config;
+  t_bunny_music		*music;
   t_bunny_position	pos;
   t_mrect		*rect;
   t_mrect		rect_opt[10];
@@ -81,6 +82,7 @@ typedef struct		s_data
   int			menu_index;
   int			selected_index;
   t_letter		letter[75];
+  char			sound;
   bool			exit;
 }			t_data;
 
@@ -98,6 +100,7 @@ void			tekline(t_bunny_pixelarray *pix_ar,
 				t_color *color);
 void			main_menu(t_data *data, t_mrect *, int, int);
 void                    my_fill(t_bunny_pixelarray *pix_ar, unsigned int color);
+void			disp_sound(t_data *data);
 void			option_menu(t_data *data, int selected_index);
 t_mrect			label(t_data *data, bool selected,
 			      t_bunny_position, t_bunny_position);

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Tue Jan 26 14:50:48 2016 Mathieu Sauvau
+** Last update Tue Jan 26 17:10:28 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -41,6 +41,8 @@ t_bunny_response		my_mouse(const t_bunny_position *pos,
 
 void			main_wolf2(t_param *arg)
 {
+  inertie(arg);
+  new_hight(arg);
   calc_walls(arg, arg->data);
   set_bump(arg, &arg->lvl[arg->curlvl]);
   add_player_to_mini(arg, &arg->lvl[arg->curlvl]);
@@ -54,10 +56,10 @@ void			main_wolf2(t_param *arg)
 t_bunny_response	main_wolf(void *data)
 {
   t_param		*arg;
-  int			i;
+  /* int			i; */
 
   arg = data;
-  i = -1;
+  /* i = -1; */
   if (arg->data->exit)
     return (EXIT_ON_SUCCESS);
   if (arg->speedy)
@@ -67,9 +69,9 @@ t_bunny_response	main_wolf(void *data)
     }
   simple_tap(arg);
   new_hight(arg);
-  i = sky(arg, i);
-  bottom(arg, i);
   main_wolf2(arg);
+  /* i = sky(arg, i); */
+  /* bottom(arg, i); */
   bunny_blit(&arg->win->buffer, &arg->pix->clipable, &arg->data->pos);
   if (arg->menu)
     bunny_blit(&arg->win->buffer, &arg->data->pix_ar->clipable,
@@ -91,15 +93,23 @@ int		sky(t_param *arg, int i)
   return (i);
 }
 
-void		bottom(t_param *arg, int i)
+void		bottom(t_param *arg, UNUSED int i)
 {
-  t_color	*pixels;
-  int		realt;
+  int		y;
+  int		x;
+  int		end;
+  unsigned int	*pixels;
 
-  realt = arg->WIDTH * arg->HEIGHT;
+  y = arg->HEIGHT;
+  end = arg->HEIGHT / 2 +
+    (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * 34));
   pixels = arg->pix->pixels;
-  while (++i < realt)
-    pixels[i].full = FLOOR;
+  while (--y > end)
+    {
+      x = -1;
+      while (++x < arg->WIDTH)
+	pixels[x + y * arg->WIDTH] = BLACK;
+    }
 }
 
 char		aff_wolf(t_param *arg)
