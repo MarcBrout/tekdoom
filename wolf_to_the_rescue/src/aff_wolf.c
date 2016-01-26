@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Tue Jan 26 09:28:18 2016 benjamin duhieu
+** Last update Tue Jan 26 09:33:58 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -55,7 +55,7 @@ t_bunny_response	main_wolf(void *data)
   new_hight(arg);
   i = sky(arg, i);
   bottom(arg, i);
-  calc_walls(arg);
+  calc_walls(arg, arg->data);
   set_bump(arg, &arg->lvl[arg->curlvl]);
   add_player_to_mini(arg, &arg->lvl[arg->curlvl]);
   put_border(arg, 6, BORDER);

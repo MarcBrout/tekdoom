@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Tue Jan 26 09:28:57 2016 benjamin duhieu
+** Last update Tue Jan 26 09:35:00 2016 benjamin duhieu
 */
 
 #ifndef WOLF_H_
@@ -121,14 +121,14 @@ void set_minimaps(t_param *);
 void tek_circle(t_lvl *, int);
 void add_player_to_mini(t_param *, t_lvl *);
 void basic_to_sec(t_param *, int);
-void calc_walls(t_param *);
+void calc_walls(t_param *, t_data *);
 void celerity(t_param *);
 void get_len(t_param *);
 void get_player(t_param *, t_lvl *);
 void mini_map(t_param *, t_lvl *, t_data *);
 void move(t_param *, double, double);
 void new_hight(t_param *);
-void project_k(t_param *, t_lvl *, int);
+void project_k(t_param *, t_lvl *, int, t_data *);
 void put_border(t_param *, int, unsigned int);
 void set_bump(t_param *, t_lvl *);
 void set_cossin(t_param *);

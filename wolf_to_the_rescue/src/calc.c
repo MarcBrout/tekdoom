@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Tue Jan 26 09:22:04 2016 marc brout
+** Last update Tue Jan 26 09:34:16 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -50,7 +50,7 @@ void		get_len(t_param *arg)
     }
 }
 
-void		project_k(t_param *arg, t_lvl *lvl, int x)
+void		project_k(t_param *arg, t_lvl *lvl, int x, t_data *data)
 {
   int		y;
   int		j;
@@ -77,7 +77,7 @@ void		project_k(t_param *arg, t_lvl *lvl, int x)
       }
 }
 
-void		calc_walls(t_param *arg)
+void		calc_walls(t_param *arg, t_data *data)
 {
   int		x;
 
@@ -86,6 +86,6 @@ void		calc_walls(t_param *arg)
     {
       basic_to_sec(arg, x);
       get_len(arg);
-      project_k(arg, &arg->lvl[arg->curlvl], x);
+      project_k(arg, &arg->lvl[arg->curlvl], x, data);
     }
 }
