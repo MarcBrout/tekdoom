@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:48:40 2016 Mathieu Sauvau
-** Last update Tue Jan 26 17:04:59 2016 Mathieu Sauvau
+** Last update Tue Jan 26 22:11:49 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -61,7 +61,7 @@ void			pos_pix_ar(t_data *data)
 int			init_data(t_data *data)
 {
   data->menu_length = 4;
-  if ((data->rect = malloc(sizeof(t_mrect) * data->menu_length)) == NULL)
+  if ((data->rect = bunny_malloc(sizeof(t_mrect) * data->menu_length)) == NULL)
     return (1);
   if ((data->bg = bunny_load_pixelarray("accueil.png")) == NULL)
     return (1);

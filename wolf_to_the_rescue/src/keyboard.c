@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 19:34:41 2015 marc brout
-** Last update Tue Jan 26 17:34:13 2016 maud marel
+** Last update Tue Jan 26 17:38:48 2016 Mathieu Sauvau
 */
 
 #include "wolf.h"
@@ -80,7 +80,6 @@ t_bunny_response	my_keys(t_bunny_event_state state,
 	{
 	  arg->inter.gun.check_r = 12;
 	}
-      simple_tap(keysym, arg);
     }
   return (GO_ON);
 }

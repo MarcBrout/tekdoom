@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:43:24 2016 Mathieu Sauvau
-** Last update Mon Jan 25 17:32:01 2016 Mathieu Sauvau
+** Last update Tue Jan 26 18:42:55 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -96,7 +96,15 @@ void			write_change_key(t_data *data)
 {
   t_bunny_position	pos_txt;
 
-  pos_txt.x = WIDTH / 2 - 110;
-  pos_txt.y = HEIGHT / 2 - 20;
+  if (CONFIG->fullscreen && CONFIG->height == 720)
+    {
+      pos_txt.x = WIDTH / 2 - 110 + data->pos.x;
+      pos_txt.y = HEIGHT / 2 - 20 + data->pos.y;
+    }
+  else
+    {
+      pos_txt.x = WIDTH / 2 - 110;
+      pos_txt.y = HEIGHT / 2 - 20;
+    }
   write_bmp(data, "Press a key", pos_txt);
 }
