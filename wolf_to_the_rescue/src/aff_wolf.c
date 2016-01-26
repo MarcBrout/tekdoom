@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Tue Jan 26 09:33:58 2016 benjamin duhieu
+** Last update Tue Jan 26 13:16:09 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -41,20 +41,16 @@ t_bunny_response		my_mouse(const t_bunny_position *pos,
 t_bunny_response	main_wolf(void *data)
 {
   t_param		*arg;
-  int			i;
+  /* int			i; */
 
   arg = data;
-  i = -1;
+  /* i = -1; */
   if (arg->data->exit)
     return (EXIT_ON_SUCCESS);
-  if (arg->speedy)
-    {
-      move(arg, 0, 0.02);
-      arg->speedy--;
-    }
+  inertie(arg);
   new_hight(arg);
-  i = sky(arg, i);
-  bottom(arg, i);
+  /* i = sky(arg, i); */
+  /* bottom(arg, i); */
   calc_walls(arg, arg->data);
   set_bump(arg, &arg->lvl[arg->curlvl]);
   add_player_to_mini(arg, &arg->lvl[arg->curlvl]);
@@ -75,7 +71,7 @@ int		sky(t_param *arg, int i)
 
   total = (arg->WIDTH * arg->HEIGHT) / 2 +
     (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34))) * arg->WIDTH;
-  pixels = arg->pix->pixels;
+  pixels = arg->textures[2]->pixels;
   while (++i < total && total)
     pixels[i].full = SKY;
   return (i);
