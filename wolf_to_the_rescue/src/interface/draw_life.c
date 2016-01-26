@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Sun Jan 17 10:45:26 2016 Maud MAREL
-** Last update Tue Jan 26 17:40:30 2016 maud marel
+** Last update Tue Jan 26 22:11:16 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 int			draw_move_life(t_param *arg)
 {

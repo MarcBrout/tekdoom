@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 20 15:08:42 2016 Maud MAREL
-** Last update Tue Jan 26 21:23:35 2016 maud marel
+** Last update Tue Jan 26 22:10:49 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void			draw_bullet(t_param *arg)
 {

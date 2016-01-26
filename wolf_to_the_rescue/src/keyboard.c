@@ -1,14 +1,14 @@
 /*
-** keyboard_mouse.c for wolf
+** keyboard_mouse.c for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 19:34:41 2015 marc brout
-** Last update Tue Jan 26 21:44:50 2016 maud marel
+** Last update Tue Jan 26 22:08:56 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void		simple_tap(t_param *arg)
 {

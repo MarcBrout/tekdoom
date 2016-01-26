@@ -1,11 +1,11 @@
 /*
-** parse.c for doom
-** 
+** parse.c for tekdoom
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Tue Jan 26 14:45:50 2016 marc brout
-** Last update Tue Jan 26 15:49:02 2016 marc brout
+** Last update Tue Jan 26 22:09:32 2016 maud marel
 */
 
 char			add_obj(t_lvl *lvl, int type, int i)
@@ -37,7 +37,7 @@ char			parse_objects(t_bunny_scope *scope,
       while (++x < lvl->width)
 	{
 	  i = x + (lvl->height - 1 - y) * lvl->width;
-	  if ((nb = 
+	  if ((nb =
 	}
     }
 }

@@ -1,15 +1,15 @@
 /*
-** wolf3d.h for wolf
+** tekdoom.h for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Tue Jan 26 21:58:59 2016 maud marel
+** Last update Tue Jan 26 22:06:30 2016 maud marel
 */
 
-#ifndef WOLF_H_
-# define WOLF_H_
+#ifndef TEKDOOM_H_
+# define TEKDOOM_H_
 
 # define SKY 0xFF796C71
 # define PLAYER 0xFF00D7FF
@@ -113,7 +113,7 @@ typedef struct		s_param
 }			t_param;
 
 t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
-t_bunny_response main_wolf(void *);
+t_bunny_response main_tekdoom(void *);
 t_bunny_response my_mouse(const t_bunny_position *, void *);
 int my_strcmp(const char *, char *);
 int  sky(t_param *, int);
@@ -145,13 +145,13 @@ void set_cossin(t_param *);
 void simple_tap(t_param *);
 char *my_strdup(char *);
 char mal_mini_map(t_param *, t_lvl *);
-char aff_wolf(t_param *);
+char aff_tekdoom(t_param *);
 char check_args(int, char **);
 char check_all_lvl(t_param *);
 char check_lvl(t_param *, char *);
 char get_lvl_map(t_param *, t_lvl *);
 char get_tabmap(t_param *);
-char launch_wolf(t_param *, char **);
+char launch_tekdoom(t_param *, char **);
 char mal_tablvl(t_param *);
 char mal_lvl_map(t_param *, t_lvl *);
 char open_ini(t_param *, char **);
@@ -205,4 +205,4 @@ void			keyboard_interface3(t_bunny_event_state,
 					    t_bunny_keysym,
 					    t_param *);
 
-#endif /* !WOLF_H_ */
+#endif /* !TEKDOOM_H_ */

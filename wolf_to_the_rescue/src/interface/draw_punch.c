@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 19:00:26 2016 maud marel
-** Last update Tue Jan 26 21:35:25 2016 maud marel
+** Last update Tue Jan 26 22:11:26 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void	draw_punch(t_param *arg)
 {

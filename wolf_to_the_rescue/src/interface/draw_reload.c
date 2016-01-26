@@ -5,19 +5,21 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 15:30:56 2016 maud marel
-** Last update Tue Jan 26 21:27:29 2016 maud marel
+** Last update Tue Jan 26 22:11:34 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void	draw_reload(t_param *arg)
 {
-  if (arg->inter.gun.check_r > 9 && arg->inter.gun.check_r <= 12)
+  if (arg->inter.gun.check_r > 12 && arg->inter.gun.check_r <= 15)
     draw_reload1(arg);
-  if (arg->inter.gun.check_r > 6 && arg->inter.gun.check_r <= 9)
+  if (arg->inter.gun.check_r > 9 && arg->inter.gun.check_r <= 12)
     draw_reload2(arg);
-  if (arg->inter.gun.check_r > 3 && arg->inter.gun.check_r <= 6)
+  if (arg->inter.gun.check_r > 6 && arg->inter.gun.check_r <= 9)
     draw_reload3(arg);
+  if (arg->inter.gun.check_r > 3 && arg->inter.gun.check_r <= 6)
+    draw_reload1(arg);
   if (arg->inter.gun.check_r > 0 && arg->inter.gun.check_r <= 3)
     {
       arg->inter.bullet.nb_bullet = 5;

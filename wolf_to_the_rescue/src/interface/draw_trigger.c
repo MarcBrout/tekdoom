@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Sat Jan 23 18:35:13 2016 maud marel
-** Last update Tue Jan 26 21:29:39 2016 maud marel
+** Last update Tue Jan 26 22:11:44 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void			draw_game_over(t_param *arg)
 {

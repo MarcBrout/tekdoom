@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 14:29:22 2016 maud marel
-** Last update Tue Jan 26 21:22:48 2016 maud marel
+** Last update Tue Jan 26 22:10:59 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void	draw_gunshot(t_param *arg)
 {

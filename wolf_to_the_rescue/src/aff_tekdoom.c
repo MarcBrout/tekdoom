@@ -1,14 +1,14 @@
 /*
-** aff_wolf.c for wolf
+** aff_tekdoom.c for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Tue Jan 26 21:58:35 2016 maud marel
+** Last update Tue Jan 26 22:07:21 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 t_bunny_response		my_mouse(const t_bunny_position *pos,
 					 void *data)
@@ -39,7 +39,7 @@ t_bunny_response		my_mouse(const t_bunny_position *pos,
   return (GO_ON);
 }
 
-void			main_wolf2(t_param *arg)
+void			main_tekdoom2(t_param *arg)
 {
   inertie(arg);
   new_hight(arg);
@@ -53,7 +53,7 @@ void			main_wolf2(t_param *arg)
   interface(arg);
 }
 
-t_bunny_response	main_wolf(void *data)
+t_bunny_response	main_tekdoom(void *data)
 {
   t_param		*arg;
   int			i;
@@ -79,7 +79,7 @@ t_bunny_response	main_wolf(void *data)
   put_border(arg, 2, BORDEROU);
   mini_map(arg, &arg->lvl[arg->curlvl], arg->data);
   interface(arg);
-  main_wolf2(arg);
+  main_tekdoom2(arg);
   bunny_blit(&arg->win->buffer, &arg->pix->clipable, &arg->data->pos);
   if (arg->menu)
     bunny_blit(&arg->win->buffer, &arg->data->pix_ar->clipable,
@@ -122,8 +122,8 @@ int		sky(t_param *arg, int i)
   total = (arg->WIDTH * arg->HEIGHT) / 2
     + (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34))) * arg->WIDTH;
   pixels = arg->pix->pixels;
-  while (++i < total && total)
-    pixels[i].full = SKY;
+  /* while (++i < total && total) */
+  /*   pixels[i].full = SKY; */
   return (i);
 }
 
@@ -146,7 +146,7 @@ void		bottom(t_param *arg, UNUSED int i)
     }
 }
 
-char		aff_wolf(t_param *arg)
+char		aff_tekdoom(t_param *arg)
 {
   if ((arg->pix = bunny_new_pixelarray(arg->WIDTH, arg->HEIGHT)) == NULL ||
       (arg->win = bunny_start(arg->WIDTH, arg->HEIGHT,
@@ -160,7 +160,7 @@ char		aff_wolf(t_param *arg)
   interface_init(arg);
   if (load_picture(arg) == -1)
     return (-1);
-  bunny_set_loop_main_function(main_wolf);
+  bunny_set_loop_main_function(main_tekdoom);
   bunny_set_move_response(arg->move);
   bunny_set_key_response(arg->key);
   bunny_set_mouse_visibility(arg->win, 0);

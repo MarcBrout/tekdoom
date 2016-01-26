@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Mon Jan 25 13:05:12 2016 maud marel
-** Last update Tue Jan 26 21:53:08 2016 maud marel
+** Last update Tue Jan 26 22:11:52 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void	interface(t_param *arg)
 {
@@ -68,7 +68,7 @@ void	interface_init(t_param *arg)
 int	load_picture(t_param *arg)
 {
   if ((arg->inter.gun.music =
-       bunny_load_effect("0438.ogg")) == NULL)
+       bunny_load_effect("sounds/0438.ogg")) == NULL)
     return (-1);
   if ((arg->inter.bullet.bullet
        = bunny_load_pixelarray("pictures/bullet.bmp")) == NULL)

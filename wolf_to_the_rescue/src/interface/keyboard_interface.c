@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 21:38:59 2016 maud marel
-** Last update Tue Jan 26 21:57:15 2016 maud marel
+** Last update Tue Jan 26 22:11:59 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void		keyboard_interface(t_param *arg)
 {
@@ -30,7 +30,7 @@ void		keyboard_interface(t_param *arg)
     if (k[arg->INPUT->key[5]] && arg->inter.gun.shoot != 2
 	&& arg->inter.bullet.nb_bullet != 5)
     {
-      arg->inter.gun.check_r = 12;
+      arg->inter.gun.check_r = 15;
     }
 }
 

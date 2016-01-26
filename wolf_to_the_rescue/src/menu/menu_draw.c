@@ -5,10 +5,10 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:51:11 2016 Mathieu Sauvau
-** Last update Tue Jan 26 17:01:44 2016 Mathieu Sauvau
+** Last update Tue Jan 26 22:13:19 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void                    draw_square(t_bunny_pixelarray *pix_ar,
                                     t_mrect *rect)

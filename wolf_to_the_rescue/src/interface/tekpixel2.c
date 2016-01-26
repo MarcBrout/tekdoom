@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Mon Nov 16 15:25:45 2015 maud marel
-** Last update Tue Jan 26 15:51:49 2016 Mathieu Sauvau
+** Last update Tue Jan 26 22:12:42 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void		tekpixel2(t_bunny_pixelarray *pix,
 			 t_bunny_position *pos,
