@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Tue Jan 26 09:33:58 2016 benjamin duhieu
+** Last update Tue Jan 26 12:09:19 2016 maud marel
 */
 
 #include "wolf.h"

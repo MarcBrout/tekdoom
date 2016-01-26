@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Sun Jan 17 10:45:26 2016 Maud MAREL
-** Last update Mon Jan 25 15:16:25 2016 Mathieu Sauvau
+** Last update Tue Jan 26 14:15:22 2016 maud marel
 */
 
 #include "wolf.h"
@@ -42,7 +42,7 @@ int	draw_move_life2(t_param *arg, t_bunny_position pos)
   	  pos.x = arg->inter.life.pos_life.x;
   	  pos.y = (arg->HEIGHT - ((arg->HEIGHT / 65) + (arg->HEIGHT / 65))) - 1;
   	  while (++pos.y < arg->inter.life.pos_life.y)
-  	    tekpixel3(arg->pix, &pos, WHITE);
+	    tekpixel3(arg->pix, &pos, WHITE);
   	  arg->inter.life.pos_life.x--;
   	  arg->inter.life.speed--;
   	}
@@ -63,12 +63,8 @@ void			draw_life_bar(t_param *arg)
     {
       pos_s.y = (arg->HEIGHT - ((arg->HEIGHT / 65) + (arg->HEIGHT / 65))) - 1;
       while (++pos_s.y < pos_e.y)
-	{
-	  tekpixel3(arg->pix, &pos_s, RED);
-	}
+	tekpixel3(arg->pix, &pos_s, RED);
     }
-  arg->inter.life.pos_life.x = (3 * arg->WIDTH) / 10 - 1;
-  arg->inter.life.pos_life.y = arg->HEIGHT - (arg->HEIGHT / 75);
 }
 
 void			action_draw_square_life(t_param *arg,

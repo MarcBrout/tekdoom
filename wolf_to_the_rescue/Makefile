@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Tue Jan 26 09:29:35 2016 benjamin duhieu
+## Last update Tue Jan 26 15:38:18 2016 maud marel
 ##
 
 SRCP	= ./src/
@@ -50,6 +50,8 @@ SRC     = $(SRCP)wolf.c \
 	$(SRCI)draw_heart.c \
 	$(SRCI)draw_life.c \
 	$(SRCI)draw_trigger.c \
+	$(SRCI)draw_gunshot.c \
+	$(SRCI)draw_reload.c \
 	$(SRCI)interface.c \
 	$(SRCI)tekpixel2.c \
 	$(SRCI)tekpixel3.c \
