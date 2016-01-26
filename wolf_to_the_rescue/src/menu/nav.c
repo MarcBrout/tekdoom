@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:37:15 2016 Mathieu Sauvau
-** Last update Tue Jan 26 22:16:59 2016 Mathieu Sauvau
+** Last update Tue Jan 26 23:14:41 2016 Mathieu Sauvau
 */
 
 #include "tekdoom.h"
@@ -15,17 +15,23 @@ void			up_and_down(t_bunny_event_state state, t_bunny_keysym keysym,
 {
   if ((keysym == BKS_UP || keysym == INPUT->key[0]) && state == GO_DOWN
       && !INPUT->change_key && data->menu_index != 2)
-    data->selected_index == 0 ?
+    {
+      bunny_sound_play(data->menu_nav);
+      data->selected_index == 0 ?
       data->selected_index = data->menu_length - 1 : data->selected_index--;
+    }
   if ((keysym == BKS_DOWN || keysym == INPUT->key[1]) && state == GO_DOWN
       && !INPUT->change_key && data->menu_index != 2)
-    data->selected_index == data->menu_length - 1 ?
-      data->selected_index = 0 : data->selected_index++;
+    {
+      bunny_sound_play(data->menu_nav);
+      data->selected_index == data->menu_length - 1 ?
+	data->selected_index = 0 : data->selected_index++;
+    }
 }
 
 void			nav(t_data *data)
 {
-   if (data->menu_index == 1)
+  if (data->menu_index == 1)
     option_nav(data);
   else if (data->menu_index == 2)
     {
@@ -57,6 +63,7 @@ t_bunny_response	esc(t_bunny_event_state state, t_bunny_keysym keysym,
 	}
       else
 	nav(data);
+      bunny_sound_play(data->menu_select);
     }
   option_nav2(state, keysym, data);
   if (data->menu_index == 3)
