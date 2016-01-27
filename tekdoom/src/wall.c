@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 25 00:46:23 2015 marc brout
-** Last update Wed Jan 27 07:09:55 2016 marc brout
+** Last update Wed Jan 27 08:40:19 2016 marc brout
 */
 
 #include "tekdoom.h"
@@ -30,8 +30,10 @@ char		test_k(t_param *arg, int x)
       arg->lvl[I].objs[(int)YF][(int)XF]->k = arg->calc.k;
       arg->lvl[I].objs[(int)YF][(int)XF]->x = x;
     }
-  if (arg->lvl[I].map[(int)YF][(int)XF])
-    return (1);
+  if ((int)YF >= 0 && (int)YF < arg->lvl[I].height &&
+      (int)XF >= 0 && (int)XF < arg->lvl[I].width)
+    if (arg->lvl[I].map[(int)YF][(int)XF])
+      return (1);
   return (0);
 }
 

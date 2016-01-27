@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Wed Jan 27 07:09:58 2016 marc brout
+** Last update Wed Jan 27 08:40:09 2016 marc brout
 */
 
 #include "tekdoom.h"
@@ -103,6 +103,8 @@ void		calc_walls(t_param *arg, UNUSED t_data *data)
     {
       basic_to_sec(arg, x);
       get_len(arg, x);
+      if ((int)YF >= 0 && (int)YF < arg->lvl[I].height &&
+	  (int)XF >= 0 && (int)XF < arg->lvl[I].width)
       project_k(arg, &arg->lvl[I], x, arg->lvl[I].map[(int)YF][(int)XF]);
     }
   trace_objects(arg);

@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Wed Jan 27 05:40:24 2016 Mathieu Sauvau
-** Last update Wed Jan 27 05:40:34 2016 Mathieu Sauvau
+** Last update Wed Jan 27 08:50:12 2016 marc brout
 */
 
 #include "tekdoom.h"
@@ -31,11 +31,7 @@ t_bunny_response		my_mouse(const t_bunny_position *pos,
   abs = bunny_get_mouse_position();
   if (!arg->mov)
     {
-      if ((arg->lvl[arg->curlvl].yangle + (pos->y / 3)) >
-	  (-(arg->WIDTH / 3)+ 50) &&
-	  (arg->lvl[arg->curlvl].yangle + (pos->y / 3)) <
-	  ((arg->WIDTH / 3) - 50))
-	arg->lvl[arg->curlvl].yangle += pos->y / 3;
+      arg->lvl[arg->curlvl].yangle += 0;
       arg->lvl[arg->curlvl].plangle += pos->x / 3;
       if (arg->lvl[arg->curlvl].plangle <= 0)
 	arg->lvl[arg->curlvl].plangle += 359;
