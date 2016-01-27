@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:49:58 2016 Mathieu Sauvau
-** Last update Mon Jan 25 15:29:38 2016 Mathieu Sauvau
+** Last update Wed Jan 27 03:55:01 2016 benjamin duhieu
 */
 
 #include "menu.h"
@@ -27,7 +27,7 @@ void			load_config(t_data *data)
 {
   if ((CONFIG = bunny_malloc(sizeof(t_config))) == NULL)
     exit(1);
-  if ((CONFIG->ini = bunny_load_ini("config.ini")) != NULL)
+  if ((CONFIG->ini = bunny_load_ini("files/ini/config.ini")) != NULL)
     {
       data->config->fullscreen =
 	my_getnbr((char *)BGF(CONFIG->ini, "config", "fullscreen", 0));

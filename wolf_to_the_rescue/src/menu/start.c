@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 20 18:46:14 2015 Mathieu Sauvau
-** Last update Wed Jan 27 03:02:31 2016 benjamin duhieu
+** Last update Wed Jan 27 03:54:39 2016 benjamin duhieu
 */
 
 #include "menu.h"
@@ -59,7 +59,7 @@ int			launch(t_data *data)
       || (data->pix_ar = bunny_new_pixelarray(WIDTH, HEIGHT)) == NULL)
     return (-1);
   if ((data->music =
-       bunny_load_music("Doom OST - E1M1 - At Dooms Gate.ogg")) == NULL)
+       bunny_load_music("sounds/Doom OST - E1M1 - At Dooms Gate.ogg")) == NULL)
     return (-1);
   bunny_blit(&data->win->buffer, &data->pix_ar->clipable, &data->pos);
   bunny_set_loop_main_function(mainloop);

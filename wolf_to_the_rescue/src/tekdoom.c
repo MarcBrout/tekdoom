@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Wed Jan 27 03:01:34 2016 benjamin duhieu
+** Last update Wed Jan 27 03:39:27 2016 benjamin duhieu
 */
 
 #include "tekdoom.h"
@@ -67,15 +67,15 @@ int		launch_start(char **av)
   t_param	arg;
   int		err;
 
-  if ((arg.data = malloc(sizeof(t_data))) == NULL)
+  if ((arg.data = bunny_malloc(sizeof(t_data))) == NULL)
     return (3);
   start(arg.data);
   if (download_music(&arg))
     return (1);
   bunny_sound_play(arg.play);
-  arg.trans = false;
-  if ((arg.wm.ydep = malloc(sizeof(double) * arg.WIDTH)) == NULL)
+  if ((arg.wm.ydep = bunny_malloc(sizeof(double) * arg.WIDTH)) == NULL)
     return (1);
+  arg.trans = false;
   if ((err = launch_tekdoom(&arg, av)))
     {
       whats_up(av, err);
@@ -88,6 +88,7 @@ int		launch_start(char **av)
 
 int		main(int ac, char **av, char **env)
 {
+  set_max_heap_size(50);
   if (check_args(ac, env))
     return (1);
   if (launch_start(av) != 0)

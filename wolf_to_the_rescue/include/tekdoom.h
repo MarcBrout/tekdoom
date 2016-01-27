@@ -5,13 +5,12 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 03:23:52 2016 benjamin duhieu
+** Last update Wed Jan 27 03:53:56 2016 benjamin duhieu
 */
 
 #ifndef TEKDOOM_H_
 # define TEKDOOM_H_
 
-# define LAPIN_ALLOCATOR_DEACTIVED
 # define SKY 0xFF796C71
 # define PLAYER 0xFF00D7FF
 # define WALLA 0xFF8E7587
@@ -23,29 +22,37 @@
 # define BORDERIN 0xFF00A5FF
 # define BORDEROU 0xFF00D7FF
 # define FLD bunny_ini_get_field
-# define NBTXT 3
 # define BIS bunny_ini_scope_get_field
-# define TXT_1 "files/textures/01_brick_wall.png"
-# define TXT_2 "files/textures/02_floor.png"
-# define TXT_3 "files/textures/my_sky.png"
-# define ZIK_1 "Emotional Dark Music - The Eternal Forest.ogg"
-# define ZIK_2 "ok/dsbrssit.ogg" /* cac 1 */
-# define ZIK_3 "ok/dsdshtgn.ogg" /* shotgun */
-# define ZIK_4 "ok/dspdiehi.ogg" /* cac 2 */
-# define ZIK_5 "ok/dsvilsit.ogg" /* burger */
-# define ZIK_6 "ok/dswpnup.ogg" /* reload */
-# define ZIK_7 "Creaky door sound effect.ogg"
-# define ZIK_8 "1459.ogg"
-# define ZIK_9 "2762.ogg"
-# define ZIK_10 "3502.ogg"
+# define ZIK_1 "sounds/Emotional Dark Music - The Eternal Forest.ogg"
+# define ZIK_2 "sounds/dsbrssit.ogg" /* cac 1 */
+# define ZIK_3 "sounds/dsdshtgn.ogg" /* shotgun */
+# define ZIK_4 "sounds/dspdiehi.ogg" /* cac 2 */
+# define ZIK_5 "sounds/dsvilsit.ogg" /* burger */
+# define ZIK_6 "sounds/dswpnup.ogg" /* reload */
+# define ZIK_7 "sounds/Creaky door sound effect.ogg"
+# define ZIK_8 "sounds/1459.ogg"
+# define ZIK_9 "sounds/2762.ogg"
+# define ZIK_10 "sounds/3502.ogg"
+# define NBTXT 5
+# define TXT_2 "files/textures/wall_test2.bmp"
+# define TXT_1 "files/textures/02_floor.png"
+# define TXT_3 "files/textures/sky.bmp"
+# define TXT_4 "files/textures/door_0.bmp"
+# define TXT_5 "files/textures/door_1.bmp"
+# define NBOBJ 1
+# define OBJ_1 "files/sprites/01_potion.png"
 # define ZERO(val) (((val) > 0) ? (val) - 1 : -1)
 # define ABS(val) (((val) < 0) ? -(val) : (val))
 # define GET_X(val) ABS((WIDTH / 2) - WIDTH + (val))
 # define DEGRE(val) (((val) / M_PI) * 180)
 # define RAD(val) (((val) * M_PI) / 180)
 # define DEC(val) ((val) - (int)(val))
+# define XF arg->calc.xf
+# define YF arg->calc.yf
 # define CWID clipable.clip_width
 # define CHEI clipable.clip_height
+# define I arg->curlvl
+# define JUMP (arg->hight * 200)
 # include <math.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -57,9 +64,10 @@
 typedef struct		s_obj
 {
   int			type;
-  double		x;
-  double		y;
-  struct s_obj		*next;
+  int			x;
+  char			alive;
+  char			trace;
+  double		k;
 }			t_obj;
 
 typedef struct		s_lvl
@@ -70,6 +78,7 @@ typedef struct		s_lvl
   int			width;
   int			height;
   int			**map;
+  t_obj			***objs;
   t_bunny_pixelarray	*mini;
   t_obj			*obj;
   int			minipos;
@@ -126,6 +135,7 @@ typedef struct		s_param
   t_bunny_ini		*ini;
   t_bunny_pixelarray	*pix;
   t_bunny_pixelarray	*textures[NBTXT + 1];
+  t_bunny_pixelarray	*sprites[NBOBJ + 1];
   t_bunny_window	*win;
   t_bunny_key		key;
   t_bunny_move		move;
@@ -149,10 +159,7 @@ int download_music(t_param *);
 void whats_up(char **, int);
 void  sky(t_param *);
 void bottom(t_param *);
-void wall_north_east(t_param *, int, int, int);
-void wall_south_east(t_param *, int, int, int);
-void wall_north_west(t_param *, int, int, int);
-void wall_south_west(t_param *, int, int, int);
+void check_obj(t_param *);
 void free_all(t_param *);
 void set_lvl_minimap(t_param *, t_lvl *);
 void set_minimaps(t_param *);
@@ -161,16 +168,17 @@ void add_player_to_mini(t_param *, t_lvl *);
 void basic_to_sec(t_param *, int);
 void calc_walls(t_param *, t_data *);
 void celerity(t_param *);
-void get_len(t_param *);
+void get_len(t_param *, int);
 void get_player(t_param *, t_lvl *);
 void mini_map(t_param *, t_lvl *, t_data *);
 void move(t_param *, double, double);
 void new_hight(t_param *);
-void project_k(t_param *, t_lvl *, int, t_data *);
+void project_k(t_param *, t_lvl *, int, int);
 void put_border(t_param *, int, unsigned int);
 void set_bump(t_param *, t_lvl *);
 void set_cossin(t_param *);
 void simple_tap(t_param *);
+char test_k(t_param *, int);
 char *my_strdup(char *);
 char mal_mini_map(t_param *, t_lvl *);
 char aff_tekdoom(t_param *);
@@ -184,6 +192,7 @@ char mal_tablvl(t_param *);
 char mal_lvl_map(t_param *, t_lvl *);
 char open_ini(t_param *, char **);
 char get_textures(t_param *);
+void set_max_heap_size(size_t);
 
 void                    draw_life_bar(t_param *);
 int                     draw_move_life(t_param *);

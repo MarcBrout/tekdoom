@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Wed Jan 27 03:10:54 2016 benjamin duhieu
+** Last update Wed Jan 27 03:43:31 2016 benjamin duhieu
 */
 
 #include "tekdoom.h"
@@ -85,30 +85,23 @@ void		sky(t_param *arg)
   int		y;
   int		k;
   int		l;
-  int		total;
+  int		size;
 
-  total = (arg->WIDTH * arg->HEIGHT) / 2 +
-    (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34))) * arg->WIDTH;
-  if (total > 0)
+  sky = arg->textures[2]->pixels;
+  pixels = arg->pix->pixels;
+  size = arg->HEIGHT / 2 + (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34)));
+  y = size;
+  x = 0;
+  while (x + (y * arg->WIDTH) > 0)
     {
-      sky = (unsigned int *)arg->textures[2]->pixels;
-      pixels = (unsigned int *)arg->pix->pixels;
-      y = 0;
-      x = 0;
-      while (x + (y * arg->WIDTH) < total && total)
-	{
-	  k = (int)(((double)x / arg->WIDTH) * arg->textures[2]->CWID) %
-	    arg->textures[2]->CWID;
-	  l = (int)(((double)y / (arg->HEIGHT / 2)) * arg->textures[2]->CHEI) %
-	    arg->textures[2]->CHEI;
-	  x++;
-	  pixels[(int)(x + arg->lvl[arg->curlvl].plangle) + y * arg->WIDTH] = sky[(int)(k + arg->lvl[arg->curlvl].plangle) + l * arg->textures[2]->CWID];
-	  if (x == arg->WIDTH)
-	    {
-	      x = 0;
-	      y++;
-	    }
-	}
+      k = (int)(((double)x / arg->WIDTH) * arg->textures[2]->CWID) %
+	arg->textures[2]->CWID;
+      l = (int)(((double)y / size) * arg->textures[2]->CHEI) %
+	arg->textures[2]->CHEI;
+      x++;
+      pixels[x + y * arg->WIDTH] = sky[k + l * arg->textures[2]->CWID];
+      if (x == arg->WIDTH && !(x = 0))
+	  y--;
     }
 }
 
@@ -143,7 +136,7 @@ char		aff_tekdoom(t_param *arg)
   arg->mov = 1;
   set_minimaps(arg);
   interface_init(arg);
-  if (load_picture(arg) == -1)
+  if (load_picture(arg) < 0)
     return (-1);
   bunny_set_loop_main_function(main_tekdoom);
   bunny_set_move_response(arg->move);

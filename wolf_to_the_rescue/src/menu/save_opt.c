@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:41:40 2016 Mathieu Sauvau
-** Last update Mon Jan 25 17:29:24 2016 Mathieu Sauvau
+** Last update Wed Jan 27 04:01:06 2016 benjamin duhieu
 */
 
 #include <menu.h>
@@ -34,7 +34,7 @@ void			save_input(t_data *data)
       bunny_ini_set_field(CONFIG->ini, "input", "fire", 0, convert_int);
       itoa(INPUT->key[8], convert_int, 10);
       bunny_ini_set_field(CONFIG->ini, "input", "zoom", 0, convert_int);
-      bunny_save_ini(CONFIG->ini, "config.ini");
+      bunny_save_ini(CONFIG->ini, "files/ini/config.ini");
     }
 }
 
@@ -54,6 +54,6 @@ void			save_opt(t_data *data)
       bunny_ini_set_field(CONFIG->ini, "config", "height", 0, convert_int);
       itoa(CONFIG->fov, convert_int, 10);
       bunny_ini_set_field(CONFIG->ini, "config", "fov", 0, convert_int);
-      bunny_save_ini(CONFIG->ini, "config.ini");
+      bunny_save_ini(CONFIG->ini, "files/ini/config.ini");
     }
 }

@@ -5,14 +5,14 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 11:06:07 2015 marc brout
-** Last update Tue Jan 26 22:08:10 2016 maud marel
+** Last update Wed Jan 27 03:57:56 2016 benjamin duhieu
 */
 
 #include "tekdoom.h"
 
-char		open_ini(t_param *arg, char **av)
+char		open_ini(t_param *arg, UNUSED char **av)
 {
-  if ((arg->ini = bunny_load_ini(av[1])) == NULL)
+  if ((arg->ini = bunny_load_ini("files/ini/basic_format.ini")) == NULL)
     return (1);
   if (FLD(arg->ini, NULL, "lvlnb", 0) == NULL ||
       !(my_strcmp(FLD(arg->ini, NULL, "lvlnb", 0), "0")) ||
@@ -56,9 +56,9 @@ char		check_all_lvl(t_param *arg)
 
 char		check_args(int ac, char **env)
 {
-  if (ac < 2)
+  if (ac > 1)
     {
-      write(2, "Usage : ./tekdoom [map.ini]\n", 28);
+      write(2, "Usage : ./tekdoom\n", 28);
       return (1);
     }
   if (env[0] == NULL)
