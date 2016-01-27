@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 27 01:26:47 2016 maud marel
-** Last update Wed Jan 27 05:37:27 2016 maud marel
+** Last update Wed Jan 27 06:09:44 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -32,7 +32,7 @@ void	action_weapon(t_param *arg)
   if (arg->inter.gun.i == 3)
     arg->inter.gun.check_sul = 39;
   if (arg->inter.gun.i == 4)
-    arg->inter.gun.check_k = 9;
+    arg->inter.gun.check_k = 15;
 }
 
 void	action_reload(t_param *arg)

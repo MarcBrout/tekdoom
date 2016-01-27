@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 23:55:32 2016 maud marel
-** Last update Wed Jan 27 05:56:20 2016 maud marel
+** Last update Wed Jan 27 06:08:17 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -88,9 +88,7 @@ int	load_picture4(t_param *arg)
       || ((arg->inter.gun.knife2
 	   = bunny_load_pixelarray("pictures/knife2.png")) == NULL)
       || ((arg->inter.gun.knife3
-	   = bunny_load_pixelarray("pictures/knife3.png")) == NULL)
-      || ((arg->inter.gun.knife4
-	   = bunny_load_pixelarray("pictures/knife4.png")) == NULL))
+	   = bunny_load_pixelarray("pictures/knife3.png")) == NULL))
     return (-1);
   return (0);
 }
