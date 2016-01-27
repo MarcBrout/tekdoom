@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Tue Jan 26 23:56:42 2016 maud marel
+** Last update Wed Jan 27 02:50:07 2016 Mathieu Sauvau
 */
 
 #ifndef TEKDOOM_H_
@@ -109,7 +109,7 @@ typedef struct		s_param
   int			speedy;
   int			jump;
   int			chrono;
-  bool			menu;
+  bool			trans;
 }			t_param;
 
 t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
@@ -207,5 +207,6 @@ void			keyboard_interface3(t_bunny_event_state,
 					    t_bunny_keysym,
 					    t_param *);
 void			draw_scope(t_param *);
+void			transition(t_param *);
 
 #endif /* !TEKDOOM_H_ */

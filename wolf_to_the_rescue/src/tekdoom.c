@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Tue Jan 26 22:10:26 2016 maud marel
+** Last update Wed Jan 27 01:47:51 2016 Mathieu Sauvau
 */
 
 #include "tekdoom.h"
@@ -16,7 +16,7 @@ void		whats_up(char **av, int err)
   if (err == 1)
     {
       write(2, av[1], my_strlen(av[1]));
-      write(2, " file corrupted, execution aborted.\n", 37);
+      write(2, "file corrupted, execution aborted.\n", 37);
     }
   if (err == 2)
     write(2, "Trouble loading map, executon aborted.\n", 40);
@@ -70,7 +70,7 @@ int		launch_start(char **av)
   if ((arg.data = malloc(sizeof(t_data))) == NULL)
     return (3);
   start(arg.data);
-  arg.menu = false;
+  arg.trans = false;
   if ((arg.wm.ydep = malloc(sizeof(double) * arg.WIDTH)) == NULL)
     return (1);
   if ((err = launch_tekdoom(&arg, av)))

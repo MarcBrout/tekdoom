@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Tue Jan 26 22:07:21 2016 maud marel
+** Last update Wed Jan 27 02:51:21 2016 Mathieu Sauvau
 */
 
 #include "tekdoom.h"
@@ -59,31 +59,24 @@ t_bunny_response	main_tekdoom(void *data)
   int			i;
 
   arg = data;
-  i = -1;
-  if (arg->data->exit)
-    return (EXIT_ON_SUCCESS);
-  if (arg->speedy)
+  if (!arg->trans)
     {
-      move(arg, 0, 0.02);
-      arg->speedy--;
+      i = -1;
+      if (arg->data->exit)
+	return (EXIT_ON_SUCCESS);
+      if (arg->speedy)
+	{
+	  move(arg, 0, 0.02);
+	  arg->speedy--;
+	}
+      simple_tap(arg);
+      i = sky(arg, i);
+      bottom(arg, i);
+      main_tekdoom2(arg);
+      bunny_blit(&arg->win->buffer, &arg->pix->clipable, &arg->data->pos);
     }
-  simple_tap(arg);
-  new_hight(arg);
-  i = sky(arg, i);
-  bottom(arg, i);
-  calc_walls(arg, arg->data);
-  set_bump(arg, &arg->lvl[arg->curlvl]);
-  add_player_to_mini(arg, &arg->lvl[arg->curlvl]);
-  put_border(arg, 6, BORDER);
-  put_border(arg, 4, BORDERIN);
-  put_border(arg, 2, BORDEROU);
-  mini_map(arg, &arg->lvl[arg->curlvl], arg->data);
-  interface(arg);
-  main_tekdoom2(arg);
-  bunny_blit(&arg->win->buffer, &arg->pix->clipable, &arg->data->pos);
-  if (arg->menu)
-    bunny_blit(&arg->win->buffer, &arg->data->pix_ar->clipable,
-	       &arg->data->pos);
+  else
+    transition(arg);
   bunny_display(arg->win);
   return (GO_ON);
 }

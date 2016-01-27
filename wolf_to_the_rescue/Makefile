@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Tue Jan 26 23:56:27 2016 maud marel
+## Last update Wed Jan 27 02:50:56 2016 Mathieu Sauvau
 ##
 
 SRCP	= ./src/
@@ -16,6 +16,7 @@ MENU = ./src/menu/
 
 SRC     = $(SRCP)tekdoom.c \
 	$(SRCP)check_file.c \
+	$(SRCP)transition.c \
 	$(SRCP)fill_tablvl.c \
 	$(SRCP)aff_tekdoom.c \
 	$(SRCP)inertia.c \

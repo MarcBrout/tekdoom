@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 20 18:46:14 2015 Mathieu Sauvau
-** Last update Tue Jan 26 19:26:15 2016 Mathieu Sauvau
+** Last update Wed Jan 27 01:39:25 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -76,5 +76,8 @@ int			start(t_data *data)
   bunny_delete_ini(data->config->ini);
   bunny_free(data->config);
   bunny_stop(data->win);
+  bunny_delete_sound(data->menu_nav);
+  bunny_delete_sound(data->menu_select);
+  bunny_delete_sound(data->play);
   return (0);
 }
