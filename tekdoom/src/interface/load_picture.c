@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 23:55:32 2016 maud marel
-** Last update Wed Jan 27 06:08:17 2016 maud marel
+** Last update Wed Jan 27 07:06:20 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -44,20 +44,14 @@ int	load_picture2(t_param *arg)
       || ((arg->inter.gun.punch3
 	   = bunny_load_pixelarray("pictures/punch3.bmp")) == NULL)
       || ((arg->inter.gun.scope
-	   = bunny_load_pixelarray("pictures/scope.bmp")) == NULL)
-      || ((arg->inter.trigger.game_over
-	   = bunny_load_pixelarray("pictures/gameover.png")) == NULL))
+	   = bunny_load_pixelarray("pictures/scope.bmp")) == NULL))
     return (-1);
   return (0);
 }
 
 int	load_picture3(t_param *arg)
 {
-  if (((arg->inter.trigger.try_again
-	= bunny_load_pixelarray("pictures/try_again.bmp")) == NULL)
-      || ((arg->inter.trigger.lastchance
-	   = bunny_load_pixelarray("pictures/lastchance.bmp")) == NULL)
-      || ((arg->inter.gun.biggun1
+  if (((arg->inter.gun.biggun1
 	   = bunny_load_pixelarray("pictures/big1.png")) == NULL)
       || ((arg->inter.gun.biggun2
 	   = bunny_load_pixelarray("pictures/big2.png")) == NULL)

@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:57:06 2016 Mathieu Sauvau
-** Last update Tue Jan 26 22:10:10 2016 Mathieu Sauvau
+** Last update Wed Jan 27 07:11:27 2016 maud marel
 */
 
 #include "menu.h"
@@ -16,7 +16,7 @@ void			cpy_bg2(t_bunny_pixelarray *pix_ar,
 {
   int			new_pos;
   int			bg_pos;
-  t_color               *col;
+  t_color		*col;
   t_color		*bg_col;
 
   col = pix_ar->pixels;
@@ -29,10 +29,10 @@ void			cpy_bg2(t_bunny_pixelarray *pix_ar,
     col[new_pos].full = BLACK;
 }
 
-void                    cpy_bg(t_bunny_pixelarray *pix_ar,
+void			cpy_bg(t_bunny_pixelarray *pix_ar,
 			       t_bunny_pixelarray *bg)
 {
-  t_bunny_position       pos;
+  t_bunny_position	pos;
   int			bg_x;
   int			offset;
 
@@ -56,12 +56,12 @@ void                    cpy_bg(t_bunny_pixelarray *pix_ar,
     }
 }
 
-void                    my_fill(t_bunny_pixelarray *pix_ar, unsigned int color)
+void			my_fill(t_bunny_pixelarray *pix_ar, unsigned int color)
 {
-  int                   x;
-  int                   y;
-  t_color               *col;
-  int                   new_pos;
+  int			x;
+  int			y;
+  t_color		*col;
+  int			new_pos;
 
   x = 0;
   y = 0;
