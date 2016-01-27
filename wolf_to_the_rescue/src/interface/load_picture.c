@@ -5,16 +5,14 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 23:55:32 2016 maud marel
-** Last update Wed Jan 27 04:42:30 2016 maud marel
+** Last update Wed Jan 27 05:56:20 2016 maud marel
 */
 
 #include "tekdoom.h"
 
 int	load_picture(t_param *arg)
 {
-  if (((arg->inter.gun.music =
-	bunny_load_effect("sounds/0438.ogg")) == NULL)
-      || ((arg->inter.bullet.bullet
+  if (((arg->inter.bullet.bullet
 	   = bunny_load_pixelarray("pictures/bullet.bmp")) == NULL)
       || ((arg->inter.life.heart
 	   = bunny_load_pixelarray("pictures/heart.png")) == NULL)
@@ -84,7 +82,15 @@ int	load_picture4(t_param *arg)
       || ((arg->inter.gun.sulf2
 	   = bunny_load_pixelarray("pictures/sulf2.png")) == NULL)
       || ((arg->inter.gun.sulf3
-	   = bunny_load_pixelarray("pictures/sulf3.png")) == NULL))
+	   = bunny_load_pixelarray("pictures/sulf3.png")) == NULL)
+      || ((arg->inter.gun.knife1
+	   = bunny_load_pixelarray("pictures/knife1.png")) == NULL)
+      || ((arg->inter.gun.knife2
+	   = bunny_load_pixelarray("pictures/knife2.png")) == NULL)
+      || ((arg->inter.gun.knife3
+	   = bunny_load_pixelarray("pictures/knife3.png")) == NULL)
+      || ((arg->inter.gun.knife4
+	   = bunny_load_pixelarray("pictures/knife4.png")) == NULL))
     return (-1);
   return (0);
 }

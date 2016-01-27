@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Wed Jan 27 00:48:48 2016 benjamin duhieu
-** Last update Wed Jan 27 04:40:11 2016 maud marel
+** Last update Wed Jan 27 05:12:31 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -26,7 +26,7 @@ t_bunny_response		main_click(UNUSED t_bunny_event_state state,
 	bunny_sound_play(doom->sound->shotgun);
       if (doom->inter.gun.i == 4)
 	bunny_sound_play(doom->sound->knife);
-      if (doom->inter.gun.i == 2 && doom->inter.bullet.nb_bullet > 0)
+      if (doom->inter.gun.i == 2)
 	bunny_sound_play(doom->sound->bazook);
       if (doom->inter.gun.i == 3)
 	bunny_sound_play(doom->sound->sulf);

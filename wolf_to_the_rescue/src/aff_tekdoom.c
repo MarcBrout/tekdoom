@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Wed Jan 27 05:40:05 2016 Mathieu Sauvau
+** Last update Wed Jan 27 06:00:09 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -116,8 +116,6 @@ char		aff_tekdoom(t_param *arg)
   bunny_set_mouse_position_window(arg->win, arg->WIDTH / 2, arg->HEIGHT / 2);
   bunny_loop(arg->win, 24, arg);
   bunny_delete_clipable(&arg->pix->clipable);
-  bunny_sound_stop(arg->inter.gun.music);
-  bunny_delete_sound(arg->inter.gun.music);
   bunny_stop(arg->win);
   return (0);
 }

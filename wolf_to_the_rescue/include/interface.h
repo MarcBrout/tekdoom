@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Dec 16 17:10:21 2015 maud marel
-** Last update Wed Jan 27 04:40:28 2016 maud marel
+** Last update Wed Jan 27 05:55:54 2016 maud marel
 */
 
 #ifndef INTERFACE_H_
@@ -39,13 +39,17 @@ typedef struct		s_gun
   t_bunny_pixelarray	*sulf1;
   t_bunny_pixelarray	*sulf2;
   t_bunny_pixelarray	*sulf3;
+  t_bunny_pixelarray	*knife1;
+  t_bunny_pixelarray	*knife2;
+  t_bunny_pixelarray	*knife3;
+  t_bunny_pixelarray	*knife4;
   int			i;
   int			check_s;
   int			check_sul;
   int			check_r;
   int			check_p;
   int			check_b;
-  t_bunny_effect	*music;
+  int			check_k;
 }			t_gun;
 
 typedef struct		s_bullet

@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 21:38:59 2016 maud marel
-** Last update Wed Jan 27 04:43:28 2016 maud marel
+** Last update Wed Jan 27 05:31:13 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -49,7 +49,7 @@ void	keyboard_interface3(t_bunny_event_state state,
 {
   if (keysym == BKS_F && state == GO_DOWN)
     {
-      if (arg->inter.gun.i < 3)
+      if (arg->inter.gun.i < 4)
 	arg->inter.gun.i++;
       else
 	arg->inter.gun.i = 0;
