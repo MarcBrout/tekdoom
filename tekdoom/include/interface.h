@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Dec 16 17:10:21 2015 maud marel
-** Last update Wed Jan 27 07:03:50 2016 maud marel
+** Last update Wed Jan 27 07:07:37 2016 maud marel
 */
 
 #ifndef INTERFACE_H_
@@ -72,25 +72,13 @@ typedef struct		s_life
   t_color		*color;
 }			t_life;
 
-typedef struct		s_trigger
-{
-  t_bunny_pixelarray	*game_over;
-  t_bunny_pixelarray	*try_again;
-  t_bunny_pixelarray	*lastchance;
-}			t_trigger;
-
 typedef struct		s_interface
 {
   t_bunny_pixelarray	*pix;
   t_bunny_position	pos;
   t_life		life;
   t_bullet		bullet;
-  t_trigger		trigger;
   t_gun			gun;
 }			t_interface;
-
-void			tekpixel3(t_bunny_pixelarray *,
-				 t_bunny_position *,
-				 unsigned int);
 
 #endif /* !INTERFACE_H_ */

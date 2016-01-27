@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 07:08:26 2016 benjamin duhieu
+** Last update Wed Jan 27 07:21:31 2016 benjamin duhieu
 */
 
 #ifndef TEKDOOM_H_
@@ -224,8 +224,11 @@ int                     load_picture3(t_param *);
 int                     load_picture4(t_param *);
 void			inertie(t_param *);
 void                    tekpixel2(t_bunny_pixelarray *,
-                                 t_bunny_position *,
-                                 t_color *);
+				  t_bunny_position *,
+				  t_color *);
+void                    tekpixel3(t_bunny_pixelarray *,
+				  t_bunny_position *,
+				  unsigned int);
 int			check_color(t_param *, int);
 int			check_color2(t_param *, int);
 int			check_color3(t_param *, int);

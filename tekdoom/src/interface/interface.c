@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Mon Jan 25 13:05:12 2016 maud marel
-** Last update Wed Jan 27 05:42:45 2016 maud marel
+** Last update Wed Jan 27 07:17:51 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -49,6 +49,7 @@ void	interface_init(t_param *arg)
   arg->inter.gun.check_p = 0;
   arg->inter.gun.check_b = 0;
   arg->inter.gun.check_k = 0;
+  arg->inter.gun.check_s = 0;
   arg->inter.gun.check_sul = 0;
   arg->inter.gun.i = 0;
   arg->inter.bullet.nb_bullet = 0;

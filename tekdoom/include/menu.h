@@ -5,11 +5,11 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Wed Jan 27 07:01:39 2016 maud marel
+** Last update Wed Jan 27 07:12:50 2016 marc brout
 */
 
 #ifndef STRUCT_H_
-# define  STRUCT_H_
+# define STRUCT_H_
 # define WIDTH data->config->width
 # define HEIGHT data->config->height
 # define VOLUME data->config->volume

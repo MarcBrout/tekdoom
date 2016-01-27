@@ -5,12 +5,12 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:51:11 2016 Mathieu Sauvau
-** Last update Tue Jan 26 22:13:19 2016 maud marel
+** Last update Wed Jan 27 07:09:57 2016 maud marel
 */
 
 #include "tekdoom.h"
 
-void                    draw_square(t_bunny_pixelarray *pix_ar,
+void			draw_square(t_bunny_pixelarray *pix_ar,
                                     t_mrect *rect)
 {
   int			x;
@@ -75,7 +75,7 @@ t_mrect			label(t_data *data, bool selected,
   return (rect);
 }
 
-void                    draw_slider_2(t_bunny_pixelarray *pix_ar,
+void			draw_slider_2(t_bunny_pixelarray *pix_ar,
 				      t_mrect *rect, t_bunny_position pos,
 				      int rapport)
 {
@@ -99,7 +99,7 @@ void                    draw_slider_2(t_bunny_pixelarray *pix_ar,
     }
 }
 
-void                    draw_slider(t_bunny_pixelarray *pix_ar,
+void			draw_slider(t_bunny_pixelarray *pix_ar,
                                     t_mrect *rect, int pos_slider)
 {
   int			rapport;

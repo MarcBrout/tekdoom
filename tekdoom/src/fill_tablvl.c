@@ -5,39 +5,10 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 11:50:49 2015 marc brout
-** Last update Wed Jan 27 03:29:46 2016 marc brout
+** Last update Wed Jan 27 07:09:19 2016 marc brout
 */
 
 #include "tekdoom.h"
-
-void		get_player(t_param *arg, t_lvl *lvl)
-{
-  lvl->tiles = my_getnbr((char *)FLD(arg->ini, lvl->name, "tile_size", 0));
-  lvl->playerx = my_getnbr((char *)FLD(arg->ini, lvl->name,
-				       "start_position", 0));
-  lvl->playery = my_getnbr((char *)FLD(arg->ini, lvl->name,
-				       "start_position", 1));
-  lvl->plangle = (my_getnbr((char *)FLD(arg->ini, lvl->name,
-					"start_position", 2)) % 360);
-  if (!lvl->playerx || !lvl->playery || lvl->playerx >= lvl->width ||
-      lvl->playery >= lvl->height)
-    {
-      lvl->playerx = 0;
-      lvl->playery = 0;
-      while (lvl->map[(int)lvl->playery][(int)lvl->playerx])
-	{
-	  lvl->playerx += 1;
-	  if (lvl->playerx == lvl->width)
-	    {
-	      lvl->playerx = 0;
-	      lvl->playery += 1;
-	    }
-	}
-    }
-  lvl->yangle = 0;
-  lvl->playerx += 0.5;
-  lvl->playery += 0.5;
-}
 
 void		init_obj(t_obj *obj, int nb)
 {
