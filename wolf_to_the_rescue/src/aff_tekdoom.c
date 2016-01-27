@@ -1,14 +1,14 @@
 /*
-** aff_wolf.c for wolf
+** aff_tekdoom.c for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Wed Jan 27 02:03:07 2016 benjamin duhieu
+** Last update Wed Jan 27 03:10:54 2016 benjamin duhieu
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 t_bunny_response		my_mouse(const t_bunny_position *pos,
 					 void *data)
@@ -41,7 +41,7 @@ t_bunny_response		my_mouse(const t_bunny_position *pos,
   return (GO_ON);
 }
 
-void			main_wolf2(t_param *arg)
+void			main_tekdoom2(t_param *arg)
 {
   inertie(arg);
   new_hight(arg);
@@ -55,22 +55,24 @@ void			main_wolf2(t_param *arg)
   interface(arg);
 }
 
-t_bunny_response	main_wolf(void *data)
+t_bunny_response	main_tekdoom(void *data)
 {
   t_param		*arg;
 
   arg = data;
   bunny_sound_loop(arg->play, true);
-  if (arg->data->exit)
-    return (EXIT_ON_SUCCESS);
-  simple_tap(arg);
-  sky(arg);
-  bottom(arg);
-  main_wolf2(arg);
-  bunny_blit(&arg->win->buffer, &arg->pix->clipable, &arg->data->pos);
-  if (arg->menu)
-    bunny_blit(&arg->win->buffer, &arg->data->pix_ar->clipable,
-	       &arg->data->pos);
+  if (!arg->trans)
+    {
+      if (arg->data->exit)
+	return (EXIT_ON_SUCCESS);
+      simple_tap(arg);
+      sky(arg);
+      bottom(arg);
+      main_tekdoom2(arg);
+      bunny_blit(&arg->win->buffer, &arg->pix->clipable, &arg->data->pos);
+    }
+  else
+    transition(arg);
   bunny_display(arg->win);
   return (GO_ON);
 }
@@ -129,7 +131,7 @@ void		bottom(t_param *arg)
     }
 }
 
-char		aff_wolf(t_param *arg)
+char		aff_tekdoom(t_param *arg)
 {
   if ((arg->pix = bunny_new_pixelarray(arg->WIDTH, arg->HEIGHT)) == NULL ||
       (arg->win = bunny_start(arg->WIDTH, arg->HEIGHT,
@@ -143,7 +145,7 @@ char		aff_wolf(t_param *arg)
   interface_init(arg);
   if (load_picture(arg) == -1)
     return (-1);
-  bunny_set_loop_main_function(main_wolf);
+  bunny_set_loop_main_function(main_tekdoom);
   bunny_set_move_response(arg->move);
   bunny_set_click_response(main_click);
   bunny_set_key_response(arg->key);
@@ -151,6 +153,8 @@ char		aff_wolf(t_param *arg)
   bunny_set_mouse_position_window(arg->win, arg->WIDTH / 2, arg->HEIGHT / 2);
   bunny_loop(arg->win, 24, arg);
   bunny_delete_clipable(&arg->pix->clipable);
+  bunny_sound_stop(arg->inter.gun.music);
+  bunny_delete_sound(arg->inter.gun.music);
   bunny_stop(arg->win);
   return (0);
 }

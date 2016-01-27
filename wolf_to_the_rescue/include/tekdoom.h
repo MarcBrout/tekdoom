@@ -1,15 +1,15 @@
 /*
-** wolf3d.h for wolf
+** tekdoom.h for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 01:59:00 2016 benjamin duhieu
+** Last update Wed Jan 27 03:23:52 2016 benjamin duhieu
 */
 
-#ifndef WOLF_H_
-# define WOLF_H_
+#ifndef TEKDOOM_H_
+# define TEKDOOM_H_
 
 # define LAPIN_ALLOCATOR_DEACTIVED
 # define SKY 0xFF796C71
@@ -36,8 +36,8 @@
 # define ZIK_6 "ok/dswpnup.ogg" /* reload */
 # define ZIK_7 "Creaky door sound effect.ogg"
 # define ZIK_8 "1459.ogg"
-# define ZIK_9 "2769.ogg"
-# define ZI_10 "3502.ogg"
+# define ZIK_9 "2762.ogg"
+# define ZIK_10 "3502.ogg"
 # define ZERO(val) (((val) > 0) ? (val) - 1 : -1)
 # define ABS(val) (((val) < 0) ? -(val) : (val))
 # define GET_X(val) ABS((WIDTH / 2) - WIDTH + (val))
@@ -135,12 +135,12 @@ typedef struct		s_param
   int			speedy;
   int			jump;
   int			chrono;
-  bool			menu;
+  bool			trans;
 }			t_param;
 
 t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
-t_bunny_response main_wolf(void *);
 t_bunny_response main_click(t_bunny_event_state, t_bunny_mousebutton, void *);
+t_bunny_response main_tekdoom(void *);
 t_bunny_response my_mouse(const t_bunny_position *, void *);
 int my_strcmp(const char *, char *);
 int next_casex(t_param *, double);
@@ -173,13 +173,13 @@ void set_cossin(t_param *);
 void simple_tap(t_param *);
 char *my_strdup(char *);
 char mal_mini_map(t_param *, t_lvl *);
-char aff_wolf(t_param *);
+char aff_tekdoom(t_param *);
 char check_args(int, char **);
 char check_all_lvl(t_param *);
 char check_lvl(t_param *, char *);
 char get_lvl_map(t_param *, t_lvl *);
 char get_tabmap(t_param *);
-char launch_wolf(t_param *, char **);
+char launch_tekdoom(t_param *, char **);
 char mal_tablvl(t_param *);
 char mal_lvl_map(t_param *, t_lvl *);
 char open_ini(t_param *, char **);
@@ -193,6 +193,7 @@ void                    action_draw_square_life(t_param *,
 						t_bunny_position,
 						t_bunny_position);
 void                    interface(t_param *);
+void			interface_gun(t_param *);
 void                    interface_init(t_param *);
 void                    draw_heart(t_param *);
 void                    draw_heart2(t_param *, t_bunny_position,
@@ -200,10 +201,12 @@ void                    draw_heart2(t_param *, t_bunny_position,
 void                    draw_bullet(t_param *);
 void                    draw_bullet2(t_param *, t_bunny_position,
 				     t_bunny_position, int);
-int                     draw_game_over(t_param *);
-int                     draw_last_chance(t_param *);
-int                     draw_try_again(t_param *);
+void                    draw_game_over(t_param *);
+void                    draw_last_chance(t_param *);
+void                    draw_try_again(t_param *);
 int                     load_picture(t_param *);
+int                     load_picture2(t_param *);
+int                     load_picture3(t_param *);
 void			inertie(t_param *);
 void                    tekpixel2(t_bunny_pixelarray *,
                                  t_bunny_position *,
@@ -211,13 +214,30 @@ void                    tekpixel2(t_bunny_pixelarray *,
 int			check_color(t_param *, int);
 int			check_color2(t_param *, int);
 int			check_color3(t_param *, int);
+int			check_color4(t_param *, int);
+int			check_color5(t_param *, int);
+void			draw_shoot(t_param *,
+				   t_bunny_pixelarray *);
+void			draw_shoot1(t_param *,
+				   t_bunny_pixelarray *);
+void			draw_biggun(t_param *);
+void			draw_biggun2(t_param *);
 void			draw_gunshot(t_param *);
-void			draw_gunshot1(t_param *);
-void			draw_gunshot2(t_param *);
-void			draw_gunshot3(t_param *);
 void			draw_reload(t_param *);
-void			draw_reload1(t_param *);
-void			draw_reload2(t_param *);
-void			draw_reload3(t_param *);
+void			draw_punch(t_param *);
+void			keyboard_interface(t_param *);
+void			keyboard_interface2(t_bunny_event_state,
+					    t_bunny_keysym,
+					    t_param *);
+void			keyboard_interface3(t_bunny_event_state,
+					    t_bunny_keysym,
+					    t_param *);
+void			draw_scope(t_param *);
+void			transition(t_param *);
+void			weapon(t_param *);
+void			action_weapon(t_param *);
+void			draw_action(t_param *);
+void			draw_action2(t_param *);
+void			action_reload(t_param *);
 
-#endif /* !WOLF_H_ */
+#endif /* !TEKDOOM_H_ */

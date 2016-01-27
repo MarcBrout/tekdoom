@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Tue Jan 26 17:09:42 2016 Mathieu Sauvau
+** Last update Tue Jan 26 21:14:49 2016 Mathieu Sauvau
 */
 
 #ifndef STRUCT_H_
@@ -84,6 +84,9 @@ typedef struct		s_data
   t_letter		letter[75];
   char			sound;
   bool			exit;
+  t_bunny_effect	*menu_nav;
+  t_bunny_effect	*menu_select;
+  t_bunny_effect	*play;
 }			t_data;
 
 void			tekpixel(t_bunny_pixelarray *pix_ar,

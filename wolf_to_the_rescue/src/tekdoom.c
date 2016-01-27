@@ -1,14 +1,14 @@
 /*
-** wolf.c for wolf
+** tekdoom.c for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Wed Jan 27 00:05:31 2016 benjamin duhieu
+** Last update Wed Jan 27 03:01:34 2016 benjamin duhieu
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 #include "menu.h"
 
 void		whats_up(char **av, int err)
@@ -16,7 +16,7 @@ void		whats_up(char **av, int err)
   if (err == 1)
     {
       write(2, av[1], my_strlen(av[1]));
-      write(2, " file corrupted, execution aborted.\n", 37);
+      write(2, "file corrupted, execution aborted.\n", 37);
     }
   if (err == 2)
     write(2, "Trouble loading map, executon aborted.\n", 40);
@@ -38,7 +38,7 @@ void		set_cossin(t_param *arg)
     }
 }
 
-char		launch_wolf(t_param *arg , char **av)
+char		launch_tekdoom(t_param *arg , char **av)
 {
   pos_pix_ar(arg->data);
   arg->calc.p = 1;
@@ -55,7 +55,7 @@ char		launch_wolf(t_param *arg , char **av)
   if (get_tabmap(arg))
     return (2);
   set_cossin(arg);
-  if (aff_wolf(arg))
+  if (aff_tekdoom(arg))
     return (2);
   bunny_delete_ini(arg->ini);
   free_all(arg);
@@ -70,15 +70,13 @@ int		launch_start(char **av)
   if ((arg.data = malloc(sizeof(t_data))) == NULL)
     return (3);
   start(arg.data);
-  bunny_sound_stop(arg.data->music);
-  bunny_delete_sound(arg.data->music);
   if (download_music(&arg))
     return (1);
   bunny_sound_play(arg.play);
-  arg.menu = false;
+  arg.trans = false;
   if ((arg.wm.ydep = malloc(sizeof(double) * arg.WIDTH)) == NULL)
     return (1);
-  if ((err = launch_wolf(&arg, av)))
+  if ((err = launch_tekdoom(&arg, av)))
     {
       whats_up(av, err);
       return (1);

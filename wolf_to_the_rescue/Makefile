@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Wed Jan 27 01:58:36 2016 benjamin duhieu
+## Last update Wed Jan 27 03:12:02 2016 benjamin duhieu
 ##
 
 SRCP	= ./src/
@@ -14,12 +14,13 @@ SRCI	= ./src/interface/
 
 MENU = ./src/menu/
 
-SRC     = $(SRCP)wolf.c \
+SRC     = $(SRCP)tekdoom.c \
 	$(SRCP)check_file.c \
+	$(SRCP)transition.c \
 	$(SRCP)fill_tablvl.c \
-	$(SRCP)aff_wolf.c \
 	$(SRCP)clik.c \
 	$(SRCP)music.c \
+	$(SRCP)aff_tekdoom.c \
 	$(SRCP)inertia.c \
 	$(SRCP)free_all.c \
 	$(SRCP)wall.c \
@@ -54,10 +55,16 @@ SRC     = $(SRCP)wolf.c \
 	$(SRCI)draw_bullet.c \
 	$(SRCI)draw_heart.c \
 	$(SRCI)draw_life.c \
+	$(SRCI)draw_biggun.c \
 	$(SRCI)draw_trigger.c \
 	$(SRCI)draw_gunshot.c \
 	$(SRCI)draw_reload.c \
+	$(SRCI)draw_scope.c \
+	$(SRCI)draw_punch.c \
+	$(SRCI)weapon.c \
+	$(SRCI)load_picture.c \
 	$(SRCI)interface.c \
+	$(SRCI)keyboard_interface.c \
 	$(SRCI)tekpixel2.c \
 	$(SRCI)tekpixel3.c \
 

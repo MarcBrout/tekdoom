@@ -5,10 +5,10 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Tue Jan 26 09:51:56 2016 benjamin duhieu
-** Last update Tue Jan 26 10:36:34 2016 benjamin duhieu
+** Last update Tue Jan 26 22:08:45 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void	inertie(t_param *arg)
 {

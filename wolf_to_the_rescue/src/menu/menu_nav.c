@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:34:03 2016 Mathieu Sauvau
-** Last update Mon Jan 25 16:37:57 2016 Mathieu Sauvau
+** Last update Tue Jan 26 23:14:06 2016 Mathieu Sauvau
 */
 
 #include <menu.h>
@@ -13,7 +13,10 @@
 int			menu_nav(t_data *data)
 {
   if (data->selected_index == 0)
-    return (1);
+    {
+      bunny_sound_play(data->play);
+      return (1);
+    }
   if (data->selected_index == 1)
     {
       data->menu_length = 7;

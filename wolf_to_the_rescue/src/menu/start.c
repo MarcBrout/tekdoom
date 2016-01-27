@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 20 18:46:14 2015 Mathieu Sauvau
-** Last update Tue Jan 26 19:02:33 2016 benjamin duhieu
+** Last update Wed Jan 27 03:02:31 2016 benjamin duhieu
 */
 
 #include "menu.h"
@@ -30,10 +30,8 @@ t_bunny_response	mainloop(void	*my_data)
 
   data = my_data;
   cpy_bg(data->pix_ar, data->bg);
-  /*  my_fill(data->pix_ar, PINK);*/
-  /*  bunny_blit(&data->win->buffer, data->bg, &data->pos);*/
   disp_sound(data);
-    if (data->menu_index == 0)
+  if (data->menu_index == 0)
     main_menu(data, data->rect, HEIGHT / 2, 20);
   else if (data->menu_index == 1)
     option_menu(data, data->selected_index);
@@ -73,10 +71,15 @@ int			launch(t_data *data)
 int			start(t_data *data)
 {
   if (launch(data) == -1)
-    return (1);
+    exit(1);
   bunny_delete_clipable(&data->pix_ar->clipable);
   bunny_delete_ini(data->config->ini);
   bunny_free(data->config);
   bunny_stop(data->win);
+  bunny_sound_stop(data->music);
+  bunny_delete_sound(data->music);
+  bunny_delete_sound(data->menu_nav);
+  bunny_delete_sound(data->menu_select);
+  bunny_delete_sound(data->play);
   return (0);
 }

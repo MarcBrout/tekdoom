@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:48:40 2016 Mathieu Sauvau
-** Last update Tue Jan 26 17:04:59 2016 Mathieu Sauvau
+** Last update Wed Jan 27 00:39:42 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -61,9 +61,9 @@ void			pos_pix_ar(t_data *data)
 int			init_data(t_data *data)
 {
   data->menu_length = 4;
-  if ((data->rect = malloc(sizeof(t_mrect) * data->menu_length)) == NULL)
+  if ((data->rect = bunny_malloc(sizeof(t_mrect) * data->menu_length)) == NULL)
     return (1);
-  if ((data->bg = bunny_load_pixelarray("accueil.png")) == NULL)
+  if ((data->bg = bunny_load_pixelarray("pictures/accueil.png")) == NULL)
     return (1);
   load_config(data);
   init_res(data);
@@ -74,6 +74,10 @@ int			init_data(t_data *data)
   data->exit = false;
   INPUT->change_key = false;
   pos_pix_ar(data);
+  if ((data->menu_nav = bunny_load_effect("sounds/menu_move.ogg")) == NULL
+      || (data->menu_select = bunny_load_effect("sounds/menu_select.ogg")) == NULL
+      || (data->play = bunny_load_effect("sounds/robotic.ogg")) == NULL)
+    return (1);
   return (0);
 }
 

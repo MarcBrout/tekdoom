@@ -5,10 +5,10 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Wed Jan 27 00:48:48 2016 benjamin duhieu
-** Last update Wed Jan 27 02:05:39 2016 benjamin duhieu
+** Last update Wed Jan 27 03:13:35 2016 benjamin duhieu
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 t_bunny_response		main_click(UNUSED t_bunny_event_state state,
 					   UNUSED t_bunny_mousebutton button,
@@ -18,11 +18,10 @@ t_bunny_response		main_click(UNUSED t_bunny_event_state state,
   t_param			*doom;
   int				cac;
 
-  dool = data;
+  doom = data;
   mouse = bunny_get_mouse_button();
   if (mouse[BMB_LEFT])
     {
-      draw_weapon(doom, doom->inter.gun.i);
       if (doom->inter.gun.i == 0)
 	bunny_sound_play(doom->sound->shotgun);
       if (doom->inter.gun.i == 1)
