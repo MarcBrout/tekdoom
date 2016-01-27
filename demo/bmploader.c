@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 ** 
 ** Started on  Tue Jan 19 21:01:47 2016 marc brout
-** Last update Wed Jan 20 14:49:51 2016 marc brout
+** Last update Wed Jan 27 06:56:40 2016 marc brout
 */
 
 #include "bmploader.h"
