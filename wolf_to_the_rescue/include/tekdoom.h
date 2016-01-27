@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 03:53:56 2016 benjamin duhieu
+** Last update Wed Jan 27 06:23:02 2016 benjamin duhieu
 */
 
 #ifndef TEKDOOM_H_
@@ -27,11 +27,11 @@
 # define ZIK_2 "sounds/dsbrssit.ogg" /* cac 1 */
 # define ZIK_3 "sounds/dsdshtgn.ogg" /* shotgun */
 # define ZIK_4 "sounds/dspdiehi.ogg" /* cac 2 */
-# define ZIK_5 "sounds/dsvilsit.ogg" /* burger */
+# define ZIK_5 "sounds/Burp.ogg" /* burger */
 # define ZIK_6 "sounds/dswpnup.ogg" /* reload */
 # define ZIK_7 "sounds/Creaky door sound effect.ogg"
 # define ZIK_8 "sounds/1459.ogg"
-# define ZIK_9 "sounds/2762.ogg"
+# define ZIK_9 "sounds/sulf.ogg"
 # define ZIK_10 "sounds/3502.ogg"
 # define NBTXT 5
 # define TXT_2 "files/textures/wall_test2.bmp"
@@ -80,7 +80,6 @@ typedef struct		s_lvl
   int			**map;
   t_obj			***objs;
   t_bunny_pixelarray	*mini;
-  t_obj			*obj;
   int			minipos;
   double		playerx;
   double		playery;
@@ -168,6 +167,12 @@ void add_player_to_mini(t_param *, t_lvl *);
 void basic_to_sec(t_param *, int);
 void calc_walls(t_param *, t_data *);
 void celerity(t_param *);
+void delete_picture(t_param *);
+void delete_sound(t_param *);
+void free_obj(t_lvl *);
+void free_map(t_lvl *);
+void free_lvl(t_param *);
+void free_other(t_param *);
 void get_len(t_param *, int);
 void get_player(t_param *, t_lvl *);
 void mini_map(t_param *, t_lvl *, t_data *);
@@ -216,6 +221,7 @@ void                    draw_try_again(t_param *);
 int                     load_picture(t_param *);
 int                     load_picture2(t_param *);
 int                     load_picture3(t_param *);
+int                     load_picture4(t_param *);
 void			inertie(t_param *);
 void                    tekpixel2(t_bunny_pixelarray *,
                                  t_bunny_position *,
@@ -234,6 +240,10 @@ void			draw_biggun2(t_param *);
 void			draw_gunshot(t_param *);
 void			draw_reload(t_param *);
 void			draw_punch(t_param *);
+void			draw_sulf(t_param *);
+void			draw_sulf2(t_param *);
+void			draw_sulf3(t_param *);
+void			draw_knife(t_param *);
 void			keyboard_interface(t_param *);
 void			keyboard_interface2(t_bunny_event_state,
 					    t_bunny_keysym,

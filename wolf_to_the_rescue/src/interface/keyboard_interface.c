@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 21:38:59 2016 maud marel
-** Last update Wed Jan 27 02:11:35 2016 maud marel
+** Last update Wed Jan 27 05:31:13 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -15,10 +15,12 @@ void		keyboard_interface(t_param *arg)
   const bool	*k;
 
   k = bunny_get_keyboard();
-  if (k[arg->INPUT->key[7]])
-    action_weapon(arg);
-  if (k[arg->INPUT->key[5]])
-    action_reload(arg);
+  if (k[arg->INPUT->key[5]] && arg->inter.bullet.nb_bullet != 5
+      && arg->inter.gun.i == 1)
+    {
+      action_reload(arg);
+      bunny_sound_play(arg->sound->reload);
+    }
 }
 
 void	keyboard_interface2(t_bunny_event_state state,
@@ -47,7 +49,7 @@ void	keyboard_interface3(t_bunny_event_state state,
 {
   if (keysym == BKS_F && state == GO_DOWN)
     {
-      if (arg->inter.gun.i < 2)
+      if (arg->inter.gun.i < 4)
 	arg->inter.gun.i++;
       else
 	arg->inter.gun.i = 0;

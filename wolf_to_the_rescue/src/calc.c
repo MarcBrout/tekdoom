@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Wed Jan 27 06:30:16 2016 marc brout
+** Last update Wed Jan 27 06:37:49 2016 marc brout
 */
 
 #include "tekdoom.h"
@@ -38,10 +38,10 @@ char		test_k(t_param *arg, int x)
 void		get_len(t_param *arg, int x)
 {
   arg->calc.k = 0;
-  XF = arg->lvl[I].playerx +
-    arg->calc.vecx * arg->calc.k;
-  YF = arg->lvl[I].playery +
-    arg->calc.vecy * arg->calc.k;
+  XF = arg->lvl[I].playerx
+    + arg->calc.vecx * arg->calc.k;
+  YF = arg->lvl[I].playery
+    + arg->calc.vecy * arg->calc.k;
   while (!arg->lvl[I].map[(int)YF][(int)XF])
     {
       arg->calc.k += 0.005;
@@ -136,8 +136,11 @@ void		check_obj(t_param *arg)
 {
   if (arg->lvl[I].objs[(int)arg->lvl[I].playery]
       [(int)arg->lvl[I].playerx]->alive)
-    arg->lvl[I].objs[(int)arg->lvl[I].playery]
-      [(int)arg->lvl[I].playerx]->alive = 0;
+    {
+      bunny_sound_play(arg->sound->burger);
+      arg->lvl[I].objs[(int)arg->lvl[I].playery]
+	[(int)arg->lvl[I].playerx]->alive = 0;
+    }
 }
 
 void		calc_walls(t_param *arg, UNUSED t_data *data)

@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Wed Jan 27 04:45:08 2016 marc brout
+## Last update Wed Jan 27 06:37:01 2016 marc brout
 ##
 
 SRCP	= ./src/
@@ -19,7 +19,9 @@ SRC     = $(SRCP)tekdoom.c \
 	$(SRCP)transition.c \
 	$(SRCP)fill_tablvl.c \
 	$(SRCP)clik.c \
+	$(SRCP)mouse.c \
 	$(SRCP)music.c \
+	$(SRCP)free.c \
 	$(SRCP)aff_tekdoom.c \
 	$(SRCP)inertia.c \
 	$(SRCP)free_all.c \
@@ -61,6 +63,8 @@ SRC     = $(SRCP)tekdoom.c \
 	$(SRCI)draw_reload.c \
 	$(SRCI)draw_scope.c \
 	$(SRCI)draw_punch.c \
+	$(SRCI)draw_sulf.c \
+	$(SRCI)draw_knife.c \
 	$(SRCI)weapon.c \
 	$(SRCI)load_picture.c \
 	$(SRCI)interface.c \

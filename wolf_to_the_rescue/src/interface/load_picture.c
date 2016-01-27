@@ -5,16 +5,14 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 23:55:32 2016 maud marel
-** Last update Wed Jan 27 04:25:07 2016 marc brout
+** Last update Wed Jan 27 06:08:17 2016 maud marel
 */
 
 #include "tekdoom.h"
 
 int	load_picture(t_param *arg)
 {
-  if (((arg->inter.gun.music =
-	bunny_load_effect("sounds/0438.ogg")) == NULL)
-      || ((arg->inter.bullet.bullet
+  if (((arg->inter.bullet.bullet
 	   = bunny_load_pixelarray("pictures/bullet.bmp")) == NULL)
       || ((arg->inter.life.heart
 	   = bunny_load_pixelarray("pictures/heart.png")) == NULL)
@@ -25,7 +23,8 @@ int	load_picture(t_param *arg)
       || ((arg->inter.gun.gun_shoot3
 	   = bunny_load_pixelarray("pictures/gunshot3.bmp")) == NULL)
       || (load_picture2(arg) == -1)
-      || (load_picture3(arg) == -1))
+      || (load_picture3(arg) == -1)
+      || (load_picture4(arg) == -1))
     return (-1);
   return (0);
 }
@@ -70,6 +69,26 @@ int	load_picture3(t_param *arg)
 	   = bunny_load_pixelarray("pictures/big5.png")) == NULL)
       || ((arg->inter.gun.biggun6
 	   = bunny_load_pixelarray("pictures/big6.png")) == NULL))
+    return (-1);
+  return (0);
+}
+
+int	load_picture4(t_param *arg)
+{
+  if (((arg->inter.gun.sulf0
+	= bunny_load_pixelarray("pictures/sulf0.png")) == NULL)
+      || ((arg->inter.gun.sulf1
+	= bunny_load_pixelarray("pictures/sulf1.png")) == NULL)
+      || ((arg->inter.gun.sulf2
+	   = bunny_load_pixelarray("pictures/sulf2.png")) == NULL)
+      || ((arg->inter.gun.sulf3
+	   = bunny_load_pixelarray("pictures/sulf3.png")) == NULL)
+      || ((arg->inter.gun.knife1
+	   = bunny_load_pixelarray("pictures/knife1.png")) == NULL)
+      || ((arg->inter.gun.knife2
+	   = bunny_load_pixelarray("pictures/knife2.png")) == NULL)
+      || ((arg->inter.gun.knife3
+	   = bunny_load_pixelarray("pictures/knife3.png")) == NULL))
     return (-1);
   return (0);
 }
