@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Wed Jan 27 06:37:49 2016 marc brout
+** Last update Wed Jan 27 06:45:37 2016 marc brout
 */
 
 #include "tekdoom.h"
@@ -109,7 +109,7 @@ void		trace_obj(t_param *arg, int y, int x)
 	arg->sprites[arg->lvl[I].objs[y][x]->type - 1]->CWID - 1;
       while (++k < arg->sprites[arg->lvl[I].objs[y][x]->type - 1]->CWID
 	     && ++i > 0 && i < arg->WIDTH)
-	if (sptpixels[1] != sptpixels
+	if (sptpixels[0] != sptpixels
 	    [k + l * arg->sprites[arg->lvl[I].objs[y][x]->type - 1]->CWID])
 	  pixels[i + j * arg->WIDTH] = sptpixels
 	    [k + l * arg->sprites[arg->lvl[I].objs[y][x]->type - 1]->CWID];
