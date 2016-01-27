@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 19:34:41 2015 marc brout
-** Last update Tue Jan 26 17:41:05 2016 marc brout
+** Last update Tue Jan 26 21:25:50 2016 marc brout
 */
 
 #include "wolf.h"
@@ -17,7 +17,8 @@ void		simple_tap(t_param *arg)
   k = bunny_get_keyboard();
   if (k[arg->INPUT->key[0]])
     {
-      arg->speedy += 2;
+      if (arg->speedy < 9)
+	arg->speedy += 3;
       move(arg, 0, 0.1);
     }
   if (k[arg->INPUT->key[1]])

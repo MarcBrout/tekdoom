@@ -5,16 +5,13 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-<<<<<<< HEAD
-** Last update Tue Jan 26 17:38:28 2016 marc brout
-=======
-** Last update Tue Jan 26 17:46:54 2016 benjamin duhieu
->>>>>>> 0dc7fb166465d61183647255ee6c72b7d5db0450
+** Last update Wed Jan 27 02:03:25 2016 marc brout
 */
 
 #ifndef WOLF_H_
 # define WOLF_H_
 
+/* # define LAPIN_ALLOCATOR_DEACTIVATED */
 # define SKY 0xFF796C71
 # define PLAYER 0xFF00D7FF
 # define WALLA 0xFF8E7587
@@ -27,24 +24,26 @@
 # define BORDEROU 0xFF00D7FF
 # define FLD bunny_ini_get_field
 # define BIS bunny_ini_scope_get_field
-# define NBTXT 3
-# define TXT_1 "files/textures/01_brick_wall.png"
-# define TXT_2 "files/textures/02_floor.png"
-<<<<<<< HEAD
-# define TXT_3 "files/textures/mediterranean-home-decor.png"
+# define NBTXT 5
+# define TXT_2 "files/textures/wall_test2.bmp"
+# define TXT_1 "files/textures/02_floor.png"
+# define TXT_3 "files/textures/sky.bmp"
+# define TXT_4 "files/textures/door_0.bmp"
+# define TXT_5 "files/textures/door_1.bmp"
 # define NBOBJ 1
-# define OBJ_1 "files/textures/01_potion.png"
-=======
-# define TXT_3 "files/textures/my_sky.png"
->>>>>>> 0dc7fb166465d61183647255ee6c72b7d5db0450
+# define OBJ_1 "files/sprites/01_potion.png"
 # define ZERO(val) (((val) > 0) ? (val) - 1 : -1)
 # define ABS(val) (((val) < 0) ? -(val) : (val))
 # define GET_X(val) ABS((WIDTH / 2) - WIDTH + (val))
 # define DEGRE(val) (((val) / M_PI) * 180)
 # define RAD(val) (((val) * M_PI) / 180)
 # define DEC(val) ((val) - (int)(val))
+# define XF arg->calc.xf
+# define YF arg->calc.yf
 # define CWID clipable.clip_width
 # define CHEI clipable.clip_height
+# define I arg->curlvl
+# define JUMP (arg->hight * 200)
 # include <math.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -57,7 +56,9 @@ typedef struct		s_obj
 {
   int			type;
   int			x;
-  int			y;
+  char			alive;
+  char			trace;
+  double		k;
 }			t_obj;
 
 typedef struct		s_lvl
@@ -68,7 +69,7 @@ typedef struct		s_lvl
   int			width;
   int			height;
   int			**map;
-  int			**objs;
+  t_obj			***objs;
   t_bunny_pixelarray	*mini;
   t_obj			*obj;
   int			minipos;
@@ -127,15 +128,12 @@ t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
 t_bunny_response main_wolf(void *);
 t_bunny_response my_mouse(const t_bunny_position *, void *);
 int my_strcmp(const char *, char *);
-int  sky(t_param *, int);
+void sky(t_param *);
 int next_casex(t_param *, double);
 int next_casey(t_param *, double);
+void check_obj(t_param *);
 void whats_up(char **, int);
 void bottom(t_param *, int);
-void wall_north_east(t_param *, int, int, int);
-void wall_south_east(t_param *, int, int, int);
-void wall_north_west(t_param *, int, int, int);
-void wall_south_west(t_param *, int, int, int);
 void free_all(t_param *);
 void set_lvl_minimap(t_param *, t_lvl *);
 void set_minimaps(t_param *);
@@ -144,16 +142,17 @@ void add_player_to_mini(t_param *, t_lvl *);
 void basic_to_sec(t_param *, int);
 void calc_walls(t_param *, t_data *);
 void celerity(t_param *);
-void get_len(t_param *);
+void get_len(t_param *, int);
 void get_player(t_param *, t_lvl *);
 void mini_map(t_param *, t_lvl *, t_data *);
 void move(t_param *, double, double);
 void new_hight(t_param *);
-void project_k(t_param *, t_lvl *, int, t_data *);
+void project_k(t_param *, t_lvl *, int, int);
 void put_border(t_param *, int, unsigned int);
 void set_bump(t_param *, t_lvl *);
 void set_cossin(t_param *);
 void simple_tap(t_param *);
+char test_k(t_param *, int);
 char *my_strdup(char *);
 char mal_mini_map(t_param *, t_lvl *);
 char aff_wolf(t_param *);
@@ -167,6 +166,7 @@ char mal_tablvl(t_param *);
 char mal_lvl_map(t_param *, t_lvl *);
 char open_ini(t_param *, char **);
 char get_textures(t_param *);
+void set_max_heap_size(size_t);
 
 void                    draw_life_bar(t_param *);
 int                     draw_move_life(t_param *);

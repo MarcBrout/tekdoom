@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Tue Jan 26 17:37:32 2016 marc brout
+** Last update Tue Jan 26 21:31:08 2016 marc brout
 */
 
 #include "wolf.h"
@@ -67,11 +67,11 @@ int		launch_start(char **av)
   t_param	arg;
   int		err;
 
-  if ((arg.data = malloc(sizeof(t_data))) == NULL)
+  if ((arg.data = bunny_malloc(sizeof(t_data))) == NULL)
     return (3);
   start(arg.data);
   arg.menu = false;
-  if ((arg.wm.ydep = malloc(sizeof(double) * arg.WIDTH)) == NULL)
+  if ((arg.wm.ydep = bunny_malloc(sizeof(double) * arg.WIDTH)) == NULL)
     return (1);
   if ((err = launch_wolf(&arg, av)))
     {
@@ -83,6 +83,7 @@ int		launch_start(char **av)
 
 int		main(int ac, char **av, char **env)
 {
+  set_max_heap_size(50);
   if (check_args(ac, env))
     return (1);
   if (launch_start(av) != 0)

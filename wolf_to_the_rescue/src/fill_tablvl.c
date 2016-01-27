@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 11:50:49 2015 marc brout
-** Last update Tue Jan 26 17:37:46 2016 marc brout
+** Last update Wed Jan 27 01:49:14 2016 marc brout
 */
 
 #include "wolf.h"
@@ -39,6 +39,15 @@ void		get_player(t_param *arg, t_lvl *lvl)
   lvl->playery += 0.5;
 }
 
+void		init_obj(t_obj *obj, int nb)
+{
+  obj->type = nb;
+  obj->alive = 1;
+  obj->trace = 0;
+  obj->k = 0;
+  obj->x = 0;
+}
+
 char		get_lvl_map(t_param *arg, t_lvl *lvl)
 {
   int		x;
@@ -50,20 +59,17 @@ char		get_lvl_map(t_param *arg, t_lvl *lvl)
 
   y = -1;
   pres = 0;
-  while (++y < lvl->height)
-    {
-      x = -1;
-      while (++x < lvl->width)
-	{
-	  ind = x + (lvl->height - 1 - y) * lvl->width;
-	  if (!(nb = FLD(arg->ini, lvl->name, "data", ind)) ||
-	      !(nb2 = FLD(arg->ini, lvl->name, "type", ind)))
-	    return (1);
-	  lvl->map[y][x] = my_getnbr((char *)nb);
-	  lvl->objs[y][x] = my_getnbr((char *)nb2);
-	  if (!lvl->map[y][x])
-	    pres = 1;
-	}
+  while (++y < lvl->height && (x = -1))
+    while (++x < lvl->width)
+      {
+	ind = x + (lvl->height - 1 - y) * lvl->width;
+	if (!(nb = FLD(arg->ini, lvl->name, "data", ind)) ||
+	    !(nb2 = FLD(arg->ini, lvl->name, "type", ind)))
+	  return (1);
+	lvl->map[y][x] = my_getnbr((char *)nb);
+	init_obj(lvl->objs[y][x], my_getnbr((char *)nb2));
+	if (!lvl->map[y][x])
+	  pres = 1;
     }
   if (!pres)
     return (1);
@@ -87,22 +93,28 @@ char		get_tabmap(t_param *arg)
 char		mal_lvl_map(t_param *arg, t_lvl *lvl)
 {
   int		i;
+  int		j;
 
-  if ((lvl->height = my_getnbr((char *)FLD(arg->ini,
-					   lvl->name, "height", 0))) < 3
-      || (lvl->width = my_getnbr((char *)FLD(arg->ini,
-					     lvl->name, "width", 0))) < 3)
-    return (1);
+  if (!(lvl->height = my_getnbr((char *)FLD(arg->ini, lvl->name, "height", 0)))
+      ||
+      !(lvl->width = my_getnbr((char *)FLD(arg->ini, lvl->name, "width", 0))))
+   return (1);
   if (mal_mini_map(arg, lvl))
     return (2);
   if (!(lvl->map = bunny_malloc(sizeof(int *) * (lvl->height + 1))) ||
-      !(lvl->objs = bunny_malloc(sizeof(int *) * (lvl->height + 1))))
+      !(lvl->objs = bunny_malloc(sizeof(t_obj **) * (lvl->height + 1))))
     return (3);
   i = -1;
   while (++i < lvl->height)
-    if (!(lvl->map[i] = bunny_malloc(sizeof(int) * (lvl->width + 1))) ||
-	!(lvl->objs[i] = bunny_malloc(sizeof(int) * (lvl->width + 1))))
-      return (4);
+    {
+      if (!(lvl->map[i] = bunny_malloc(sizeof(int) * (lvl->width + 1))) ||
+	  !(lvl->objs[i] = bunny_malloc(sizeof(t_obj *) * (lvl->width + 1))))
+	return (4);
+      j = -1;
+      while (++j < lvl->width)
+	if (!(lvl->objs[i][j] = bunny_malloc(sizeof(t_obj))))
+	  return (4);
+    }
   return (0);
 }
 

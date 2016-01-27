@@ -5,11 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 01:06:18 2015 marc brout
-<<<<<<< HEAD:wolf_to_the_rescue/src/mini_map_blit.c
-** Last update Tue Jan 26 09:32:57 2016 benjamin duhieu
-=======
-** Last update Mon Jan 25 21:00:59 2016 maud marel
->>>>>>> fda0fc9443f38a2e14577def988b2bd61aa63076:wolf_to_the_rescue/src/interface/mini_map_blit.c
+** Last update Wed Jan 27 01:48:31 2016 marc brout
 */
 
 #include "wolf.h"
