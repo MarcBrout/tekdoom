@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Wed Jan 27 06:05:49 2016 Mathieu Sauvau
+## Last update Wed Jan 27 06:37:01 2016 marc brout
 ##
 
 SRCP	= ./src/
@@ -21,6 +21,7 @@ SRC     = $(SRCP)tekdoom.c \
 	$(SRCP)clik.c \
 	$(SRCP)mouse.c \
 	$(SRCP)music.c \
+	$(SRCP)free.c \
 	$(SRCP)aff_tekdoom.c \
 	$(SRCP)inertia.c \
 	$(SRCP)free_all.c \
@@ -75,7 +76,7 @@ OBJS    = $(SRC:.c=.o)
 
 NAME    = tekdoom
 
-CC      = gcc
+CC      = gcc -g
 
 CFLAGS  = -W -Wall -Werror -ansi -pedantic -I/home/${USER}/.froot/include -I./include
 

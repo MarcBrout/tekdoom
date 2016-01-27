@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 19:34:41 2015 marc brout
-** Last update Wed Jan 27 03:39:54 2016 benjamin duhieu
+** Last update Wed Jan 27 04:36:20 2016 benjamin duhieu
 */
 
 #include "tekdoom.h"
@@ -65,7 +65,10 @@ int		next_casex(t_param *arg, double val)
        [(int)(arg->lvl[arg->curlvl].playery)]
        [(int)(arg->lvl[arg->curlvl].playerx + val)]) == 3 &&
       (arg->curlvl < (arg->nblvl - 1)))
-    arg->trans = true;
+    {
+      bunny_sound_play(arg->sound->door);
+      arg->trans = true;
+    }
   return (cas);
 }
 
@@ -77,7 +80,10 @@ int		next_casey(t_param *arg, double val)
        [(int)(arg->lvl[arg->curlvl].playery + val)]
        [(int)(arg->lvl[arg->curlvl].playerx)]) == 3 &&
       (arg->curlvl < (arg->nblvl - 1)))
-    arg->trans = true;
+    {
+      bunny_sound_play(arg->sound->door);
+      arg->trans = true;
+    }
   return (cas);
 }
 

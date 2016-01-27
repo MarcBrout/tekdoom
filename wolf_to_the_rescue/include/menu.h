@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Tue Jan 26 21:14:49 2016 Mathieu Sauvau
+** Last update Wed Jan 27 06:13:54 2016 benjamin duhieu
 */
 
 #ifndef STRUCT_H_

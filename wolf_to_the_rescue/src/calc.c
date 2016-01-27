@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Wed Jan 27 05:43:25 2016 Mathieu Sauvau
+** Last update Wed Jan 27 06:45:37 2016 marc brout
 */
 
 #include "tekdoom.h"
@@ -100,15 +100,15 @@ void		trace_obj(t_param *arg, int y, int x)
 
   pixels = arg->pix->pixels;
   sptpixels = arg->sprites[arg->lvl[I].objs[y][x]->type - 1]->pixels;
-  len = sqrt(pow(x - arg->lvl[I].playerx, 2) +
-	     pow(y - arg->lvl[I].playery, 2));
+  len = sqrt(pow(x - arg->lvl[I].playerx, 2) + pow(y - arg->lvl[I].playery, 2));
   j = arg->HEIGHT - len * 40 + 1 + arg->lvl[I].yangle;
   l = arg->sprites[arg->lvl[I].objs[y][x]->type - 1]->CHEI + 1;
-  while (--l > 0 && --j > 0 && (k = -1))
+  while (--l > 0 && --j > 0 && (k = -1) && j < arg->HEIGHT)
     {
       i = arg->lvl[I].objs[y][x]->x -
 	arg->sprites[arg->lvl[I].objs[y][x]->type - 1]->CWID - 1;
-      while (++k < arg->sprites[arg->lvl[I].objs[y][x]->type - 1]->CWID && ++i)
+      while (++k < arg->sprites[arg->lvl[I].objs[y][x]->type - 1]->CWID
+	     && ++i > 0 && i < arg->WIDTH)
 	if (sptpixels[0] != sptpixels
 	    [k + l * arg->sprites[arg->lvl[I].objs[y][x]->type - 1]->CWID])
 	  pixels[i + j * arg->WIDTH] = sptpixels
@@ -136,8 +136,11 @@ void		check_obj(t_param *arg)
 {
   if (arg->lvl[I].objs[(int)arg->lvl[I].playery]
       [(int)arg->lvl[I].playerx]->alive)
-    arg->lvl[I].objs[(int)arg->lvl[I].playery]
-      [(int)arg->lvl[I].playerx]->alive = 0;
+    {
+      bunny_sound_play(arg->sound->burger);
+      arg->lvl[I].objs[(int)arg->lvl[I].playery]
+	[(int)arg->lvl[I].playerx]->alive = 0;
+    }
 }
 
 void		calc_walls(t_param *arg, UNUSED t_data *data)
