@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 08:21:41 2016 benjamin duhieu
+** Last update Wed Jan 27 08:41:06 2016 benjamin duhieu
 */
 
 #ifndef TEKDOOM_H_
@@ -158,9 +158,9 @@ int			next_casey(t_param *, double);
 int			download_music(t_param *);
 void			whats_up(char **, int);
 void			sky(t_param *);
+void			delete_sound(t_param *);
 void			bottom(t_param *);
 void			check_obj(t_param *);
-void			free_all(t_param *);
 void			set_lvl_minimap(t_param *, t_lvl *);
 void			set_minimaps(t_param *);
 void			tek_circle(t_lvl *, int);
@@ -168,12 +168,6 @@ void			add_player_to_mini(t_param *, t_lvl *);
 void			basic_to_sec(t_param *, int);
 void			calc_walls(t_param *, t_data *);
 void			celerity(t_param *);
-void			delete_picture(t_param *);
-void			delete_sound(t_param *);
-void			free_obj(t_lvl *);
-void			free_map(t_lvl *);
-void			free_lvl(t_param *);
-void			free_other(t_param *);
 void			get_len(t_param *, int);
 void			get_player(t_param *, t_lvl *);
 void			mini_map(t_param *, t_lvl *, t_data *);

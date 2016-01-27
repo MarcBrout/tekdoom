@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Wed Jan 27 08:25:33 2016 benjamin duhieu
+** Last update Wed Jan 27 08:44:59 2016 benjamin duhieu
 */
 
 #include "tekdoom.h"
@@ -80,7 +80,6 @@ int		launch_start(char **av)
       whats_up(av, err);
       return (1);
     }
-  delete_sound(&arg);
   return (0);
 }
 
