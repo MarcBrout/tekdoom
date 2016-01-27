@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 21:38:59 2016 maud marel
-** Last update Wed Jan 27 05:31:13 2016 maud marel
+** Last update Wed Jan 27 08:22:13 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -16,7 +16,7 @@ void		keyboard_interface(t_param *arg)
 
   k = bunny_get_keyboard();
   if (k[arg->INPUT->key[5]] && arg->inter.bullet.nb_bullet != 5
-      && arg->inter.gun.i == 1)
+      && (arg->inter.gun.i == 1 || arg->inter.gun.i == 2))
     {
       action_reload(arg);
       bunny_sound_play(arg->sound->reload);

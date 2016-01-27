@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 27 01:26:47 2016 maud marel
-** Last update Wed Jan 27 07:18:52 2016 maud marel
+** Last update Wed Jan 27 08:21:04 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -27,8 +27,11 @@ void	action_weapon(t_param *arg)
       arg->inter.bullet.nb_bullet--;
       arg->inter.gun.check_r = 3;
     }
-  if (arg->inter.gun.i == 2)
-    arg->inter.gun.check_b = 24;
+  if (arg->inter.gun.i == 2 && arg->inter.bullet.nb_bullet > 0)
+    {
+      arg->inter.bullet.nb_bullet--;
+      arg->inter.gun.check_b = 24;
+    }
   if (arg->inter.gun.i == 3)
     arg->inter.gun.check_sul = 39;
   if (arg->inter.gun.i == 4)
@@ -41,6 +44,11 @@ void	action_reload(t_param *arg)
     {
       arg->inter.gun.check_s = 1;
       arg->inter.gun.check_r = 15;
+      arg->inter.bullet.nb_bullet = 5;
+    }
+  if (arg->inter.gun.i == 2 && arg->inter.bullet.nb_bullet != 5)
+    {
+      arg->inter.gun.check_b = 24;
       arg->inter.bullet.nb_bullet = 5;
     }
 }
