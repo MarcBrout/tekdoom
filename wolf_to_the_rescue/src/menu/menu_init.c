@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:48:40 2016 Mathieu Sauvau
-** Last update Wed Jan 27 03:27:30 2016 marc brout
+** Last update Wed Jan 27 05:44:09 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -74,8 +74,8 @@ int			init_data(t_data *data)
   data->exit = false;
   INPUT->change_key = false;
   pos_pix_ar(data);
-  if ((data->menu_nav = bunny_load_effect("sounds/menu_move.ogg")) == NULL
-      || (data->menu_select = bunny_load_effect("sounds/menu_select.ogg")) == NULL
+  if ((data->menu_nav = bunny_load_effect("sounds/menu_move.ogg")) == NULL ||
+      (data->menu_select = bunny_load_effect("sounds/menu_select.ogg")) == NULL
       || (data->play = bunny_load_effect("sounds/robotic.ogg")) == NULL)
     return (1);
   return (0);
