@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 02:50:07 2016 Mathieu Sauvau
+** Last update Wed Jan 27 02:54:01 2016 Mathieu Sauvau
 */
 
 #ifndef TEKDOOM_H_
@@ -187,18 +187,16 @@ int			check_color(t_param *, int);
 int			check_color2(t_param *, int);
 int			check_color3(t_param *, int);
 int			check_color4(t_param *, int);
+int			check_color5(t_param *, int);
+void			draw_shoot(t_param *,
+				   t_bunny_pixelarray *);
+void			draw_shoot1(t_param *,
+				   t_bunny_pixelarray *);
+void			draw_biggun(t_param *);
+void			draw_biggun2(t_param *);
 void			draw_gunshot(t_param *);
-void			draw_gunshot1(t_param *);
-void			draw_gunshot2(t_param *);
-void			draw_gunshot3(t_param *);
 void			draw_reload(t_param *);
-void			draw_reload1(t_param *);
-void			draw_reload2(t_param *);
-void			draw_reload3(t_param *);
 void			draw_punch(t_param *);
-void			draw_punch1(t_param *);
-void			draw_punch2(t_param *);
-void			draw_punch3(t_param *);
 void			keyboard_interface(t_param *);
 void			keyboard_interface2(t_bunny_event_state,
 					    t_bunny_keysym,
@@ -208,5 +206,10 @@ void			keyboard_interface3(t_bunny_event_state,
 					    t_param *);
 void			draw_scope(t_param *);
 void			transition(t_param *);
+void			weapon(t_param *);
+void			action_weapon(t_param *);
+void			draw_action(t_param *);
+void			draw_action2(t_param *);
+void			action_reload(t_param *);
 
 #endif /* !TEKDOOM_H_ */

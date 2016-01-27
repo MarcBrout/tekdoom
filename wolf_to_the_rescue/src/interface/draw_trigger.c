@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Sat Jan 23 18:35:13 2016 maud marel
-** Last update Wed Jan 27 00:00:03 2016 maud marel
+** Last update Wed Jan 27 02:49:24 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -18,12 +18,12 @@ void			draw_game_over(t_param *arg)
   int			i;
 
   color = (t_color*)arg->inter.trigger.game_over->pixels;
-  pos.y = 0;
+  pos.y = -1;
   i = 0;
-  while (pos.y < arg->inter.trigger.game_over->clipable.clip_height)
+  while (++pos.y < arg->inter.trigger.game_over->clipable.clip_height)
     {
-      pos.x = 0;
-      while (pos.x < arg->inter.trigger.game_over->clipable.clip_width)
+      pos.x = -1;
+      while (++pos.x < arg->inter.trigger.game_over->clipable.clip_width)
 	{
 	  end.x = (arg->WIDTH
 		   - arg->inter.trigger.game_over->clipable.clip_width)
@@ -33,10 +33,8 @@ void			draw_game_over(t_param *arg)
 	    / 2 + pos.y;
 	  if (check_color(arg, i) == 0)
 	    tekpixel2(arg->pix, &end, &color[i]);
-	  pos.x++;
 	  i++;
 	}
-      pos.y++;
     }
 }
 
@@ -48,12 +46,12 @@ void			draw_last_chance(t_param *arg)
   int			i;
 
   color = (t_color*)arg->inter.trigger.lastchance->pixels;
-  pos.y = 0;
+  pos.y = -1;
   i = 0;
-  while (pos.y < arg->inter.trigger.lastchance->clipable.clip_height)
+  while (++pos.y < arg->inter.trigger.lastchance->clipable.clip_height)
     {
-      pos.x = 0;
-      while (pos.x < arg->inter.trigger.lastchance->clipable.clip_width)
+      pos.x = -1;
+      while (++pos.x < arg->inter.trigger.lastchance->clipable.clip_width)
 	{
 	  end.x = (arg->WIDTH
 		   - arg->inter.trigger.lastchance->clipable.clip_width)
@@ -63,10 +61,8 @@ void			draw_last_chance(t_param *arg)
 	    / 2 + pos.y;
 	  if (check_color(arg, i) == 0)
 	    tekpixel2(arg->inter.pix, &end, &color[i]);
-	  pos.x++;
 	  i++;
 	}
-      pos.y++;
     }
 }
 
@@ -78,12 +74,12 @@ void			draw_try_again(t_param *arg)
   int			i;
 
   color = (t_color*)arg->inter.trigger.try_again->pixels;
-  pos.y = 0;
+  pos.y = -1;
   i = 0;
-  while (pos.y < arg->inter.trigger.try_again->clipable.clip_height)
+  while (++pos.y < arg->inter.trigger.try_again->clipable.clip_height)
     {
-      pos.x = 0;
-      while (pos.x < arg->inter.trigger.try_again->clipable.clip_width)
+      pos.x = -1;
+      while (++pos.x < arg->inter.trigger.try_again->clipable.clip_width)
 	{
 	  end.x = (arg->WIDTH
 		   - arg->inter.trigger.try_again->clipable.clip_width)
@@ -93,9 +89,7 @@ void			draw_try_again(t_param *arg)
 	    / 2 + pos.y;
 	  if (check_color(arg, i) == 0)
 	    tekpixel2(arg->pix, &end, &color[i]);
-	  pos.x++;
 	  i++;
 	}
-      pos.y++;
     }
 }
