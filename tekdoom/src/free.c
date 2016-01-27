@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Wed Jan 27 05:29:03 2016 benjamin duhieu
-** Last update Wed Jan 27 07:53:54 2016 benjamin duhieu
+** Last update Wed Jan 27 08:27:42 2016 benjamin duhieu
 */
 
 #include "tekdoom.h"
@@ -13,7 +13,7 @@
 void	free_other(t_param *arg)
 {
   bunny_free(arg->wm.ydep);
-  bunny_free(arg->inter.gun.gun_shoot1);
+  /* bunny_free(arg->inter.gun.gun_shoot1); */
   bunny_free(arg->inter.gun.gun_shoot2);
   bunny_free(arg->inter.gun.gun_shoot3);
   bunny_free(arg->inter.gun.reload1);

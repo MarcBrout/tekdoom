@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Wed Jan 27 05:35:15 2016 benjamin duhieu
+** Last update Wed Jan 27 08:25:33 2016 benjamin duhieu
 */
 
 #include "tekdoom.h"
@@ -58,7 +58,6 @@ char		launch_tekdoom(t_param *arg , char **av)
   if (aff_tekdoom(arg))
     return (2);
   bunny_delete_ini(arg->ini);
-  free_all(arg);
   return (0);
 }
 

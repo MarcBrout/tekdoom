@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Wed Jan 27 07:06:33 2016 maud marel
+## Last update Wed Jan 27 08:26:03 2016 benjamin duhieu
 ##
 
 SRCP	= ./src/
@@ -24,7 +24,6 @@ SRC     = $(SRCP)tekdoom.c \
 	$(SRCP)free.c \
 	$(SRCP)aff_tekdoom.c \
 	$(SRCP)inertia.c \
-	$(SRCP)free_all.c \
 	$(SRCP)wall.c \
 	$(SRCP)keyboard.c \
 	$(SRCP)calc.c \
