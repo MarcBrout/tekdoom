@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Wed Jan 27 00:48:48 2016 benjamin duhieu
-** Last update Wed Jan 27 06:51:12 2016 benjamin duhieu
+** Last update Wed Jan 27 08:22:41 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -22,7 +22,7 @@ void	no_cac(t_param *arg)
       bunny_sound_play(arg->sound->knife);
       bunny_sound_volume(arg->sound->knife, arg->data->config->volume);
     }
-  if (arg->inter.gun.i == 2)
+  if (arg->inter.gun.i == 2 && arg->inter.bullet.nb_bullet > 0)
     {
       bunny_sound_play(arg->sound->bazook);
       bunny_sound_volume(arg->sound->bazook, arg->data->config->volume);
