@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Wed Jan 27 03:42:36 2016 benjamin duhieu
+** Last update Wed Jan 27 05:43:25 2016 Mathieu Sauvau
 */
 
 #include "tekdoom.h"
@@ -38,10 +38,10 @@ char		test_k(t_param *arg, int x)
 void		get_len(t_param *arg, int x)
 {
   arg->calc.k = 0;
-  XF = arg->lvl[I].playerx +
-    arg->calc.vecx * arg->calc.k;
-  YF = arg->lvl[I].playery +
-    arg->calc.vecy * arg->calc.k;
+  XF = arg->lvl[I].playerx
+    + arg->calc.vecx * arg->calc.k;
+  YF = arg->lvl[I].playery
+    + arg->calc.vecy * arg->calc.k;
   while (!arg->lvl[I].map[(int)YF][(int)XF])
     {
       arg->calc.k += 0.005;
