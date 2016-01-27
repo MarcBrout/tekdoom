@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Wed Jan 27 03:42:36 2016 benjamin duhieu
+** Last update Wed Jan 27 04:35:02 2016 benjamin duhieu
 */
 
 #include "tekdoom.h"
@@ -136,8 +136,11 @@ void		check_obj(t_param *arg)
 {
   if (arg->lvl[I].objs[(int)arg->lvl[I].playery]
       [(int)arg->lvl[I].playerx]->alive)
-    arg->lvl[I].objs[(int)arg->lvl[I].playery]
-      [(int)arg->lvl[I].playerx]->alive = 0;
+    {
+      bunny_sound_play(arg->sound->burger);
+      arg->lvl[I].objs[(int)arg->lvl[I].playery]
+	[(int)arg->lvl[I].playerx]->alive = 0;
+    }
 }
 
 void		calc_walls(t_param *arg, UNUSED t_data *data)
