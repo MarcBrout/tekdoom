@@ -5,12 +5,12 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Tue Jan 26 11:11:29 2016 benjamin duhieu
-** Last update Tue Jan 26 22:49:28 2016 Mathieu Sauvau
+** Last update Wed Jan 27 07:11:39 2016 maud marel
 */
 
 #include "menu.h"
 
-void    disp_sound(t_data *data)
+void	disp_sound(t_data *data)
 {
   if (data->sound == 1)
     {

@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Wed Jan 27 06:37:01 2016 marc brout
+## Last update Wed Jan 27 07:06:33 2016 maud marel
 ##
 
 SRCP	= ./src/
@@ -58,7 +58,6 @@ SRC     = $(SRCP)tekdoom.c \
 	$(SRCI)draw_heart.c \
 	$(SRCI)draw_life.c \
 	$(SRCI)draw_biggun.c \
-	$(SRCI)draw_trigger.c \
 	$(SRCI)draw_gunshot.c \
 	$(SRCI)draw_reload.c \
 	$(SRCI)draw_scope.c \

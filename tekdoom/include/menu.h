@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Wed Jan 27 07:04:40 2016 marc brout
+** Last update Wed Jan 27 07:12:50 2016 marc brout
 */
 
 #ifndef STRUCT_H_
@@ -27,10 +27,6 @@ typedef struct		s_resolution
   int			width;
 }			t_res;
 
-/*
-** key index correspond to this
-** up, down, left, right, jump, reload, action, fire, zoom
-*/
 typedef struct		s_input
 {
   bool			change_key;
@@ -102,22 +98,27 @@ void			tekline(t_bunny_pixelarray *pix_ar,
 				t_bunny_position *coord,
 				t_color *color);
 void			main_menu(t_data *data, t_mrect *, int, int);
-void                    my_fill(t_bunny_pixelarray *pix_ar, unsigned int color);
+void                    my_fill(t_bunny_pixelarray *pix_ar,
+				unsigned int color);
 void			disp_sound(t_data *data);
 void			option_menu(t_data *data, int selected_index);
 t_mrect			label(t_data *data, bool selected,
 			      t_bunny_position, t_bunny_position);
-t_mrect			check_box(t_data *data, bool activated, t_bunny_position label);
+t_mrect			check_box(t_data *data, bool activated,
+				  t_bunny_position label);
 void			write_bmp(t_data *data, char *, t_bunny_position);
-t_bunny_position	centered_pos(t_data *data, t_bunny_position size, int, int);
+t_bunny_position	centered_pos(t_data *data, t_bunny_position size,
+				     int, int);
 t_bunny_picture		*search_letter(t_letter *letter, char c);
 void                    draw_slider(t_bunny_pixelarray *pix_ar,
                                     t_mrect *rect, int pos_slider);
 void			save_opt(t_data *data);
-t_bunny_position	calc_pos_txt(t_data *data, t_mrect ref, int offset_len);
+t_bunny_position	calc_pos_txt(t_data *data, t_mrect ref,
+				     int offset_len);
 int			launch(t_data *data);
 int			my_getnbr(char *);
-void		        input_menu(t_data *data, t_mrect *rect,  int offset, int margin);
+void		        input_menu(t_data *data, t_mrect *rect,  int offset,
+				   int margin);
 t_bunny_position	pos_(int, int);
 void			save_input(t_data *data);
 void		        change_key(t_data *data);
@@ -142,7 +143,8 @@ void			default_config(t_data *data);
 int			init_data(t_data *data);
 int			get_res(t_data *data, int height);
 void			option_nav(t_data *data);
-void			option_nav2(t_bunny_event_state state, t_bunny_keysym keysym,
+void			option_nav2(t_bunny_event_state state,
+				    t_bunny_keysym keysym,
 				    t_data *data);
 void                    draw_square(t_bunny_pixelarray *pix_ar,
                                     t_mrect *rect);
