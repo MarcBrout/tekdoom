@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 27 00:43:56 2016 maud marel
-** Last update Wed Jan 27 02:25:27 2016 maud marel
+** Last update Wed Jan 27 02:46:54 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -26,6 +26,11 @@ void	draw_biggun(t_param *arg)
     draw_shoot1(arg, arg->inter.gun.biggun6);
   if (arg->inter.gun.check_b > 12 && arg->inter.gun.check_b <= 15)
     draw_shoot1(arg, arg->inter.gun.biggun5);
+  draw_biggun2(arg);
+}
+
+void	draw_biggun2(t_param *arg)
+{
   if (arg->inter.gun.check_b > 9 && arg->inter.gun.check_b <= 12)
     draw_shoot1(arg, arg->inter.gun.biggun4);
   if (arg->inter.gun.check_b > 6 && arg->inter.gun.check_b <= 9)
@@ -68,7 +73,7 @@ void	draw_shoot1(t_param *arg, t_bunny_pixelarray *shoot)
     }
 }
 
-int     check_color5(t_param *arg, int i)
+int	check_color5(t_param *arg, int i)
 {
   int   r;
   int   b;

@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Dec 16 17:10:21 2015 maud marel
-** Last update Wed Jan 27 01:52:57 2016 maud marel
+** Last update Wed Jan 27 02:30:08 2016 maud marel
 */
 
 #ifndef INTERFACE_H_
@@ -36,7 +36,7 @@ typedef struct		s_gun
   t_bunny_pixelarray	*biggun5;
   t_bunny_pixelarray	*biggun6;
   int			i;
-  int			check;
+  int			check_s;
   int			check_r;
   int			check_p;
   int			check_b;

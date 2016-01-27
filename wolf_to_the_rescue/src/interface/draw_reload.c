@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 15:30:56 2016 maud marel
-** Last update Wed Jan 27 01:19:17 2016 maud marel
+** Last update Wed Jan 27 02:32:41 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -27,4 +27,6 @@ void	draw_reload(t_param *arg)
     }
   if (arg->inter.gun.check_r > 0)
     arg->inter.gun.check_r--;
+  if (arg->inter.gun.check_r == 1)
+    arg->inter.gun.check_s = 0;
 }

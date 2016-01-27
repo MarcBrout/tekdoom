@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 22:47:14 2016 maud marel
-** Last update Wed Jan 27 02:05:11 2016 maud marel
+** Last update Wed Jan 27 02:47:40 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -39,7 +39,7 @@ void			draw_scope(t_param *arg)
     }
 }
 
-int     check_color4(t_param *arg, int i)
+int	check_color4(t_param *arg, int i)
 {
   int   r;
   int   b;

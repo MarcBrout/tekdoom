@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 14:29:22 2016 maud marel
-** Last update Wed Jan 27 02:24:11 2016 maud marel
+** Last update Wed Jan 27 02:47:12 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -25,7 +25,7 @@ void	draw_gunshot(t_param *arg)
     arg->inter.gun.check_r--;
 }
 
-void    draw_shoot(t_param *arg, t_bunny_pixelarray *shoot)
+void	draw_shoot(t_param *arg, t_bunny_pixelarray *shoot)
 {
   t_bunny_position      end;
   t_bunny_position      pos;

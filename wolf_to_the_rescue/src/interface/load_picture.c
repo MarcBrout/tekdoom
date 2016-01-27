@@ -5,12 +5,12 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 23:55:32 2016 maud marel
-** Last update Wed Jan 27 00:50:38 2016 maud marel
+** Last update Wed Jan 27 02:49:49 2016 maud marel
 */
 
 #include "tekdoom.h"
 
-int     load_picture(t_param *arg)
+int	load_picture(t_param *arg)
 {
   if ((arg->inter.gun.music =
        bunny_load_effect("sounds/0438.ogg")) == NULL)
@@ -37,7 +37,7 @@ int     load_picture(t_param *arg)
   return (0);
 }
 
-int     load_picture2(t_param *arg)
+int	load_picture2(t_param *arg)
 {
   if ((arg->inter.gun.reload1
        = bunny_load_pixelarray("pictures/reload1.bmp")) == NULL)
@@ -66,7 +66,7 @@ int     load_picture2(t_param *arg)
   return (0);
 }
 
-int     load_picture3(t_param *arg)
+int	load_picture3(t_param *arg)
 {
   if ((arg->inter.trigger.try_again
        = bunny_load_pixelarray("pictures/try_again.bmp")) == NULL)
