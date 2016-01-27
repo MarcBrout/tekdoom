@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 06:23:02 2016 benjamin duhieu
+** Last update Wed Jan 27 06:50:18 2016 benjamin duhieu
 */
 
 #ifndef TEKDOOM_H_
@@ -155,6 +155,8 @@ int my_strcmp(const char *, char *);
 int next_casex(t_param *, double);
 int next_casey(t_param *, double);
 int download_music(t_param *);
+void cac(t_param *, int);
+void no_cac(t_param *);
 void whats_up(char **, int);
 void  sky(t_param *);
 void bottom(t_param *);

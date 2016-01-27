@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Tue Jan 26 23:45:30 2016 benjamin duhieu
-** Last update Wed Jan 27 06:00:06 2016 benjamin duhieu
+** Last update Wed Jan 27 06:54:44 2016 benjamin duhieu
 */
 
 #include "tekdoom.h"
@@ -24,6 +24,7 @@ int	download_music(t_param *arg)
       ((arg->sound->sulf = bunny_load_effect(ZIK_9)) == NULL) ||
       ((arg->sound->knife = bunny_load_effect(ZIK_10)) == NULL))
     return (1);
+  bunny_sound_volume(arg->play, arg->data->config->volume);
   return (0);
 }
 
@@ -58,5 +59,5 @@ void	delete_sound(t_param *arg)
   bunny_delete_sound(arg->sound->knife);
   bunny_delete_sound(arg->sound->bazook);
   bunny_delete_sound(arg->sound->reload);
-  delete_picture(arg);
+  /* delete_picture(arg); */
 }
