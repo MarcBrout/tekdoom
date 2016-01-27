@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 06:23:02 2016 benjamin duhieu
+** Last update Wed Jan 27 06:56:15 2016 maud marel
 */
 
 #ifndef TEKDOOM_H_
@@ -232,8 +232,6 @@ int			check_color3(t_param *, int);
 int			check_color4(t_param *, int);
 int			check_color5(t_param *, int);
 void			draw_shoot(t_param *,
-				   t_bunny_pixelarray *);
-void			draw_shoot1(t_param *,
 				   t_bunny_pixelarray *);
 void			draw_biggun(t_param *);
 void			draw_biggun2(t_param *);
