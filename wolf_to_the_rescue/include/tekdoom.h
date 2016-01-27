@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 03:53:56 2016 benjamin duhieu
+** Last update Wed Jan 27 04:41:38 2016 maud marel
 */
 
 #ifndef TEKDOOM_H_
@@ -216,6 +216,7 @@ void                    draw_try_again(t_param *);
 int                     load_picture(t_param *);
 int                     load_picture2(t_param *);
 int                     load_picture3(t_param *);
+int                     load_picture4(t_param *);
 void			inertie(t_param *);
 void                    tekpixel2(t_bunny_pixelarray *,
                                  t_bunny_position *,
@@ -234,6 +235,7 @@ void			draw_biggun2(t_param *);
 void			draw_gunshot(t_param *);
 void			draw_reload(t_param *);
 void			draw_punch(t_param *);
+void			draw_sulf(t_param *);
 void			keyboard_interface(t_param *);
 void			keyboard_interface2(t_bunny_event_state,
 					    t_bunny_keysym,
