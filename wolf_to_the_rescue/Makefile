@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Wed Jan 27 03:52:56 2016 benjamin duhieu
+## Last update Wed Jan 27 04:45:08 2016 marc brout
 ##
 
 SRCP	= ./src/
@@ -72,7 +72,7 @@ OBJS    = $(SRC:.c=.o)
 
 NAME    = tekdoom
 
-CC      = gcc
+CC      = gcc -g
 
 CFLAGS  = -W -Wall -Werror -ansi -pedantic -I/home/${USER}/.froot/include -I./include
 

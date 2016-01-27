@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Wed Jan 27 03:43:31 2016 benjamin duhieu
+** Last update Wed Jan 27 06:32:57 2016 marc brout
 */
 
 #include "tekdoom.h"
@@ -89,15 +89,15 @@ void		sky(t_param *arg)
 
   sky = arg->textures[2]->pixels;
   pixels = arg->pix->pixels;
-  size = arg->HEIGHT / 2 + (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34)));
+  size = arg->HEIGHT / 2 +
+    (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34)));
   y = size;
   x = 0;
   while (x + (y * arg->WIDTH) > 0)
     {
-      k = (int)(((double)x / arg->WIDTH) * arg->textures[2]->CWID) %
-	arg->textures[2]->CWID;
-      l = (int)(((double)y / size) * arg->textures[2]->CHEI) %
-	arg->textures[2]->CHEI;
+      k = (int)(((double)x / 1.5 / arg->WIDTH) * arg->textures[2]->CWID) %
+	arg->textures[2]->CWID  - arg->lvl[I].plangle * 15;
+      l = (int)((double)y * 1.5) % arg->textures[2]->CHEI;
       x++;
       pixels[x + y * arg->WIDTH] = sky[k + l * arg->textures[2]->CWID];
       if (x == arg->WIDTH && !(x = 0))
