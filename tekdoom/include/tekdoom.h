@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 07:01:41 2016 benjamin duhieu
+** Last update Wed Jan 27 07:08:26 2016 benjamin duhieu
 */
 
 #ifndef TEKDOOM_H_
@@ -147,60 +147,58 @@ typedef struct		s_param
   bool			trans;
 }			t_param;
 
-t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
-t_bunny_response main_click(t_bunny_event_state, t_bunny_mousebutton, void *);
-t_bunny_response main_tekdoom(void *);
-t_bunny_response my_mouse(const t_bunny_position *, void *);
-int my_strcmp(const char *, char *);
-int next_casex(t_param *, double);
-int next_casey(t_param *, double);
-int download_music(t_param *);
-void cac(t_param *, int);
-void no_cac(t_param *);
-void whats_up(char **, int);
-void  sky(t_param *);
-void bottom(t_param *);
-void check_obj(t_param *);
-void free_all(t_param *);
-void set_lvl_minimap(t_param *, t_lvl *);
-void set_minimaps(t_param *);
-void tek_circle(t_lvl *, int);
-void add_player_to_mini(t_param *, t_lvl *);
-void basic_to_sec(t_param *, int);
-void calc_walls(t_param *, t_data *);
-void celerity(t_param *);
-void delete_picture(t_param *);
-void delete_sound(t_param *);
-void free_obj(t_lvl *);
-void free_map(t_lvl *);
-void free_lvl(t_param *);
-void free_other(t_param *);
-void get_len(t_param *, int);
-void get_player(t_param *, t_lvl *);
-void mini_map(t_param *, t_lvl *, t_data *);
-void move(t_param *, double, double);
-void new_hight(t_param *);
-void project_k(t_param *, t_lvl *, int, int);
-void put_border(t_param *, int, unsigned int);
-void set_bump(t_param *, t_lvl *);
-void set_cossin(t_param *);
-void simple_tap(t_param *);
-char test_k(t_param *, int);
-char *my_strdup(char *);
-char mal_mini_map(t_param *, t_lvl *);
-char aff_tekdoom(t_param *);
-char check_args(int, char **);
-char check_all_lvl(t_param *);
-char check_lvl(t_param *, char *);
-char get_lvl_map(t_param *, t_lvl *);
-char get_tabmap(t_param *);
-char launch_tekdoom(t_param *, char **);
-char mal_tablvl(t_param *);
-char mal_lvl_map(t_param *, t_lvl *);
-char open_ini(t_param *, char **);
-char get_textures(t_param *);
-void set_max_heap_size(size_t);
-
+t_bunny_response	my_keys(t_bunny_event_state, t_bunny_keysym, void *);
+t_bunny_response	main_click(t_bunny_event_state,
+				   t_bunny_mousebutton, void *);
+t_bunny_response	main_tekdoom(void *);
+t_bunny_response	my_mouse(const t_bunny_position *, void *);
+int			my_strcmp(const char *, char *);
+int			next_casex(t_param *, double);
+int			next_casey(t_param *, double);
+int			download_music(t_param *);
+void			whats_up(char **, int);
+void			sky(t_param *);
+void			bottom(t_param *);
+void			check_obj(t_param *);
+void			free_all(t_param *);
+void			set_lvl_minimap(t_param *, t_lvl *);
+void			set_minimaps(t_param *);
+void			tek_circle(t_lvl *, int);
+void			add_player_to_mini(t_param *, t_lvl *);
+void			basic_to_sec(t_param *, int);
+void			calc_walls(t_param *, t_data *);
+void			celerity(t_param *);
+void			delete_picture(t_param *);
+void			delete_sound(t_param *);
+void			free_obj(t_lvl *);
+void			free_map(t_lvl *);
+void			free_lvl(t_param *);
+void			free_other(t_param *);
+void			get_len(t_param *, int);
+void			get_player(t_param *, t_lvl *);
+void			mini_map(t_param *, t_lvl *, t_data *);
+void			move(t_param *, double, double);
+void			new_hight(t_param *);
+void			project_k(t_param *, t_lvl *, int, int);
+void			put_border(t_param *, int, unsigned int);
+void			set_bump(t_param *, t_lvl *);
+void			set_cossin(t_param *);
+void			simple_tap(t_param *);
+char			test_k(t_param *, int);
+char			*my_strdup(char *);
+char			mal_mini_map(t_param *, t_lvl *);
+char			aff_tekdoom(t_param *);
+char			check_args(int, char **);
+char			check_all_lvl(t_param *);
+char			check_lvl(t_param *, char *);
+char			get_lvl_map(t_param *, t_lvl *);
+char			get_tabmap(t_param *);
+char			launch_tekdoom(t_param *, char **);
+char			mal_tablvl(t_param *);
+char			mal_lvl_map(t_param *, t_lvl *);
+char			open_ini(t_param *, char **);
+char			get_textures(t_param *);
+void			set_max_heap_size(size_t);
 void                    draw_life_bar(t_param *);
 int                     draw_move_life(t_param *);
 int                     draw_move_life2(t_param *, t_bunny_position);
