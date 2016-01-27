@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 20 15:08:42 2016 Maud MAREL
-** Last update Tue Jan 26 22:10:49 2016 maud marel
+** Last update Wed Jan 27 05:22:55 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -32,7 +32,6 @@ void	draw_bullet2(t_param *arg, t_bunny_position pos,
 {
   int	i;
 
-  pos.x = 0;
   pos.y = 0;
   i = 0;
   while (pos.y < arg->inter.bullet.bullet->clipable.clip_height)
@@ -64,7 +63,7 @@ int	check_color2(t_param *arg, int i)
   r = arg->inter.bullet.color[i].full & 0xFF;
   g = (arg->inter.bullet.color[i].full >> 8) & 0xFF;
   b = (arg->inter.bullet.color[i].full >> 16) & 0xFF;
-  if ((r == 0 && b == 0 && g == 255) || (r == 0 && b == 255 && g == 0))
+  if (r == 0 && b == 0 && g == 255)
     return (1);
   return (0);
 }

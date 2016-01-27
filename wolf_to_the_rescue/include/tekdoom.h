@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 04:49:12 2016 maud marel
+** Last update Wed Jan 27 05:37:50 2016 maud marel
 */
 
 #ifndef TEKDOOM_H_
@@ -238,6 +238,7 @@ void			draw_punch(t_param *);
 void			draw_sulf(t_param *);
 void			draw_sulf2(t_param *);
 void			draw_sulf3(t_param *);
+void			draw_knife(t_param *);
 void			keyboard_interface(t_param *);
 void			keyboard_interface2(t_bunny_event_state,
 					    t_bunny_keysym,

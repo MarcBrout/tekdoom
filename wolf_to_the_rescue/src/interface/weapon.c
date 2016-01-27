@@ -5,39 +5,34 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 27 01:26:47 2016 maud marel
-** Last update Wed Jan 27 04:39:57 2016 maud marel
+** Last update Wed Jan 27 05:37:27 2016 maud marel
 */
 
 #include "tekdoom.h"
 
 void	weapon(t_param *arg)
 {
-  if (arg->inter.gun.i == 0)
+  if (arg->inter.gun.i == 0 || arg->inter.gun.i == 4)
     arg->inter.bullet.nb_bullet = 0;
-  if (arg->inter.gun.i == 1)
-    arg->inter.bullet.nb_bullet = 5;
-  if (arg->inter.gun.i == 2)
+  if (arg->inter.gun.i == 1 || arg->inter.gun.i == 2 || arg->inter.gun.i == 3)
     arg->inter.bullet.nb_bullet = 5;
 }
 
 void	action_weapon(t_param *arg)
 {
   if (arg->inter.gun.i == 0)
-    {
-      arg->inter.gun.check_p = 12;
-    }
+    arg->inter.gun.check_p = 12;
   if (arg->inter.gun.i == 1 && arg->inter.bullet.nb_bullet > 0)
     {
       arg->inter.bullet.nb_bullet--;
       arg->inter.gun.check_r = 3;
     }
-  if (arg->inter.gun.i == 2 && arg->inter.bullet.nb_bullet > 0)
-    {
-      arg->inter.bullet.nb_bullet--;
-      arg->inter.gun.check_b = 24;
-    }
+  if (arg->inter.gun.i == 2)
+    arg->inter.gun.check_b = 24;
   if (arg->inter.gun.i == 3)
     arg->inter.gun.check_sul = 39;
+  if (arg->inter.gun.i == 4)
+    arg->inter.gun.check_k = 9;
 }
 
 void	action_reload(t_param *arg)
@@ -46,11 +41,6 @@ void	action_reload(t_param *arg)
     {
       arg->inter.gun.check_s = 1;
       arg->inter.gun.check_r = 15;
-      arg->inter.bullet.nb_bullet = 5;
-    }
-  if (arg->inter.gun.i == 2 && arg->inter.bullet.nb_bullet != 10)
-    {
-      arg->inter.gun.check_b = 24;
       arg->inter.bullet.nb_bullet = 5;
     }
 }
@@ -94,5 +84,12 @@ void	draw_action2(t_param *arg)
 	draw_sulf(arg);
       else
 	draw_shoot1(arg, arg->inter.gun.sulf0);
+    }
+  if (arg->inter.gun.i == 4)
+    {
+      if (arg->inter.gun.check_k != 0)
+	draw_knife(arg);
+      else
+	draw_shoot1(arg, arg->inter.gun.knife1);
     }
 }
