@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 27 00:43:56 2016 maud marel
-** Last update Wed Jan 27 04:45:27 2016 maud marel
+** Last update Wed Jan 27 06:52:20 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -13,34 +13,34 @@
 void	draw_biggun(t_param *arg)
 {
   if (arg->inter.gun.check_b > 21 && arg->inter.gun.check_b <= 24)
-    draw_shoot1(arg, arg->inter.gun.biggun1);
+    draw_shoot(arg, arg->inter.gun.biggun1);
   if (arg->inter.gun.check_b > 18 && arg->inter.gun.check_b <= 21)
-    draw_shoot1(arg, arg->inter.gun.biggun2);
+    draw_shoot(arg, arg->inter.gun.biggun2);
   if (arg->inter.gun.check_b > 15 && arg->inter.gun.check_b <= 18)
-    draw_shoot1(arg, arg->inter.gun.biggun3);
+    draw_shoot(arg, arg->inter.gun.biggun3);
   if (arg->inter.gun.check_b > 12 && arg->inter.gun.check_b <= 15)
-    draw_shoot1(arg, arg->inter.gun.biggun4);
+    draw_shoot(arg, arg->inter.gun.biggun4);
   if (arg->inter.gun.check_b > 9 && arg->inter.gun.check_b <= 12)
-    draw_shoot1(arg, arg->inter.gun.biggun5);
+    draw_shoot(arg, arg->inter.gun.biggun5);
   if (arg->inter.gun.check_b > 6 && arg->inter.gun.check_b <= 9)
-    draw_shoot1(arg, arg->inter.gun.biggun6);
+    draw_shoot(arg, arg->inter.gun.biggun6);
   draw_biggun2(arg);
 }
 
 void	draw_biggun2(t_param *arg)
 {
   if (arg->inter.gun.check_b > 3 && arg->inter.gun.check_b <= 6)
-    draw_shoot1(arg, arg->inter.gun.biggun2);
+    draw_shoot(arg, arg->inter.gun.biggun2);
   if (arg->inter.gun.check_b > 0 && arg->inter.gun.check_b <= 3)
     {
-      draw_shoot1(arg, arg->inter.gun.biggun1);
+      draw_shoot(arg, arg->inter.gun.biggun1);
       arg->inter.gun.check_b = 0;
     }
   if (arg->inter.gun.check_b > 0)
     arg->inter.gun.check_b--;
 }
 
-void	draw_shoot1(t_param *arg, t_bunny_pixelarray *shoot)
+void	draw_shoot(t_param *arg, t_bunny_pixelarray *shoot)
 {
   t_bunny_position	end;
   t_bunny_position	pos;

@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 14:29:22 2016 maud marel
-** Last update Wed Jan 27 02:47:12 2016 maud marel
+** Last update Wed Jan 27 06:52:38 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -23,33 +23,6 @@ void	draw_gunshot(t_param *arg)
     }
   if (arg->inter.gun.check_r > 1)
     arg->inter.gun.check_r--;
-}
-
-void	draw_shoot(t_param *arg, t_bunny_pixelarray *shoot)
-{
-  t_bunny_position      end;
-  t_bunny_position      pos;
-  int                   i;
-
-  arg->inter.gun.color = (t_color*)shoot->pixels;
-  pos.y = 0;
-  i = 0;
-  while (pos.y < shoot->clipable.clip_height)
-    {
-      pos.x = 0;
-      while (pos.x < shoot->clipable.clip_width)
-        {
-          end.x = (arg->WIDTH
-                   - shoot->clipable.clip_width) / 2 + pos.x;
-          end.y = (arg->HEIGHT
-                   - shoot->clipable.clip_height) + pos.y;
-          if (check_color3(arg, i) == 0)
-            tekpixel2(arg->pix, &end, &arg->inter.gun.color[i]);
-          pos.x++;
-          i++;
-        }
-      pos.y++;
-    }
 }
 
 int	check_color3(t_param *arg, int i)
