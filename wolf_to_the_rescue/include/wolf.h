@@ -5,12 +5,13 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Tue Jan 26 17:46:54 2016 benjamin duhieu
+** Last update Wed Jan 27 01:59:00 2016 benjamin duhieu
 */
 
 #ifndef WOLF_H_
 # define WOLF_H_
 
+# define LAPIN_ALLOCATOR_DEACTIVED
 # define SKY 0xFF796C71
 # define PLAYER 0xFF00D7FF
 # define WALLA 0xFF8E7587
@@ -27,6 +28,16 @@
 # define TXT_1 "files/textures/01_brick_wall.png"
 # define TXT_2 "files/textures/02_floor.png"
 # define TXT_3 "files/textures/my_sky.png"
+# define ZIK_1 "Emotional Dark Music - The Eternal Forest.ogg"
+# define ZIK_2 "ok/dsbrssit.ogg" /* cac 1 */
+# define ZIK_3 "ok/dsdshtgn.ogg" /* shotgun */
+# define ZIK_4 "ok/dspdiehi.ogg" /* cac 2 */
+# define ZIK_5 "ok/dsvilsit.ogg" /* burger */
+# define ZIK_6 "ok/dswpnup.ogg" /* reload */
+# define ZIK_7 "Creaky door sound effect.ogg"
+# define ZIK_8 "1459.ogg"
+# define ZIK_9 "2769.ogg"
+# define ZI_10 "3502.ogg"
 # define ZERO(val) (((val) > 0) ? (val) - 1 : -1)
 # define ABS(val) (((val) < 0) ? -(val) : (val))
 # define GET_X(val) ABS((WIDTH / 2) - WIDTH + (val))
@@ -88,10 +99,25 @@ typedef struct		s_calc
   double		yf;
 }			t_calc;
 
+typedef struct		s_sound
+{
+  t_bunny_effect	*shotgun;
+  t_bunny_effect	*door;
+  t_bunny_effect	*burger;
+  t_bunny_effect	*cac;
+  t_bunny_effect	*cac2;
+  t_bunny_effect	*sulf;
+  t_bunny_effect	*knife;
+  t_bunny_effect	*bazook;
+  t_bunny_effect	*reload;
+}			t_sound;
+
 typedef struct		s_param
 {
   t_calc		calc;
   t_data		*data;
+  t_bunny_music		*play;
+  t_sound		*sound;
   t_wmath		wm;
   int			curlvl;
   int			nblvl;
@@ -114,13 +140,15 @@ typedef struct		s_param
 
 t_bunny_response my_keys(t_bunny_event_state, t_bunny_keysym, void *);
 t_bunny_response main_wolf(void *);
+t_bunny_response main_click(t_bunny_event_state, t_bunny_mousebutton, void *);
 t_bunny_response my_mouse(const t_bunny_position *, void *);
 int my_strcmp(const char *, char *);
-int  sky(t_param *, int);
 int next_casex(t_param *, double);
 int next_casey(t_param *, double);
+int download_music(t_param *);
 void whats_up(char **, int);
-void bottom(t_param *, int);
+void  sky(t_param *);
+void bottom(t_param *);
 void wall_north_east(t_param *, int, int, int);
 void wall_south_east(t_param *, int, int, int);
 void wall_north_west(t_param *, int, int, int);

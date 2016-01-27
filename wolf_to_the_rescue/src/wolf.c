@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:25:21 2015 marc brout
-** Last update Tue Jan 26 17:05:55 2016 Mathieu Sauvau
+** Last update Wed Jan 27 00:05:31 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -70,6 +70,11 @@ int		launch_start(char **av)
   if ((arg.data = malloc(sizeof(t_data))) == NULL)
     return (3);
   start(arg.data);
+  bunny_sound_stop(arg.data->music);
+  bunny_delete_sound(arg.data->music);
+  if (download_music(&arg))
+    return (1);
+  bunny_sound_play(arg.play);
   arg.menu = false;
   if ((arg.wm.ydep = malloc(sizeof(double) * arg.WIDTH)) == NULL)
     return (1);
@@ -78,6 +83,8 @@ int		launch_start(char **av)
       whats_up(av, err);
       return (1);
     }
+  bunny_sound_stop(arg.play);
+  bunny_delete_sound(arg.play);
   return (0);
 }
 

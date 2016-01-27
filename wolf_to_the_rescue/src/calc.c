@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Tue Jan 26 17:04:43 2016 benjamin duhieu
+** Last update Tue Jan 26 23:05:24 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -68,19 +68,7 @@ void		project_k(t_param *arg, t_lvl *lvl, int x, t_data *data)
   y = (HEIGHT / 2) - size - 1 + lvl->yangle - (arg->hight * 200) / arg->calc.k;
   k = (int)(arg->textures[0]->CWID * (DEC(arg->calc.xf) + DEC(arg->calc.yf)))
     % arg->textures[0]->CWID;
-  /* o = (int)(((double)x / WIDTH) * arg->textures[2]->CWID) % */
-  /*   arg->textures[2]->CWID; */
   l = 0;
-  /* while (++start < y) */
-  /*   { */
-  /*     if (y == HEIGHT) */
-  /* 	p = (int)(start * arg->textures[2]->CHEI) % arg->textures[2]->CHEI; */
-  /*     else */
-  /* 	p = (int)(((double)start / (HEIGHT - y)) * */
-  /* 		  arg->textures[2]->CHEI) % arg->textures[2]->CHEI; */
-  /*     printf("y = %d, start = %d, prop = %d, CHEI = %d\n", y, start, HEIGHT - y, arg->textures[2]->CHEI); */
-  /*     pixels[(int)(x + start * WIDTH)] = ceil[o + p * arg->textures[2]->CWID]; */
-  /*   } */
   while (++y < total && y < HEIGHT && ++l)
     if (y >= 0)
       {

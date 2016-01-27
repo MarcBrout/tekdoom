@@ -5,14 +5,14 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 20 18:46:14 2015 Mathieu Sauvau
-** Last update Tue Jan 26 17:26:39 2016 Mathieu Sauvau
+** Last update Tue Jan 26 19:02:33 2016 benjamin duhieu
 */
 
 #include "menu.h"
 
 void			loop_next(t_data *data)
 {
- if (data->menu_index == 0)
+  if (data->menu_index == 0)
     write_main_menu(data);
   else if (data->menu_index == 1)
     write_option_menu(data);

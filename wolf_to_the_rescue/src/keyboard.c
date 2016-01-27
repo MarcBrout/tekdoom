@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 19:34:41 2015 marc brout
-** Last update Tue Jan 26 17:34:13 2016 maud marel
+** Last update Wed Jan 27 02:01:17 2016 benjamin duhieu
 */
 
 #include "wolf.h"
@@ -17,8 +17,9 @@ void		simple_tap(t_param *arg)
   k = bunny_get_keyboard();
   if (k[arg->INPUT->key[0]])
     {
-      arg->speedy += 2;
-      move(arg, 0, 0.1);
+      if (arg->speedy < 9)
+	arg->speedy += 3;
+      move(arg, 0, 0.07);
     }
   if (k[arg->INPUT->key[1]])
     {
@@ -79,8 +80,8 @@ t_bunny_response	my_keys(t_bunny_event_state state,
       if (keysym == BKS_R && state == GO_DOWN)
 	{
 	  arg->inter.gun.check_r = 12;
+	  bunny_sound_play(arg->sound->reload);
 	}
-      simple_tap(keysym, arg);
     }
   return (GO_ON);
 }

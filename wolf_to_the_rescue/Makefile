@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ##
 ## Started on  Thu Dec 17 13:59:43 2015 marc brout
-## Last update Tue Jan 26 17:34:55 2016 maud marel
+## Last update Wed Jan 27 01:58:36 2016 benjamin duhieu
 ##
 
 SRCP	= ./src/
@@ -18,6 +18,8 @@ SRC     = $(SRCP)wolf.c \
 	$(SRCP)check_file.c \
 	$(SRCP)fill_tablvl.c \
 	$(SRCP)aff_wolf.c \
+	$(SRCP)clik.c \
+	$(SRCP)music.c \
 	$(SRCP)inertia.c \
 	$(SRCP)free_all.c \
 	$(SRCP)wall.c \
