@@ -5,41 +5,10 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 16:11:12 2015 marc brout
-** Last update Wed Jan 27 03:43:31 2016 benjamin duhieu
+** Last update Wed Jan 27 06:00:09 2016 maud marel
 */
 
 #include "tekdoom.h"
-
-t_bunny_response		my_mouse(const t_bunny_position *pos,
-					 void *data)
-{
-  const t_bunny_position	*abs;
-  t_param			*arg;
-
-  arg = data;
-  abs = bunny_get_mouse_position();
-  if (!arg->mov)
-    {
-      if ((arg->lvl[arg->curlvl].yangle + (pos->y / 3)) > (-(arg->WIDTH / 3)+ 50) &&
-	  (arg->lvl[arg->curlvl].yangle + (pos->y / 3)) < ((arg->WIDTH / 3) - 50))
-	arg->lvl[arg->curlvl].yangle += pos->y / 3;
-      arg->lvl[arg->curlvl].plangle += pos->x / 3;
-      if (arg->lvl[arg->curlvl].plangle <= 0)
-	arg->lvl[arg->curlvl].plangle += 359;
-      if (arg->lvl[arg->curlvl].plangle >= 359)
-	arg->lvl[arg->curlvl].plangle -= 359;
-    }
-  else
-    arg->mov = 0;
-  if ((abs->x <= 200 || abs->x >= (arg->WIDTH - 200)) ||
-      (abs->y <= 200 || abs->y >= (arg->HEIGHT - 200)))
-    {
-      bunny_set_mouse_position_window(arg->win, arg->WIDTH / 2,
-				      arg->HEIGHT / 2);
-      arg->mov = 1;
-    }
-  return (GO_ON);
-}
 
 void			main_tekdoom2(t_param *arg)
 {
@@ -89,7 +58,8 @@ void		sky(t_param *arg)
 
   sky = arg->textures[2]->pixels;
   pixels = arg->pix->pixels;
-  size = arg->HEIGHT / 2 + (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * (34)));
+  size = arg->HEIGHT / 2 + (int)(arg->lvl[arg->curlvl].yangle
+				 - (arg->hight * (34)));
   y = size;
   x = 0;
   while (x + (y * arg->WIDTH) > 0)
@@ -113,8 +83,8 @@ void		bottom(t_param *arg)
   unsigned int	*pixels;
 
   y = arg->HEIGHT;
-  end = arg->HEIGHT / 2 +
-    (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * 34));
+  end = arg->HEIGHT / 2
+    + (int)(arg->lvl[arg->curlvl].yangle - (arg->hight * 34));
   pixels = arg->pix->pixels;
   while (--y > end)
     {
@@ -146,8 +116,6 @@ char		aff_tekdoom(t_param *arg)
   bunny_set_mouse_position_window(arg->win, arg->WIDTH / 2, arg->HEIGHT / 2);
   bunny_loop(arg->win, 24, arg);
   bunny_delete_clipable(&arg->pix->clipable);
-  bunny_sound_stop(arg->inter.gun.music);
-  bunny_delete_sound(arg->inter.gun.music);
   bunny_stop(arg->win);
   return (0);
 }
