@@ -5,12 +5,13 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 07:21:31 2016 benjamin duhieu
+** Last update Wed Jan 27 07:24:48 2016 benjamin duhieu
 */
 
 #ifndef TEKDOOM_H_
 # define TEKDOOM_H_
 
+# define LAPIN_ALLOCATOR_DEACTIVATED
 # define SKY 0xFF796C71
 # define PLAYER 0xFF00D7FF
 # define WALLA 0xFF8E7587

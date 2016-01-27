@@ -5,14 +5,14 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Tue Jan 26 23:45:30 2016 benjamin duhieu
-** Last update Wed Jan 27 07:18:46 2016 benjamin duhieu
+** Last update Wed Jan 27 07:26:37 2016 benjamin duhieu
 */
 
 #include "tekdoom.h"
 
 int	download_music(t_param *arg)
 {
-  if (((arg->sound = malloc(sizeof(t_sound))) == NULL) ||
+  if (((arg->sound = bunny_malloc(sizeof(t_sound))) == NULL) ||
       ((arg->play = bunny_load_music(ZIK_1)) == NULL) ||
       ((arg->sound->cac = bunny_load_effect(ZIK_2)) == NULL) ||
       ((arg->sound->shotgun = bunny_load_effect(ZIK_3)) == NULL) ||
@@ -42,7 +42,7 @@ void	delete_picture(t_param *arg)
   i = -1;
   while (arg->sprites[++i])
     bunny_delete_clipable(&arg->sprites[i]->clipable);
-  free_lvl(arg);
+  /* free_lvl(arg); */
   free_other(arg);
 }
 
