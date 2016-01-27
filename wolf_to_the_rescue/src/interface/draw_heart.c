@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 20 15:47:07 2016 Maud MAREL
-** Last update Tue Jan 26 14:49:34 2016 maud marel
+** Last update Tue Jan 26 22:11:08 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void			draw_heart(t_param *arg)
 {

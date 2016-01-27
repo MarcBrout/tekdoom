@@ -1,11 +1,11 @@
 /*
-** menu_credits.c for tekdoom in /home/sauvau_m/rendu/gfx_tekdoom/wolf_to_the_rescue
+** menu_credits.c for tekdoom in /home/sauvau_m/rendu/gfx_tekdoom/tekdoom_to_the_rescue
 **
 ** Made by Mathieu Sauvau
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Tue Jan 26 11:53:39 2016 Mathieu Sauvau
-** Last update Tue Jan 26 13:35:39 2016 Mathieu Sauvau
+** Last update Tue Jan 26 22:13:43 2016 maud marel
 */
 
 #include "menu.h"

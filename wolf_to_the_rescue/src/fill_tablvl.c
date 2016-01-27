@@ -1,14 +1,14 @@
 /*
-** fill_tablvl.c for wolf
+** fill_tablvl.c for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 11:50:49 2015 marc brout
-** Last update Wed Jan 27 01:49:14 2016 marc brout
+** Last update Wed Jan 27 03:29:46 2016 marc brout
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void		get_player(t_param *arg, t_lvl *lvl)
 {

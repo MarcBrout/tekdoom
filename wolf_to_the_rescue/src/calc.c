@@ -1,14 +1,14 @@
 /*
-** calc.c for wolf
+** calc.c for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 18 18:56:11 2015 marc brout
-** Last update Wed Jan 27 02:44:19 2016 marc brout
+** Last update Wed Jan 27 03:29:57 2016 marc brout
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void		basic_to_sec(t_param *arg, int x)
 {

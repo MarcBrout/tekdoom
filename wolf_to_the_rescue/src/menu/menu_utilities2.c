@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:57:06 2016 Mathieu Sauvau
-** Last update Tue Jan 26 16:55:29 2016 Mathieu Sauvau
+** Last update Tue Jan 26 22:10:10 2016 Mathieu Sauvau
 */
 
 #include "menu.h"
@@ -39,7 +39,8 @@ void                    cpy_bg(t_bunny_pixelarray *pix_ar,
   pos.x = 0;
   bg_x = 0;
   offset = pix_ar->clipable.clip_width / 2 - bg->clipable.clip_width / 2;
-  while (offset + pix_ar->clipable.clip_width / 2 > pix_ar->clipable.clip_width)
+  while (offset + pix_ar->clipable.clip_width / 2 >
+	 pix_ar->clipable.clip_width)
     offset--;
   while (pos.x < pix_ar->clipable.clip_width)
     {

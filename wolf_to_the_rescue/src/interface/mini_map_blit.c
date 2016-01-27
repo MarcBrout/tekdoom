@@ -5,10 +5,10 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 01:06:18 2015 marc brout
-** Last update Wed Jan 27 01:48:31 2016 marc brout
+** Last update Wed Jan 27 03:29:12 2016 marc brout
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void		set_bump(t_param * arg, t_lvl *lvl)
 {

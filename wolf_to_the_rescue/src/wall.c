@@ -1,14 +1,14 @@
 /*
-** wall.c for wolf
+** wall.c for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Dec 25 00:46:23 2015 marc brout
-** Last update Mon Jan 25 20:51:47 2016 benjamin duhieu
+** Last update Tue Jan 26 22:10:08 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void		new_hight(t_param *arg)
 {

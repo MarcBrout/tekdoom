@@ -5,10 +5,10 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Thu Nov 19 13:36:53 2015 maud marel
-** Last update Tue Jan 26 21:32:03 2016 marc brout
+** Last update Wed Jan 27 03:28:41 2016 marc brout
 */
 
-#include "interface.h"
+#include "tekdoom.h"
 
 void		my_set_square(t_bunny_pixelarray *pix,
 			      unsigned int colori)

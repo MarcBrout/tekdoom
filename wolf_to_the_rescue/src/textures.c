@@ -5,10 +5,10 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Mon Jan 25 02:40:20 2016 marc brout
-** Last update Wed Jan 27 00:35:11 2016 marc brout
+** Last update Wed Jan 27 03:25:34 2016 marc brout
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 char	get_textures(t_param *tpar)
 {

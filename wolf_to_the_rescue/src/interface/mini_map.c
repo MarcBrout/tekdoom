@@ -1,14 +1,14 @@
 /*
-** mini_map.c for wolf
+** mini_map.c for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Mon Dec 21 16:32:47 2015 marc brout
-** Last update Mon Jan 25 04:03:58 2016 benjamin duhieu
+** Last update Tue Jan 26 22:12:25 2016 maud marel
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 char		mal_mini_map(t_param *arg, t_lvl *lvl)
 {

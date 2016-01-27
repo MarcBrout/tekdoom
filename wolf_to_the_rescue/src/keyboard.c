@@ -1,14 +1,14 @@
 /*
-** keyboard_mouse.c for wolf
+** keyboard_mouse.c for tekdoom
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Dec 22 19:34:41 2015 marc brout
-** Last update Tue Jan 26 21:25:50 2016 marc brout
+** Last update Wed Jan 27 03:28:20 2016 marc brout
 */
 
-#include "wolf.h"
+#include "tekdoom.h"
 
 void		simple_tap(t_param *arg)
 {
@@ -50,38 +50,9 @@ t_bunny_response	my_keys(t_bunny_event_state state,
       if (keysym == BKS_M)
 	arg->curlvl = (arg->curlvl - 1 >= 0) ? arg->curlvl - 1 :
 	  arg->nblvl - 1;
-      if (keysym == BKS_B && state == GO_DOWN)
-	{
-	  if (arg->inter.life.life > 25)
-	    {
-	      arg->inter.life.life -= 25;
-	      arg->inter.life.pos_limit.x = (arg->inter.life.life * 3 * arg->WIDTH) / 1000;
-	    }
-	  else
-	    {
-	      arg->inter.life.pos_limit.x = (arg->WIDTH / 75) - 1;
-	      arg->inter.life.end = 1;
-	      arg->inter.life.life = 0;
-	    }
-	}
-      if (keysym == BKS_N && state == GO_DOWN && arg->inter.life.nb_heart > 1)
-	{
-	  arg->inter.life.life = 100;
-	  arg->inter.life.nb_heart--;
-	  arg->inter.life.end = 0;
-	  arg->inter.life.pos_life.x = (3 * arg->WIDTH) / 10 - 1;
-	}
-      if (keysym == BKS_T && state == GO_DOWN && arg->inter.bullet.nb_bullet > 0)
-	{
-	  arg->inter.bullet.nb_bullet--;
-	  arg->inter.gun.shoot = 1;
-	  arg->inter.gun.check = 3;
-	}
-      if (keysym == BKS_R && state == GO_DOWN)
-	{
-	  arg->inter.gun.check_r = 12;
-	}
       simple_tap(arg);
+      keyboard_interface(arg);
+      keyboard_interface2(state, keysym, arg);
     }
   return (GO_ON);
 }
@@ -94,7 +65,7 @@ int		next_casex(t_param *arg, double val)
        [(int)(arg->lvl[arg->curlvl].playery)]
        [(int)(arg->lvl[arg->curlvl].playerx + val)]) == 3 &&
       (arg->curlvl < (arg->nblvl - 1)))
-    arg->curlvl += 1;
+    arg->trans = true;
   return (cas);
 }
 
@@ -106,7 +77,7 @@ int		next_casey(t_param *arg, double val)
        [(int)(arg->lvl[arg->curlvl].playery + val)]
        [(int)(arg->lvl[arg->curlvl].playerx)]) == 3 &&
       (arg->curlvl < (arg->nblvl - 1)))
-    arg->curlvl += 1;
+    arg->trans = true;
   return (cas);
 }
 
