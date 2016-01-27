@@ -5,7 +5,7 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Jan 22 16:34:03 2016 Mathieu Sauvau
-** Last update Tue Jan 26 23:14:06 2016 Mathieu Sauvau
+** Last update Wed Jan 27 07:07:01 2016 marc brout
 */
 
 #include <menu.h>
@@ -70,8 +70,9 @@ void			option_nav(t_data *data)
     }
 }
 
-void			option_nav2(t_bunny_event_state state, t_bunny_keysym keysym,
-				 t_data *data)
+void			option_nav2(t_bunny_event_state state,
+				    t_bunny_keysym keysym,
+				    t_data *data)
 {
   if ((keysym == BKS_LEFT || keysym == INPUT->key[2]) && state == GO_DOWN)
     {

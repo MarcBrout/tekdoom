@@ -5,11 +5,11 @@
 ** Login   <sauvau_m@epitech.net>
 **
 ** Started on  Fri Nov 13 17:07:03 2015 Mathieu Sauvau
-** Last update Wed Jan 27 06:13:54 2016 benjamin duhieu
+** Last update Wed Jan 27 07:04:40 2016 marc brout
 */
 
 #ifndef STRUCT_H_
-# define  STRUCT_H_
+# define STRUCT_H_
 # define WIDTH data->config->width
 # define HEIGHT data->config->height
 # define VOLUME data->config->volume
@@ -153,6 +153,7 @@ void			pos_pix_ar(t_data *);
 void			write_credit_menu(t_data *data);
 void			credit_menu(t_data *data);
 t_bunny_response	mainloop(void *);
-void                    cpy_bg(t_bunny_pixelarray *pix_ar, t_bunny_pixelarray *bg);
+void                    cpy_bg(t_bunny_pixelarray *pix_ar,
+			       t_bunny_pixelarray *bg);
 
 #endif /* !STRUCT_H_ */
