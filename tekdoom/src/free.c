@@ -5,58 +5,10 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Wed Jan 27 05:29:03 2016 benjamin duhieu
-** Last update Wed Jan 27 06:21:45 2016 benjamin duhieu
+** Last update Wed Jan 27 07:53:54 2016 benjamin duhieu
 */
 
 #include "tekdoom.h"
-
-void	free_obj(t_lvl *lvl)
-{
-  int	x;
-  int	y;
-  int	i;
-
-  i = -1;
-  while (lvl->objs[++i])
-    {
-      y = -1;
-      while (++y < lvl->height)
-	{
-	  x = -1;
-	  while (++x < lvl->width)
-	    bunny_free(&lvl->objs[i][y][x]);
-	  bunny_free(lvl->objs[i][y]);
-	}
-      bunny_free(lvl->objs[i]);
-    }
-}
-
-void	free_map(t_lvl *lvl)
-{
-  int	i;
-
-  i = -1;
-  while (lvl->map[++i])
-    bunny_free(lvl->map[i]);
-  bunny_free(lvl->map);
-}
-
-void	free_lvl(t_param *arg)
-{
-  int	i;
-
-  i = -1;
-  while (++i < arg->nblvl)
-    {
-      free_obj(arg->lvl);
-      bunny_free(arg->lvl->objs);
-      free_map(arg->lvl);
-      bunny_free(arg->lvl->name);
-      bunny_free(arg->lvl->desc);
-      bunny_delete_clipable(&arg->lvl->mini->clipable);
-    }
-  bunny_free(arg->lvl);
-}
 
 void	free_other(t_param *arg)
 {
