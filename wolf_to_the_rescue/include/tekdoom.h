@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Dec 17 15:13:48 2015 marc brout
-** Last update Wed Jan 27 06:18:48 2016 benjamin duhieu
+** Last update Wed Jan 27 06:23:02 2016 benjamin duhieu
 */
 
 #ifndef TEKDOOM_H_
@@ -27,7 +27,7 @@
 # define ZIK_2 "sounds/dsbrssit.ogg" /* cac 1 */
 # define ZIK_3 "sounds/dsdshtgn.ogg" /* shotgun */
 # define ZIK_4 "sounds/dspdiehi.ogg" /* cac 2 */
-# define ZIK_5 "sounds/burp.ogg" /* burger */
+# define ZIK_5 "sounds/Burp.ogg" /* burger */
 # define ZIK_6 "sounds/dswpnup.ogg" /* reload */
 # define ZIK_7 "sounds/Creaky door sound effect.ogg"
 # define ZIK_8 "sounds/1459.ogg"
