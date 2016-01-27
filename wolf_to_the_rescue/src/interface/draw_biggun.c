@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Wed Jan 27 00:43:56 2016 maud marel
-** Last update Wed Jan 27 04:18:37 2016 maud marel
+** Last update Wed Jan 27 04:45:27 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -76,7 +76,7 @@ int	check_color5(t_param *arg, int i)
   r = arg->inter.gun.color[i].full & 0xFF;
   g = (arg->inter.gun.color[i].full >> 8) & 0xFF;
   b = (arg->inter.gun.color[i].full >> 16) & 0xFF;
-  if (r == 0 && g == 0 && b == 0)
+  if (r == 255 && g == 0 && b == 255)
     return (1);
   return (0);
 }
