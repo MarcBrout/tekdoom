@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 23:55:32 2016 maud marel
-** Last update Tue Jan 26 23:56:44 2016 maud marel
+** Last update Wed Jan 27 00:50:38 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -60,19 +60,37 @@ int     load_picture2(t_param *arg)
   if ((arg->inter.gun.scope
        = bunny_load_pixelarray("pictures/scope.bmp")) == NULL)
     return (-1);
+  if ((arg->inter.trigger.game_over
+       = bunny_load_pixelarray("pictures/gameover.png")) == NULL)
+    return (-1);
   return (0);
 }
 
 int     load_picture3(t_param *arg)
 {
-  if ((arg->inter.trigger.game_over
-       = bunny_load_pixelarray("pictures/gameover.png")) == NULL)
-    return (-1);
   if ((arg->inter.trigger.try_again
        = bunny_load_pixelarray("pictures/try_again.bmp")) == NULL)
     return (-1);
   if ((arg->inter.trigger.lastchance
        = bunny_load_pixelarray("pictures/lastchance.bmp")) == NULL)
+    return (-1);
+  if ((arg->inter.gun.biggun1
+       = bunny_load_pixelarray("pictures/big1.png")) == NULL)
+    return (-1);
+  if ((arg->inter.gun.biggun2
+       = bunny_load_pixelarray("pictures/big2.png")) == NULL)
+    return (-1);
+  if ((arg->inter.gun.biggun3
+       = bunny_load_pixelarray("pictures/big3.png")) == NULL)
+    return (-1);
+  if ((arg->inter.gun.biggun4
+       = bunny_load_pixelarray("pictures/big4.png")) == NULL)
+    return (-1);
+  if ((arg->inter.gun.biggun5
+       = bunny_load_pixelarray("pictures/big5.png")) == NULL)
+    return (-1);
+  if ((arg->inter.gun.biggun6
+       = bunny_load_pixelarray("pictures/big6.png")) == NULL)
     return (-1);
   return (0);
 }

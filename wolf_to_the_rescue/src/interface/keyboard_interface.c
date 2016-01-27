@@ -5,7 +5,7 @@
 ** Login   <marel_m@epitech.net>
 **
 ** Started on  Tue Jan 26 21:38:59 2016 maud marel
-** Last update Tue Jan 26 23:33:49 2016 maud marel
+** Last update Wed Jan 27 02:11:35 2016 maud marel
 */
 
 #include "tekdoom.h"
@@ -16,22 +16,9 @@ void		keyboard_interface(t_param *arg)
 
   k = bunny_get_keyboard();
   if (k[arg->INPUT->key[7]])
-    {
-      if (arg->inter.bullet.nb_bullet > 0 && arg->inter.gun.shoot == 0)
-	{
-	  bunny_sound_play(arg->inter.gun.music);
-	  arg->inter.bullet.nb_bullet--;
-	  arg->inter.gun.shoot = 1;
-	  arg->inter.gun.check = 3;
-	}
-      else if (arg->inter.gun.punch == 1)
-	arg->inter.gun.check_p = 12;
-    }
-    if (k[arg->INPUT->key[5]] && arg->inter.gun.shoot != 2
-	&& arg->inter.bullet.nb_bullet != 5)
-    {
-      arg->inter.gun.check_r = 15;
-    }
+    action_weapon(arg);
+  if (k[arg->INPUT->key[5]])
+    action_reload(arg);
 }
 
 void	keyboard_interface2(t_bunny_event_state state,
@@ -60,15 +47,10 @@ void	keyboard_interface3(t_bunny_event_state state,
 {
   if (keysym == BKS_F && state == GO_DOWN)
     {
-      if (arg->inter.gun.shoot == 0)
-	{
-	  arg->inter.gun.shoot = 2;
-	  arg->inter.gun.punch = 1;
-	}
+      if (arg->inter.gun.i < 2)
+	arg->inter.gun.i++;
       else
-	{
-	  arg->inter.gun.shoot = 0;
-	  arg->inter.gun.punch = 0;
-	}
+	arg->inter.gun.i = 0;
+      weapon(arg);
     }
 }
