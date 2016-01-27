@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Tue Jan 26 23:45:30 2016 benjamin duhieu
-** Last update Wed Jan 27 07:54:20 2016 benjamin duhieu
+** Last update Wed Jan 27 08:28:43 2016 benjamin duhieu
 */
 
 #include "tekdoom.h"
@@ -42,7 +42,8 @@ void	delete_picture(t_param *arg)
   i = -1;
   while (arg->sprites[++i])
     bunny_delete_clipable(&arg->sprites[i]->clipable);
-  free_other(arg);
+  if (arg->data->exit != true)
+    free_other(arg);
 }
 
 void	delete_sound(t_param *arg)
